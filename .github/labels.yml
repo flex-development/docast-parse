@@ -50,6 +50,10 @@
   description: patches
   color: 74cefc
 
+- name: scope:plugin
+  description: unified plugin
+  color: 74cefc
+
 - name: scope:release
   description: package release
   color: 74cefc
