@@ -849,7 +849,6 @@ __metadata:
     husky: "npm:8.0.1"
     is-ci: "npm:3.0.1"
     jsonc-eslint-parser: "npm:2.1.0"
-    lines-and-columns: "npm:2.0.3"
     lint-staged: "npm:13.0.3"
     node-notifier: "npm:10.0.1"
     prettier: "npm:2.7.1"
@@ -5235,13 +5234,6 @@ __metadata:
   version: 2.0.5
   resolution: "lilconfig@npm:2.0.5"
   checksum: f058235fe59cf0560c5b57fd908c71ab28a37187ff6676df6782c91910138405b5d4af22f8edfcf25ae6e4388037399a8941357543457a6f1c495b0667f718cb
-  languageName: node
-  linkType: hard
-
-"lines-and-columns@npm:2.0.3":
-  version: 2.0.3
-  resolution: "lines-and-columns@npm:2.0.3"
-  checksum: a4a98a2a22116b7e5a14110ec1f830c250899b9461a5e9ec33c7c6d01dedaf190855f079234c278027bd88c0fd39bada7cd2a2b66534ca7195f3141016d138ba
   languageName: node
   linkType: hard
 

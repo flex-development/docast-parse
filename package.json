@@ -66,7 +66,6 @@
   "dependencies": {
     "@flex-development/mlly": "flex-development/mlly",
     "@flex-development/tutils": "5.0.1",
-    "lines-and-columns": "2.0.3",
     "unist-builder": "3.0.0",
     "vfile": "5.3.5",
     "vfile-location": "4.0.1"
