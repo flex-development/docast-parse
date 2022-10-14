@@ -6,7 +6,9 @@
     "ast",
     "doc",
     "docblock",
+    "jsdoc",
     "syntax tree",
+    "tsdoc",
     "typescript",
     "unist"
   ],

@@ -38,6 +38,7 @@ pkgs
 preid
 safecrlf
 syncer
+tsdoc
 unist
 vates
 vfile
