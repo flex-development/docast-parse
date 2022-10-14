@@ -30,6 +30,10 @@
   description: abstract syntax tree
   color: 74cefc
 
+- name: scope:data
+  description: syntax tree node data
+  color: 74cefc
+
 - name: scope:dependencies
   description: dependency updates
   color: 74cefc
