@@ -25,6 +25,7 @@
         "parser",
         "patches",
         "pkg",
+        "plugin",
         "release",
         "scripts",
         "tests",
