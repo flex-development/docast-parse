@@ -58,6 +58,7 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
           '**/index.ts',
           'src/enums',
           'src/interfaces',
+          'src/parser-abstract',
           'src/types'
         ],
         extension: ['.ts'],
