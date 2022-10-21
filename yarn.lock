@@ -860,6 +860,7 @@ __metadata:
     typescript: "npm:4.9.1-beta"
     unified: "npm:10.1.2"
     unist-builder: "npm:3.0.0"
+    unist-util-inspect: "npm:7.0.1"
     version-bump-prompt: "npm:6.1.0"
     vfile: "npm:5.3.5"
     vfile-location: "npm:4.0.1"
@@ -870,6 +871,7 @@ __metadata:
     yaml-eslint-parser: "npm:1.1.0"
   peerDependencies:
     "@types/unist": ">=2.0.6"
+    typescript: "*"
   peerDependenciesMeta:
     "@types/unist":
       optional: true
@@ -7867,6 +7869,15 @@ __metadata:
   dependencies:
     "@types/unist": "npm:^2.0.0"
   checksum: c50173b69fad25a27ca7ccfa68f4bcdd87d1631d0e3063b957471ee84e3a11ec16dd2f6ca62bd849160eae4131e0fb619576b5fdc47fad4b159e6dbe19d4433c
+  languageName: node
+  linkType: hard
+
+"unist-util-inspect@npm:7.0.1":
+  version: 7.0.1
+  resolution: "unist-util-inspect@npm:7.0.1"
+  dependencies:
+    "@types/unist": "npm:^2.0.0"
+  checksum: 05d8eff7f337f2e8d66f24747dc1af68dce61c8ecbb1c2d4f73f3a1ec08b16a55da15f027401102b08bc9302d7720961393d41f2f4240149ae4c4f23c4c26c71
   languageName: node
   linkType: hard
 

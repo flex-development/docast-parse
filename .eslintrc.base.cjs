@@ -337,7 +337,7 @@ const config = {
     'jsdoc/check-tag-names': [
       1,
       {
-        definedTags: ['visibleName'],
+        definedTags: ['next', 'visibleName'],
         jsxTags: jsx
       }
     ],
@@ -403,6 +403,7 @@ const config = {
         enableFixer: true,
         enableRestElementFixer: true,
         enableRootFixer: true,
+        exemptedBy: ['inheritdoc', 'this'],
         unnamedRootBase: ['param'],
         useDefaultObjectProperties: true
       }
@@ -415,7 +416,7 @@ const config = {
       1,
       {
         exemptAsync: false,
-        exemptGenerators: false,
+        exemptGenerators: true,
         reportMissingReturnForUndefinedTypes: false
       }
     ],
@@ -1014,6 +1015,7 @@ const config = {
       plugins: ['chai-expect', 'jest-formatting'],
       rules: {
         '@typescript-eslint/no-base-to-string': 0,
+        '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/no-unused-expressions': 0,
         '@typescript-eslint/restrict-template-expressions': 0,
         '@typescript-eslint/unbound-method': 0,
@@ -1033,9 +1035,9 @@ const config = {
         'unicorn/consistent-destructuring': 0,
         'unicorn/explicit-length-check': 0,
         'unicorn/no-array-for-each': 0,
+        'unicorn/no-useless-undefined': 0,
         'unicorn/prefer-at': 0,
         'unicorn/prefer-dom-node-append': 0,
-        'unicorn/no-useless-undefined': 0,
         'unicorn/string-content': 0
       }
     },
@@ -1141,6 +1143,10 @@ const config = {
         param: {
           name: 'namepath-defining',
           required: ['name', 'type']
+        },
+        next: {
+          name: 'namepath-defining',
+          required: ['type']
         },
         return: {
           name: 'namepath-defining',

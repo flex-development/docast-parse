@@ -72,8 +72,9 @@ jobs:
         env:
           NODE_NO_WARNINGS: 1
           VITEST_SEGFAULT_RETRY: 3
-      - id: pack
-        name: Pack project
-        run: yarn pack -o %s-%v.tgz
-        env:
-          NODE_ENV: production
+      # ! need support for resolving @types/*
+      # - id: pack
+      #   name: Pack project
+      #   run: yarn pack -o %s-%v.tgz
+      #   env:
+      #     NODE_ENV: production

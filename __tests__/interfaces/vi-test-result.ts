@@ -19,4 +19,4 @@ interface ViTestResult {
   status: 'failed' | 'passed'
 }
 
-export { type ViTestResult as default }
+export type { ViTestResult as default }

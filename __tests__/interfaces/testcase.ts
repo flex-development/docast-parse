@@ -33,4 +33,4 @@ interface Testcase<Expected = any> {
   expected: Expected
 }
 
-export { type Testcase as default }
+export type { Testcase as default }

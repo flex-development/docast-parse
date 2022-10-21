@@ -1,6 +1,6 @@
 /// <reference types='vitest/globals' />
 
-interface ImportMetaEnv extends Readonly<Record<string, string>> {
+interface ImportMetaEnv extends import('vitest/importMeta').ImportMetaEnv {
   readonly CI: 'false' | 'true'
   readonly DEV: '1' | import('@flex-development/tutils').EmptyString
   readonly MODE: import('@flex-development/tutils').NodeEnv.TEST

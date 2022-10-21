@@ -19,4 +19,4 @@ interface AssertionResult {
   title: string
 }
 
-export { type AssertionResult as default }
+export type { AssertionResult as default }

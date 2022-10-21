@@ -25,4 +25,4 @@ interface ViTestResults {
   testResults: ViTestResult[]
 }
 
-export { type ViTestResults as default }
+export type { ViTestResults as default }

@@ -15,4 +15,4 @@ import type { SpyInstance } from 'vitest'
 interface Spy<Fn extends (...args: any) => any = (...args: any) => any>
   extends SpyInstance<Parameters<Fn>, ReturnType<Fn>> {}
 
-export { type Spy as default }
+export type { Spy as default }

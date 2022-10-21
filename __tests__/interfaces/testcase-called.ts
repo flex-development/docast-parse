@@ -14,4 +14,4 @@ interface TestcaseCalled extends Testcase<number> {
   call: 'call' | 'not call'
 }
 
-export { type TestcaseCalled as default }
+export type { TestcaseCalled as default }

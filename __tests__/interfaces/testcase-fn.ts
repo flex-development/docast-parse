@@ -17,4 +17,4 @@ interface TestcaseFn<T extends (...args: any[]) => any>
   parameters: Parameters<T>
 }
 
-export { type TestcaseFn as default }
+export type { TestcaseFn as default }

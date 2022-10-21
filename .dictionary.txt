@@ -36,9 +36,12 @@ nums
 nvmrc
 pkgs
 preid
+psum
 safecrlf
 syncer
 tsdoc
+tsnode
+tsnodes
 unist
 vates
 vfile
