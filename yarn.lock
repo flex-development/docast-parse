@@ -799,8 +799,8 @@ __metadata:
     "@commitlint/config-conventional": "npm:17.1.0"
     "@commitlint/types": "npm:17.0.0"
     "@faker-js/faker": "npm:7.6.0"
-    "@flex-development/mkbuild": "npm:1.0.0-alpha.6"
-    "@flex-development/mlly": flex-development/mlly
+    "@flex-development/mkbuild": "npm:1.0.0-alpha.7"
+    "@flex-development/mlly": "github:flex-development/mlly"
     "@flex-development/tutils": "npm:5.0.1"
     "@graphql-eslint/eslint-plugin": "npm:3.12.0"
     "@types/chai": "npm:4.3.3"
@@ -885,10 +885,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/mkbuild@npm:1.0.0-alpha.6":
-  version: 1.0.0-alpha.6
-  resolution: "@flex-development/mkbuild@npm:1.0.0-alpha.6::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fmkbuild%2F1.0.0-alpha.6%2Feafa02640ad813d30c234739773eb1790df9e60d"
+"@flex-development/mkbuild@npm:1.0.0-alpha.7":
+  version: 1.0.0-alpha.7
+  resolution: "@flex-development/mkbuild@npm:1.0.0-alpha.7::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fmkbuild%2F1.0.0-alpha.7%2F9406af33529410e4a5c895564772c74e7fa8bcdf"
   dependencies:
+    "@flex-development/mlly": "github:flex-development/mlly"
     "@flex-development/tutils": "npm:5.0.1"
     colorette: "npm:2.0.19"
     consola: "npm:2.15.3"
@@ -897,10 +898,8 @@ __metadata:
     escape-string-regexp: "npm:5.0.0"
     fs-extra: "npm:10.1.0"
     globby: "npm:13.1.2"
-    mlly: "npm:0.5.16"
     pathe: "npm:0.3.8"
     pkg-types: "npm:0.3.5"
-    postinstall-postinstall: "npm:2.1.0"
     pretty-bytes: "npm:6.0.0"
     tsconfig-paths: "npm:4.1.0"
   peerDependencies:
@@ -908,13 +907,13 @@ __metadata:
     typescript: ">=3.7.2"
   bin:
     mkbuild: dist/cli.mjs
-  checksum: 9ebe00b31081c6f2c1eba70aa5a9d38ad0e85f950da11cdf54b38197f219b05d773706e7afc20366f26afe4e2d3eb32af5ec13bd57f73c031d9923a5490c1589
+  checksum: 802068547d4763bb62c219b45822bc15d345c5b792933235f8eff466e7b8ab6c32c67ea66b5e3c69414b9def9f02aa2ab22f1e6de72a33e3593dba978e3fe518
   languageName: node
   linkType: hard
 
-"@flex-development/mlly@flex-development/mlly":
+"@flex-development/mlly@github:flex-development/mlly":
   version: 0.0.0
-  resolution: "@flex-development/mlly@https://github.com/flex-development/mlly.git#commit=93e89941b7bd6c5a4539cd1770d400a216c55525"
+  resolution: "@flex-development/mlly@https://github.com/flex-development/mlly.git#commit=0266ca9a5593d0c66e950ba1fe2c8f6df8422ff9"
   dependencies:
     "@flex-development/is-builtin": "npm:1.0.1"
     "@flex-development/tutils": "npm:5.0.1"
@@ -928,7 +927,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 648024487c7b54e2f989640befd980bf52db7ca9ad1de8f94ea1c816a21b46d25754d609725c5701113efc1dd39414390d7f6338e6f5a7502f2af49b403c65e2
+  checksum: 3a4b6f279327565df15ce4e7c0cb5030f764acf93137c1e1a11ff4a5459a588f38eb1d59ed9df9f2901e3e5628fbbeb5fd05e66b631e8e18fa50b163cbafb578
   languageName: node
   linkType: hard
 
@@ -5772,7 +5771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mlly@npm:0.5.16, mlly@npm:^0.5.14":
+"mlly@npm:^0.5.14":
   version: 0.5.16
   resolution: "mlly@npm:0.5.16"
   dependencies:
@@ -6431,13 +6430,6 @@ __metadata:
     picocolors: "npm:^1.0.0"
     source-map-js: "npm:^1.0.2"
   checksum: 686b922e5ced3d7dd5a6fe2d4b00f7787ac50db22f078f23f50462fdd9c00885e992f576c72eb804f62c5908a8b476d61d81d66ec91bb90eb4af2014eb3c321e
-  languageName: node
-  linkType: hard
-
-"postinstall-postinstall@npm:2.1.0":
-  version: 2.1.0
-  resolution: "postinstall-postinstall@npm:2.1.0"
-  checksum: 96ce970adc32a1f0fbf35d7d165a013d652a57a9b9eb8cb77f91fbaef11d1221c6feb1bb96b460481715e82909e9bb68bd5b5ac2ad4e9fa340476a091c18087b
   languageName: node
   linkType: hard
 
