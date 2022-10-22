@@ -9,6 +9,7 @@ import { u } from 'unist-builder'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
 import { Type } from './enums'
+import type { ParserOptions } from './interfaces'
 import {
   BLOCK_TAG_REGEX,
   IMPLICIT_DESCRIPTION_REGEX,
@@ -38,6 +39,12 @@ class Parser extends AbstractParser<Root> {
 
   /**
    * @protected
+   * @member {ParserOptions} options - Parser options
+   */
+  protected options: ParserOptions
+
+  /**
+   * @protected
    * @member {Root} root - Syntax tree representing {@link file}
    */
   protected root: Root
@@ -47,12 +54,38 @@ class Parser extends AbstractParser<Root> {
    *
    * @param {string} document - Document to parse
    * @param {VFile} file - File associated with `document`
+   * @param {ParserOptions} [options={}] - Parser options
    */
-  constructor(document: string, file: VFile) {
+  constructor(
+    document: string,
+    file: VFile,
+    {
+      base,
+      data = file.data,
+      dir,
+      ext,
+      history = file.history,
+      name,
+      path,
+      root = file.cwd
+    }: ParserOptions = {}
+  ) {
     super(document, file)
 
     this.location = location(document)
+    this.options = {}
     this.root = u(Type.ROOT, { children: [], position: undefined })
+
+    this.file.cwd = this.options.root = root
+    this.file.data = this.options.data = data
+    this.file.history = this.options.history = history
+
+    if (base) this.file.basename = this.options.base = base
+    if (path as string) this.file.path = this.options.path = path as string
+
+    if (dir && this.file.path) this.file.dirname = this.options.dir = dir
+    if (ext && this.file.path) this.file.extname = this.options.ext = ext
+    if (name && this.file.path) this.file.stem = this.options.name = name
   }
 
   /**

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`functional:parser > should create ast for abstract class declaration 1`] = `
+exports[`functional:attacher > should create ast for abstract class declaration 1`] = `
 [1mroot[22m[2m[[22m[33m6[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-61[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - Person\\n * @module fixtures/Person\\n */"}
@@ -52,7 +52,7 @@ exports[`functional:parser > should create ast for abstract class declaration 1`
           data[2m:[22m {"tag":"@return","text":"{string} String representation of \`this\`","value":"@return {string} String representation of \`this\`"}
 `;
 
-exports[`functional:parser > should create ast for async function declaration 1`] = `
+exports[`functional:attacher > should create ast for async function declaration 1`] = `
 [1mroot[22m[2m[[22m[33m7[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m3[39m[2m][22m [2m([22m1:1-5:4, 0-126[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - dblLinear\\n * @module fixtures/dblLinear\\n * @see https://codewars.com/kata/5672682212c8ecf83e000050\\n */"}
@@ -106,7 +106,7 @@ exports[`functional:parser > should create ast for async function declaration 1`
           data[2m:[22m {"tag":"@const","text":"{number} z - \`z\`","value":"@const {number} z - \`z\`"}
 `;
 
-exports[`functional:parser > should create ast for async function* declaration 1`] = `
+exports[`functional:attacher > should create ast for async function* declaration 1`] = `
 [1mroot[22m[2m[[22m[33m4[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-67[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - fibonacci\\n * @module fixtures/fibonacci\\n */"}
@@ -144,7 +144,7 @@ exports[`functional:parser > should create ast for async function* declaration 1
           data[2m:[22m {"tag":"@var","text":"{IteratorResult<number, number>} curr - Current sequence value","value":"@var {IteratorResult<number, number>} curr - Current sequence value"}
 `;
 
-exports[`functional:parser > should create ast for class declaration 1`] = `
+exports[`functional:attacher > should create ast for class declaration 1`] = `
 [1mroot[22m[2m[[22m[33m9[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m3[39m[2m][22m [2m([22m1:1-5:4, 0-142[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - FibonacciSequence\\n * @module fixtures/FibonacciSequence\\n * @see https://codewars.com/kata/55695bc4f75bbaea5100016b\\n */"}
@@ -216,7 +216,7 @@ exports[`functional:parser > should create ast for class declaration 1`] = `
           data[2m:[22m {"tag":"@const","text":"{number} value - Temporary sequence value","value":"@const {number} value - Temporary sequence value"}
 `;
 
-exports[`functional:parser > should create ast for const enum declaration 1`] = `
+exports[`functional:attacher > should create ast for const enum declaration 1`] = `
 [1mroot[22m[2m[[22m[33m2[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-65[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - LogLevel\\n * @module fixtures/LogLevel\\n */"}
@@ -232,7 +232,7 @@ exports[`functional:parser > should create ast for const enum declaration 1`] = 
           data[2m:[22m {"tag":"@enum","text":"{number}","value":"@enum {number}"}
 `;
 
-exports[`functional:parser > should create ast for default function declaration 1`] = `
+exports[`functional:attacher > should create ast for default function declaration 1`] = `
 [1mroot[22m[2m[[22m[33m4[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m3[39m[2m][22m [2m([22m1:1-5:4, 0-136[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - sumOfIntervals\\n * @module fixtures/sumOfIntervals\\n * @see https://codewars.com/kata/52b7ed099cdc285c300001cd\\n */"}
@@ -268,7 +268,7 @@ exports[`functional:parser > should create ast for default function declaration 
           data[2m:[22m {"tag":"@const","text":"{[number, number] | undefined} prev - Previous interval","value":"@const {[number, number] | undefined} prev - Previous interval"}
 `;
 
-exports[`functional:parser > should create ast for default variable declaration 1`] = `
+exports[`functional:attacher > should create ast for default variable declaration 1`] = `
 [1mroot[22m[2m[[22m[33m5[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m3[39m[2m][22m [2m([22m1:1-5:4, 0-136[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - miniStringFuck\\n * @module fixtures/miniStringFuck\\n * @see https://codewars.com/kata/586dd26a69b6fd46dd0000c0\\n */"}
@@ -300,7 +300,7 @@ exports[`functional:parser > should create ast for default variable declaration 
           data[2m:[22m {"tag":"@var","text":"{string} output - Program output","value":"@var {string} output - Program output"}
 `;
 
-exports[`functional:parser > should create ast for enum declaration 1`] = `
+exports[`functional:attacher > should create ast for enum declaration 1`] = `
 [1mroot[22m[2m[[22m[33m6[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-53[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - Op\\n * @module fixtures/Op\\n */"}
@@ -332,7 +332,7 @@ exports[`functional:parser > should create ast for enum declaration 1`] = `
           data[2m:[22m {"value":"Subtraction operator."}
 `;
 
-exports[`functional:parser > should create ast for function declaration 1`] = `
+exports[`functional:attacher > should create ast for function declaration 1`] = `
 [1mroot[22m[2m[[22m[33m8[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m3[39m[2m][22m [2m([22m1:1-5:4, 0-126[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - calculate\\n * @module fixtures/calculate\\n * @see https://codewars.com/kata/581bc0629ad9ff9873000316\\n */"}
@@ -394,7 +394,7 @@ exports[`functional:parser > should create ast for function declaration 1`] = `
           data[2m:[22m {"tag":"@var","text":"{number} result - Result of calculating two-term expression","value":"@var {number} result - Result of calculating two-term expression"}
 `;
 
-exports[`functional:parser > should create ast for function* declaration 1`] = `
+exports[`functional:attacher > should create ast for function* declaration 1`] = `
 [1mroot[22m[2m[[22m[33m2[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-65[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - alphabet\\n * @module fixtures/alphabet\\n */"}
@@ -416,7 +416,7 @@ exports[`functional:parser > should create ast for function* declaration 1`] = `
           data[2m:[22m {"tag":"@return","text":"{Generator<string, void, void>} Alphabet generator","value":"@return {Generator<string, void, void>} Alphabet generator"}
 `;
 
-exports[`functional:parser > should create ast for interface declaration 1`] = `
+exports[`functional:attacher > should create ast for interface declaration 1`] = `
 [1mroot[22m[2m[[22m[33m4[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-77[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - CoordinatePair\\n * @module fixtures/CoordinatePair\\n */"}
@@ -438,7 +438,7 @@ exports[`functional:parser > should create ast for interface declaration 1`] = `
           data[2m:[22m {"value":"y-coordinate."}
 `;
 
-exports[`functional:parser > should create ast for namespace declaration 1`] = `
+exports[`functional:attacher > should create ast for namespace declaration 1`] = `
 [1mroot[22m[2m[[22m[33m4[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-71[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - StringUtils\\n * @module fixtures/StringUtils\\n */"}
@@ -470,7 +470,7 @@ exports[`functional:parser > should create ast for namespace declaration 1`] = `
           data[2m:[22m {"tag":"@template","text":"D - String delimiter","value":"@template D - String delimiter"}
 `;
 
-exports[`functional:parser > should create ast for type declaration 1`] = `
+exports[`functional:attacher > should create ast for type declaration 1`] = `
 [1mroot[22m[2m[[22m[33m2[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-69[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - Coordinate\\n * @module fixtures/Coordinate\\n */"}
@@ -484,7 +484,7 @@ exports[`functional:parser > should create ast for type declaration 1`] = `
           data[2m:[22m {"value":"One member in a pair of numbers that represent a single point on a\\ntwo-dimensional grid."}
 `;
 
-exports[`functional:parser > should create ast for variable declaration 1`] = `
+exports[`functional:attacher > should create ast for variable declaration 1`] = `
 [1mroot[22m[2m[[22m[33m3[39m[2m][22m
 [2m├─0[22m [1mcomment[22m[2m[[22m[33m2[39m[2m][22m [2m([22m1:1-4:4, 0-57[2m)[22m
 [2m│[22m   [2m│[22m data[2m:[22m {"symbol":null,"value":"/**\\n * @file Fixtures - psum\\n * @module fixtures/psum\\n */"}
