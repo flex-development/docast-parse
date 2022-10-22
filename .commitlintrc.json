@@ -9,6 +9,7 @@
       2,
       "always",
       [
+        "attacher",
         "cjs",
         "data",
         "deps",
@@ -27,7 +28,6 @@
         "parser",
         "patches",
         "pkg",
-        "plugin",
         "release",
         "scripts",
         "tests",
