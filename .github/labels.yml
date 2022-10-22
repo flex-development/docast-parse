@@ -30,6 +30,10 @@
   description: abstract syntax tree
   color: 74cefc
 
+- name: scope:attacher
+  description: unified attacher
+  color: 74cefc
+
 - name: scope:data
   description: syntax tree node data
   color: 74cefc
@@ -56,10 +60,6 @@
 
 - name: scope:patches
   description: patches
-  color: 74cefc
-
-- name: scope:plugin
-  description: unified plugin
   color: 74cefc
 
 - name: scope:release
