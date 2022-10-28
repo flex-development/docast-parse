@@ -5,8 +5,8 @@
 
 import type { BlockTagData } from '#src/data'
 import type Type from '#src/enums/type'
-import type { Parent, Position } from 'unist'
-import type { FullPoint } from 'vfile-location'
+import type { FullPosition } from '#src/interfaces'
+import type { Parent } from 'unist'
 import type InlineTag from './tag-inline'
 
 /**
@@ -20,7 +20,7 @@ import type InlineTag from './tag-inline'
  */
 interface BlockTag extends Parent<InlineTag, BlockTagData> {
   data: BlockTagData
-  position: Position & { end: FullPoint; start: FullPoint }
+  position: FullPosition
   type: Type.BLOCK_TAG
 }
 

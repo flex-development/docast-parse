@@ -5,8 +5,8 @@
 
 import type { InlineTagData } from '#src/data'
 import type Type from '#src/enums/type'
-import type { Node, Position } from 'unist'
-import type { FullPoint } from 'vfile-location'
+import type { FullPosition } from '#src/interfaces'
+import type { Node } from 'unist'
 
 /**
  * Inline tag node schema.
@@ -19,7 +19,7 @@ import type { FullPoint } from 'vfile-location'
  */
 interface InlineTag extends Node<InlineTagData> {
   data: InlineTagData
-  position: Position & { end: FullPoint; start: FullPoint }
+  position: FullPosition
   type: Type.INLINE_TAG
 }
 

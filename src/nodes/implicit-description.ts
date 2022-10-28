@@ -5,8 +5,8 @@
 
 import type { ImplicitDescriptionData } from '#src/data'
 import type Type from '#src/enums/type'
-import type { Parent, Position } from 'unist'
-import type { FullPoint } from 'vfile-location'
+import type { FullPosition } from '#src/interfaces'
+import type { Parent } from 'unist'
 import type InlineTag from './tag-inline'
 
 /**
@@ -20,7 +20,7 @@ import type InlineTag from './tag-inline'
 interface ImplicitDescription
   extends Parent<InlineTag, ImplicitDescriptionData> {
   data: ImplicitDescriptionData
-  position: Position & { end: FullPoint; start: FullPoint }
+  position: FullPosition
   type: Type.IMPLICIT_DESCRIPTION
 }
 

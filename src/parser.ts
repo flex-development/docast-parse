@@ -9,7 +9,7 @@ import { u } from 'unist-builder'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
 import { Type } from './enums'
-import type { ParserOptions } from './interfaces'
+import type { FullPosition, ParserOptions } from './interfaces'
 import {
   BLOCK_TAG_REGEX,
   IMPLICIT_DESCRIPTION_REGEX,
@@ -100,37 +100,24 @@ class Parser extends AbstractParser<Root> {
    */
   protected findBlockTags(comment: string): BlockTag[] {
     return [...comment.matchAll(BLOCK_TAG_REGEX)].map(match => {
-      // block tag and text
-      const { tag = '', text = '' } = match.groups!
-
-      // block tag node data value
-      let [value] = match
+      const { 0: raw = '', groups = {} } = match
+      const { tag = '', text = '' } = groups
 
       /**
-       * Start index of block tag in {@link document}.
+       * Block tag node value.
        *
-       * @const {number} start
+       * @const {string} value
        */
-      const start: number = this.document.indexOf(value)
-
-      /**
-       * End index of block tag in {@link document}.
-       *
-       * @const {number} end
-       */
-      const end: number = start + value.length
+      const value: string = this.uncomment(raw)
 
       return u(Type.BLOCK_TAG, {
-        children: this.findInlineTags((value = this.uncomment(value))),
+        children: this.findInlineTags(value),
         data: {
           tag,
-          text: match.groups!.text ? this.uncomment(text) : '',
-          value: match.groups!.text ? value : tag
+          text: text ? this.uncomment(text) : '',
+          value: text ? value : tag
         },
-        position: {
-          end: this.location.toPoint(end),
-          start: this.location.toPoint(start)
-        }
+        position: this.position(raw)
       })
     })
   }
@@ -297,10 +284,7 @@ class Parser extends AbstractParser<Root> {
                 : null,
               value
             },
-            position: {
-              end: this.location.toPoint(index + value.length),
-              start: this.location.toPoint(index)
-            }
+            position: this.position(value)
           })
         )
       }
@@ -338,29 +322,16 @@ class Parser extends AbstractParser<Root> {
     if (!match?.groups?.raw) return null
 
     /**
-     * Start index of implicit description in {@link document}.
+     * Implicit description node value.
      *
-     * @const {number} start
+     * @const {string} value
      */
-    const start: number = this.document.indexOf(match.groups.raw)
-
-    /**
-     * End index of implicit description in {@link document}.
-     *
-     * @const {number} end
-     */
-    const end: number = start + match.groups.raw.length
-
-    // normalize node value
-    match.groups.raw = this.uncomment(match.groups.raw)
+    const value: string = this.uncomment(match.groups.raw)
 
     return u(Type.IMPLICIT_DESCRIPTION, {
-      children: this.findInlineTags(match.groups.raw),
-      data: { value: match.groups.raw },
-      position: {
-        end: this.location.toPoint(end),
-        start: this.location.toPoint(start)
-      }
+      children: this.findInlineTags(value),
+      data: { value },
+      position: this.position(match.groups.raw)
     })
   }
 
@@ -379,19 +350,9 @@ class Parser extends AbstractParser<Root> {
       const { 0: value, groups = {} } = match
       const { tag = '', text = '' } = groups
 
-      /**
-       * Start index of inline tag in {@link document}.
-       *
-       * @const {number} start
-       */
-      const start: number = this.document.indexOf(value)
-
       return u(Type.INLINE_TAG, {
         data: { tag, text, value },
-        position: {
-          end: this.location.toPoint(start + value.length),
-          start: this.location.toPoint(start)
-        }
+        position: this.position(value)
       })
     })
   }
@@ -406,6 +367,32 @@ class Parser extends AbstractParser<Root> {
    */
   public parse(): Root {
     return u(Type.ROOT, { children: this.findComments(), position: undefined })
+  }
+
+  /**
+   * Calculates the position of a node.
+   *
+   * @see https://github.com/syntax-tree/unist#position
+   *
+   * @todo indent (see syntax-tree/unist#16)
+   *
+   * @protected
+   *
+   * @param {string} node - Raw node value
+   * @return {FullPosition} Node position
+   */
+  protected position(node: string): FullPosition {
+    /**
+     * Start index of {@link node} in {@link document}.
+     *
+     * @const {number} start
+     */
+    const start: number = this.document.indexOf(node)
+
+    return {
+      end: this.location.toPoint(start + node.length),
+      start: this.location.toPoint(start)
+    }
   }
 
   /**

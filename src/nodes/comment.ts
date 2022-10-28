@@ -5,8 +5,8 @@
 
 import type { CommentData } from '#src/data'
 import type Type from '#src/enums/type'
-import type { Parent, Position } from 'unist'
-import type { FullPoint } from 'vfile-location'
+import type { FullPosition } from '#src/interfaces'
+import type { Parent } from 'unist'
 import type ImplicitDescription from './implicit-description'
 import type BlockTag from './tag-block'
 
@@ -17,7 +17,7 @@ import type BlockTag from './tag-block'
  */
 interface Comment extends Parent<BlockTag | ImplicitDescription, CommentData> {
   data: CommentData
-  position: Position & { end: FullPoint; start: FullPoint }
+  position: FullPosition
   type: Type.COMMENT
 }
 
