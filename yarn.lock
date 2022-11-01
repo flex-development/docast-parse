@@ -799,7 +799,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:17.1.0"
     "@commitlint/types": "npm:17.0.0"
     "@faker-js/faker": "npm:7.6.0"
-    "@flex-development/mkbuild": "npm:1.0.0-alpha.7"
+    "@flex-development/mkbuild": "npm:1.0.0-alpha.8"
     "@flex-development/mlly": "github:flex-development/mlly"
     "@flex-development/tutils": "npm:5.0.1"
     "@graphql-eslint/eslint-plugin": "npm:3.12.0"
@@ -885,9 +885,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/mkbuild@npm:1.0.0-alpha.7":
-  version: 1.0.0-alpha.7
-  resolution: "@flex-development/mkbuild@npm:1.0.0-alpha.7::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fmkbuild%2F1.0.0-alpha.7%2F9406af33529410e4a5c895564772c74e7fa8bcdf"
+"@flex-development/mkbuild@npm:1.0.0-alpha.8":
+  version: 1.0.0-alpha.8
+  resolution: "@flex-development/mkbuild@npm:1.0.0-alpha.8::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fmkbuild%2F1.0.0-alpha.8%2Fea0dad048ae2835b695f793a045cfd5b22cafaa3"
   dependencies:
     "@flex-development/mlly": "github:flex-development/mlly"
     "@flex-development/tutils": "npm:5.0.1"
@@ -907,7 +907,7 @@ __metadata:
     typescript: ">=3.7.2"
   bin:
     mkbuild: dist/cli.mjs
-  checksum: 802068547d4763bb62c219b45822bc15d345c5b792933235f8eff466e7b8ab6c32c67ea66b5e3c69414b9def9f02aa2ab22f1e6de72a33e3593dba978e3fe518
+  checksum: f92337c29a5123d2e6bd3e6022471ffdf038cdd65baaa5de6c9036d1742ec669600f1f40dfd31f4bb168c41e62e2cd70981275a584f3bde0d38a59b04d7f0a00
   languageName: node
   linkType: hard
 
