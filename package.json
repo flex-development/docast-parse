@@ -65,7 +65,6 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@flex-development/mlly": "github:flex-development/mlly",
     "@flex-development/tutils": "5.0.1",
     "unist-builder": "3.0.0",
     "vfile": "5.3.5",
@@ -153,7 +152,6 @@
   },
   "resolutions": {
     "@ardatan/sync-fetch": "larsgw/sync-fetch#head=worker_threads",
-    "@flex-development/mlly": "github:flex-development/mlly",
     "esbuild": "0.15.10",
     "vite": "3.1.8"
   },

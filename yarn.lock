@@ -800,7 +800,6 @@ __metadata:
     "@commitlint/types": "npm:17.0.0"
     "@faker-js/faker": "npm:7.6.0"
     "@flex-development/mkbuild": "npm:1.0.0-alpha.8"
-    "@flex-development/mlly": "github:flex-development/mlly"
     "@flex-development/tutils": "npm:5.0.1"
     "@graphql-eslint/eslint-plugin": "npm:3.12.0"
     "@types/chai": "npm:4.3.3"
@@ -913,7 +912,7 @@ __metadata:
 
 "@flex-development/mlly@github:flex-development/mlly":
   version: 0.0.0
-  resolution: "@flex-development/mlly@https://github.com/flex-development/mlly.git#commit=0266ca9a5593d0c66e950ba1fe2c8f6df8422ff9"
+  resolution: "@flex-development/mlly@https://github.com/flex-development/mlly.git#commit=1403dc357ac8db9ee9f3308b93f7d558d48be170"
   dependencies:
     "@flex-development/is-builtin": "npm:1.0.1"
     "@flex-development/tutils": "npm:5.0.1"
@@ -927,7 +926,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 3a4b6f279327565df15ce4e7c0cb5030f764acf93137c1e1a11ff4a5459a588f38eb1d59ed9df9f2901e3e5628fbbeb5fd05e66b631e8e18fa50b163cbafb578
+  checksum: b08e7ee88ce91528930669e44be50be2dbf8cb7fbd7931d54c6947339be5b3de6ecc72eccedbd5a9ef221fb8f0c79e5108db305aa76a5f52702ccac93966050d
   languageName: node
   linkType: hard
 
