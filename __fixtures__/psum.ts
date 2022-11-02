@@ -22,4 +22,5 @@ const psum = (int: number): number => {
 
   return sum
 }
+
 export default psum

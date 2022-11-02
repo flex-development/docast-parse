@@ -5,6 +5,7 @@
  */
 
 export type { default as CommentData } from './comment'
+export type { default as Context } from './context'
 export type { default as ImplicitDescriptionData } from './implicit-description'
 export type { default as TagData } from './tag'
 export type { default as BlockTagData } from './tag-block'

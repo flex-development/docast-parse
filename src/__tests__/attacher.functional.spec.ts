@@ -8,7 +8,7 @@ import type { Root } from '#src/nodes'
 import fs from 'node:fs'
 import path from 'node:path'
 import { unified, type Processor } from 'unified'
-import { inspect } from 'unist-util-inspect'
+import { inspectNoColor } from 'unist-util-inspect'
 import type { TestContext } from 'vitest'
 import testSubject from '../attacher'
 
@@ -19,7 +19,7 @@ describe('functional:attacher', () => {
     processor = unified()
 
     ctx.expect.addSnapshotSerializer({
-      print: (val: unknown): string => inspect(val),
+      print: (val: unknown): string => inspectNoColor(val),
       test: (): boolean => true
     })
   })
@@ -145,6 +145,17 @@ describe('functional:attacher', () => {
     expect(processor.parse(file)).toMatchSnapshot()
   })
 
+  it('should create ast for module declaration', () => {
+    // Arrange
+    const filepath: string = path.resolve('typings/fast-clean/index.d.ts')
+    const file: string = fs.readFileSync(filepath, 'utf8')
+    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
+    processor.use<[Options?], string, Root>(testSubject, options)
+
+    // Act + Expect
+    expect(processor.parse(file)).toMatchSnapshot()
+  })
+
   it('should create ast for namespace declaration', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/string-utils.ts')
@@ -159,17 +170,6 @@ describe('functional:attacher', () => {
   it('should create ast for type declaration', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/coordinate.ts')
-    const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
-
-    // Act + Expect
-    expect(processor.parse(file)).toMatchSnapshot()
-  })
-
-  it('should create ast for variable declaration', () => {
-    // Arrange
-    const filepath: string = path.resolve('__fixtures__/psum.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
     const options: ParserOptions = { ...path.parse(filepath), path: filepath }
     processor.use<[Options?], string, Root>(testSubject, options)

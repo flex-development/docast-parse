@@ -4,7 +4,7 @@
  */
 
 import type { InlineTagData } from '#src/data'
-import type Type from '#src/enums/type'
+import type { Type } from '#src/enums'
 import type { FullPosition } from '#src/interfaces'
 import type { Node } from 'unist'
 

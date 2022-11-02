@@ -4,16 +4,20 @@
  */
 
 import type { Nullable } from '@flex-development/tutils'
-import ts from 'typescript'
 import { u } from 'unist-builder'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
-import { Type } from './enums'
+import type { Context } from './data'
+import { Kind, Modifier, Type } from './enums'
 import type { FullPosition, ParserOptions } from './interfaces'
 import {
   BLOCK_TAG_REGEX,
+  COMMENT_WITH_CONTEXT_REGEX,
   IMPLICIT_DESCRIPTION_REGEX,
-  INLINE_TAG_REGEX
+  INLINE_TAG_REGEX,
+  INNER_CLASS_REGEX,
+  MEMBER_OR_PROPERTY_REGEX,
+  METHOD_REGEX
 } from './internal/constants'
 import type {
   BlockTag,
@@ -39,9 +43,10 @@ class Parser extends AbstractParser<Root> {
 
   /**
    * @protected
+   * @readonly
    * @member {ParserOptions} options - Parser options
    */
-  protected options: ParserOptions
+  protected readonly options: ParserOptions
 
   /**
    * @protected
@@ -65,6 +70,8 @@ class Parser extends AbstractParser<Root> {
       dir,
       ext,
       history = file.history,
+      indent_size = 2,
+      max_line_length = 80,
       name,
       path,
       root = file.cwd
@@ -73,7 +80,7 @@ class Parser extends AbstractParser<Root> {
     super(document, file)
 
     this.location = location(document)
-    this.options = {}
+    this.options = { indent_size, max_line_length }
     this.root = u(Type.ROOT, { children: [], position: undefined })
 
     this.file.cwd = this.options.root = root
@@ -86,6 +93,96 @@ class Parser extends AbstractParser<Root> {
     if (dir && this.file.path) this.file.dirname = this.options.dir = dir
     if (ext && this.file.path) this.file.extname = this.options.ext = ext
     if (name && this.file.path) this.file.stem = this.options.name = name
+
+    Object.assign(this, { options: Object.freeze(this.options) })
+  }
+
+  /**
+   * Returns a set of JavaScript and TypeScript keywords.
+   *
+   * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Lexical_grammar#keywords
+   *
+   * @protected
+   *
+   * @return {Set<string>} Keywords set
+   */
+  protected get keywords(): Set<string> {
+    return new Set<string>([
+      Kind.CLASS,
+      Kind.CONST,
+      Kind.CONSTRUCTOR,
+      Kind.ENUM,
+      Kind.FUNCTION,
+      Kind.GENERATOR,
+      Kind.GET,
+      Kind.INTERFACE,
+      Kind.LET,
+      Kind.NAMESPACE,
+      Kind.SET,
+      Kind.TYPE,
+      Kind.VAR,
+      'abstract',
+      'any',
+      'arguments',
+      'as',
+      'assert',
+      'async',
+      'await',
+      'break',
+      'case',
+      'catch',
+      'continue',
+      'debugger',
+      'declare',
+      'default',
+      'delete',
+      'do',
+      'else',
+      'eval',
+      'export',
+      'extends',
+      'false',
+      'finally',
+      'for',
+      'from',
+      'global',
+      'if',
+      'implements',
+      'import',
+      'in',
+      'infer',
+      'instanceof',
+      'is',
+      'keyof',
+      'never',
+      'new',
+      'null',
+      'of',
+      'override',
+      'package',
+      'private',
+      'protected',
+      'public',
+      'readonly',
+      'require',
+      'return',
+      'satisfies',
+      'static',
+      'super',
+      'switch',
+      'this',
+      'throw',
+      'true',
+      'try',
+      'typeof',
+      'undefined',
+      'unknown',
+      'void',
+      'while',
+      'with',
+      'yield',
+      'yield*'
+    ] as string[])
   }
 
   /**
@@ -133,167 +230,204 @@ class Parser extends AbstractParser<Root> {
     /**
      * Comment nodes.
      *
-     * @const {Comment[]} groups
+     * @var {Comment[]} nodes
      */
-    const comments: Comment[] = []
+    let nodes: Comment[] = []
 
     // exit early if document is empty
-    if (this.document.trim().length === 0) return comments
+    if (this.document.trim().length === 0) return nodes
 
-    /**
-     * TypeScript sourcefile.
-     *
-     * @const {ts.SourceFile} sourcefile
-     */
-    const sourcefile: ts.SourceFile = ts.createSourceFile(
-      '',
-      this.document,
-      ts.ScriptTarget.Latest,
-      true
-    )
+    // get indent size and maximum line length
+    const { indent_size, max_line_length } = this.options
 
-    /**
-     * TypeScript AST nodes.
-     *
-     * @var {ts.Node[]} tsnodes
-     */
-    let tsnodes: ts.Node[] = []
+    // get comment nodes by traversing indent levels
+    for (let i = 0; i < max_line_length!; i += indent_size!) {
+      /**
+       * Previous indent level.
+       *
+       * @const {number} h
+       */
+      const h: number = i - indent_size!
 
-    /**
-     * Recursively pushes `node` and all descendants into {@link tsnodes}.
-     *
-     * @param {ts.Node} node - Node to add
-     * @return {void} Nothing when complete
-     */
-    const process = (node: ts.Node): void => {
-      tsnodes.push(node)
-      for (const child of node.getChildren()) process(child)
-    }
+      /**
+       * Regex to extract comments with or without context.
+       *
+       * @see {@link Context}
+       *
+       * @const {RegExp} regex
+       */
+      const regex: RegExp =
+        i === 0
+          ? COMMENT_WITH_CONTEXT_REGEX
+          : new RegExp(
+              `(?<=\n {${i}})(?<comment>\\/\\*\\*.*?\\*\\/)(?:(?=\n\n)|\n *(?<code>(?:@[\\w$]+(?:\\(.*?\\))?\n)?(?:\\/\\/ .+?\n)?(?:(?<modifiers>(?:(?:export )?(?:declare )?(?:default )? ?(?:abstract|async|declare|default)|export)|(?:(?:private|protected|public)?(?: abstract)?(?: ?override)?(?: ?readonly)?(?: ?static)?))\\s+)?(?:(?<kind>class|function\\*?|(?:const +)?enum|const(?!ructor)|get|interface|let|module|namespace|set|type|var)\\s+)?(?<identifier>\\[.+?]|#?\\*?[\\w$]+|["'].+?["'])?(?:(?:.+?(?=\n\n {${i}}\\/))|(?:.+?(?=\n\n {${i}}(?:${[
+                ...this.keywords
+              ].join('|')})))|(?:.+?(?=\n {0,${h}}}\n\n))|(?:.+?(?=\n})))))`,
+              'gs'
+            )
 
-    // get comment nodes
-    for (const statement of sourcefile.statements) {
-      // populate tsnodes
-      process(statement)
+      // process comments
+      for (const { groups = {} } of this.document.matchAll(regex)) {
+        const { identifier = '', kind = '', modifiers = '' } = groups
+        let { code = '', comment: value = '' } = groups
 
-      // process jsdoc nodes
-      for (const tsn of tsnodes.filter(n => n.kind === ts.SyntaxKind.JSDoc)) {
-        /**
-         * Comment node data value.
-         *
-         * @const {string} value
-         */
-        const value: string = tsn.getFullText().trim()
+        // trim comment node value
+        value = value.trim()
 
         /**
-         * Start index of comment in {@link document}.
+         * Comment node context.
          *
-         * @const {number} index
+         * @var {Nullable<Context>} context
          */
-        const index: number = this.document.indexOf(value)
+        let context: Nullable<Context> = null
 
-        /**
-         * Name of symbol comment is for.
-         *
-         * @var {Nullable<string>} identifier
-         */
-        let identifier: Nullable<string> = null
+        // get comment node context
+        if (code) {
+          context = {
+            identifier: '',
+            kind: Kind.UNKNOWN,
+            members: [],
+            modifiers: [],
+            position: this.position((code = code.trim()))
+          }
 
-        /**
-         * Kind of symbol comment is for.
-         *
-         * @var {ts.SyntaxKind | -1} kind
-         */
-        let kind: ts.SyntaxKind | -1 = tsn.parent.kind
+          // set identifier
+          switch (true) {
+            case code.startsWith(Kind.CONSTRUCTOR):
+              context.identifier = Kind.CONSTRUCTOR
+              break
+            case !identifier && modifiers.startsWith('export default'):
+              context.identifier = 'default'
+              break
+            default:
+              context.identifier = identifier.trim()
+          }
 
-        // new line after comment => comment does not have related identifier
-        // this check accounts for the fact that typescript does not respect new
-        // lines after comments. new lines are typically used as separators
-        if (/\n/.exec(this.document[index + value.length + 1]!)) kind = -1
+          // set kind
+          switch (true) {
+            case context.identifier === Kind.CONSTRUCTOR:
+              context.kind = Kind.CONSTRUCTOR
+              break
+            case context.identifier === 'default':
+              context.kind = Kind.DEFAULT
+              break
+            case kind === 'module':
+            case code.startsWith('declare global'):
+              context.kind = Kind.MODULE_DECLARATION
+              break
+            case kind !== '':
+              context.kind = kind as Kind
+              break
+            case !!INNER_CLASS_REGEX.exec(code):
+              context.kind = Kind.CLASS
+              break
+            case this.keywords.has(context.identifier):
+              context.kind = Kind.UNKNOWN
+              break
+            // ! requires reset when finding members
+            case !!METHOD_REGEX.exec(code):
+              context.kind = 'method' as Kind
+              break
+            // ! requires reset when finding members
+            case !!MEMBER_OR_PROPERTY_REGEX.exec(code):
+              context.kind = 'property' as Kind
+              break
+          }
 
-        // find identifier name based on jsdoc parent
-        switch (kind) {
-          case ts.SyntaxKind.ClassDeclaration:
-          case ts.SyntaxKind.EnumDeclaration:
-          case ts.SyntaxKind.EnumMember:
-          case ts.SyntaxKind.FunctionDeclaration:
-          case ts.SyntaxKind.GetAccessor:
-          case ts.SyntaxKind.InterfaceDeclaration:
-          case ts.SyntaxKind.MethodDeclaration:
-          case ts.SyntaxKind.ModuleDeclaration:
-          case ts.SyntaxKind.PropertyDeclaration:
-          case ts.SyntaxKind.PropertySignature:
-          case ts.SyntaxKind.SetAccessor:
-          case ts.SyntaxKind.TypeAliasDeclaration:
-            const { name } = tsn.parent as unknown as {
-              name?: ts.DeclarationName
-            }
-            identifier = name?.getText().trim() ?? 'anonymous'
-            break
-          case ts.SyntaxKind.Constructor:
-            identifier = 'constructor'
-            break
-          case ts.SyntaxKind.ExportAssignment:
-            identifier = 'anonymous'
-            break
-          case ts.SyntaxKind.VariableStatement:
-            const { declarationList } = tsn.parent as ts.VariableStatement
-            const { 0: declaration } = declarationList.declarations
-            identifier = declaration!.name.getText().trim()
-            break
-          default:
-            break
+          // set modifiers
+          context.modifiers = modifiers
+            .split(' ')
+            .map(modifier => modifier.trim())
+            .filter(modifier => modifier !== '') as Modifier[]
         }
 
         // add comment node
-        comments.push(
+        nodes.push(
           u(Type.COMMENT, {
             children: [
               this.findImplicitDescription(value),
               ...this.findBlockTags(value)
             ].filter(n => n !== null) as (BlockTag | ImplicitDescription)[],
-            data: {
-              symbol: identifier
-                ? {
-                    identifier,
-                    kind,
-                    members:
-                      kind === ts.SyntaxKind.ClassDeclaration ||
-                      kind === ts.SyntaxKind.EnumDeclaration ||
-                      kind === ts.SyntaxKind.InterfaceDeclaration
-                        ? (
-                            tsn.parent as
-                              | ts.ClassDeclaration
-                              | ts.EnumDeclaration
-                              | ts.InterfaceDeclaration
-                          ).members.map(member => {
-                            switch (member.kind) {
-                              case ts.SyntaxKind.Constructor:
-                                return 'constructor'
-                              default:
-                                return member.name!.getText().trim()
-                            }
-                          })
-                        : [],
-                    modifiers:
-                      kind === ts.SyntaxKind.ExportAssignment
-                        ? ['export', 'default']
-                        : ts
-                            .getModifiers(tsn.parent as ts.HasModifiers)
-                            ?.map(modifier => modifier.getText().trim()) ?? []
-                  }
-                : null,
-              value
-            },
+            data: { context, value },
             position: this.position(value)
           })
         )
       }
-
-      // reset tsnodes for next statement
-      tsnodes = []
     }
 
-    return comments
+    // sort nodes by start position
+    nodes = nodes.sort((node1, node2) => {
+      return node1.position.start.offset - node2.position.start.offset
+    })
+
+    // find immediate members of class, const enum, enum, interface, module,
+    // namespace, and type declarations
+    nodes = nodes.map((node: Comment, i: number, arr: Comment[]): Comment => {
+      // no context => no members
+      if (!node.data.context) return node
+
+      /**
+       * Member names.
+       *
+       * @const {string[]} members
+       */
+      const members: string[] = []
+
+      // find members
+      switch (node.data.context.kind) {
+        case Kind.CLASS:
+        case Kind.CONST_ENUM:
+        case Kind.ENUM:
+        case Kind.INTERFACE:
+        case Kind.MODULE_DECLARATION:
+        case Kind.NAMESPACE:
+        case Kind.TYPE:
+          // begin search for members after current node
+          for (let j = i + 1; j < arr.length; j++) {
+            const n: Comment = arr[j]!
+            const { data, position } = node
+            const { start } = position
+
+            // exactly one ident over => member
+            if (n.position.start.column === start.column + indent_size!) {
+              // ensure member kind is Kind
+              switch (n.data.context?.kind) {
+                case 'method' as Kind:
+                  n.data.context.kind =
+                    data.context!.kind === Kind.CLASS
+                      ? Kind.METHOD_DECLARATION
+                      : Kind.METHOD_SIGNATURE
+                  break
+                case 'property' as Kind:
+                  n.data.context.kind =
+                    data.context!.kind === Kind.CLASS
+                      ? Kind.PROPERTY_DECLARATION
+                      : data.context!.kind === Kind.INTERFACE ||
+                        data.context!.kind === Kind.TYPE
+                      ? Kind.PROPERTY_SIGNATURE
+                      : Kind.ENUM_MEMBER
+                  break
+                default:
+                  break
+              }
+
+              // add member
+              n.data.context && members.push(n.data.context.identifier)
+            }
+          }
+
+          break
+        default:
+          break
+      }
+
+      // reset members
+      node.data.context.members = members
+
+      return node
+    })
+
+    return nodes
   }
 
   /**
@@ -365,7 +499,7 @@ class Parser extends AbstractParser<Root> {
    *
    * @return {Root} Syntax tree representing {@link file}
    */
-  public parse(): Root {
+  public override parse(): Root {
     return u(Type.ROOT, { children: this.findComments(), position: undefined })
   }
 
@@ -391,6 +525,7 @@ class Parser extends AbstractParser<Root> {
 
     return {
       end: this.location.toPoint(start + node.length),
+      indent: undefined,
       start: this.location.toPoint(start)
     }
   }

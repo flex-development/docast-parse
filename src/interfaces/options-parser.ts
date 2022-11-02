@@ -49,6 +49,20 @@ interface ParserOptions {
   history?: VFileCoreOptions['history']
 
   /**
+   * Indentation size (in single-spaced characters).
+   *
+   * @default 2
+   */
+  indent_size?: number
+
+  /**
+   * Maximum line length of document.
+   *
+   * @default 80
+   */
+  max_line_length?: number
+
+  /**
    * Document file name {@link ext}.
    *
    * Cannot contain path separators; cannot be nullified.

@@ -10,6 +10,15 @@
  */
 abstract class Person {
   /**
+   * Creates string representations of `Person` objects.
+   *
+   * @private
+   * @static
+   * @class
+   */
+  static #Stringifier = class {}
+
+  /**
    * @public
    * @instance
    * @member {string} first_name - First name

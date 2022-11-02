@@ -14,6 +14,13 @@ interface CoordinatePair {
 
   /** y-coordinate. */
   y: Coordinate
+
+  /**
+   * Returns a string representation of the coordinate.
+   *
+   * @return {string} String representation of coordinate
+   */
+  toString(): string
 }
 
 export type { CoordinatePair as default }

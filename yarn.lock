@@ -870,7 +870,6 @@ __metadata:
     yaml-eslint-parser: "npm:1.1.0"
   peerDependencies:
     "@types/unist": ">=2.0.6"
-    typescript: "*"
   peerDependenciesMeta:
     "@types/unist":
       optional: true

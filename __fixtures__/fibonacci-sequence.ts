@@ -25,11 +25,11 @@ class FibonacciSequence implements Iterator<number, number> {
   public fib2: number = 1
 
   /**
-   * @protected
+   * @private
    * @instance
    * @member {number} max - Max sequence value
    */
-  protected max: number
+  #max: number
 
   /**
    * Creates a new fibonacci sequence iterator.
@@ -37,7 +37,7 @@ class FibonacciSequence implements Iterator<number, number> {
    * @param {number} [max=Number.MAX_SAFE_INTEGER] - Max sequence value
    */
   constructor(max: number = Number.MAX_SAFE_INTEGER) {
-    this.max = max < 0 ? 0 : max
+    this.#max = max < 0 ? 0 : max
   }
 
   /**
@@ -68,7 +68,7 @@ class FibonacciSequence implements Iterator<number, number> {
     this.fib1 = this.fib2
     this.fib2 = value + this.fib1
 
-    return { done: value >= this.max, value }
+    return { done: value >= this.#max, value }
   }
 }
 

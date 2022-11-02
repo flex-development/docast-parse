@@ -142,8 +142,7 @@
     "yaml-eslint-parser": "1.1.0"
   },
   "peerDependencies": {
-    "@types/unist": ">=2.0.6",
-    "typescript": "*"
+    "@types/unist": ">=2.0.6"
   },
   "peerDependenciesMeta": {
     "@types/unist": {

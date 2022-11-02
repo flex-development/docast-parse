@@ -38,7 +38,7 @@ const buddy = (start: number, limit: number): [] | [number, number] => {
     /** @const {number} m - Possible `m` value */
     const m: number = psum(n) - 1
 
-    // if m satisfies constraint, return buddy pair
+    /** if m satisfies constraint, return buddy pair */
     if (psum(m) === n + 1 && m > n) return [n, m]
   }
 

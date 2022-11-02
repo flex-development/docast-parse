@@ -3,7 +3,8 @@
  * @module docast/tests/parser/unit
  */
 
-import { Type } from '#src/enums'
+import { Kind, Type } from '#src/enums'
+import snippet from '#tests/utils/snippet'
 import fs from 'node:fs'
 import path from 'node:path'
 import { VFile } from 'vfile'
@@ -16,10 +17,10 @@ describe('unit:parser', () => {
   let subject: TestSubject
 
   beforeEach(() => {
-    comment = `/**\n * The divisors of positive integer \`n\` are said to be \`proper\` when considering\n * divisors other than \`n\` itself.\n *\n * Let \`s(n)\` be the sum of \`proper\` divisors of \`n\`. Call \`buddy\` two positive\n * integers such that the sum of the \`proper\` divisors of each number is one\n * more than the other number:\n *\n * \`[n, m]\` are \`buddy\` if \`s(m) = n + 1\` and \`s(n) = m + 1\`\n *\n * Given two positive integers, \`start\` and \`limit\`, the function returns the\n * first pair of \`buddy pairs\` such that \`start <= n <= limit\` and \`m > n\`.\n *\n * @see {@link psum}\n *\n * @example\n *  buddy(2382, 3679) // []\n * @example\n *  buddy(10, 50) // [48, 75]\n * @example\n *  buddy(48, 50) // [48, 75]\n * @example\n *  buddy(1071625, 1103735) // [1081184, 1331967]\n *\n * @param {number} start - Lower bound (inclusive)\n * @param {number} limit - Upper bound (inclusive)\n * @return {[] | [number, number]} First pair of \`buddy pairs\`\n */`
     documentpath = path.resolve('__fixtures__/buddy.ts')
     document = fs.readFileSync(documentpath, 'utf8')
     subject = new TestSubject(document, new VFile(document))
+    comment = snippet(document, 8, 36)
   })
 
   describe('#findBlockTags', () => {
@@ -37,15 +38,56 @@ describe('unit:parser', () => {
       expect(result[0]!.data.text).to.equal('{@link psum}')
       expect(result[0]!.data.value).to.equal('@see {@link psum}')
       expect(result[0]).to.have.property('position')
-      expect(result[0]!.position.end.column).to.equal(21)
-      expect(result[0]!.position.end.line).to.equal(21)
-      expect(result[0]!.position.start.column).to.equal(4)
-      expect(result[0]!.position.start.line).to.equal(21)
       expect(result[0]).to.have.property('type').equal(Type.BLOCK_TAG)
     })
   })
 
   describe('#findComments', () => {
+    it('should find comments in #document', () => {
+      // Act
+      // @ts-expect-error ts(2445)
+      const result = subject.findComments()
+
+      // Expect
+      expect(result).to.be.an('array').of.length(4)
+      expect(result).each.to.have.a.property('type').that.equals(Type.COMMENT)
+      expect(result[0]).to.have.property('children')
+      expect(result[0]).to.have.property('data')
+      expect(result[0]!.data.context).to.be.null
+      expect(result[0]!.data.value).to.equal(snippet(document, 1, 5))
+      expect(result[0]).to.have.property('position')
+      expect(result[1]).to.have.property('children')
+      expect(result[1]).to.have.property('data')
+      expect(result[1]!.data.context).to.not.be.null
+      expect(result[1]!.data.context!.identifier).to.equal('buddy')
+      expect(result[1]!.data.context!.kind).to.equal(Kind.CONST)
+      expect(result[1]!.data.context!.members).to.be.an('array').of.length(0)
+      expect(result[1]!.data.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[1]!.data.context).to.have.property('position')
+      expect(result[1]!.data.value).to.equal(comment)
+      expect(result[1]).to.have.property('position')
+      expect(result[2]).to.have.property('children')
+      expect(result[2]).to.have.property('data')
+      expect(result[2]!.data.context).to.not.be.null
+      expect(result[2]!.data.context!.identifier).to.equal('m')
+      expect(result[2]!.data.context!.kind).to.equal(Kind.CONST)
+      expect(result[2]!.data.context!.members).to.be.an('array').of.length(0)
+      expect(result[2]!.data.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[2]!.data.context).to.have.property('position')
+      expect(result[2]!.data.value).to.equal(snippet(document, 38, 39))
+      expect(result[2]).to.have.property('position')
+      expect(result[3]).to.have.property('children')
+      expect(result[3]).to.have.property('data')
+      expect(result[3]!.data.context).to.not.be.null
+      expect(result[3]!.data.context!.identifier).to.equal('if')
+      expect(result[3]!.data.context!.kind).to.equal(Kind.UNKNOWN)
+      expect(result[3]!.data.context!.members).to.be.an('array').of.length(0)
+      expect(result[3]!.data.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[3]!.data.context).to.have.property('position')
+      expect(result[3]!.data.value).to.equal(snippet(document, 41, 42))
+      expect(result[3]).to.have.property('position')
+    })
+
     it('should return empty array if #document is empty', () => {
       // Arrange
       const subject = new TestSubject('', new VFile(''))
@@ -72,10 +114,6 @@ describe('unit:parser', () => {
       expect(result).to.have.property('data')
       expect(result!.data.value).to.equal(value)
       expect(result).to.have.property('position')
-      expect(result!.position.end.column).to.equal(76)
-      expect(result!.position.end.line).to.equal(19)
-      expect(result!.position.start.column).to.equal(4)
-      expect(result!.position.start.line).to.equal(9)
       expect(result).to.have.property('type').equal(Type.IMPLICIT_DESCRIPTION)
     })
 
@@ -103,11 +141,22 @@ describe('unit:parser', () => {
       expect(result[0]!.data.text).to.equal('psum')
       expect(result[0]!.data.value).to.equal('{@link psum}')
       expect(result[0]).to.have.property('position')
-      expect(result[0]!.position.end.column).to.equal(21)
-      expect(result[0]!.position.end.line).to.equal(21)
-      expect(result[0]!.position.start.column).to.equal(9)
-      expect(result[0]!.position.start.line).to.equal(21)
       expect(result[0]).to.have.property('type').equal(Type.INLINE_TAG)
+    })
+  })
+
+  describe('#position', () => {
+    it('should calculate node position', () => {
+      // Act
+      // @ts-expect-error ts(2445)
+      const result = subject.position(comment)
+
+      // Expect
+      expect(result.end.column).to.equal(4)
+      expect(result.end.line).to.equal(35)
+      expect(result.indent).to.be.undefined
+      expect(result.start.column).to.equal(1)
+      expect(result.start.line).to.equal(8)
     })
   })
 

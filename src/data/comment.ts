@@ -4,8 +4,8 @@
  */
 
 import type { Nullable } from '@flex-development/tutils'
-import type { SyntaxKind } from 'typescript'
 import type { Data } from 'unist'
+import type Context from './context'
 
 /**
  * [`Comment`][1] node data schema.
@@ -15,12 +15,7 @@ import type { Data } from 'unist'
  * @extends {Data}
  */
 interface CommentData extends Data {
-  symbol: Nullable<{
-    identifier: string
-    kind: SyntaxKind | -1
-    members: string[]
-    modifiers: string[]
-  }>
+  context: Nullable<Context>
   value: string
 }
 

@@ -29,7 +29,6 @@ larsgw
 lcov
 micnncim
 mkbuild
-mlly
 nocheck
 npmrc
 nums
@@ -37,7 +36,9 @@ nvmrc
 pkgs
 preid
 psum
+ructor
 safecrlf
+stringifier
 syncer
 tsdoc
 tsnode

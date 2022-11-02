@@ -4,7 +4,7 @@
  */
 
 import type { ImplicitDescriptionData } from '#src/data'
-import type Type from '#src/enums/type'
+import type { Type } from '#src/enums'
 import type { FullPosition } from '#src/interfaces'
 import type { Parent } from 'unist'
 import type InlineTag from './tag-inline'
@@ -12,8 +12,8 @@ import type InlineTag from './tag-inline'
 /**
  * Implicit description node schema.
  *
- * **Note**: An implicit description is a symbol description located at the
- * **beginning** of a comment. It is used in lieu of @description.
+ * **Note**: An implicit description is text located at the **beginning** of a
+ * comment. It is used in lieu of @description.
  *
  * @extends {Parent<InlineTag, ImplicitDescriptionData>}
  */

@@ -15,6 +15,7 @@ import type { Position } from 'unist'
  */
 interface FullPosition extends Position {
   end: Required<Position['end']>
+  indent: undefined
   start: Required<Position['start']>
 }
 
