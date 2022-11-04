@@ -5,8 +5,8 @@
 
 import type { RootData } from '#src/data'
 import type { Type } from '#src/enums'
-import type { Parent } from 'unist'
 import type Comment from './comment'
+import type Parent from './parent'
 
 /**
  * Root node schema.

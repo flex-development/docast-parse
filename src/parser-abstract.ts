@@ -3,7 +3,7 @@
  * @module docast/AbstractParser
  */
 
-import type { Node } from 'unist-builder'
+import type { Node } from 'unist'
 import type { VFile } from 'vfile'
 
 /**
@@ -12,6 +12,7 @@ import type { VFile } from 'vfile'
  * @see https://github.com/unifiedjs/unified#processorparser
  *
  * @abstract
+ * @class
  *
  * @template Tree - Node that the parser yields
  */

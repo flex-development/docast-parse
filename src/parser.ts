@@ -32,6 +32,10 @@ import AbstractParser from './parser-abstract'
  * File parser.
  *
  * @see https://github.com/unifiedjs/unified#processorparser
+ *
+ * @class
+ *
+ * @extends {AbstractParser<Root>}
  */
 class Parser extends AbstractParser<Root> {
   /**
@@ -68,7 +72,7 @@ class Parser extends AbstractParser<Root> {
 
     this.location = location(document)
     this.options = Object.freeze({ indent_size, max_line_length })
-    this.root = u(Type.ROOT, { children: [] })
+    this.root = u(Type.ROOT, { children: [], data: {} })
   }
 
   /**
@@ -478,7 +482,7 @@ class Parser extends AbstractParser<Root> {
    * @return {Root} Syntax tree representing {@link file}
    */
   public override parse(): Root {
-    return u(Type.ROOT, { children: this.findComments() })
+    return u(Type.ROOT, { children: this.findComments(), data: {} })
   }
 
   /**

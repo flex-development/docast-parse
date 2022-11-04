@@ -6,7 +6,7 @@
 import type { BlockTagData } from '#src/data'
 import type { Type } from '#src/enums'
 import type { FullPosition } from '#src/interfaces'
-import type { Parent } from 'unist'
+import type Parent from './parent'
 import type InlineTag from './tag-inline'
 
 /**
