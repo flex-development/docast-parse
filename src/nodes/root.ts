@@ -3,8 +3,8 @@
  * @module docast/nodes/Root
  */
 
+import type { RootData } from '#src/data'
 import type { Type } from '#src/enums'
-import type { ObjectEmpty } from '@flex-development/tutils'
 import type { Parent } from 'unist'
 import type Comment from './comment'
 
@@ -13,9 +13,9 @@ import type Comment from './comment'
  *
  * @see https://github.com/syntax-tree/unist#root
  *
- * @extends {Parent<Comment, ObjectEmpty>}
+ * @extends {Parent<Comment, RootData>}
  */
-interface Root extends Parent<Comment, ObjectEmpty> {
+interface Root extends Parent<Comment, RootData> {
   position: undefined
   type: Type.ROOT
 }
