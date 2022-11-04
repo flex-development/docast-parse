@@ -5,6 +5,7 @@
 
 import type { Kind, Modifier } from '#src/enums'
 import type { FullPosition } from '#src/interfaces'
+import type { Nullable } from '@flex-development/tutils'
 import type { Data } from 'unist'
 
 /**
@@ -19,6 +20,7 @@ interface Context extends Data {
   kind: Kind
   members: string[]
   modifiers: Modifier[]
+  parent: Nullable<string>
   position: FullPosition
 }
 

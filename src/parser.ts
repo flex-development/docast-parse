@@ -262,6 +262,7 @@ class Parser extends AbstractParser<Root> {
             kind: Kind.UNKNOWN,
             members: [],
             modifiers: [],
+            parent: null,
             position: this.position((code = code.trim()))
           }
 
@@ -385,8 +386,11 @@ class Parser extends AbstractParser<Root> {
                   break
               }
 
-              // add member
-              n.data.context && members.push(n.data.context.identifier)
+              // set parent and add member
+              if (n.data.context) {
+                n.data.context.parent = data.context!.identifier
+                members.push(n.data.context.identifier)
+              }
             }
           }
 

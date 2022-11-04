@@ -63,6 +63,7 @@ describe('unit:parser', () => {
       expect(result[1]!.data.context!.kind).to.equal(Kind.CONST)
       expect(result[1]!.data.context!.members).to.be.an('array').of.length(0)
       expect(result[1]!.data.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[1]!.data.context!.parent).to.be.null
       expect(result[1]!.data.context).to.have.property('position')
       expect(result[1]!.data.value).to.equal(comment)
       expect(result[1]).to.have.property('position')
@@ -73,6 +74,7 @@ describe('unit:parser', () => {
       expect(result[2]!.data.context!.kind).to.equal(Kind.CONST)
       expect(result[2]!.data.context!.members).to.be.an('array').of.length(0)
       expect(result[2]!.data.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[2]!.data.context!.parent).to.be.null
       expect(result[2]!.data.context).to.have.property('position')
       expect(result[2]!.data.value).to.equal(snippet(document, 38, 39))
       expect(result[2]).to.have.property('position')
@@ -83,6 +85,7 @@ describe('unit:parser', () => {
       expect(result[3]!.data.context!.kind).to.equal(Kind.UNKNOWN)
       expect(result[3]!.data.context!.members).to.be.an('array').of.length(0)
       expect(result[3]!.data.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[3]!.data.context!.parent).to.be.null
       expect(result[3]!.data.context).to.have.property('position')
       expect(result[3]!.data.value).to.equal(snippet(document, 41, 42))
       expect(result[3]).to.have.property('position')
