@@ -9,13 +9,11 @@ import type { Position } from 'unist'
  * Location of a node in a source file.
  *
  * @see https://github.com/syntax-tree/unist#position
- * @see https://github.com/syntax-tree/unist/issues/16
  *
  * @extends {Position}
  */
 interface FullPosition extends Position {
   end: Required<Position['end']>
-  indent: undefined
   start: Required<Position['start']>
 }
 

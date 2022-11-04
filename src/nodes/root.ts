@@ -16,7 +16,7 @@ import type Comment from './comment'
  * @extends {Parent<Comment, RootData>}
  */
 interface Root extends Parent<Comment, RootData> {
-  position: undefined
+  position?: never
   type: Type.ROOT
 }
 

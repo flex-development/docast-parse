@@ -68,7 +68,7 @@ class Parser extends AbstractParser<Root> {
 
     this.location = location(document)
     this.options = Object.freeze({ indent_size, max_line_length })
-    this.root = u(Type.ROOT, { children: [], position: undefined })
+    this.root = u(Type.ROOT, { children: [] })
   }
 
   /**
@@ -478,7 +478,7 @@ class Parser extends AbstractParser<Root> {
    * @return {Root} Syntax tree representing {@link file}
    */
   public override parse(): Root {
-    return u(Type.ROOT, { children: this.findComments(), position: undefined })
+    return u(Type.ROOT, { children: this.findComments() })
   }
 
   /**
@@ -503,7 +503,6 @@ class Parser extends AbstractParser<Root> {
 
     return {
       end: this.location.toPoint(start + node.length),
-      indent: undefined,
       start: this.location.toPoint(start)
     }
   }
