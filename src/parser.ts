@@ -44,9 +44,9 @@ class Parser extends AbstractParser<Root> {
   /**
    * @protected
    * @readonly
-   * @member {ParserOptions} options - Parser options
+   * @member {Required<ParserOptions>} options - Parser options
    */
-  protected readonly options: ParserOptions
+  protected readonly options: Required<ParserOptions>
 
   /**
    * @protected
@@ -215,13 +215,13 @@ class Parser extends AbstractParser<Root> {
     const { indent_size, max_line_length } = this.options
 
     // get comment nodes by traversing indent levels
-    for (let i = 0; i < max_line_length!; i += indent_size!) {
+    for (let i = 0; i < max_line_length; i += indent_size) {
       /**
        * Previous indent level.
        *
        * @const {number} h
        */
-      const h: number = i - indent_size!
+      const h: number = i - indent_size
 
       /**
        * Regex to extract comments with or without context.
@@ -363,7 +363,7 @@ class Parser extends AbstractParser<Root> {
             const { start } = position
 
             // exactly one ident over => member
-            if (n.position.start.column === start.column + indent_size!) {
+            if (n.position.start.column === start.column + indent_size) {
               // ensure member kind is Kind
               switch (n.data.context?.kind) {
                 case 'method' as Kind:
