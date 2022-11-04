@@ -3,7 +3,7 @@
  * @module docast/tests/attacher/functional
  */
 
-import type { Options, ParserOptions } from '#src/interfaces'
+import type { Options } from '#src/interfaces'
 import type { Root } from '#src/nodes'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -28,8 +28,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/person.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -39,8 +38,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/dbl-linear.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -50,8 +48,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/fibonacci.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -61,8 +58,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/fibonacci-sequence.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -72,8 +68,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/log-level.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -83,8 +78,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/sum-of-intervals.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -94,8 +88,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/mini-string-fuck.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -105,8 +98,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/op.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -116,8 +108,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/calculate.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -127,8 +118,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/alphabet.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -138,8 +128,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/coordinate-pair.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -149,8 +138,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('typings/fast-clean/index.d.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -160,8 +148,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/string-utils.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
@@ -171,8 +158,7 @@ describe('functional:attacher', () => {
     // Arrange
     const filepath: string = path.resolve('__fixtures__/coordinate.ts')
     const file: string = fs.readFileSync(filepath, 'utf8')
-    const options: ParserOptions = { ...path.parse(filepath), path: filepath }
-    processor.use<[Options?], string, Root>(testSubject, options)
+    processor.use<[Options?], string, Root>(testSubject)
 
     // Act + Expect
     expect(processor.parse(file)).toMatchSnapshot()
