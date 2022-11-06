@@ -4,6 +4,7 @@
  */
 
 import type { Nullable } from '@flex-development/tutils'
+import { detab } from 'detab'
 import { u } from 'unist-builder'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
@@ -64,13 +65,20 @@ class Parser extends AbstractParser<Root> {
    * @param {string} document - Document to parse
    * @param {VFile} file - File associated with `document`
    * @param {ParserOptions} [options={}] - Parser options
+   * @param {number} [options.indent_size=2] - Indent size
+   * @param {number} [options.max_line_length=80] - Maximum line length
    */
   constructor(document: string, file: VFile, options: ParserOptions = {}) {
     super(document, file)
 
+    // get parser options
     const { indent_size = 2, max_line_length = 80 } = options
 
-    this.location = location(document)
+    // convert tabs to spaces (1 tab === indent_size)
+    this.document = this.file.value = detab(document, indent_size)
+
+    // initialize locator, parser options, and syntax tree
+    this.location = location(this.document)
     this.options = Object.freeze({ indent_size, max_line_length })
     this.root = u(Type.ROOT, { children: [], data: {} })
   }
@@ -520,7 +528,7 @@ class Parser extends AbstractParser<Root> {
    * @return {string} `value` as human-readable string
    */
   protected uncomment(raw: string): string {
-    return raw.replace(/^\/\*\*(?:\n| +)|(?:\n| +)\*\/$|^[\t ]+\* ?/gm, '')
+    return raw.replace(/^\/\*\*(?:\n| +)|(?:\n| +)\*\/$|^ +\* ?/gm, '')
   }
 }
 

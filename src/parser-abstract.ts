@@ -19,10 +19,9 @@ import type { VFile } from 'vfile'
 abstract class AbstractParser<Tree extends Node = Node> {
   /**
    * @protected
-   * @readonly
    * @member {string} document - Document to parse
    */
-  protected readonly document: string
+  protected document: string
 
   /**
    * @protected

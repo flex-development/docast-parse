@@ -828,6 +828,7 @@ __metadata:
     conventional-changelog-cli: "npm:2.2.2"
     conventional-recommended-bump: "npm:6.1.0"
     cspell: "npm:6.13.3"
+    detab: "npm:3.0.1"
     esbuild: "npm:0.15.12"
     eslint: "npm:8.26.0"
     eslint-config-prettier: "npm:8.5.0"
@@ -3191,6 +3192,13 @@ __metadata:
   version: 1.1.2
   resolution: "depd@npm:1.1.2"
   checksum: e9fb93771e7cf3d88c4e38ca95742f7c58cae31928eb5e67a1a14d970325a02755451bb7fafc2db72333a5cf7fc14e07e4f8d709c0df70143355e77e8d090bac
+  languageName: node
+  linkType: hard
+
+"detab@npm:3.0.1":
+  version: 3.0.1
+  resolution: "detab@npm:3.0.1"
+  checksum: f32aaf02cedd9298c4a6c3dab664957e8c68fb486ce7df1e31f49cb7941ca8e6e0a559bea674619f3e49c6264374ef2d8337e34fc8631e0e716d79876bdcf667
   languageName: node
   linkType: hard
 

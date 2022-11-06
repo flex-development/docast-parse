@@ -15,7 +15,7 @@
  * @const {RegExp} BLOCK_TAG_REGEX
  */
 export const BLOCK_TAG_REGEX: RegExp =
-  /(?<=(?:^[\t ]+\* )|(?:^\/\*\* +))(?<tag>@\w+(?=\n?))(?: +|\n)(?<text>.*?)(?=\n?[\t ]+\*(?: @\w+|(?: ?\n)|\/))/gms
+  /(?<=(?:^ +\* )|(?:^\/\*\* +))(?<tag>@\w+(?=\n?))(?: +|\n)(?<text>.*?)(?=\n? +\*(?: @\w+|(?: ?\n)|\/))/gms
 
 /**
  * [`Comment`][1] node value regex pattern.
@@ -36,7 +36,7 @@ export const COMMENT_REGEX: RegExp = /\/\*\*.*?\*\//gms
  * @const {RegExp} COMMENT_WITH_CONTEXT_REGEX
  */
 export const COMMENT_WITH_CONTEXT_REGEX: RegExp =
-  /(?<![\t ]+)(?<comment>\/\*\*.*?\*\/)(?:(?=\n\n)|\n(?<code>(?:@[\w$]+(?:\(.*?\))?\n)?(?:\/\/ .+?\n)?(?:(?<modifiers>(?:(?:export )?(?:declare )?(?:default )? ?(?:abstract|async|declare|default)|export)|(?:(?:private|protected|public)?(?: abstract)?(?: ?override)?(?: ?readonly)?(?: ?static)?))\s+)?(?:(?<kind>class|function\*?|(?:const +)?enum|const(?!ructor)|get|interface|let|module|namespace|set|type|var)\s+)?(?<identifier>\[.+?]|#?\*?[\w$]+|["'].+?["'])?(?:.+(?=\n\n\/\*\*)|(?:.+(?=\n\n\/\/))|(?:.+(?=\n\n\b))|(?:.+(?=\n?$)))))/gs
+  /(?<! +)(?<comment>\/\*\*.*?\*\/)(?:(?=\n\n)|\n(?<code>(?:@[\w$]+(?:\(.*?\))?\n)?(?:\/\/ .+?\n)?(?:(?<modifiers>(?:(?:export )?(?:declare )?(?:default )? ?(?:abstract|async|declare|default)|export)|(?:(?:private|protected|public)?(?: abstract)?(?: ?override)?(?: ?readonly)?(?: ?static)?))\s+)?(?:(?<kind>class|function\*?|(?:const +)?enum|const(?!ructor)|get|interface|let|module|namespace|set|type|var)\s+)?(?<identifier>\[.+?]|#?\*?[\w$]+|["'].+?["'])?(?:.+(?=\n\n\/\*\*)|(?:.+(?=\n\n\/\/))|(?:.+(?=\n\n\b))|(?:.+(?=\n?$)))))/gs
 
 /**
  * [`ImplicitDescription`][1] node value regex pattern.
@@ -48,7 +48,7 @@ export const COMMENT_WITH_CONTEXT_REGEX: RegExp =
  * @const {RegExp} IMPLICIT_DESCRIPTION_REGEX
  */
 export const IMPLICIT_DESCRIPTION_REGEX: RegExp =
-  /(?<=\/\*\*(?:\n[\t ]+\*)? +)(?<raw>(?:[^@].+)+?)(?=(?:\n(?:[\t ]+\*[\n ]+)+@\w+)|\n? +\*\/)/gm
+  /(?<=\/\*\*(?:\n +\*)? +)(?<raw>(?:[^@].+)+?)(?=(?:\n(?: +\*[\n ]+)+@\w+)|\n? +\*\/)/gm
 
 /**
  * Regex to check if a declaration is an inner class.

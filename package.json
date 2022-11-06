@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "@flex-development/tutils": "5.0.1",
+    "detab": "3.0.1",
     "unist-builder": "3.0.0",
     "vfile": "5.3.5",
     "vfile-location": "4.0.1"

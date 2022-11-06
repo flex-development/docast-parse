@@ -15,6 +15,7 @@ commitlintrc
 dawidd
 dedupe
 dessant
+detab
 dohm
 esbenp
 esbuild
