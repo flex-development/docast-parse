@@ -5,7 +5,9 @@
 
 import type { Nullable } from '@flex-development/tutils'
 import { detab } from 'detab'
+import type { Node, Position } from 'unist'
 import { u } from 'unist-builder'
+import { source } from 'unist-util-source'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
 import type { Context } from './data'
@@ -395,6 +397,29 @@ class Parser extends AbstractParser<Root> {
 
             // exactly one ident over => member
             if (n.position.start.column === start.column + indent_size) {
+              // override unknown member kind
+              // this can happen when a member's identifier is a keyword
+              if (n.data.context?.kind === Kind.UNKNOWN) {
+                const { position } = n.data.context
+
+                /**
+                 * Declaration source code.
+                 *
+                 * @const {string} source
+                 */
+                const source: string = this.source(position)!
+
+                // reset unknown member kind
+                switch (true) {
+                  case !!METHOD_REGEX.exec(source):
+                    n.data.context.kind = 'method' as Kind
+                    break
+                  case !!MEMBER_OR_PROPERTY_REGEX.exec(source):
+                    n.data.context.kind = 'property' as Kind
+                    break
+                }
+              }
+
               // ensure member kind is Kind
               switch (n.data.context?.kind) {
                 case 'method' as Kind:
@@ -546,6 +571,20 @@ class Parser extends AbstractParser<Root> {
       end: this.location.toPoint(start + node.length),
       start: this.location.toPoint(start)
     }
+  }
+
+  /**
+   * Retrieves the source code of a node or position.
+   *
+   * @see https://github.com/syntax-tree/unist-util-source
+   *
+   * @protected
+   *
+   * @param {Node | Position} value - Node or position
+   * @return {Nullable<string>} Source code or `null`
+   */
+  protected source(value: Node | Position): Nullable<string> {
+    return source(value, this.file)
   }
 
   /**

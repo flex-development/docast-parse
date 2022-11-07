@@ -437,7 +437,7 @@ root[2]
 `;
 
 exports[`functional:attacher > should create ast for interface declaration 1`] = `
-root[5]
+root[7]
 │ data: {}
 ├─0 comment[2] (1:1-4:4, 0-77)
 │   │ data: {"context":null,"value":"/**\\n * @file Fixtures - CoordinatePair\\n * @module fixtures/CoordinatePair\\n */"}
@@ -446,22 +446,34 @@ root[5]
 │   └─1 block-tag[0] (3:4-3:35, 42-73)
 │         data: {"tag":"@module","text":"fixtures/CoordinatePair","value":"@module fixtures/CoordinatePair"}
 ├─1 comment[1] (8:1-10:4, 123-204)
-│   │ data: {"context":{"identifier":"CoordinatePair","kind":"interface","members":["x","y","toString"],"modifiers":[],"parent":null,"position":{"end":{"line":24,"column":2,"offset":465},"start":{"line":11,"column":1,"offset":205}}},"value":"/**\\n * Pair of numbers representing a single point on a two-dimensional grid.\\n */"}
+│   │ data: {"context":{"identifier":"CoordinatePair","kind":"interface","members":["catch","x","y","type","toString"],"modifiers":[],"parent":null,"position":{"end":{"line":35,"column":2,"offset":661},"start":{"line":11,"column":1,"offset":205}}},"value":"/**\\n * Pair of numbers representing a single point on a two-dimensional grid.\\n */"}
 │   └─0 implicit-description[0] (9:4-9:74, 130-200)
 │         data: {"value":"Pair of numbers representing a single point on a two-dimensional grid."}
-├─2 comment[1] (12:3-12:23, 234-254)
-│   │ data: {"context":{"identifier":"x","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":13,"column":16,"offset":270},"start":{"line":13,"column":3,"offset":257}}},"value":"/** x-coordinate. */"}
-│   └─0 implicit-description[0] (12:7-12:20, 238-251)
+├─2 comment[3] (12:3-17:6, 234-354)
+│   │ data: {"context":{"identifier":"catch","kind":"method-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":18,"column":29,"offset":383},"start":{"line":18,"column":3,"offset":357}}},"value":"/**\\n   * Error handler.\\n   *\\n   * @param {Error} error - Error to handle\\n   * @return {void} Nothing when complete\\n   */"}
+│   ├─0 implicit-description[0] (13:6-13:20, 243-257)
+│   │     data: {"value":"Error handler."}
+│   ├─1 block-tag[0] (15:6-15:44, 268-306)
+│   │     data: {"tag":"@param","text":"{Error} error - Error to handle","value":"@param {Error} error - Error to handle"}
+│   └─2 block-tag[0] (16:6-16:42, 312-348)
+│         data: {"tag":"@return","text":"{void} Nothing when complete","value":"@return {void} Nothing when complete"}
+├─3 comment[1] (20:3-20:23, 387-407)
+│   │ data: {"context":{"identifier":"x","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":21,"column":16,"offset":423},"start":{"line":21,"column":3,"offset":410}}},"value":"/** x-coordinate. */"}
+│   └─0 implicit-description[0] (20:7-20:20, 391-404)
 │         data: {"value":"x-coordinate."}
-├─3 comment[1] (15:3-15:23, 274-294)
-│   │ data: {"context":{"identifier":"y","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":16,"column":16,"offset":310},"start":{"line":16,"column":3,"offset":297}}},"value":"/** y-coordinate. */"}
-│   └─0 implicit-description[0] (15:7-15:20, 278-291)
+├─4 comment[1] (23:3-23:23, 427-447)
+│   │ data: {"context":{"identifier":"y","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":24,"column":16,"offset":463},"start":{"line":24,"column":3,"offset":450}}},"value":"/** y-coordinate. */"}
+│   └─0 implicit-description[0] (23:7-23:20, 431-444)
 │         data: {"value":"y-coordinate."}
-└─4 comment[2] (18:3-22:6, 314-442)
-    │ data: {"context":{"identifier":"toString","kind":"method-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":23,"column":21,"offset":463},"start":{"line":23,"column":3,"offset":445}}},"value":"/**\\n   * Returns a string representation of the coordinate.\\n   *\\n   * @return {string} String representation of coordinate\\n   */"}
-    ├─0 implicit-description[0] (19:6-19:56, 323-373)
+├─5 comment[1] (26:3-26:26, 467-490)
+│   │ data: {"context":{"identifier":"type","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":27,"column":16,"offset":506},"start":{"line":27,"column":3,"offset":493}}},"value":"/** Coordinate type. */"}
+│   └─0 implicit-description[0] (26:7-26:23, 471-487)
+│         data: {"value":"Coordinate type."}
+└─6 comment[2] (29:3-33:6, 510-638)
+    │ data: {"context":{"identifier":"toString","kind":"method-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":34,"column":21,"offset":659},"start":{"line":34,"column":3,"offset":641}}},"value":"/**\\n   * Returns a string representation of the coordinate.\\n   *\\n   * @return {string} String representation of coordinate\\n   */"}
+    ├─0 implicit-description[0] (30:6-30:56, 519-569)
     │     data: {"value":"Returns a string representation of the coordinate."}
-    └─1 block-tag[0] (21:6-21:58, 384-436)
+    └─1 block-tag[0] (32:6-32:58, 580-632)
           data: {"tag":"@return","text":"{string} String representation of coordinate","value":"@return {string} String representation of coordinate"}
 `;
 
