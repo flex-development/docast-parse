@@ -13,31 +13,31 @@ root[7]
 │   │ data: {"context":{"identifier":"Person","kind":"class","members":["#Stringifier","first_name","last_name","constructor","toString"],"modifiers":["abstract"],"parent":null,"position":{"end":{"line":56,"column":2,"offset":991},"start":{"line":11,"column":1,"offset":120}}},"value":"/**\\n * Object representing a person.\\n *\\n * @abstract\\n */"}
 │   ├─0 implicit-description[0] (7:4-7:33, 70-99)
 │   │     data: {"value":"Object representing a person."}
-│   └─1 block-tag[0] (9:4-10:1, 106-116)
+│   └─1 block-tag[0] (9:4-9:13, 106-115)
 │         data: {"tag":"@abstract","text":"","value":"@abstract"}
 ├─2 comment[4] (12:3-18:6, 146-256)
 │   │ data: {"context":{"identifier":"#Stringifier","kind":"class","members":[],"modifiers":["static"],"parent":"Person","position":{"end":{"line":19,"column":33,"offset":289},"start":{"line":19,"column":3,"offset":259}}},"value":"/**\\n   * Creates string representations of \`Person\` objects.\\n   *\\n   * @private\\n   * @static\\n   * @class\\n   */"}
 │   ├─0 implicit-description[0] (13:6-13:57, 155-206)
 │   │     data: {"value":"Creates string representations of \`Person\` objects."}
-│   ├─1 block-tag[0] (15:6-16:1, 217-226)
+│   ├─1 block-tag[0] (15:6-15:14, 217-225)
 │   │     data: {"tag":"@private","text":"","value":"@private"}
-│   ├─2 block-tag[0] (16:6-17:1, 231-239)
+│   ├─2 block-tag[0] (16:6-16:13, 231-238)
 │   │     data: {"tag":"@static","text":"","value":"@static"}
-│   └─3 block-tag[0] (17:6-18:1, 244-251)
+│   └─3 block-tag[0] (17:6-17:12, 244-250)
 │         data: {"tag":"@class","text":"","value":"@class"}
 ├─3 comment[3] (21:3-25:6, 293-376)
 │   │ data: {"context":{"identifier":"first_name","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"Person","position":{"end":{"line":26,"column":28,"offset":404},"start":{"line":26,"column":3,"offset":379}}},"value":"/**\\n   * @public\\n   * @instance\\n   * @member {string} first_name - First name\\n   */"}
-│   ├─0 block-tag[0] (22:6-23:1, 302-310)
+│   ├─0 block-tag[0] (22:6-22:13, 302-309)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─1 block-tag[0] (23:6-24:1, 315-325)
+│   ├─1 block-tag[0] (23:6-23:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (24:6-24:46, 330-370)
 │         data: {"tag":"@member","text":"{string} first_name - First name","value":"@member {string} first_name - First name"}
 ├─4 comment[3] (28:3-32:6, 408-489)
 │   │ data: {"context":{"identifier":"last_name","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"Person","position":{"end":{"line":33,"column":27,"offset":516},"start":{"line":33,"column":3,"offset":492}}},"value":"/**\\n   * @public\\n   * @instance\\n   * @member {string} last_name - Last name\\n   */"}
-│   ├─0 block-tag[0] (22:6-23:1, 302-310)
+│   ├─0 block-tag[0] (22:6-22:13, 302-309)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─1 block-tag[0] (23:6-24:1, 315-325)
+│   ├─1 block-tag[0] (23:6-23:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (31:6-31:44, 445-483)
 │         data: {"tag":"@member","text":"{string} last_name - Last name","value":"@member {string} last_name - Last name"}
@@ -53,11 +53,11 @@ root[7]
     │ data: {"context":{"identifier":"toString","kind":"method-declaration","members":[],"modifiers":["public","abstract"],"parent":"Person","position":{"end":{"line":55,"column":37,"offset":989},"start":{"line":55,"column":3,"offset":955}}},"value":"/**\\n   * Returns a string representation of the current person.\\n   *\\n   * @public\\n   * @instance\\n   * @abstract\\n   *\\n   * @return {string} String representation of \`this\`\\n   */"}
     ├─0 implicit-description[0] (47:6-47:60, 785-839)
     │     data: {"value":"Returns a string representation of the current person."}
-    ├─1 block-tag[0] (22:6-23:1, 302-310)
+    ├─1 block-tag[0] (22:6-22:13, 302-309)
     │     data: {"tag":"@public","text":"","value":"@public"}
-    ├─2 block-tag[0] (23:6-24:1, 315-325)
+    ├─2 block-tag[0] (23:6-23:15, 315-324)
     │     data: {"tag":"@instance","text":"","value":"@instance"}
-    ├─3 block-tag[0] (9:4-10:1, 106-116)
+    ├─3 block-tag[0] (9:4-9:13, 106-115)
     │     data: {"tag":"@abstract","text":"","value":"@abstract"}
     └─4 block-tag[0] (53:6-53:54, 898-946)
           data: {"tag":"@return","text":"{string} String representation of \`this\`","value":"@return {string} String representation of \`this\`"}
@@ -78,7 +78,7 @@ root[7]
 │   │ data: {"context":{"identifier":"dblLinear","kind":"function","members":[],"modifiers":["async"],"parent":null,"position":{"end":{"line":59,"column":2,"offset":1515},"start":{"line":30,"column":1,"offset":725}}},"value":"/**\\n * Consider a sequence \`u\` where \`u\` is defined as follows:\\n *\\n * 1. The number \`u(0) = 1\` is the first one in \`u\`\\n * 2. For each \`x\` in \`u\`, \`y = 2x + 1\` and \`z = 3x + 1\` must be in \`u\` too\\n * 3. There are no other numbers in \`u\`\\n *\\n * Given an index, \`n\`, the function returns the element at \`u(n)\`.\\n *\\n * @async\\n *\\n * @example\\n *  await dblLinear(0) // 1\\n * @example\\n *  await dblLinear(10) // 22\\n * @example\\n *  await dblLinear(100) // 447\\n * @example\\n *  await dblLinear(7687) // 111718\\n *\\n * @param {number} n - Index of element to get\\n * @return {Promise<number>} Element at \`u(n)\`\\n */"}
 │   ├─0 implicit-description[0] (8:4-14:68, 135-433)
 │   │     data: {"value":"Consider a sequence \`u\` where \`u\` is defined as follows:\\n\\n1. The number \`u(0) = 1\` is the first one in \`u\`\\n2. For each \`x\` in \`u\`, \`y = 2x + 1\` and \`z = 3x + 1\` must be in \`u\` too\\n3. There are no other numbers in \`u\`\\n\\nGiven an index, \`n\`, the function returns the element at \`u(n)\`."}
-│   ├─1 block-tag[0] (16:4-17:1, 440-447)
+│   ├─1 block-tag[0] (16:4-16:10, 440-446)
 │   │     data: {"tag":"@async","text":"","value":"@async"}
 │   ├─2 block-tag[0] (18:4-19:28, 453-489)
 │   │     data: {"tag":"@example","text":" await dblLinear(0) // 1","value":"@example\\n await dblLinear(0) // 1"}
@@ -135,9 +135,9 @@ root[4]
 │   │   │ data: {"tag":"@see","text":"{@link FibonacciSequence}","value":"@see {@link FibonacciSequence}"}
 │   │   └─0 inline-tag (11:9-11:34, 171-196)
 │   │         data: {"tag":"@link","text":"FibonacciSequence","value":"{@link FibonacciSequence}"}
-│   ├─2 block-tag[0] (13:4-14:1, 203-210)
+│   ├─2 block-tag[0] (13:4-13:10, 203-209)
 │   │     data: {"tag":"@async","text":"","value":"@async"}
-│   ├─3 block-tag[0] (15:4-16:1, 216-227)
+│   ├─3 block-tag[0] (15:4-15:14, 216-226)
 │   │     data: {"tag":"@generator","text":"","value":"@generator"}
 │   ├─4 block-tag[0] (16:4-16:53, 230-279)
 │   │     data: {"tag":"@yield","text":"{number} Next number in fibonacci sequence","value":"@yield {number} Next number in fibonacci sequence"}
@@ -176,25 +176,25 @@ root[9]
 │         data: {"tag":"@implements","text":"{Iterator<number, number>}","value":"@implements {Iterator<number, number>}"}
 ├─2 comment[3] (13:3-17:6, 293-388)
 │   │ data: {"context":{"identifier":"fib1","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":18,"column":26,"offset":414},"start":{"line":18,"column":3,"offset":391}}},"value":"/**\\n   * @public\\n   * @instance\\n   * @member {number} fib1 - First current sequence value\\n   */"}
-│   ├─0 block-tag[0] (14:6-15:1, 302-310)
+│   ├─0 block-tag[0] (14:6-14:13, 302-309)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─1 block-tag[0] (15:6-16:1, 315-325)
+│   ├─1 block-tag[0] (15:6-15:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (16:6-16:58, 330-382)
 │         data: {"tag":"@member","text":"{number} fib1 - First current sequence value","value":"@member {number} fib1 - First current sequence value"}
 ├─3 comment[3] (20:3-24:6, 418-514)
 │   │ data: {"context":{"identifier":"fib2","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":25,"column":26,"offset":540},"start":{"line":25,"column":3,"offset":517}}},"value":"/**\\n   * @public\\n   * @instance\\n   * @member {number} fib2 - Second current sequence value\\n   */"}
-│   ├─0 block-tag[0] (14:6-15:1, 302-310)
+│   ├─0 block-tag[0] (14:6-14:13, 302-309)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─1 block-tag[0] (15:6-16:1, 315-325)
+│   ├─1 block-tag[0] (15:6-15:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (23:6-23:59, 455-508)
 │         data: {"tag":"@member","text":"{number} fib2 - Second current sequence value","value":"@member {number} fib2 - Second current sequence value"}
 ├─4 comment[3] (27:3-31:6, 544-629)
 │   │ data: {"context":{"identifier":"#max","kind":"property-declaration","members":[],"modifiers":[],"parent":"FibonacciSequence","position":{"end":{"line":32,"column":15,"offset":644},"start":{"line":32,"column":3,"offset":632}}},"value":"/**\\n   * @private\\n   * @instance\\n   * @member {number} max - Max sequence value\\n   */"}
-│   ├─0 block-tag[0] (28:6-29:1, 553-562)
+│   ├─0 block-tag[0] (28:6-28:14, 553-561)
 │   │     data: {"tag":"@private","text":"","value":"@private"}
-│   ├─1 block-tag[0] (15:6-16:1, 315-325)
+│   ├─1 block-tag[0] (15:6-15:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (30:6-30:47, 582-623)
 │         data: {"tag":"@member","text":"{number} max - Max sequence value","value":"@member {number} max - Max sequence value"}
@@ -208,9 +208,9 @@ root[9]
 │   │ data: {"context":{"identifier":"[Symbol.iterator]","kind":"method-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":53,"column":4,"offset":1093},"start":{"line":51,"column":3,"offset":1019}}},"value":"/**\\n   * Iterable protocol.\\n   *\\n   * @public\\n   * @instance\\n   *\\n   * @return {IterableIterator<number>} Current sequence iterator\\n   */"}
 │   ├─0 implicit-description[0] (44:6-44:24, 888-906)
 │   │     data: {"value":"Iterable protocol."}
-│   ├─1 block-tag[0] (14:6-15:1, 302-310)
+│   ├─1 block-tag[0] (14:6-14:13, 302-309)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─2 block-tag[0] (15:6-16:1, 315-325)
+│   ├─2 block-tag[0] (15:6-15:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─3 block-tag[0] (49:6-49:66, 950-1010)
 │         data: {"tag":"@return","text":"{IterableIterator<number>} Current sequence iterator","value":"@return {IterableIterator<number>} Current sequence iterator"}
@@ -218,9 +218,9 @@ root[9]
 │   │ data: {"context":{"identifier":"next","kind":"method-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":72,"column":4,"offset":1564},"start":{"line":63,"column":3,"offset":1271}}},"value":"/**\\n   * Returns the next value in the fibonacci sequence.\\n   *\\n   * @public\\n   * @instance\\n   *\\n   * @return {IteratorResult<number, number>} Next value in sequence\\n   */"}
 │   ├─0 implicit-description[0] (56:6-56:55, 1106-1155)
 │   │     data: {"value":"Returns the next value in the fibonacci sequence."}
-│   ├─1 block-tag[0] (14:6-15:1, 302-310)
+│   ├─1 block-tag[0] (14:6-14:13, 302-309)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─2 block-tag[0] (15:6-16:1, 315-325)
+│   ├─2 block-tag[0] (15:6-15:15, 315-324)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─3 block-tag[0] (61:6-61:69, 1199-1262)
 │         data: {"tag":"@return","text":"{IteratorResult<number, number>} Next value in sequence","value":"@return {IteratorResult<number, number>} Next value in sequence"}
@@ -426,7 +426,7 @@ root[2]
     │ data: {"context":{"identifier":"alphabet","kind":"function*","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":42,"column":2,"offset":606},"start":{"line":15,"column":1,"offset":239}}},"value":"/**\\n * Alphabet generator.\\n *\\n * @generator\\n * @yield {string} Next letter in alphabet\\n * @next {void}\\n *\\n * @return {Generator<string, void, void>} Alphabet generator\\n */"}
     ├─0 implicit-description[0] (7:4-7:23, 74-93)
     │     data: {"value":"Alphabet generator."}
-    ├─1 block-tag[0] (9:4-10:1, 100-111)
+    ├─1 block-tag[0] (9:4-9:14, 100-110)
     │     data: {"tag":"@generator","text":"","value":"@generator"}
     ├─2 block-tag[0] (10:4-10:43, 114-153)
     │     data: {"tag":"@yield","text":"{string} Next letter in alphabet","value":"@yield {string} Next letter in alphabet"}

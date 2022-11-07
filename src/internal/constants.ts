@@ -15,7 +15,7 @@
  * @const {RegExp} BLOCK_TAG_REGEX
  */
 export const BLOCK_TAG_REGEX: RegExp =
-  /(?<=(?:^ +\* )|(?:^\/\*\* +))(?<tag>@\w+(?=\n?))(?: +|\n)(?<text>.*?)(?=\n? +\*(?: @\w+|(?: ?\n)|\/))/gms
+  /(?<=^ +\* |(?:\/\*\* +))(?<tag>@\w+)(?: +|\n)(?<text>.*?)(?=(?:(?: +\*\n)? +\* @\w+)|(?: +\*\/))/gms
 
 /**
  * [`Comment`][1] node value regex pattern.

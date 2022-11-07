@@ -183,22 +183,25 @@ class Parser extends AbstractParser<Root> {
    */
   protected findBlockTags(comment: string): BlockTag[] {
     return [...comment.matchAll(BLOCK_TAG_REGEX)].map(match => {
-      const { 0: raw = '', groups = {} } = match
-      const { tag = '', text = '' } = groups
+      const { groups = {} } = match
+      const { tag = '' } = groups
+
+      let { 0: raw } = match
+      let { text = '' } = groups
 
       /**
        * Block tag node value.
        *
        * @const {string} value
        */
-      const value: string = this.uncomment(raw)
+      const value: string = this.uncomment((raw = raw.trim()))
 
       return u(Type.BLOCK_TAG, {
         children: this.findInlineTags(value),
         data: {
           tag,
-          text: text ? this.uncomment(text) : '',
-          value: text ? value : tag
+          text: this.uncomment((text = text.trimEnd())),
+          value: text.trim() ? value : tag
         },
         position: this.position(raw)
       })
