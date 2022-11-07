@@ -35,9 +35,9 @@ root[7]
 │         data: {"tag":"@member","text":"{string} first_name - First name","value":"@member {string} first_name - First name"}
 ├─4 comment[3] (28:3-32:6, 408-489)
 │   │ data: {"context":{"identifier":"last_name","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"Person","position":{"end":{"line":33,"column":27,"offset":516},"start":{"line":33,"column":3,"offset":492}}},"value":"/**\\n   * @public\\n   * @instance\\n   * @member {string} last_name - Last name\\n   */"}
-│   ├─0 block-tag[0] (22:6-22:13, 302-309)
+│   ├─0 block-tag[0] (29:6-29:13, 417-424)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─1 block-tag[0] (23:6-23:15, 315-324)
+│   ├─1 block-tag[0] (30:6-30:15, 430-439)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (31:6-31:44, 445-483)
 │         data: {"tag":"@member","text":"{string} last_name - Last name","value":"@member {string} last_name - Last name"}
@@ -53,11 +53,11 @@ root[7]
     │ data: {"context":{"identifier":"toString","kind":"method-declaration","members":[],"modifiers":["public","abstract"],"parent":"Person","position":{"end":{"line":55,"column":37,"offset":989},"start":{"line":55,"column":3,"offset":955}}},"value":"/**\\n   * Returns a string representation of the current person.\\n   *\\n   * @public\\n   * @instance\\n   * @abstract\\n   *\\n   * @return {string} String representation of \`this\`\\n   */"}
     ├─0 implicit-description[0] (47:6-47:60, 785-839)
     │     data: {"value":"Returns a string representation of the current person."}
-    ├─1 block-tag[0] (22:6-22:13, 302-309)
+    ├─1 block-tag[0] (49:6-49:13, 850-857)
     │     data: {"tag":"@public","text":"","value":"@public"}
-    ├─2 block-tag[0] (23:6-23:15, 315-324)
+    ├─2 block-tag[0] (50:6-50:15, 863-872)
     │     data: {"tag":"@instance","text":"","value":"@instance"}
-    ├─3 block-tag[0] (9:4-9:13, 106-115)
+    ├─3 block-tag[0] (51:6-51:15, 878-887)
     │     data: {"tag":"@abstract","text":"","value":"@abstract"}
     └─4 block-tag[0] (53:6-53:54, 898-946)
           data: {"tag":"@return","text":"{string} String representation of \`this\`","value":"@return {string} String representation of \`this\`"}
@@ -106,7 +106,7 @@ root[7]
 │   │ data: {"context":{"identifier":"k","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":38,"column":20,"offset":1029},"start":{"line":38,"column":3,"offset":1012}}},"value":"/** @var {number} k - Index of x in {@link u} used to calculate z */"}
 │   └─0 block-tag[1] (37:7-37:68, 945-1006)
 │       │ data: {"tag":"@var","text":"{number} k - Index of x in {@link u} used to calculate z","value":"@var {number} k - Index of x in {@link u} used to calculate z"}
-│       └─0 inline-tag (34:39-34:48, 885-894)
+│       └─0 inline-tag (37:39-37:48, 977-986)
 │             data: {"tag":"@link","text":"u","value":"{@link u}"}
 ├─5 comment[1] (42:5-42:35, 1114-1144)
 │   │ data: {"context":{"identifier":"y","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":43,"column":36,"offset":1180},"start":{"line":43,"column":5,"offset":1149}}},"value":"/** @const {number} y - \`y\` */"}
@@ -184,9 +184,9 @@ root[9]
 │         data: {"tag":"@member","text":"{number} fib1 - First current sequence value","value":"@member {number} fib1 - First current sequence value"}
 ├─3 comment[3] (20:3-24:6, 418-514)
 │   │ data: {"context":{"identifier":"fib2","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":25,"column":26,"offset":540},"start":{"line":25,"column":3,"offset":517}}},"value":"/**\\n   * @public\\n   * @instance\\n   * @member {number} fib2 - Second current sequence value\\n   */"}
-│   ├─0 block-tag[0] (14:6-14:13, 302-309)
+│   ├─0 block-tag[0] (21:6-21:13, 427-434)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─1 block-tag[0] (15:6-15:15, 315-324)
+│   ├─1 block-tag[0] (22:6-22:15, 440-449)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (23:6-23:59, 455-508)
 │         data: {"tag":"@member","text":"{number} fib2 - Second current sequence value","value":"@member {number} fib2 - Second current sequence value"}
@@ -194,7 +194,7 @@ root[9]
 │   │ data: {"context":{"identifier":"#max","kind":"property-declaration","members":[],"modifiers":[],"parent":"FibonacciSequence","position":{"end":{"line":32,"column":15,"offset":644},"start":{"line":32,"column":3,"offset":632}}},"value":"/**\\n   * @private\\n   * @instance\\n   * @member {number} max - Max sequence value\\n   */"}
 │   ├─0 block-tag[0] (28:6-28:14, 553-561)
 │   │     data: {"tag":"@private","text":"","value":"@private"}
-│   ├─1 block-tag[0] (15:6-15:15, 315-324)
+│   ├─1 block-tag[0] (29:6-29:15, 567-576)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─2 block-tag[0] (30:6-30:47, 582-623)
 │         data: {"tag":"@member","text":"{number} max - Max sequence value","value":"@member {number} max - Max sequence value"}
@@ -208,9 +208,9 @@ root[9]
 │   │ data: {"context":{"identifier":"[Symbol.iterator]","kind":"method-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":53,"column":4,"offset":1093},"start":{"line":51,"column":3,"offset":1019}}},"value":"/**\\n   * Iterable protocol.\\n   *\\n   * @public\\n   * @instance\\n   *\\n   * @return {IterableIterator<number>} Current sequence iterator\\n   */"}
 │   ├─0 implicit-description[0] (44:6-44:24, 888-906)
 │   │     data: {"value":"Iterable protocol."}
-│   ├─1 block-tag[0] (14:6-14:13, 302-309)
+│   ├─1 block-tag[0] (46:6-46:13, 917-924)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─2 block-tag[0] (15:6-15:15, 315-324)
+│   ├─2 block-tag[0] (47:6-47:15, 930-939)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─3 block-tag[0] (49:6-49:66, 950-1010)
 │         data: {"tag":"@return","text":"{IterableIterator<number>} Current sequence iterator","value":"@return {IterableIterator<number>} Current sequence iterator"}
@@ -218,9 +218,9 @@ root[9]
 │   │ data: {"context":{"identifier":"next","kind":"method-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":72,"column":4,"offset":1564},"start":{"line":63,"column":3,"offset":1271}}},"value":"/**\\n   * Returns the next value in the fibonacci sequence.\\n   *\\n   * @public\\n   * @instance\\n   *\\n   * @return {IteratorResult<number, number>} Next value in sequence\\n   */"}
 │   ├─0 implicit-description[0] (56:6-56:55, 1106-1155)
 │   │     data: {"value":"Returns the next value in the fibonacci sequence."}
-│   ├─1 block-tag[0] (14:6-14:13, 302-309)
+│   ├─1 block-tag[0] (58:6-58:13, 1166-1173)
 │   │     data: {"tag":"@public","text":"","value":"@public"}
-│   ├─2 block-tag[0] (15:6-15:15, 315-324)
+│   ├─2 block-tag[0] (59:6-59:15, 1179-1188)
 │   │     data: {"tag":"@instance","text":"","value":"@instance"}
 │   └─3 block-tag[0] (61:6-61:69, 1199-1262)
 │         data: {"tag":"@return","text":"{IteratorResult<number, number>} Next value in sequence","value":"@return {IteratorResult<number, number>} Next value in sequence"}
@@ -486,19 +486,19 @@ root[8]
 │   │ data: {"context":{"identifier":"emptyObjectsCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":25,"column":34,"offset":484},"start":{"line":25,"column":5,"offset":455}}},"value":"/**\\n     * Remove empty objects.\\n     *\\n     * @default true\\n     */"}
 │   ├─0 implicit-description[0] (21:8-21:29, 393-414)
 │   │     data: {"value":"Remove empty objects."}
-│   └─1 block-tag[0] (16:8-16:21, 322-335)
+│   └─1 block-tag[0] (23:8-23:21, 429-442)
 │         data: {"tag":"@default","text":"true","value":"@default true"}
 ├─4 comment[2] (27:5-31:8, 490-558)
 │   │ data: {"context":{"identifier":"emptyStringsCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":32,"column":34,"offset":592},"start":{"line":32,"column":5,"offset":563}}},"value":"/**\\n     * Remove empty strings.\\n     *\\n     * @default true\\n     */"}
 │   ├─0 implicit-description[0] (28:8-28:29, 501-522)
 │   │     data: {"value":"Remove empty strings."}
-│   └─1 block-tag[0] (16:8-16:21, 322-335)
+│   └─1 block-tag[0] (30:8-30:21, 537-550)
 │         data: {"tag":"@default","text":"true","value":"@default true"}
 ├─5 comment[2] (34:5-38:8, 598-658)
 │   │ data: {"context":{"identifier":"nanCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":39,"column":25,"offset":683},"start":{"line":39,"column":5,"offset":663}}},"value":"/**\\n     * Remove \`NaN\`.\\n     *\\n     * @default true\\n     */"}
 │   ├─0 implicit-description[0] (35:8-35:21, 609-622)
 │   │     data: {"value":"Remove \`NaN\`."}
-│   └─1 block-tag[0] (16:8-16:21, 322-335)
+│   └─1 block-tag[0] (37:8-37:21, 637-650)
 │         data: {"tag":"@default","text":"true","value":"@default true"}
 ├─6 comment[2] (41:5-45:8, 689-758)
 │   │ data: {"context":{"identifier":"nullCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":46,"column":26,"offset":784},"start":{"line":46,"column":5,"offset":763}}},"value":"/**\\n     * Remove \`null\` values.\\n     *\\n     * @default false\\n     */"}
@@ -561,7 +561,7 @@ root[4]
     │     data: {"value":"Constructs a string array by splitting string \`S\` using delimiter \`D\`."}
     ├─1 block-tag[0] (26:6-26:35, 571-600)
     │     data: {"tag":"@template","text":"S - String to split","value":"@template S - String to split"}
-    └─2 block-tag[0] (15:6-15:36, 270-300)
+    └─2 block-tag[0] (27:6-27:36, 606-636)
           data: {"tag":"@template","text":"D - String delimiter","value":"@template D - String delimiter"}
 `;
 

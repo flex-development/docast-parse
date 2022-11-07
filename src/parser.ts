@@ -179,11 +179,12 @@ class Parser extends AbstractParser<Root> {
    * @protected
    *
    * @param {string} comment - Comment to search
+   * @param {number} [offset=0] - Start index of `comment` in {@link document}
    * @return {BlockTag[]} Block tag node array
    */
-  protected findBlockTags(comment: string): BlockTag[] {
+  protected findBlockTags(comment: string, offset: number = 0): BlockTag[] {
     return [...comment.matchAll(BLOCK_TAG_REGEX)].map(match => {
-      const { groups = {} } = match
+      const { groups = {}, index = 0 } = match
       const { tag = '' } = groups
 
       let { 0: raw } = match
@@ -196,14 +197,21 @@ class Parser extends AbstractParser<Root> {
        */
       const value: string = this.uncomment((raw = raw.trim()))
 
+      /**
+       * Start index of block tag in {@link document}.
+       *
+       * @const {number} start
+       */
+      const start: number = offset + index
+
       return u(Type.BLOCK_TAG, {
-        children: this.findInlineTags(value),
+        children: this.findInlineTags(value, start),
         data: {
           tag,
           text: this.uncomment((text = text.trimEnd())),
           value: text.trim() ? value : tag
         },
-        position: this.position(raw)
+        position: this.position(raw, start)
       })
     })
   }
@@ -256,7 +264,7 @@ class Parser extends AbstractParser<Root> {
             )
 
       // process comments
-      for (const { groups = {} } of this.document.matchAll(regex)) {
+      for (const { groups = {}, index = 0 } of this.document.matchAll(regex)) {
         const { identifier = '', kind = '', modifiers = '' } = groups
         let { code = '', comment: value = '' } = groups
 
@@ -278,7 +286,7 @@ class Parser extends AbstractParser<Root> {
             members: [],
             modifiers: [],
             parent: null,
-            position: this.position((code = code.trim()))
+            position: this.position((code = code.trim()), index)
           }
 
           // set identifier
@@ -331,15 +339,22 @@ class Parser extends AbstractParser<Root> {
             .filter(modifier => modifier !== '') as Modifier[]
         }
 
+        /**
+         * Start index of comment in {@link document}.
+         *
+         * @const {number} start
+         */
+        const start: number = this.document.indexOf(value, index)
+
         // add comment node
         nodes.push(
           u(Type.COMMENT, {
             children: [
-              this.findImplicitDescription(value),
-              ...this.findBlockTags(value)
+              this.findImplicitDescription(value, start),
+              ...this.findBlockTags(value, start)
             ].filter(n => n !== null) as (BlockTag | ImplicitDescription)[],
             data: { context, value },
-            position: this.position(value)
+            position: this.position(value, start)
           })
         )
       }
@@ -431,22 +446,31 @@ class Parser extends AbstractParser<Root> {
    * @protected
    *
    * @param {string} comment - Comment to search
+   * @param {number} [offset=0] - Start index of `comment` in {@link document}
    * @return {Nullable<ImplicitDescription>} Implicit description node or `null`
    */
   protected findImplicitDescription(
-    comment: string
+    comment: string,
+    offset: number = 0
   ): Nullable<ImplicitDescription> {
     /**
      * Possible implicit description match.
      *
-     * @const {RegExpMatchArray | null} match
+     * @const {RegExpMatchArray | undefined} match
      */
-    const match: RegExpMatchArray | null = comment
+    const match: RegExpMatchArray | undefined = comment
       .matchAll(IMPLICIT_DESCRIPTION_REGEX)
       .next().value
 
-    // exit early if match or implicit description was not found
+    // exit early if implicit description was not found
     if (!match?.groups?.raw) return null
+
+    /**
+     * Start index of implicit description in {@link document}.
+     *
+     * @const {number} start
+     */
+    const start: number = offset + match.index!
 
     /**
      * Implicit description node value.
@@ -456,9 +480,9 @@ class Parser extends AbstractParser<Root> {
     const value: string = this.uncomment(match.groups.raw)
 
     return u(Type.IMPLICIT_DESCRIPTION, {
-      children: this.findInlineTags(value),
+      children: this.findInlineTags(value, start),
       data: { value },
-      position: this.position(match.groups.raw)
+      position: this.position(match.groups.raw, start)
     })
   }
 
@@ -470,16 +494,17 @@ class Parser extends AbstractParser<Root> {
    * @protected
    *
    * @param {string} val - Node value to search
+   * @param {number} [offset=0] - Start index of `val` in {@link document}
    * @return {InlineTag[]} Inline tag node array
    */
-  protected findInlineTags(val: string): InlineTag[] {
+  protected findInlineTags(val: string, offset: number = 0): InlineTag[] {
     return [...val.matchAll(INLINE_TAG_REGEX)].map(match => {
-      const { 0: value, groups = {} } = match
+      const { 0: value, groups = {}, index = 0 } = match
       const { tag = '', text = '' } = groups
 
       return u(Type.INLINE_TAG, {
         data: { tag, text, value },
-        position: this.position(value)
+        position: this.position(value, offset + index)
       })
     })
   }
@@ -506,15 +531,16 @@ class Parser extends AbstractParser<Root> {
    * @protected
    *
    * @param {string} node - Raw node value
+   * @param {number} [from] - Index in {@link document} to begin `node` search
    * @return {FullPosition} Node position
    */
-  protected position(node: string): FullPosition {
+  protected position(node: string, from?: number): FullPosition {
     /**
      * Start index of {@link node} in {@link document}.
      *
      * @const {number} start
      */
-    const start: number = this.document.indexOf(node)
+    const start: number = this.document.indexOf(node, from)
 
     return {
       end: this.location.toPoint(start + node.length),
