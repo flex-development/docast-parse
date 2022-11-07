@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "keywords": [
     "ast",
+    "comment",
+    "comment-parser",
     "doc",
     "docblock",
     "jsdoc",
