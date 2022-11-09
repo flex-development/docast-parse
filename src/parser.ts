@@ -1,18 +1,27 @@
 /**
  * @file Parser
- * @module docast/parser
+ * @module docast-parse/parser
  */
 
+import {
+  Kind,
+  Type,
+  type BlockTag,
+  type Comment,
+  type Context,
+  type ImplicitDescription,
+  type InlineTag,
+  type Position,
+  type Root
+} from '@flex-development/docast'
 import type { Nullable } from '@flex-development/tutils'
 import { detab } from 'detab'
-import type { Node, Position } from 'unist'
+import type unist from 'unist'
 import { u } from 'unist-builder'
 import { source } from 'unist-util-source'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
-import type { Context } from './data'
-import { Kind, Modifier, Type } from './enums'
-import type { FullPosition, ParserOptions } from './interfaces'
+import type { Options } from './interfaces'
 import {
   BLOCK_TAG_REGEX,
   COMMENT_WITH_CONTEXT_REGEX,
@@ -22,13 +31,6 @@ import {
   MEMBER_OR_PROPERTY_REGEX,
   METHOD_REGEX
 } from './internal/constants'
-import type {
-  BlockTag,
-  Comment,
-  ImplicitDescription,
-  InlineTag,
-  Root
-} from './nodes'
 import AbstractParser from './parser-abstract'
 
 /**
@@ -51,9 +53,9 @@ class Parser extends AbstractParser<Root> {
   /**
    * @protected
    * @readonly
-   * @member {Required<ParserOptions>} options - Parser options
+   * @member {Required<Options>} options - Parser options
    */
-  protected readonly options: Required<ParserOptions>
+  protected readonly options: Required<Options>
 
   /**
    * @protected
@@ -66,11 +68,11 @@ class Parser extends AbstractParser<Root> {
    *
    * @param {string} document - Document to parse
    * @param {VFile} file - File associated with `document`
-   * @param {ParserOptions} [options={}] - Parser options
+   * @param {Options} [options={}] - Parser options
    * @param {number} [options.indent_size=2] - Indent size
    * @param {number} [options.max_line_length=80] - Maximum line length
    */
-  constructor(document: string, file: VFile, options: ParserOptions = {}) {
+  constructor(document: string, file: VFile, options: Options = {}) {
     super(document, file)
 
     // get parser options
@@ -82,7 +84,7 @@ class Parser extends AbstractParser<Root> {
     // initialize locator, parser options, and syntax tree
     this.location = location(this.document)
     this.options = Object.freeze({ indent_size, max_line_length })
-    this.root = u(Type.ROOT, { children: [], data: {} })
+    this.root = u(Type.ROOT, { children: [] })
   }
 
   /**
@@ -190,7 +192,6 @@ class Parser extends AbstractParser<Root> {
       const { tag = '' } = groups
 
       let { 0: raw } = match
-      let { text = '' } = groups
 
       /**
        * Block tag node value.
@@ -208,12 +209,9 @@ class Parser extends AbstractParser<Root> {
 
       return u(Type.BLOCK_TAG, {
         children: this.findInlineTags(value, start),
-        data: {
-          tag,
-          text: this.uncomment((text = text.trimEnd())),
-          value: text.trim() ? value : tag
-        },
-        position: this.position(raw, start)
+        position: this.position(raw, start),
+        tag,
+        value
       })
     })
   }
@@ -338,7 +336,7 @@ class Parser extends AbstractParser<Root> {
           context.modifiers = modifiers
             .split(' ')
             .map(modifier => modifier.trim())
-            .filter(modifier => modifier !== '') as Modifier[]
+            .filter(modifier => modifier !== '')
         }
 
         /**
@@ -355,8 +353,9 @@ class Parser extends AbstractParser<Root> {
               this.findImplicitDescription(value, start),
               ...this.findBlockTags(value, start)
             ].filter(n => n !== null) as (BlockTag | ImplicitDescription)[],
-            data: { context, value },
-            position: this.position(value, start)
+            context,
+            position: this.position(value, start),
+            value
           })
         )
       }
@@ -371,7 +370,7 @@ class Parser extends AbstractParser<Root> {
     // namespace, and type declarations
     nodes = nodes.map((node: Comment, i: number, arr: Comment[]): Comment => {
       // no context => no members
-      if (!node.data.context) return node
+      if (!node.context) return node
 
       /**
        * Member names.
@@ -381,7 +380,7 @@ class Parser extends AbstractParser<Root> {
       const members: string[] = []
 
       // find members
-      switch (node.data.context.kind) {
+      switch (node.context.kind) {
         case Kind.CLASS:
         case Kind.CONST_ENUM:
         case Kind.ENUM:
@@ -392,15 +391,15 @@ class Parser extends AbstractParser<Root> {
           // begin search for members after current node
           for (let j = i + 1; j < arr.length; j++) {
             const n: Comment = arr[j]!
-            const { data, position } = node
+            const { context, position } = node
             const { start } = position
 
             // exactly one ident over => member
             if (n.position.start.column === start.column + indent_size) {
               // override unknown member kind
               // this can happen when a member's identifier is a keyword
-              if (n.data.context?.kind === Kind.UNKNOWN) {
-                const { position } = n.data.context
+              if (n.context?.kind === Kind.UNKNOWN) {
+                const { position } = n.context
 
                 /**
                  * Declaration source code.
@@ -412,28 +411,28 @@ class Parser extends AbstractParser<Root> {
                 // reset unknown member kind
                 switch (true) {
                   case !!METHOD_REGEX.exec(source):
-                    n.data.context.kind = 'method' as Kind
+                    n.context.kind = 'method' as Kind
                     break
                   case !!MEMBER_OR_PROPERTY_REGEX.exec(source):
-                    n.data.context.kind = 'property' as Kind
+                    n.context.kind = 'property' as Kind
                     break
                 }
               }
 
               // ensure member kind is Kind
-              switch (n.data.context?.kind) {
+              switch (n.context?.kind) {
                 case 'method' as Kind:
-                  n.data.context.kind =
-                    data.context!.kind === Kind.CLASS
+                  n.context.kind =
+                    context.kind === Kind.CLASS
                       ? Kind.METHOD_DECLARATION
                       : Kind.METHOD_SIGNATURE
                   break
                 case 'property' as Kind:
-                  n.data.context.kind =
-                    data.context!.kind === Kind.CLASS
+                  n.context.kind =
+                    context.kind === Kind.CLASS
                       ? Kind.PROPERTY_DECLARATION
-                      : data.context!.kind === Kind.INTERFACE ||
-                        data.context!.kind === Kind.TYPE
+                      : context.kind === Kind.INTERFACE ||
+                        context.kind === Kind.TYPE
                       ? Kind.PROPERTY_SIGNATURE
                       : Kind.ENUM_MEMBER
                   break
@@ -442,9 +441,9 @@ class Parser extends AbstractParser<Root> {
               }
 
               // set parent and add member
-              if (n.data.context) {
-                n.data.context.parent = data.context!.identifier
-                members.push(n.data.context.identifier)
+              if (n.context) {
+                n.context.parent = context.identifier
+                members.push(n.context.identifier)
               }
             }
           }
@@ -455,7 +454,7 @@ class Parser extends AbstractParser<Root> {
       }
 
       // reset members
-      node.data.context.members = members
+      node.context.members = members
 
       return node
     })
@@ -506,8 +505,8 @@ class Parser extends AbstractParser<Root> {
 
     return u(Type.IMPLICIT_DESCRIPTION, {
       children: this.findInlineTags(value, start),
-      data: { value },
-      position: this.position(match.groups.raw, start)
+      position: this.position(match.groups.raw, start),
+      value
     })
   }
 
@@ -525,11 +524,11 @@ class Parser extends AbstractParser<Root> {
   protected findInlineTags(val: string, offset: number = 0): InlineTag[] {
     return [...val.matchAll(INLINE_TAG_REGEX)].map(match => {
       const { 0: value, groups = {}, index = 0 } = match
-      const { tag = '', text = '' } = groups
 
       return u(Type.INLINE_TAG, {
-        data: { tag, text, value },
-        position: this.position(value, offset + index)
+        position: this.position(value, offset + index),
+        tag: groups.tag!,
+        value
       })
     })
   }
@@ -543,7 +542,7 @@ class Parser extends AbstractParser<Root> {
    * @return {Root} Syntax tree representing {@link file}
    */
   public override parse(): Root {
-    return u(Type.ROOT, { children: this.findComments(), data: {} })
+    return u(Type.ROOT, { children: this.findComments() })
   }
 
   /**
@@ -557,9 +556,9 @@ class Parser extends AbstractParser<Root> {
    *
    * @param {string} node - Raw node value
    * @param {number} [from] - Index in {@link document} to begin `node` search
-   * @return {FullPosition} Node position
+   * @return {Position} Node position
    */
-  protected position(node: string, from?: number): FullPosition {
+  protected position(node: string, from?: number): Position {
     /**
      * Start index of {@link node} in {@link document}.
      *
@@ -580,10 +579,10 @@ class Parser extends AbstractParser<Root> {
    *
    * @protected
    *
-   * @param {Node | Position} value - Node or position
+   * @param {unist.Node | unist.Position} value - Node or position
    * @return {Nullable<string>} Source code or `null`
    */
-  protected source(value: Node | Position): Nullable<string> {
+  protected source(value: unist.Node | unist.Position): Nullable<string> {
     return source(value, this.file)
   }
 

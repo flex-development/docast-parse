@@ -1,15 +1,27 @@
 /**
  * @file Interfaces - Options
- * @module docast/interfaces/Options
+ * @module docast-parse/interfaces/Options
  */
-
-import type ParserOptions from './options-parser'
 
 /**
- * `docast` options.
+ * [`Parser`][1] options.
  *
- * @extends {ParserOptions}
+ * [1]: ../parser.ts
  */
-interface Options extends ParserOptions {}
+interface Options {
+  /**
+   * Indentation size (in single-spaced characters).
+   *
+   * @default 2
+   */
+  indent_size?: number
+
+  /**
+   * Maximum line length of document.
+   *
+   * @default 80
+   */
+  max_line_length?: number
+}
 
 export type { Options as default }

@@ -1,6 +1,6 @@
 /**
  * @file Internals - Constants
- * @module docast/internal/constants
+ * @module docast-parse/internal/constants
  */
 
 /**

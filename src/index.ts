@@ -1,12 +1,7 @@
 /**
  * @file Package Entry Point
- * @module docast
+ * @module docast-parse
  */
 
 export { default } from './attacher'
-export * from './data'
-export * from './enums'
 export * from './interfaces'
-export * from './nodes'
-export { default as Parser } from './parser'
-export { default as AbstractParser } from './parser-abstract'

@@ -791,14 +791,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/docast@workspace:.":
+"@flex-development/docast-parse@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@flex-development/docast@workspace:."
+  resolution: "@flex-development/docast-parse@workspace:."
   dependencies:
     "@commitlint/cli": "npm:17.2.0"
     "@commitlint/config-conventional": "npm:17.2.0"
     "@commitlint/types": "npm:17.0.0"
     "@faker-js/faker": "npm:7.6.0"
+    "@flex-development/docast": "npm:1.0.0-alpha.2"
     "@flex-development/mkbuild": "npm:1.0.0-alpha.9"
     "@flex-development/tutils": "npm:5.0.1"
     "@graphql-eslint/eslint-plugin": "npm:3.12.0"
@@ -870,13 +871,18 @@ __metadata:
     vitest: "npm:0.24.4"
     vitest-github-actions-reporter: "npm:0.9.0"
     yaml-eslint-parser: "npm:1.1.0"
-  peerDependencies:
-    "@types/unist": ">=2.0.6"
-  peerDependenciesMeta:
-    "@types/unist":
-      optional: true
   languageName: unknown
   linkType: soft
+
+"@flex-development/docast@npm:1.0.0-alpha.2":
+  version: 1.0.0-alpha.2
+  resolution: "@flex-development/docast@npm:1.0.0-alpha.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.2%2F2ff8288709964d71216163c4e130fdd6c2afe31b"
+  peerDependencies:
+    "@flex-development/tutils": ">=5.0.1"
+    "@types/unist": ">=2.0.6"
+  checksum: dc746f1708f03d56285d227aaaddce837a9096949054f6a2bcff2fb49f10f135920260feddf1c999c98c032a41f4b8bb59cf1283bc92e919b5f60be65e62a5a1
+  languageName: node
+  linkType: hard
 
 "@flex-development/is-builtin@npm:1.0.1":
   version: 1.0.1
@@ -7898,6 +7904,15 @@ __metadata:
   dependencies:
     "@types/unist": "npm:^2.0.0"
   checksum: 05d8eff7f337f2e8d66f24747dc1af68dce61c8ecbb1c2d4f73f3a1ec08b16a55da15f027401102b08bc9302d7720961393d41f2f4240149ae4c4f23c4c26c71
+  languageName: node
+  linkType: hard
+
+"unist-util-inspect@patch:unist-util-inspect@npm%3A7.0.1#patches/unist-util-inspect+7.0.1.dev.patch::locator=%40flex-development%2Fdocast-parse%40workspace%3A.":
+  version: 7.0.1
+  resolution: "unist-util-inspect@patch:unist-util-inspect@npm%3A7.0.1#patches/unist-util-inspect+7.0.1.dev.patch::version=7.0.1&hash=4cb007&locator=%40flex-development%2Fdocast-parse%40workspace%3A."
+  dependencies:
+    "@types/unist": "npm:^2.0.0"
+  checksum: 58bea0daa23f897acabc285aeccc3e53c030105b59bb13ab726a2ec81b2c8a633447357e869c5655b7b9670bc0ae1ed3be8d9657359300d1aeb72695ef2d4e9c
   languageName: node
   linkType: hard
 

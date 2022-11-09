@@ -1,6 +1,6 @@
 /**
  * @file AbstractParser
- * @module docast/AbstractParser
+ * @module docast-parse/AbstractParser
  */
 
 import type { Node } from 'unist'

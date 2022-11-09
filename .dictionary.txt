@@ -25,6 +25,7 @@ gpgsign
 graphqlrc
 hmarr
 iife
+katas
 keyid
 larsgw
 lcov
@@ -41,9 +42,8 @@ ructor
 safecrlf
 stringifier
 syncer
+tribonacci
 tsdoc
-tsnode
-tsnodes
 unist
 vates
 vfile

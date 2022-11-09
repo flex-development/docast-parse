@@ -14,8 +14,8 @@ Follow the steps below to setup your local development environment:
 1. Clone repository
 
    ```sh
-   git clone https://github.com/flex-development/docast
-   cd docast
+   git clone https://github.com/flex-development/docast-parse
+   cd docast-parse
    ```
 
 2. Install binaries with [Homebrew][1]
@@ -276,7 +276,7 @@ When you're ready to submit your changes, open a pull request (PR) against
 `main`:
 
 ```sh
-https://github.com/flex-development/docast/compare/main...$branch
+https://github.com/flex-development/docast-parse/compare/main...$branch
 ```
 
 where `$branch` is the name of the branch you'd like to merge into `main`.
@@ -389,7 +389,7 @@ Before deploying, the following steps must be completed:
 [14]: https://vitest.dev
 [15]: https://vitest.dev/api/#test-skip
 [16]: https://vitest.dev/api/#test-todo
-[17]: https://github.com/flex-development/docast/discussions/new?category=q-a
+[17]: https://github.com/flex-development/docast-parse/discussions/new?category=q-a
 [18]: https://stackoverflow.com/help/minimal-reproducible-example
 [19]: https://github.com/features/packages
 [20]: https://npmjs.com

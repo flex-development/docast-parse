@@ -26,16 +26,8 @@
 # scope labels
 # project-specific groups for issues, pull requests, and discussions
 
-- name: scope:ast
-  description: abstract syntax tree
-  color: 74cefc
-
 - name: scope:attacher
   description: unified attacher
-  color: 74cefc
-
-- name: scope:data
-  description: syntax tree node data
   color: 74cefc
 
 - name: scope:dependencies
@@ -44,14 +36,6 @@
 
 - name: scope:esm
   description: es modules
-  color: 74cefc
-
-- name: scope:internal
-  description: internals
-  color: 74cefc
-
-- name: scope:nodes
-  description: syntax tree nodes
   color: 74cefc
 
 - name: scope:parser

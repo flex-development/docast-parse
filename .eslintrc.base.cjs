@@ -320,7 +320,8 @@ const config = {
     'jsdoc/check-access': 1,
     'jsdoc/check-alignment': 1,
     'jsdoc/check-examples': 0,
-    'jsdoc/check-indentation': [1, { excludeTags: ['description', 'example'] }],
+    // https://github.com/gajus/eslint-plugin-jsdoc/issues/541
+    'jsdoc/check-indentation': 0,
     'jsdoc/check-line-alignment': 1,
     'jsdoc/check-param-names': [
       1,

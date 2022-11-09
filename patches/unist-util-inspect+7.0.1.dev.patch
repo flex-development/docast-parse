@@ -1,0 +1,12 @@
+diff --git a/index.js b/index.js
+index v7.0.1..v7.0.1 100644
+--- a/index.js
++++ b/index.js
+@@ -134,7 +134,6 @@
+         // Standard keys defined by unist that we format differently.
+         // <https://github.com/syntax-tree/unist>
+         key === 'type' ||
+-        key === 'value' ||
+         key === 'children' ||
+         key === 'position' ||
+         // Ignore `name` (from xast) and `tagName` (from `hast`) when string.

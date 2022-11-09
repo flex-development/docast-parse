@@ -1,10 +1,10 @@
 /**
  * @file Functional Tests - attacher
- * @module docast/tests/attacher/functional
+ * @module docast-parse/tests/attacher/functional
  */
 
 import type { Options } from '#src/interfaces'
-import type { Root } from '#src/nodes'
+import type { Root } from '@flex-development/docast'
 import fs from 'node:fs'
 import path from 'node:path'
 import { unified, type Processor } from 'unified'

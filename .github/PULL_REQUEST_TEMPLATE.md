@@ -36,4 +36,4 @@ A list of linked issues and/or pull requests.
 - [ ] [pr naming conventions][1]
 
 [1]:
-    https://github.com/flex-development/docast/blob/main/CONTRIBUTING.md#pull-request-titles
+    https://github.com/flex-development/docast-parse/blob/main/CONTRIBUTING.md#pull-request-titles

@@ -1,10 +1,10 @@
 /**
  * @file Unit Tests - Parser
- * @module docast/tests/parser/unit
+ * @module docast-parse/tests/parser/unit
  */
 
-import { Kind, Type } from '#src/enums'
 import snippet from '#tests/utils/snippet'
+import { Kind, Type } from '@flex-development/docast'
 import fs from 'node:fs'
 import path from 'node:path'
 import { VFile } from 'vfile'
@@ -33,10 +33,8 @@ describe('unit:parser', () => {
       expect(result).to.be.an('array').of.length(8)
       expect(result[0]).to.have.property('children')
       expect(result[0]!.children).to.be.an('array').of.length(1)
-      expect(result[0]).to.have.property('data')
-      expect(result[0]!.data.tag).to.equal('@see')
-      expect(result[0]!.data.text).to.equal('{@link psum}')
-      expect(result[0]!.data.value).to.equal('@see {@link psum}')
+      expect(result[0]!.tag).to.equal('@see')
+      expect(result[0]!.value).to.equal('@see {@link psum}')
       expect(result[0]).to.have.property('position')
       expect(result[0]).to.have.property('type').equal(Type.BLOCK_TAG)
     })
@@ -52,42 +50,38 @@ describe('unit:parser', () => {
       expect(result).to.be.an('array').of.length(4)
       expect(result).each.to.have.a.property('type').that.equals(Type.COMMENT)
       expect(result[0]).to.have.property('children')
-      expect(result[0]).to.have.property('data')
-      expect(result[0]!.data.context).to.be.null
-      expect(result[0]!.data.value).to.equal(snippet(document, 1, 5))
+      expect(result[0]!.context).to.be.null
+      expect(result[0]!.value).to.equal(snippet(document, 1, 5))
       expect(result[0]).to.have.property('position')
       expect(result[1]).to.have.property('children')
-      expect(result[1]).to.have.property('data')
-      expect(result[1]!.data.context).to.not.be.null
-      expect(result[1]!.data.context!.identifier).to.equal('buddy')
-      expect(result[1]!.data.context!.kind).to.equal(Kind.CONST)
-      expect(result[1]!.data.context!.members).to.be.an('array').of.length(0)
-      expect(result[1]!.data.context!.modifiers).to.be.an('array').of.length(0)
-      expect(result[1]!.data.context!.parent).to.be.null
-      expect(result[1]!.data.context).to.have.property('position')
-      expect(result[1]!.data.value).to.equal(comment)
+      expect(result[1]!.context).to.not.be.null
+      expect(result[1]!.context!.identifier).to.equal('buddy')
+      expect(result[1]!.context!.kind).to.equal(Kind.CONST)
+      expect(result[1]!.context!.members).to.be.an('array').of.length(0)
+      expect(result[1]!.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[1]!.context!.parent).to.be.null
+      expect(result[1]!.context).to.have.property('position')
+      expect(result[1]!.value).to.equal(comment)
       expect(result[1]).to.have.property('position')
       expect(result[2]).to.have.property('children')
-      expect(result[2]).to.have.property('data')
-      expect(result[2]!.data.context).to.not.be.null
-      expect(result[2]!.data.context!.identifier).to.equal('m')
-      expect(result[2]!.data.context!.kind).to.equal(Kind.CONST)
-      expect(result[2]!.data.context!.members).to.be.an('array').of.length(0)
-      expect(result[2]!.data.context!.modifiers).to.be.an('array').of.length(0)
-      expect(result[2]!.data.context!.parent).to.be.null
-      expect(result[2]!.data.context).to.have.property('position')
-      expect(result[2]!.data.value).to.equal(snippet(document, 38, 39))
+      expect(result[2]!.context).to.not.be.null
+      expect(result[2]!.context!.identifier).to.equal('m')
+      expect(result[2]!.context!.kind).to.equal(Kind.CONST)
+      expect(result[2]!.context!.members).to.be.an('array').of.length(0)
+      expect(result[2]!.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[2]!.context!.parent).to.be.null
+      expect(result[2]!.context).to.have.property('position')
+      expect(result[2]!.value).to.equal(snippet(document, 38, 39))
       expect(result[2]).to.have.property('position')
       expect(result[3]).to.have.property('children')
-      expect(result[3]).to.have.property('data')
-      expect(result[3]!.data.context).to.not.be.null
-      expect(result[3]!.data.context!.identifier).to.equal('if')
-      expect(result[3]!.data.context!.kind).to.equal(Kind.UNKNOWN)
-      expect(result[3]!.data.context!.members).to.be.an('array').of.length(0)
-      expect(result[3]!.data.context!.modifiers).to.be.an('array').of.length(0)
-      expect(result[3]!.data.context!.parent).to.be.null
-      expect(result[3]!.data.context).to.have.property('position')
-      expect(result[3]!.data.value).to.equal(snippet(document, 41, 42))
+      expect(result[3]!.context).to.not.be.null
+      expect(result[3]!.context!.identifier).to.equal('if')
+      expect(result[3]!.context!.kind).to.equal(Kind.UNKNOWN)
+      expect(result[3]!.context!.members).to.be.an('array').of.length(0)
+      expect(result[3]!.context!.modifiers).to.be.an('array').of.length(0)
+      expect(result[3]!.context!.parent).to.be.null
+      expect(result[3]!.context).to.have.property('position')
+      expect(result[3]!.value).to.equal(snippet(document, 41, 42))
       expect(result[3]).to.have.property('position')
     })
 
@@ -114,8 +108,7 @@ describe('unit:parser', () => {
       expect(result).to.not.be.null
       expect(result).to.have.property('children')
       expect(result!.children).to.be.an('array').of.length(0)
-      expect(result).to.have.property('data')
-      expect(result!.data.value).to.equal(value)
+      expect(result!.value).to.equal(value)
       expect(result).to.have.property('position')
       expect(result).to.have.property('type').equal(Type.IMPLICIT_DESCRIPTION)
     })
@@ -139,10 +132,8 @@ describe('unit:parser', () => {
       // Expect
       expect(result).to.be.an('array').of.length(1)
       expect(result[0]).to.not.have.property('children')
-      expect(result[0]).to.have.property('data')
-      expect(result[0]!.data.tag).to.equal('@link')
-      expect(result[0]!.data.text).to.equal('psum')
-      expect(result[0]!.data.value).to.equal('{@link psum}')
+      expect(result[0]!.tag).to.equal('@link')
+      expect(result[0]!.value).to.equal('{@link psum}')
       expect(result[0]).to.have.property('position')
       expect(result[0]).to.have.property('type').equal(Type.INLINE_TAG)
     })

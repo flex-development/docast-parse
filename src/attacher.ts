@@ -1,23 +1,23 @@
 /**
  * @file Attacher
- * @module docast/attacher
+ * @module docast-parse/attacher
  */
 
+import type { Root } from '@flex-development/docast'
 import type { Plugin, Processor } from 'unified'
 import type { VFile } from 'vfile'
 import type { Options } from './interfaces'
-import type { Root } from './nodes'
 import Parser from './parser'
 
 /**
- * Configures the `docast` processor.
+ * The `docastParse` attacher.
  *
  * @see https://github.com/unifiedjs/unified#function-attacheroptions
  *
  * @type {Plugin<[Options?], string, Root>}
  * @this {Processor<Root, Root>}
  *
- * @param {Options} [options={}] - `docast` options
+ * @param {Options} [options={}] - Parser options
  * @return {void} Nothing when complete
  */
 function attacher(this: Processor<Root, Root>, options: Options = {}): void {

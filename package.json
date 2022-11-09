@@ -1,23 +1,25 @@
 {
-  "name": "@flex-development/docast",
-  "description": "Docblock Abstract Syntax Tree.",
+  "name": "@flex-development/docast-parse",
+  "description": "unified compliant file parser for docast",
   "version": "0.0.0",
   "keywords": [
+    "abstract",
     "ast",
     "comment",
-    "comment-parser",
     "doc",
+    "docast",
     "docblock",
-    "jsdoc",
-    "syntax tree",
-    "tsdoc",
-    "typescript",
+    "parse",
+    "parser",
+    "syntax",
+    "tree",
+    "unified",
     "unist"
   ],
   "license": "BSD-3-Clause",
-  "homepage": "https://github.com/flex-development/docast",
-  "repository": "https://github.com/flex-development/docast.git",
-  "bugs": "https://github.com/flex-development/docast/issues",
+  "homepage": "https://github.com/flex-development/docast-parse",
+  "repository": "https://github.com/flex-development/docast-parse.git",
+  "bugs": "https://github.com/flex-development/docast-parse/issues",
   "author": {
     "name": "Lexus Drumgold",
     "url": "https://github.com/unicornware"
@@ -67,7 +69,9 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@flex-development/docast": "1.0.0-alpha.2",
     "@flex-development/tutils": "5.0.1",
+    "@types/unist": "2.0.6",
     "detab": "3.0.1",
     "unist-builder": "3.0.0",
     "unist-util-source": "4.0.1",
@@ -145,18 +149,11 @@
     "vitest-github-actions-reporter": "0.9.0",
     "yaml-eslint-parser": "1.1.0"
   },
-  "peerDependencies": {
-    "@types/unist": ">=2.0.6"
-  },
-  "peerDependenciesMeta": {
-    "@types/unist": {
-      "optional": true
-    }
-  },
   "resolutions": {
     "@ardatan/sync-fetch": "larsgw/sync-fetch#head=worker_threads",
     "esbuild": "0.15.12",
-    "vite": "3.2.2"
+    "vite": "3.2.2",
+    "unist-util-inspect@npm:7.0.1": "patch:unist-util-inspect@npm%3A7.0.1#patches/unist-util-inspect+7.0.1.dev.patch"
   },
   "engines": {
     "node": ">=14.16",
