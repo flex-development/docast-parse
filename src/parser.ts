@@ -15,22 +15,14 @@ import {
   type Root
 } from '@flex-development/docast'
 import type { Nullable } from '@flex-development/tutils'
-import { detab } from 'detab'
+import regexp from 'escape-string-regexp'
 import type unist from 'unist'
 import { u } from 'unist-builder'
 import { source } from 'unist-util-source'
 import type { VFile } from 'vfile'
-import { location } from 'vfile-location'
-import type { Options } from './interfaces'
-import {
-  BLOCK_TAG_REGEX,
-  COMMENT_WITH_CONTEXT_REGEX,
-  IMPLICIT_DESCRIPTION_REGEX,
-  INLINE_TAG_REGEX,
-  INNER_CLASS_REGEX,
-  MEMBER_OR_PROPERTY_REGEX,
-  METHOD_REGEX
-} from './internal/constants'
+import { TokenKind } from './enums'
+import type { Options, Token } from './interfaces'
+import Lexer from './lexer'
 import AbstractParser from './parser-abstract'
 
 /**
@@ -46,22 +38,9 @@ class Parser extends AbstractParser<Root> {
   /**
    * @protected
    * @readonly
-   * @member {ReturnType<typeof location>} location - Position and offset finder
+   * @member {Lexer} lexer - Source file tokenizer
    */
-  protected readonly location: ReturnType<typeof location>
-
-  /**
-   * @protected
-   * @readonly
-   * @member {Required<Options>} options - Parser options
-   */
-  protected readonly options: Required<Options>
-
-  /**
-   * @protected
-   * @member {Root} root - Syntax tree representing {@link file}
-   */
-  protected root: Root
+  protected readonly lexer: Lexer
 
   /**
    * Instantiates a new file parser.
@@ -70,506 +49,506 @@ class Parser extends AbstractParser<Root> {
    * @param {VFile} file - File associated with `document`
    * @param {Options} [options={}] - Parser options
    * @param {number} [options.indent_size=2] - Indent size
-   * @param {number} [options.max_line_length=80] - Maximum line length
    */
   constructor(document: string, file: VFile, options: Options = {}) {
     super(document, file)
-
-    // get parser options
-    const { indent_size = 2, max_line_length = 80 } = options
-
-    // convert tabs to spaces (1 tab === indent_size)
-    this.document = this.file.value = detab(document, indent_size)
-
-    // initialize locator, parser options, and syntax tree
-    this.location = location(this.document)
-    this.options = Object.freeze({ indent_size, max_line_length })
-    this.root = u(Type.ROOT, { children: [] })
+    this.lexer = new Lexer(document, file, options)
   }
 
   /**
-   * Returns a set of JavaScript and TypeScript keywords.
+   * Parses text to a syntax tree.
    *
-   * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Lexical_grammar#keywords
+   * @public
+   * @override
    *
-   * @protected
-   *
-   * @return {Set<string>} Keywords set
+   * @return {Root} Syntax tree representing source file
    */
-  protected get keywords(): Set<string> {
-    return new Set<string>([
-      Kind.CLASS,
-      Kind.CONST,
-      Kind.CONSTRUCTOR,
-      Kind.ENUM,
-      Kind.FUNCTION,
-      Kind.GENERATOR,
-      Kind.GET,
-      Kind.INTERFACE,
-      Kind.LET,
-      Kind.NAMESPACE,
-      Kind.SET,
-      Kind.TYPE,
-      Kind.VAR,
-      'abstract',
-      'any',
-      'arguments',
-      'as',
-      'assert',
-      'async',
-      'await',
-      'break',
-      'case',
-      'catch',
-      'continue',
-      'debugger',
-      'declare',
-      'default',
-      'delete',
-      'do',
-      'else',
-      'eval',
-      'export',
-      'extends',
-      'false',
-      'finally',
-      'for',
-      'from',
-      'global',
-      'if',
-      'implements',
-      'import',
-      'in',
-      'infer',
-      'instanceof',
-      'is',
-      'keyof',
-      'never',
-      'new',
-      'null',
-      'of',
-      'override',
-      'package',
-      'private',
-      'protected',
-      'public',
-      'readonly',
-      'require',
-      'return',
-      'satisfies',
-      'static',
-      'super',
-      'switch',
-      'this',
-      'throw',
-      'true',
-      'try',
-      'typeof',
-      'undefined',
-      'unknown',
-      'void',
-      'while',
-      'with',
-      'yield',
-      'yield*'
-    ] as string[])
-  }
-
-  /**
-   * Finds block tags in a comment.
-   *
-   * @see {@link BlockTag}
-   *
-   * @protected
-   *
-   * @param {string} comment - Comment to search
-   * @param {number} [offset=0] - Start index of `comment` in {@link document}
-   * @return {BlockTag[]} Block tag node array
-   */
-  protected findBlockTags(comment: string, offset: number = 0): BlockTag[] {
-    return [...comment.matchAll(BLOCK_TAG_REGEX)].map(match => {
-      const { groups = {}, index = 0 } = match
-      const { tag = '' } = groups
-
-      let { 0: raw } = match
-
-      /**
-       * Block tag node value.
-       *
-       * @const {string} value
-       */
-      const value: string = this.uncomment((raw = raw.trim()))
-
-      /**
-       * Start index of block tag in {@link document}.
-       *
-       * @const {number} start
-       */
-      const start: number = offset + index
-
-      return u(Type.BLOCK_TAG, {
-        children: this.findInlineTags(value, start),
-        position: this.position(raw, start),
-        tag,
-        value
-      })
-    })
-  }
-
-  /**
-   * Finds comments in {@link document}.
-   *
-   * @protected
-   *
-   * @return {Comment[]} Comment node array
-   */
-  protected findComments(): Comment[] {
+  public override parse(): Root {
     /**
      * Comment nodes.
      *
-     * @var {Comment[]} nodes
+     * @const {Comment[]} children
      */
-    let nodes: Comment[] = []
+    const children: Comment[] = []
 
-    // exit early if document is empty
-    if (this.document.trim().length === 0) return nodes
+    /**
+     * Current position in token sequence.
+     *
+     * @var {number} index
+     */
+    let index: number = 0
 
-    // get indent size and maximum line length
-    const { indent_size, max_line_length } = this.options
-
-    // get comment nodes by traversing indent levels
-    for (let i = 0; i < max_line_length; i += indent_size) {
+    // parse tokens
+    while (!this.lexer.done) {
       /**
-       * Previous indent level.
+       * Difference between index of next `k`-th token and current position in
+       * token sequence.
        *
-       * @const {number} h
+       * @const {number} k
        */
-      const h: number = i - indent_size
+      const k: number = index - this.lexer.offset
 
       /**
-       * Regex to extract comments with or without context.
+       * Next `k`-th token in token sequence.
        *
-       * @see {@link Context}
-       *
-       * @const {RegExp} regex
+       * @const {Token} token
        */
-      const regex: RegExp =
-        i === 0
-          ? COMMENT_WITH_CONTEXT_REGEX
-          : new RegExp(
-              `(?<=\n {${i}})(?<comment>\\/\\*\\*.*?\\*\\/)(?:(?=\n\n)|\n *(?<code>(?:@[\\w$]+(?:\\(.*?\\))?\n)?(?:\\/\\/ .+?\n)?(?:(?<modifiers>(?:(?:export )?(?:declare )?(?:default )? ?(?:abstract|async|declare|default)|export)|(?:(?:private|protected|public)?(?: abstract)?(?: ?override)?(?: ?readonly)?(?: ?static)?))\\s+)?(?:(?<kind>class|function\\*?|(?:const +)?enum|const(?!ructor)|get|interface|let|module|namespace|set|type|var)\\s+)?(?<identifier>\\[.+?]|#?\\*?[\\w$]+|["'].+?["'])?(?:(?:.+?(?=\n\n {${i}}\\/))|(?:.+?(?=\n\n {${i}}(?:${[
-                ...this.keywords
-              ].join('|')})))|(?:.+?(?=\n {0,${h}}}\n\n))|(?:.+?(?=\n})))))`,
-              'gs'
-            )
+      const token: Token = this.lexer.peek(k)!
 
-      // process comments
-      for (const { groups = {}, index = 0 } of this.document.matchAll(regex)) {
-        const { identifier = '', kind = '', modifiers = '' } = groups
-        let { code = '', comment: value = '' } = groups
-
-        // trim comment node value
-        value = value.trim()
-
-        /**
-         * Comment node context.
-         *
-         * @var {Nullable<Context>} context
-         */
-        let context: Nullable<Context> = null
-
-        // get comment node context
-        if (code) {
-          context = {
-            identifier: '',
-            kind: Kind.UNKNOWN,
-            members: [],
-            modifiers: [],
-            parent: null,
-            position: this.position((code = code.trim()), index)
-          }
-
-          // set identifier
-          switch (true) {
-            case code.startsWith(Kind.CONSTRUCTOR):
-              context.identifier = Kind.CONSTRUCTOR
-              break
-            case !identifier && modifiers.startsWith('export default'):
-              context.identifier = 'default'
-              break
-            default:
-              context.identifier = identifier.trim()
-          }
-
-          // set kind
-          switch (true) {
-            case context.identifier === Kind.CONSTRUCTOR:
-              context.kind = Kind.CONSTRUCTOR
-              break
-            case context.identifier === 'default':
-              context.kind = Kind.DEFAULT
-              break
-            case kind === 'module':
-            case code.startsWith('declare global'):
-              context.kind = Kind.MODULE_DECLARATION
-              break
-            case kind !== '':
-              context.kind = kind as Kind
-              break
-            case !!INNER_CLASS_REGEX.exec(code):
-              context.kind = Kind.CLASS
-              break
-            case this.keywords.has(context.identifier):
-              context.kind = Kind.UNKNOWN
-              break
-            // ! requires reset when finding members
-            case !!METHOD_REGEX.exec(code):
-              context.kind = 'method' as Kind
-              break
-            // ! requires reset when finding members
-            case !!MEMBER_OR_PROPERTY_REGEX.exec(code):
-              context.kind = 'property' as Kind
-              break
-          }
-
-          // set modifiers
-          context.modifiers = modifiers
-            .split(' ')
-            .map(modifier => modifier.trim())
-            .filter(modifier => modifier !== '')
-        }
-
-        /**
-         * Start index of comment in {@link document}.
-         *
-         * @const {number} start
-         */
-        const start: number = this.document.indexOf(value, index)
-
-        // add comment node
-        nodes.push(
-          u(Type.COMMENT, {
-            children: [
-              this.findImplicitDescription(value, start),
-              ...this.findBlockTags(value, start)
-            ].filter(n => n !== null) as (BlockTag | ImplicitDescription)[],
-            context,
-            position: this.position(value, start),
-            value
-          })
-        )
+      // add comment node
+      if (token.kind === TokenKind.COMMENT_START) {
+        children.push(this.parseComment(token, k))
       }
+
+      // consume token and move onto the next
+      this.lexer.read(k)
+      index++
     }
 
-    // sort nodes by start position
-    nodes = nodes.sort((node1, node2) => {
-      return node1.position.start.offset - node2.position.start.offset
-    })
+    // add nodes to tree
+    return u(Type.ROOT, { children })
+  }
 
-    // find immediate members of class, const enum, enum, interface, module,
-    // namespace, and type declarations
-    nodes = nodes.map((node: Comment, i: number, arr: Comment[]): Comment => {
-      // no context => no members
-      if (!node.context) return node
+  /**
+   * Creates a [**comment**][1] node.
+   *
+   * [1]: https://github.com/flex-development/docast#comment
+   *
+   * @protected
+   *
+   * @param {Token} token - Token to create node from
+   * @param {number} k - Difference between `token` index and lexer position
+   * @return {Comment} Comment node
+   * @throws {SyntaxError}
+   */
+  protected parseComment(token: Token, k: number): Comment {
+    // throw if token is of unexpected kind
+    if (token.kind !== TokenKind.COMMENT_START) {
+      throw new SyntaxError('expected token of kind COMMENT_START')
+    }
 
+    /**
+     * Tokens between `token` and comment end token.
+     *
+     * @const {Token[]} tokens
+     */
+    const tokens: Token[] = this.lexer.peekUntil(token => {
+      return token.kind === TokenKind.COMMENT_END
+    }, k + 1)
+
+    /**
+     * Possible comment end token.
+     *
+     * @const {Token | undefined} token_match
+     */
+    const token_match: Token | undefined = tokens.pop()
+
+    // throw if comment end token was not found
+    if (token_match?.kind !== TokenKind.COMMENT_END) {
+      throw new SyntaxError('expected token of kind COMMENT_END')
+    }
+
+    /**
+     * Comment node children.
+     *
+     * @const {(BlockTag | ImplicitDescription)[]} children
+     */
+    const children: (BlockTag | ImplicitDescription)[] = []
+
+    // get comment node children
+    for (const [i, tok] of tokens.entries()) {
       /**
-       * Member names.
+       * Difference between child token index and lexer position.
        *
-       * @const {string[]} members
+       * @const {number} j
        */
-      const members: string[] = []
+      const j: number = k + i + 1
 
-      // find members
-      switch (node.context.kind) {
-        case Kind.CLASS:
-        case Kind.CONST_ENUM:
-        case Kind.ENUM:
-        case Kind.INTERFACE:
-        case Kind.MODULE_DECLARATION:
-        case Kind.NAMESPACE:
-        case Kind.TYPE:
-          // begin search for members after current node
-          for (let j = i + 1; j < arr.length; j++) {
-            const n: Comment = arr[j]!
-            const { context, position } = node
-            const { start } = position
-
-            // exactly one ident over => member
-            if (n.position.start.column === start.column + indent_size) {
-              // override unknown member kind
-              // this can happen when a member's identifier is a keyword
-              if (n.context?.kind === Kind.UNKNOWN) {
-                const { position } = n.context
-
-                /**
-                 * Declaration source code.
-                 *
-                 * @const {string} source
-                 */
-                const source: string = this.source(position)!
-
-                // reset unknown member kind
-                switch (true) {
-                  case !!METHOD_REGEX.exec(source):
-                    n.context.kind = 'method' as Kind
-                    break
-                  case !!MEMBER_OR_PROPERTY_REGEX.exec(source):
-                    n.context.kind = 'property' as Kind
-                    break
-                }
-              }
-
-              // ensure member kind is Kind
-              switch (n.context?.kind) {
-                case 'method' as Kind:
-                  n.context.kind =
-                    context.kind === Kind.CLASS
-                      ? Kind.METHOD_DECLARATION
-                      : Kind.METHOD_SIGNATURE
-                  break
-                case 'property' as Kind:
-                  n.context.kind =
-                    context.kind === Kind.CLASS
-                      ? Kind.PROPERTY_DECLARATION
-                      : context.kind === Kind.INTERFACE ||
-                        context.kind === Kind.TYPE
-                      ? Kind.PROPERTY_SIGNATURE
-                      : Kind.ENUM_MEMBER
-                  break
-                default:
-                  break
-              }
-
-              // set parent and add member
-              if (n.context) {
-                n.context.parent = context.identifier
-                members.push(n.context.identifier)
-              }
-            }
-          }
-
+      // get comment node child
+      switch (tok.kind) {
+        case TokenKind.IMPLICIT_DESCRIPTION_START:
+          children.push(this.parseImplicitDescription(tok, j))
+          break
+        case TokenKind.TAG_BLOCK_START:
+          children.push(this.parseTagBlock(tok, j))
           break
         default:
           break
       }
+    }
 
-      // reset members
-      node.context.members = members
-
-      return node
-    })
-
-    return nodes
-  }
-
-  /**
-   * Finds an implicit description in a comment.
-   *
-   * @see {@link ImplicitDescription}
-   *
-   * @protected
-   *
-   * @param {string} comment - Comment to search
-   * @param {number} [offset=0] - Start index of `comment` in {@link document}
-   * @return {Nullable<ImplicitDescription>} Implicit description node or `null`
-   */
-  protected findImplicitDescription(
-    comment: string,
-    offset: number = 0
-  ): Nullable<ImplicitDescription> {
     /**
-     * Possible implicit description match.
+     * Position of comment in source file.
      *
-     * @const {RegExpMatchArray | undefined} match
+     * @const {Position} position
      */
-    const match: RegExpMatchArray | undefined = comment
-      .matchAll(IMPLICIT_DESCRIPTION_REGEX)
-      .next().value
-
-    // exit early if implicit description was not found
-    if (!match?.groups?.raw) return null
+    const position: Position = { end: token_match.point, start: token.point }
 
     /**
-     * Start index of implicit description in {@link document}.
-     *
-     * @const {number} start
-     */
-    const start: number = offset + match.index!
-
-    /**
-     * Implicit description node value.
+     * Comment node value.
      *
      * @const {string} value
      */
-    const value: string = this.uncomment(match.groups.raw)
+    const value: string = this.source(position)!
 
-    return u(Type.IMPLICIT_DESCRIPTION, {
-      children: this.findInlineTags(value, start),
-      position: this.position(match.groups.raw, start),
+    /**
+     * Difference between index of token after comment end token and current
+     * position in token sequence.
+     *
+     * @const {number} j
+     */
+    const j: number = k + tokens.length + 2
+
+    return u(Type.COMMENT, {
+      children,
+      context: this.parseContext(this.lexer.peek(j)!, j),
+      position,
       value
     })
   }
 
   /**
-   * Finds inline tags in a block tag, comment, or implicit description.
+   * Creates a [*context*][1] object.
    *
-   * @see {@link InlineTag}
+   * [1]: https://github.com/flex-development/docast#context
    *
    * @protected
    *
-   * @param {string} val - Node value to search
-   * @param {number} [offset=0] - Start index of `val` in {@link document}
-   * @return {InlineTag[]} Inline tag node array
+   * @param {Token} token - Token to create node from
+   * @param {number} k - Difference between `token` index and lexer position
+   * @return {Nullable<Context>} Comment context or `null`
+   * @throws {SyntaxError}
    */
-  protected findInlineTags(val: string, offset: number = 0): InlineTag[] {
-    return [...val.matchAll(INLINE_TAG_REGEX)].map(match => {
-      const { 0: value, groups = {}, index = 0 } = match
+  protected parseContext(token: Token, k: number): Nullable<Context> {
+    // no context start token => no context
+    if (token.kind !== TokenKind.CONTEXT_START) return null
 
-      return u(Type.INLINE_TAG, {
-        position: this.position(value, offset + index),
-        tag: groups.tag!,
-        value
-      })
+    /**
+     * Tokens between `token` and context end token.
+     *
+     * @const {Token[]} tokens
+     */
+    const tokens: Token[] = this.lexer.peekUntil(tok => {
+      if (tok.kind !== TokenKind.CONTEXT_END) return false
+      return tok.value === `${token.point.line}:${token.point.column}`
+    }, k + 1)
+
+    /**
+     * Possible context end token.
+     *
+     * @const {Token | undefined} token_match
+     */
+    const token_match: Token | undefined = tokens.pop()
+
+    // throw if context end token was not found
+    if (token_match?.kind !== TokenKind.CONTEXT_END) {
+      throw new SyntaxError('expected token of kind CONTEXT_END')
+    }
+
+    /**
+     * Difference between index of context start token for code segment parent
+     * and current position in token sequence.
+     *
+     * @var {number} j
+     */
+    let j: number = Number.NaN
+
+    /**
+     * Context start token for code segment parent.
+     *
+     * @var {Nullable<Token>} pct
+     */
+    let pct: Nullable<Token> = null
+
+    // find context start token for code segment parent
+    for (let i = this.lexer.offset + k - 1; i >= 0; i--) {
+      /**
+       * Possible context start token for code segment parent.
+       *
+       * @const {Token} tok
+       */
+      const tok: Token = this.lexer.tokens.at(i)!
+
+      // do nothing if token is not a context start token
+      if (tok.kind !== TokenKind.CONTEXT_START) continue
+
+      // stop search once context start token for parent has been found
+      if (tok.value!.includes(token.value!)) {
+        j = i - this.lexer.offset
+        pct = tok
+        break
+      }
+    }
+
+    /**
+     * Code segment identifier.
+     *
+     * @const {string} identifier
+     */
+    const identifier: string = tokens.find(tok => {
+      return tok.kind === TokenKind.IDENTIFIER
+    })!.value!
+
+    /**
+     * Code segment syntax kind.
+     *
+     * @var {string} kind
+     */
+    let kind: string = Kind.UNKNOWN
+
+    // get code segment syntax kind
+    switch (true) {
+      case identifier === Kind.CONSTRUCTOR:
+        kind = Kind.CONSTRUCTOR
+        break
+      /* c8 ignore next 3 */
+      case token.value!.startsWith('declare global'):
+        kind = Kind.MODULE
+        break
+      case tokens.some(({ kind, point }) => {
+        return kind === TokenKind.KIND && point.line === token.point.line
+      }):
+        kind = tokens.find(({ kind, point }) => {
+          return kind === TokenKind.KIND && point.line === token.point.line
+        })!.value!
+        break
+      case pct && /^(?:(?:\w+ )+)?enum +.+{/.test(pct.value!):
+        kind = Kind.MEMBER
+        break
+      case new RegExp(
+        `^(?:(?:\\w+ )+)?${regexp(identifier)}(?:\\??:?)\\(`
+      ).test(token.value!):
+        kind = Kind.METHOD
+        break
+      case new RegExp(
+        `^(?:(?:\\w+ )+)?${regexp(identifier)}(?:\\??:?)[\n ]`
+      ).test(token.value!):
+        kind = Kind.PROPERTY
+        break
+    }
+
+    return {
+      identifier,
+      kind,
+      parent: pct
+        ? this.lexer
+            .peekUntil(tok => {
+              if (tok.kind !== TokenKind.CONTEXT_END) return false
+              return tok.value === `${pct?.point.line}:${pct?.point.column}`
+            }, j + 1)
+            .find(tok => tok.kind === TokenKind.IDENTIFIER)!.value!
+        : null,
+      position: { end: token_match.point, start: token.point }
+    }
+  }
+
+  /**
+   * Creates an [**implicit description**][1] node.
+   *
+   * [1]: https://github.com/flex-development/docast#implicitdescription
+   *
+   * @protected
+   *
+   * @param {Token} token - Token to create node from
+   * @param {number} k - Difference between `token` index and lexer position
+   * @return {ImplicitDescription} Implicit description node
+   * @throws {SyntaxError}
+   */
+  protected parseImplicitDescription(
+    token: Token,
+    k: number
+  ): ImplicitDescription {
+    // throw if token is of unexpected kind
+    if (token.kind !== TokenKind.IMPLICIT_DESCRIPTION_START) {
+      throw new SyntaxError('expected token of kind IMPLICIT_DESCRIPTION_START')
+    }
+
+    /**
+     * Tokens between `token` and implicit description end token.
+     *
+     * @const {Token[]} tokens
+     */
+    const tokens: Token[] = this.lexer.peekUntil(token => {
+      return token.kind === TokenKind.IMPLICIT_DESCRIPTION_END
+    }, k + 1)
+
+    /**
+     * Possible implicit description end token.
+     *
+     * @const {Token | undefined} token_match
+     */
+    const token_match: Token | undefined = tokens.pop()
+
+    // throw if implicit description end token was not found
+    if (token_match?.kind !== TokenKind.IMPLICIT_DESCRIPTION_END) {
+      throw new SyntaxError('expected token of kind IMPLICIT_DESCRIPTION_END')
+    }
+
+    /**
+     * Implicit description node children.
+     *
+     * @const {InlineTag[]} children
+     */
+    const children: InlineTag[] = []
+
+    // get implicit description node children
+    for (const [i, tok] of tokens.entries()) {
+      if (tok.kind !== TokenKind.TAG_INLINE_START) continue
+      children.push(this.parseTagInline(tok, k + i + 1))
+    }
+
+    /**
+     * Position of implicit description in source file.
+     *
+     * @const {Position} position
+     */
+    const position: Position = { end: token_match.point, start: token.point }
+
+    return u(Type.IMPLICIT_DESCRIPTION, {
+      children,
+      position,
+      value: this.uncomment(this.source(position)!)
     })
   }
 
   /**
-   * Parses {@link document}.
+   * Creates a [**block tag**][1] node.
    *
-   * @public
-   * @override
-   *
-   * @return {Root} Syntax tree representing {@link file}
-   */
-  public override parse(): Root {
-    return u(Type.ROOT, { children: this.findComments() })
-  }
-
-  /**
-   * Calculates the position of a node.
-   *
-   * @see https://github.com/syntax-tree/unist#position
-   *
-   * @todo indent (see syntax-tree/unist#16)
+   * [1]: https://github.com/flex-development/docast#blocktag
    *
    * @protected
    *
-   * @param {string} node - Raw node value
-   * @param {number} [from] - Index in {@link document} to begin `node` search
-   * @return {Position} Node position
+   * @param {Token} token - Token to create node from
+   * @param {number} k - Difference between `token` index and lexer position
+   * @return {BlockTag} Block tag node
+   * @throws {SyntaxError}
    */
-  protected position(node: string, from?: number): Position {
-    /**
-     * Start index of {@link node} in {@link document}.
-     *
-     * @const {number} start
-     */
-    const start: number = this.document.indexOf(node, from)
-
-    return {
-      end: this.location.toPoint(start + node.length),
-      start: this.location.toPoint(start)
+  protected parseTagBlock(token: Token, k: number): BlockTag {
+    // throw if token is of unexpected kind
+    if (token.kind !== TokenKind.TAG_BLOCK_START) {
+      throw new SyntaxError('expected token of kind TAG_BLOCK_START')
     }
+
+    /**
+     * Tokens between `token` and block tag end token.
+     *
+     * @const {Token[]} tokens
+     */
+    const tokens: Token[] = this.lexer.peekUntil(token => {
+      return token.kind === TokenKind.TAG_BLOCK_END
+    }, k + 1)
+
+    /**
+     * Possible block tag end token.
+     *
+     * @const {Token | undefined} token_match
+     */
+    const token_match: Token | undefined = tokens.pop()
+
+    // throw if block tag end token was not found
+    if (token_match?.kind !== TokenKind.TAG_BLOCK_END) {
+      throw new SyntaxError('expected token of kind TAG_BLOCK_END')
+    }
+
+    /**
+     * Block tag node children.
+     *
+     * @const {InlineTag[]} children
+     */
+    const children: InlineTag[] = []
+
+    // get block tag node children
+    for (const [i, tok] of tokens.entries()) {
+      if (tok.kind !== TokenKind.TAG_INLINE_START) continue
+      children.push(this.parseTagInline(tok, k + i + 1))
+    }
+
+    /**
+     * Position of block tag in source file.
+     *
+     * @const {Position} position
+     */
+    const position: Position = { end: token_match.point, start: token.point }
+
+    /**
+     * Block tag regex.
+     *
+     * @const {RegExp} regex
+     */
+    const regex: RegExp = /^(?<tag>@\S+)(?<text>\s+.+)?$/s
+
+    /**
+     * Block tag node value.
+     *
+     * @const {string} value
+     */
+    const value: string = this.uncomment(this.source(position)!)
+
+    // get node data
+    const [, tag = '', text = ''] = regex.exec(value)!
+
+    return u(Type.BLOCK_TAG, {
+      children,
+      position,
+      tag,
+      text: text.trim(),
+      value
+    })
+  }
+
+  /**
+   * Creates an [**inline tag**][1] node.
+   *
+   * [1]: https://github.com/flex-development/docast#inlinetag
+   *
+   * @protected
+   *
+   * @param {Token} token - Token to create node from
+   * @param {number} k - Difference between `token` index and lexer position
+   * @return {InlineTag} Inline tag node
+   * @throws {SyntaxError}
+   */
+  protected parseTagInline(token: Token, k: number): InlineTag {
+    // throw if token is of unexpected kind
+    if (token.kind !== TokenKind.TAG_INLINE_START) {
+      throw new SyntaxError('expected token of kind TAG_INLINE_START')
+    }
+
+    /**
+     * Possible inline tag end token.
+     *
+     * @const {Nullable<Token>} token_match
+     */
+    const token_match: Nullable<Token> = this.lexer.peek(k + 1)
+
+    // throw if inline tag end token was not found
+    if (token_match?.kind !== TokenKind.TAG_INLINE_END) {
+      throw new SyntaxError('expected token of kind TAG_INLINE_END')
+    }
+
+    /**
+     * Inline tag regex.
+     *
+     * @const {RegExp} regex
+     */
+    const regex: RegExp = /^{(?<tag>@\S+(?<text>\s+.+?))}$/s
+
+    /**
+     * Position of inline tag in source file.
+     *
+     * @const {Position} position
+     */
+    const position: Position = { end: token_match.point, start: token.point }
+
+    // get node data
+    const [, tag = '', text = ''] = regex.exec(token.value!)!
+
+    return u(Type.INLINE_TAG, {
+      position,
+      tag,
+      text: text.trim(),
+      value: token.value!
+    })
   }
 
   /**
@@ -583,19 +562,19 @@ class Parser extends AbstractParser<Root> {
    * @return {Nullable<string>} Source code or `null`
    */
   protected source(value: unist.Node | unist.Position): Nullable<string> {
-    return source(value, this.file)
+    return source(value, this.lexer.file)
   }
 
   /**
-   * Removes comment delimiters (`/**`, `*\/`, ` * `) from `value`.
+   * Removes comment delimiters from `value`.
    *
    * @protected
    *
-   * @param {string} raw - Raw node value to normalize
-   * @return {string} `value` as human-readable string
+   * @param {string} value - Node value to normalize
+   * @return {string} `value` without comment delimiters
    */
-  protected uncomment(raw: string): string {
-    return raw.replace(/^\/\*\*(?:\n| +)|(?:\n| +)\*\/$|^ +\* ?/gm, '')
+  protected uncomment(value: string): string {
+    return value.replace(/^\/\*\*(?:\n| +)|(?:\n| +)\*\/$|^ +\* ?/gm, '')
   }
 }
 

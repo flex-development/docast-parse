@@ -26,9 +26,18 @@ const config = {
       }
     },
     {
-      files: ['__fixtures__/log-level.ts'],
+      files: ['src/parser-abstract.ts'],
       rules: {
-        '@typescript-eslint/prefer-enum-initializers': 0
+        '@typescript-eslint/no-useless-constructor': 0,
+        '@typescript-eslint/no-unused-vars': [
+          2,
+          {
+            args: 'none',
+            caughtErrors: 'all',
+            ignoreRestSiblings: false,
+            vars: 'all'
+          }
+        ]
       }
     }
   ]

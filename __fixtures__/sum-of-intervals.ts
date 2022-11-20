@@ -28,7 +28,7 @@ export default function (intervals: [number, number][]): number {
   // sort intervals array
   intervals = intervals.sort((a, b) => a[0] - b[0])
 
-  /** @var {number} sum - Sum of intervals in {@link intervals} */
+  /** @var {number} sum - Sum of intervals in {@linkcode intervals} */
   let sum: number = 0
 
   // calculate sum

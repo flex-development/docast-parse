@@ -3,159 +3,250 @@
  * @module docast-parse/tests/parser/unit
  */
 
-import snippet from '#tests/utils/snippet'
-import { Kind, Type } from '@flex-development/docast'
+import { LexerState, TokenKind } from '#src/enums'
+import type { Token } from '#src/interfaces'
+import type { Point } from '@flex-development/docast'
 import fs from 'node:fs'
 import path from 'node:path'
 import { VFile } from 'vfile'
 import TestSubject from '../parser'
 
 describe('unit:parser', () => {
-  let comment: string
   let document: string
-  let documentpath: string
   let subject: TestSubject
 
   beforeEach(() => {
-    documentpath = path.resolve('__fixtures__/buddy.ts')
-    document = fs.readFileSync(documentpath, 'utf8')
+    document = fs.readFileSync(path.resolve('__fixtures__/buddy.ts'), 'utf8')
     subject = new TestSubject(document, new VFile(document))
-    comment = snippet(document, 8, 36)
   })
 
-  describe('#findBlockTags', () => {
-    it('should find block tags in comment', () => {
-      // Act
-      // @ts-expect-error ts(2445)
-      const result = subject.findBlockTags(comment)
+  describe('#parseComment', () => {
+    let subject: TestSubject
 
-      // Expect
-      expect(result).to.be.an('array').of.length(8)
-      expect(result[0]).to.have.property('children')
-      expect(result[0]!.children).to.be.an('array').of.length(1)
-      expect(result[0]!.tag).to.equal('@see')
-      expect(result[0]!.value).to.equal('@see {@link psum}')
-      expect(result[0]).to.have.property('position')
-      expect(result[0]).to.have.property('type').equal(Type.BLOCK_TAG)
-    })
-  })
-
-  describe('#findComments', () => {
-    it('should find comments in #document', () => {
-      // Act
-      // @ts-expect-error ts(2445)
-      const result = subject.findComments()
-
-      // Expect
-      expect(result).to.be.an('array').of.length(4)
-      expect(result).each.to.have.a.property('type').that.equals(Type.COMMENT)
-      expect(result[0]).to.have.property('children')
-      expect(result[0]!.context).to.be.null
-      expect(result[0]!.value).to.equal(snippet(document, 1, 5))
-      expect(result[0]).to.have.property('position')
-      expect(result[1]).to.have.property('children')
-      expect(result[1]!.context).to.not.be.null
-      expect(result[1]!.context!.identifier).to.equal('buddy')
-      expect(result[1]!.context!.kind).to.equal(Kind.CONST)
-      expect(result[1]!.context!.members).to.be.an('array').of.length(0)
-      expect(result[1]!.context!.modifiers).to.be.an('array').of.length(0)
-      expect(result[1]!.context!.parent).to.be.null
-      expect(result[1]!.context).to.have.property('position')
-      expect(result[1]!.value).to.equal(comment)
-      expect(result[1]).to.have.property('position')
-      expect(result[2]).to.have.property('children')
-      expect(result[2]!.context).to.not.be.null
-      expect(result[2]!.context!.identifier).to.equal('m')
-      expect(result[2]!.context!.kind).to.equal(Kind.CONST)
-      expect(result[2]!.context!.members).to.be.an('array').of.length(0)
-      expect(result[2]!.context!.modifiers).to.be.an('array').of.length(0)
-      expect(result[2]!.context!.parent).to.be.null
-      expect(result[2]!.context).to.have.property('position')
-      expect(result[2]!.value).to.equal(snippet(document, 38, 39))
-      expect(result[2]).to.have.property('position')
-      expect(result[3]).to.have.property('children')
-      expect(result[3]!.context).to.not.be.null
-      expect(result[3]!.context!.identifier).to.equal('if')
-      expect(result[3]!.context!.kind).to.equal(Kind.UNKNOWN)
-      expect(result[3]!.context!.members).to.be.an('array').of.length(0)
-      expect(result[3]!.context!.modifiers).to.be.an('array').of.length(0)
-      expect(result[3]!.context!.parent).to.be.null
-      expect(result[3]!.context).to.have.property('position')
-      expect(result[3]!.value).to.equal(snippet(document, 41, 42))
-      expect(result[3]).to.have.property('position')
+    beforeEach(() => {
+      subject = new TestSubject('', new VFile(''))
     })
 
-    it('should return empty array if #document is empty', () => {
+    it('should throw if token is not of kind COMMENT_START', () => {
       // Arrange
-      const subject = new TestSubject('', new VFile(''))
+      let error: SyntaxError | undefined
 
-      // Act + Expect
-      // @ts-expect-error ts(2445)
-      expect(subject.findComments()).to.be.an('array').of.length(0)
+      // Act
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseComment({} as Token, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
+
+      // Expect
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind COMMENT_START')
     })
-  })
 
-  describe('#findImplicitDescription', () => {
-    it('should find implicit description in comment', () => {
+    it('should throw if token match is not of kind COMMENT_END', () => {
       // Arrange
-      const value: string = `The divisors of positive integer \`n\` are said to be \`proper\` when considering\ndivisors other than \`n\` itself.\n\nLet \`s(n)\` be the sum of \`proper\` divisors of \`n\`. Call \`buddy\` two positive\nintegers such that the sum of the \`proper\` divisors of each number is one\nmore than the other number:\n\n\`[n, m]\` are \`buddy\` if \`s(m) = n + 1\` and \`s(n) = m + 1\`\n\nGiven two positive integers, \`start\` and \`limit\`, the function returns the\nfirst pair of \`buddy pairs\` such that \`start <= n <= limit\` and \`m > n\`.`
+      const kind: TokenKind = TokenKind.COMMENT_START
+      const point: Point = { column: 1, line: 1, offset: 0 }
+      const state: LexerState = LexerState.COMMENT
+      let error: SyntaxError | undefined
 
       // Act
-      // @ts-expect-error ts(2445)
-      const result = subject.findImplicitDescription(comment)
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseComment({ kind, point, state, value: '/**' }, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
 
       // Expect
-      expect(result).to.not.be.null
-      expect(result).to.have.property('children')
-      expect(result!.children).to.be.an('array').of.length(0)
-      expect(result!.value).to.equal(value)
-      expect(result).to.have.property('position')
-      expect(result).to.have.property('type').equal(Type.IMPLICIT_DESCRIPTION)
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind COMMENT_END')
+    })
+  })
+
+  describe('#parseContext', () => {
+    let subject: TestSubject
+
+    beforeEach(() => {
+      subject = new TestSubject('', new VFile(''))
     })
 
-    it('should return null if implicit description is not found', () => {
+    it('should throw if token match is not of kind CONTEXT_END', () => {
       // Arrange
-      const comment = document.split('\nimport')[0]!
+      const kind: TokenKind = TokenKind.CONTEXT_START
+      const point: Point = { column: 1, line: 36, offset: 1005 }
+      const state: LexerState = LexerState.READY
+      let error: SyntaxError | undefined
 
-      // Act + Expect
-      // @ts-expect-error ts(2445)
-      expect(subject.findImplicitDescription(comment)).to.be.null
+      // Act
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseContext({ kind, point, state, value: '' }, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
+
+      // Expect
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind CONTEXT_END')
     })
   })
 
-  describe('#findInlineTags', () => {
-    it('should find inline tags in node value', () => {
+  describe('#parseImplicitDescription', () => {
+    let subject: TestSubject
+
+    const kinds: (keyof typeof TokenKind)[] = [
+      'IMPLICIT_DESCRIPTION_START',
+      'IMPLICIT_DESCRIPTION_END'
+    ]
+
+    beforeEach(() => {
+      subject = new TestSubject('', new VFile(''))
+    })
+
+    it(`should throw if token is not of kind ${kinds[0]}`, () => {
+      // Arrange
+      const kind: keyof typeof TokenKind = kinds[0]!
+      let error: SyntaxError | undefined
+
       // Act
-      // @ts-expect-error ts(2445)
-      const result = subject.findInlineTags('@see {@link psum}')
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseImplicitDescription({} as Token, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
 
       // Expect
-      expect(result).to.be.an('array').of.length(1)
-      expect(result[0]).to.not.have.property('children')
-      expect(result[0]!.tag).to.equal('@link')
-      expect(result[0]!.value).to.equal('{@link psum}')
-      expect(result[0]).to.have.property('position')
-      expect(result[0]).to.have.property('type').equal(Type.INLINE_TAG)
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal(`expected token of kind ${kind}`)
+    })
+
+    it(`should throw if token match is not of kind ${kinds[1]}`, () => {
+      // Arrange
+      const kind_expected: keyof typeof TokenKind = kinds[1]!
+      const kind: TokenKind = TokenKind.IMPLICIT_DESCRIPTION_START
+      const point: Point = { column: 4, line: 9, offset: 95 }
+      const state: LexerState = LexerState.IMPLICIT_DESCRIPTION
+      let error: SyntaxError | undefined
+
+      // Act
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseImplicitDescription({ kind, point, state, value: 'T' }, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
+
+      // Expect
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal(`expected token of kind ${kind_expected}`)
     })
   })
 
-  describe('#position', () => {
-    it('should calculate node position', () => {
+  describe('#parseTagBlock', () => {
+    let subject: TestSubject
+
+    beforeEach(() => {
+      subject = new TestSubject('', new VFile(''))
+    })
+
+    it('should throw if token is not of kind TAG_BLOCK_START', () => {
+      // Arrange
+      let error: SyntaxError | undefined
+
       // Act
-      // @ts-expect-error ts(2445)
-      const result = subject.position(comment)
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseTagBlock({} as Token, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
 
       // Expect
-      expect(result.end.column).to.equal(4)
-      expect(result.end.line).to.equal(35)
-      expect(result.indent).to.be.undefined
-      expect(result.start.column).to.equal(1)
-      expect(result.start.line).to.equal(8)
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind TAG_BLOCK_START')
+    })
+
+    it('should throw if token match is not of kind TAG_BLOCK_END', () => {
+      // Arrange
+      const kind: TokenKind = TokenKind.TAG_BLOCK_START
+      const point: Point = { column: 4, line: 2, offset: 7 }
+      const state: LexerState = LexerState.COMMENT
+      let error: SyntaxError | undefined
+
+      // Act
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseTagBlock({ kind, point, state, value: '@' }, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
+
+      // Expect
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind TAG_BLOCK_END')
+    })
+  })
+
+  describe('#parseTagInline', () => {
+    let subject: TestSubject
+
+    beforeEach(() => {
+      subject = new TestSubject('', new VFile(''))
+    })
+
+    it('should throw if token is not of kind TAG_INLINE_START', () => {
+      // Arrange
+      let error: SyntaxError | undefined
+
+      // Act
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseTagInline({} as Token, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
+
+      // Expect
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind TAG_INLINE_START')
+    })
+
+    it('should throw if token match is not of kind TAG_INLINE_END', () => {
+      // Arrange
+      const kind: TokenKind = TokenKind.TAG_INLINE_START
+      const point: Point = { column: 9, line: 21, offset: 631 }
+      const state: LexerState = LexerState.COMMENT
+      const value: string = '{@link psum}'
+      let error: SyntaxError | undefined
+
+      // Act
+      try {
+        // @ts-expect-error ts(2445)
+        subject.parseTagInline({ kind, point, state, value }, 0)
+      } catch (e: unknown) {
+        error = e as typeof error
+      }
+
+      // Expect
+      expect(error).to.not.be.undefined
+      expect(error).toBeInstanceOf(SyntaxError)
+      expect(error?.message).to.equal('expected token of kind TAG_INLINE_END')
     })
   })
 
   describe('#uncomment', () => {
-    it('should remove comment delimiters from raw node value', () => {
+    it('should remove comment delimiters from node value', () => {
       // Arrange
       const raw: string = `@example\n *  buddy(1071625, 1103735) // [1081184, 1331967]`
       const expected: string = `@example\n buddy(1071625, 1103735) // [1081184, 1331967]`

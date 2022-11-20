@@ -799,7 +799,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:17.2.0"
     "@commitlint/types": "npm:17.0.0"
     "@faker-js/faker": "npm:7.6.0"
-    "@flex-development/docast": "npm:1.0.0-alpha.2"
+    "@flex-development/docast": "npm:1.0.0-alpha.9"
     "@flex-development/mkbuild": "npm:1.0.0-alpha.9"
     "@flex-development/tutils": "npm:5.0.1"
     "@graphql-eslint/eslint-plugin": "npm:3.12.0"
@@ -829,8 +829,9 @@ __metadata:
     conventional-changelog-cli: "npm:2.2.2"
     conventional-recommended-bump: "npm:6.1.0"
     cspell: "npm:6.13.3"
-    detab: "npm:3.0.1"
+    detab: "npm:3.0.2"
     esbuild: "npm:0.15.12"
+    escape-string-regexp: "npm:5.0.0"
     eslint: "npm:8.26.0"
     eslint-config-prettier: "npm:8.5.0"
     eslint-plugin-chai-expect: "npm:3.0.0"
@@ -858,13 +859,13 @@ __metadata:
     trash-cli: "npm:5.0.0"
     ts-dedent: "npm:2.2.0"
     ts-node: "npm:10.9.1"
-    typescript: "npm:4.9.1-beta"
+    typescript: "npm:4.9.3"
     unified: "npm:10.1.2"
     unist-builder: "npm:3.0.0"
     unist-util-inspect: "npm:7.0.1"
     unist-util-source: "npm:4.0.1"
     version-bump-prompt: "npm:6.1.0"
-    vfile: "npm:5.3.5"
+    vfile: "npm:5.3.6"
     vfile-location: "npm:4.0.1"
     vite: "npm:3.2.2"
     vite-tsconfig-paths: "npm:3.5.2"
@@ -874,13 +875,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flex-development/docast@npm:1.0.0-alpha.2":
-  version: 1.0.0-alpha.2
-  resolution: "@flex-development/docast@npm:1.0.0-alpha.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.2%2F2ff8288709964d71216163c4e130fdd6c2afe31b"
+"@flex-development/docast@npm:1.0.0-alpha.9":
+  version: 1.0.0-alpha.9
+  resolution: "@flex-development/docast@npm:1.0.0-alpha.9::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40flex-development%2Fdocast%2F1.0.0-alpha.9%2F66ff339ebec32a579949cdadfca879963472ff4b"
   peerDependencies:
     "@flex-development/tutils": ">=5.0.1"
     "@types/unist": ">=2.0.6"
-  checksum: dc746f1708f03d56285d227aaaddce837a9096949054f6a2bcff2fb49f10f135920260feddf1c999c98c032a41f4b8bb59cf1283bc92e919b5f60be65e62a5a1
+  checksum: 6f12286ac8ef6ec164730cb34c30a5f366ace7f137636c851fa6ccf8bc0aeb8ce5dfcc49a2b43aebc0850c7f3e9142a1ff4db9e5df593eb85f87e9411b9f23e7
   languageName: node
   linkType: hard
 
@@ -3202,10 +3203,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detab@npm:3.0.1":
-  version: 3.0.1
-  resolution: "detab@npm:3.0.1"
-  checksum: f32aaf02cedd9298c4a6c3dab664957e8c68fb486ce7df1e31f49cb7941ca8e6e0a559bea674619f3e49c6264374ef2d8337e34fc8631e0e716d79876bdcf667
+"detab@npm:3.0.2":
+  version: 3.0.2
+  resolution: "detab@npm:3.0.2"
+  checksum: ccd42aa42a082ff0944ba26b60919d4867559878503478c419c08619dfb11994f94928a0c8467d56895dc6096f24a764d33456cd98900662a023c2a16beea393
   languageName: node
   linkType: hard
 
@@ -7768,43 +7769,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.9.1-beta":
-  version: 4.9.1-beta
-  resolution: "typescript@npm:4.9.1-beta"
+"typescript@npm:4.9.3, typescript@npm:^4.6.4":
+  version: 4.9.3
+  resolution: "typescript@npm:4.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: e024fb9fb4abd95c2b2fa877ec9b3aab833a388690709d2e12aef0a9adc12be95fb2f9410b479a5b3c277c240b026e92e82227a5e4ece1868b57ce5be6f45cef
+  checksum: b0aafee5d6427b67fc557c46a6e9c093586444db463fde7a19ffc4eecc31889246210ff679f8384769dc99fca975bba5ac17411816855bb2d8a549e4fe442cc7
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4":
-  version: 4.8.4
-  resolution: "typescript@npm:4.8.4"
+"typescript@patch:typescript@npm%3A4.9.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
+  version: 4.9.3
+  resolution: "typescript@patch:typescript@npm%3A4.9.3#optional!builtin<compat/typescript>::version=4.9.3&hash=f456af"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 008c336ed785130b6e13254adbfc4084f5dbbe62851df9bac3eaf62fc29e0a396839c00ce47e0d92db44fa9a08b9f7ba4d31304f2b10cf7d42a0817728e822a1
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A4.9.1-beta#optional!builtin<compat/typescript>":
-  version: 4.9.1-beta
-  resolution: "typescript@patch:typescript@npm%3A4.9.1-beta#optional!builtin<compat/typescript>::version=4.9.1-beta&hash=f456af"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: e1b8503af0da4bb32b92bdb9c391973a30087d50adcc2f7c24a4ed17031ae50f5ab099fa0fcb5d89f190f72c1118b7ed9ddb396a86bf48a59fd6936ceed05611
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
-  version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=f456af"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 696783974850fa4a345b270a7629f37bbb5277504e7262a105e44d3e3776a4337f13b5f0a484ebb0b377449391a7fd270746c8c9f7492bfa389613477fb5ea6a
+  checksum: e449b7c143ae3e87375ffb8be9a37880c6d61720337fcc7c211b129fc8f43016c366cd9f1d0c13f35cd3a1ffe4f108f0ededc75eb70e8cfeac4e5a8f011e3f82
   languageName: node
   linkType: hard
 
@@ -8077,15 +8058,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile@npm:5.3.5, vfile@npm:^5.0.0":
-  version: 5.3.5
-  resolution: "vfile@npm:5.3.5"
+"vfile@npm:5.3.6, vfile@npm:^5.0.0":
+  version: 5.3.6
+  resolution: "vfile@npm:5.3.6"
   dependencies:
     "@types/unist": "npm:^2.0.0"
     is-buffer: "npm:^2.0.0"
     unist-util-stringify-position: "npm:^3.0.0"
     vfile-message: "npm:^3.0.0"
-  checksum: 4218377dc295aa22dd99ed47d148d75b73a6137d6de98cdc6d13694b7075411b1722867ce7a7e02b624ddd86e80a84afdde77489dbacec5e65532259beee6b55
+  checksum: a31b69ea7dd0aa23da7c99b0b96fa6e3f9cfd57f2a1010dad4493762b5e3a38688638ca8ca9fb0f93602f67f47208fedbee189d81fd949ef42b8bb335c1a824f
   languageName: node
   linkType: hard
 

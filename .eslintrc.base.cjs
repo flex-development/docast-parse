@@ -281,7 +281,7 @@ const config = {
     '@typescript-eslint/no-var-requires': 2,
     '@typescript-eslint/padding-line-between-statements': 0,
     '@typescript-eslint/prefer-as-const': 2,
-    '@typescript-eslint/prefer-enum-initializers': 2,
+    '@typescript-eslint/prefer-enum-initializers': 0,
     '@typescript-eslint/prefer-for-of': 2,
     '@typescript-eslint/prefer-function-type': 2,
     '@typescript-eslint/prefer-includes': 0,
@@ -711,7 +711,7 @@ const config = {
         '@typescript-eslint/no-unnecessary-condition': [
           2,
           {
-            allowConstantLoopConditions: false,
+            allowConstantLoopConditions: true,
             allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false
           }
         ],

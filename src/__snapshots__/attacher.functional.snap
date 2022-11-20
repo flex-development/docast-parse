@@ -7,83 +7,101 @@ root[7]
 │   │ value: "/**\\n * @file Fixtures - Person\\n * @module fixtures/Person\\n */"
 │   ├─0 block-tag[0] (2:4-2:27, 7-30)
 │   │     tag: "@file"
+│   │     text: "Fixtures - Person"
 │   │     value: "@file Fixtures - Person"
 │   └─1 block-tag[0] (3:4-3:27, 34-57)
 │         tag: "@module"
+│         text: "fixtures/Person"
 │         value: "@module fixtures/Person"
 ├─1 comment[2] (6:1-10:4, 63-119)
-│   │ context: {"identifier":"Person","kind":"class","members":["#Stringifier","first_name","last_name","constructor","toString"],"modifiers":["abstract"],"parent":null,"position":{"end":{"line":56,"column":2,"offset":991},"start":{"line":11,"column":1,"offset":120}}}
+│   │ context: {"identifier":"Person","kind":"class","parent":null,"position":{"end":{"line":56,"column":2,"offset":991},"start":{"line":11,"column":1,"offset":120}}}
 │   │ value: "/**\\n * Object representing a person.\\n *\\n * @abstract\\n */"
 │   ├─0 implicit-description[0] (7:4-7:33, 70-99)
 │   │     value: "Object representing a person."
 │   └─1 block-tag[0] (9:4-9:13, 106-115)
 │         tag: "@abstract"
+│         text: ""
 │         value: "@abstract"
 ├─2 comment[4] (12:3-18:6, 146-256)
-│   │ context: {"identifier":"#Stringifier","kind":"class","members":[],"modifiers":["static"],"parent":"Person","position":{"end":{"line":19,"column":33,"offset":289},"start":{"line":19,"column":3,"offset":259}}}
+│   │ context: {"identifier":"#Stringifier","kind":"class","parent":"Person","position":{"end":{"line":19,"column":33,"offset":289},"start":{"line":19,"column":3,"offset":259}}}
 │   │ value: "/**\\n   * Creates string representations of \`Person\` objects.\\n   *\\n   * @private\\n   * @static\\n   * @class\\n   */"
 │   ├─0 implicit-description[0] (13:6-13:57, 155-206)
 │   │     value: "Creates string representations of \`Person\` objects."
 │   ├─1 block-tag[0] (15:6-15:14, 217-225)
 │   │     tag: "@private"
+│   │     text: ""
 │   │     value: "@private"
 │   ├─2 block-tag[0] (16:6-16:13, 231-238)
 │   │     tag: "@static"
+│   │     text: ""
 │   │     value: "@static"
 │   └─3 block-tag[0] (17:6-17:12, 244-250)
 │         tag: "@class"
+│         text: ""
 │         value: "@class"
 ├─3 comment[3] (21:3-25:6, 293-376)
-│   │ context: {"identifier":"first_name","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"Person","position":{"end":{"line":26,"column":28,"offset":404},"start":{"line":26,"column":3,"offset":379}}}
+│   │ context: {"identifier":"first_name","kind":"property","parent":"Person","position":{"end":{"line":26,"column":28,"offset":404},"start":{"line":26,"column":3,"offset":379}}}
 │   │ value: "/**\\n   * @public\\n   * @instance\\n   * @member {string} first_name - First name\\n   */"
 │   ├─0 block-tag[0] (22:6-22:13, 302-309)
 │   │     tag: "@public"
+│   │     text: ""
 │   │     value: "@public"
 │   ├─1 block-tag[0] (23:6-23:15, 315-324)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─2 block-tag[0] (24:6-24:46, 330-370)
 │         tag: "@member"
+│         text: "{string} first_name - First name"
 │         value: "@member {string} first_name - First name"
 ├─4 comment[3] (28:3-32:6, 408-489)
-│   │ context: {"identifier":"last_name","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"Person","position":{"end":{"line":33,"column":27,"offset":516},"start":{"line":33,"column":3,"offset":492}}}
+│   │ context: {"identifier":"last_name","kind":"property","parent":"Person","position":{"end":{"line":33,"column":27,"offset":516},"start":{"line":33,"column":3,"offset":492}}}
 │   │ value: "/**\\n   * @public\\n   * @instance\\n   * @member {string} last_name - Last name\\n   */"
 │   ├─0 block-tag[0] (29:6-29:13, 417-424)
 │   │     tag: "@public"
+│   │     text: ""
 │   │     value: "@public"
 │   ├─1 block-tag[0] (30:6-30:15, 430-439)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─2 block-tag[0] (31:6-31:44, 445-483)
 │         tag: "@member"
+│         text: "{string} last_name - Last name"
 │         value: "@member {string} last_name - Last name"
 ├─5 comment[3] (35:3-40:6, 520-649)
-│   │ context: {"identifier":"constructor","kind":"constructor","members":[],"modifiers":[],"parent":"Person","position":{"end":{"line":44,"column":4,"offset":772},"start":{"line":41,"column":3,"offset":652}}}
+│   │ context: {"identifier":"constructor","kind":"constructor","parent":"Person","position":{"end":{"line":44,"column":4,"offset":772},"start":{"line":41,"column":3,"offset":652}}}
 │   │ value: "/**\\n   * Creates a new person.\\n   *\\n   * @param {string} first_name - First name\\n   * @param {string} last_name - Last name\\n   */"
 │   ├─0 implicit-description[0] (36:6-36:27, 529-550)
 │   │     value: "Creates a new person."
 │   ├─1 block-tag[0] (38:6-38:45, 561-600)
 │   │     tag: "@param"
+│   │     text: "{string} first_name - First name"
 │   │     value: "@param {string} first_name - First name"
 │   └─2 block-tag[0] (39:6-39:43, 606-643)
 │         tag: "@param"
+│         text: "{string} last_name - Last name"
 │         value: "@param {string} last_name - Last name"
 └─6 comment[5] (46:3-54:6, 776-952)
-    │ context: {"identifier":"toString","kind":"method-declaration","members":[],"modifiers":["public","abstract"],"parent":"Person","position":{"end":{"line":55,"column":37,"offset":989},"start":{"line":55,"column":3,"offset":955}}}
+    │ context: {"identifier":"toString","kind":"method","parent":"Person","position":{"end":{"line":55,"column":37,"offset":989},"start":{"line":55,"column":3,"offset":955}}}
     │ value: "/**\\n   * Returns a string representation of the current person.\\n   *\\n   * @public\\n   * @instance\\n   * @abstract\\n   *\\n   * @return {string} String representation of \`this\`\\n   */"
     ├─0 implicit-description[0] (47:6-47:60, 785-839)
     │     value: "Returns a string representation of the current person."
     ├─1 block-tag[0] (49:6-49:13, 850-857)
     │     tag: "@public"
+    │     text: ""
     │     value: "@public"
     ├─2 block-tag[0] (50:6-50:15, 863-872)
     │     tag: "@instance"
+    │     text: ""
     │     value: "@instance"
     ├─3 block-tag[0] (51:6-51:15, 878-887)
     │     tag: "@abstract"
+    │     text: ""
     │     value: "@abstract"
     └─4 block-tag[0] (53:6-53:54, 898-946)
           tag: "@return"
+          text: "{string} String representation of \`this\`"
           value: "@return {string} String representation of \`this\`"
 `;
 
@@ -94,74 +112,91 @@ root[7]
 │   │ value: "/**\\n * @file Fixtures - dblLinear\\n * @module fixtures/dblLinear\\n * @see https://codewars.com/kata/5672682212c8ecf83e000050\\n */"
 │   ├─0 block-tag[0] (2:4-2:30, 7-33)
 │   │     tag: "@file"
+│   │     text: "Fixtures - dblLinear"
 │   │     value: "@file Fixtures - dblLinear"
 │   ├─1 block-tag[0] (3:4-3:30, 37-63)
 │   │     tag: "@module"
+│   │     text: "fixtures/dblLinear"
 │   │     value: "@module fixtures/dblLinear"
 │   └─2 block-tag[0] (4:4-4:59, 67-122)
 │         tag: "@see"
+│         text: "https://codewars.com/kata/5672682212c8ecf83e000050"
 │         value: "@see https://codewars.com/kata/5672682212c8ecf83e000050"
 ├─1 comment[8] (7:1-29:4, 128-724)
-│   │ context: {"identifier":"dblLinear","kind":"function","members":[],"modifiers":["async"],"parent":null,"position":{"end":{"line":59,"column":2,"offset":1515},"start":{"line":30,"column":1,"offset":725}}}
+│   │ context: {"identifier":"dblLinear","kind":"function","parent":null,"position":{"end":{"line":61,"column":2,"offset":1537},"start":{"line":30,"column":1,"offset":725}}}
 │   │ value: "/**\\n * Consider a sequence \`u\` where \`u\` is defined as follows:\\n *\\n * 1. The number \`u(0) = 1\` is the first one in \`u\`\\n * 2. For each \`x\` in \`u\`, \`y = 2x + 1\` and \`z = 3x + 1\` must be in \`u\` too\\n * 3. There are no other numbers in \`u\`\\n *\\n * Given an index, \`n\`, the function returns the element at \`u(n)\`.\\n *\\n * @async\\n *\\n * @example\\n *  await dblLinear(0) // 1\\n * @example\\n *  await dblLinear(10) // 22\\n * @example\\n *  await dblLinear(100) // 447\\n * @example\\n *  await dblLinear(7687) // 111718\\n *\\n * @param {number} n - Index of element to get\\n * @return {Promise<number>} Element at \`u(n)\`\\n */"
 │   ├─0 implicit-description[0] (8:4-14:68, 135-433)
 │   │     value: "Consider a sequence \`u\` where \`u\` is defined as follows:\\n\\n1. The number \`u(0) = 1\` is the first one in \`u\`\\n2. For each \`x\` in \`u\`, \`y = 2x + 1\` and \`z = 3x + 1\` must be in \`u\` too\\n3. There are no other numbers in \`u\`\\n\\nGiven an index, \`n\`, the function returns the element at \`u(n)\`."
 │   ├─1 block-tag[0] (16:4-16:10, 440-446)
 │   │     tag: "@async"
+│   │     text: ""
 │   │     value: "@async"
 │   ├─2 block-tag[0] (18:4-19:28, 453-489)
 │   │     tag: "@example"
+│   │     text: "await dblLinear(0) // 1"
 │   │     value: "@example\\n await dblLinear(0) // 1"
 │   ├─3 block-tag[0] (20:4-21:30, 493-531)
 │   │     tag: "@example"
+│   │     text: "await dblLinear(10) // 22"
 │   │     value: "@example\\n await dblLinear(10) // 22"
 │   ├─4 block-tag[0] (22:4-23:32, 535-575)
 │   │     tag: "@example"
+│   │     text: "await dblLinear(100) // 447"
 │   │     value: "@example\\n await dblLinear(100) // 447"
 │   ├─5 block-tag[0] (24:4-25:36, 579-623)
 │   │     tag: "@example"
+│   │     text: "await dblLinear(7687) // 111718"
 │   │     value: "@example\\n await dblLinear(7687) // 111718"
 │   ├─6 block-tag[0] (27:4-27:47, 630-673)
 │   │     tag: "@param"
+│   │     text: "{number} n - Index of element to get"
 │   │     value: "@param {number} n - Index of element to get"
 │   └─7 block-tag[0] (28:4-28:47, 677-720)
 │         tag: "@return"
+│         text: "{Promise<number>} Element at \`u(n)\`"
 │         value: "@return {Promise<number>} Element at \`u(n)\`"
 ├─2 comment[1] (31:3-31:40, 782-819)
-│   │ context: {"identifier":"u","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":32,"column":26,"offset":845},"start":{"line":32,"column":3,"offset":822}}}
+│   │ context: {"identifier":"u","kind":"const","parent":"dblLinear","position":{"end":{"line":32,"column":26,"offset":845},"start":{"line":32,"column":3,"offset":822}}}
 │   │ value: "/** @const {number[]} u - Sequence */"
 │   └─0 block-tag[0] (31:7-31:37, 786-816)
 │         tag: "@const"
+│         text: "{number[]} u - Sequence"
 │         value: "@const {number[]} u - Sequence"
-├─3 comment[1] (34:3-34:71, 849-917)
-│   │ context: {"identifier":"j","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":35,"column":20,"offset":937},"start":{"line":35,"column":3,"offset":920}}}
-│   │ value: "/** @var {number} j - Index of x in {@link u} used to calculate y */"
-│   └─0 block-tag[1] (34:7-34:68, 853-914)
+├─3 comment[1] (34:3-34:75, 849-921)
+│   │ context: {"identifier":"j","kind":"let","parent":"dblLinear","position":{"end":{"line":35,"column":20,"offset":941},"start":{"line":35,"column":3,"offset":924}}}
+│   │ value: "/** @var {number} j - Index of x in {@linkcode u} used to calculate y */"
+│   └─0 block-tag[1] (34:7-34:72, 853-918)
 │       │ tag: "@var"
-│       │ value: "@var {number} j - Index of x in {@link u} used to calculate y"
-│       └─0 inline-tag "{@link u}" (34:39-34:48, 885-894)
-│             tag: "@link"
-│             value: "{@link u}"
-├─4 comment[1] (37:3-37:71, 941-1009)
-│   │ context: {"identifier":"k","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":38,"column":20,"offset":1029},"start":{"line":38,"column":3,"offset":1012}}}
-│   │ value: "/** @var {number} k - Index of x in {@link u} used to calculate z */"
-│   └─0 block-tag[1] (37:7-37:68, 945-1006)
+│       │ text: "{number} j - Index of x in {@linkcode u} used to calculate y"
+│       │ value: "@var {number} j - Index of x in {@linkcode u} used to calculate y"
+│       └─0 inline-tag "{@linkcode u}" (34:39-34:52, 885-898)
+│             tag: "@linkcode u"
+│             text: "u"
+│             value: "{@linkcode u}"
+├─4 comment[1] (37:3-37:75, 945-1017)
+│   │ context: {"identifier":"k","kind":"let","parent":"dblLinear","position":{"end":{"line":38,"column":20,"offset":1037},"start":{"line":38,"column":3,"offset":1020}}}
+│   │ value: "/** @var {number} k - Index of x in {@linkcode u} used to calculate z */"
+│   └─0 block-tag[1] (37:7-37:72, 949-1014)
 │       │ tag: "@var"
-│       │ value: "@var {number} k - Index of x in {@link u} used to calculate z"
-│       └─0 inline-tag "{@link u}" (37:39-37:48, 977-986)
-│             tag: "@link"
-│             value: "{@link u}"
-├─5 comment[1] (42:5-42:35, 1114-1144)
-│   │ context: {"identifier":"y","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":43,"column":36,"offset":1180},"start":{"line":43,"column":5,"offset":1149}}}
+│       │ text: "{number} k - Index of x in {@linkcode u} used to calculate z"
+│       │ value: "@var {number} k - Index of x in {@linkcode u} used to calculate z"
+│       └─0 inline-tag "{@linkcode u}" (37:39-37:52, 981-994)
+│             tag: "@linkcode u"
+│             text: "u"
+│             value: "{@linkcode u}"
+├─5 comment[1] (44:5-44:35, 1133-1163)
+│   │ context: {"identifier":"y","kind":"const","parent":"dblLinear","position":{"end":{"line":45,"column":36,"offset":1199},"start":{"line":45,"column":5,"offset":1168}}}
 │   │ value: "/** @const {number} y - \`y\` */"
-│   └─0 block-tag[0] (42:9-42:32, 1118-1141)
+│   └─0 block-tag[0] (44:9-44:32, 1137-1160)
 │         tag: "@const"
+│         text: "{number} y - \`y\`"
 │         value: "@const {number} y - \`y\`"
-└─6 comment[1] (45:5-45:35, 1186-1216)
-    │ context: {"identifier":"z","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":46,"column":36,"offset":1252},"start":{"line":46,"column":5,"offset":1221}}}
+└─6 comment[1] (47:5-47:35, 1205-1235)
+    │ context: {"identifier":"z","kind":"const","parent":"dblLinear","position":{"end":{"line":48,"column":36,"offset":1271},"start":{"line":48,"column":5,"offset":1240}}}
     │ value: "/** @const {number} z - \`z\` */"
-    └─0 block-tag[0] (45:9-45:32, 1190-1213)
+    └─0 block-tag[0] (47:9-47:32, 1209-1232)
           tag: "@const"
+          text: "{number} z - \`z\`"
           value: "@const {number} z - \`z\`"
 `;
 
@@ -172,50 +207,66 @@ root[4]
 │   │ value: "/**\\n * @file Fixtures - fibonacci\\n * @module fixtures/fibonacci\\n */"
 │   ├─0 block-tag[0] (2:4-2:30, 7-33)
 │   │     tag: "@file"
+│   │     text: "Fixtures - fibonacci"
 │   │     value: "@file Fixtures - fibonacci"
 │   └─1 block-tag[0] (3:4-3:30, 37-63)
 │         tag: "@module"
+│         text: "fixtures/fibonacci"
 │         value: "@module fixtures/fibonacci"
-├─1 comment[8] (8:1-21:4, 123-423)
-│   │ context: {"identifier":"fibonacci","kind":"function*","members":[],"modifiers":["async"],"parent":null,"position":{"end":{"line":33,"column":2,"offset":848},"start":{"line":22,"column":1,"offset":424}}}
-│   │ value: "/**\\n * Fibonacci sequence generator.\\n *\\n * @see {@link FibonacciSequence}\\n *\\n * @async\\n *\\n * @generator\\n * @yield {number} Next number in fibonacci sequence\\n * @next {void}\\n *\\n * @param {number} max - Max sequence value\\n * @return {AsyncGenerator<number, void, void>} Fibonacci sequence generator\\n */"
-│   ├─0 implicit-description[0] (9:4-9:33, 130-159)
-│   │     value: "Fibonacci sequence generator."
-│   ├─1 block-tag[1] (11:4-11:34, 166-196)
+├─1 comment[8] (8:1-21:4, 123-462)
+│   │ context: {"identifier":"fibonacci","kind":"function*","parent":null,"position":{"end":{"line":33,"column":2,"offset":887},"start":{"line":22,"column":1,"offset":463}}}
+│   │ value: "/**\\n * [Fibonacci sequence]({@link ./fibonacci-sequence.ts}) generator.\\n *\\n * @see {@linkcode FibonacciSequence}\\n *\\n * @async\\n *\\n * @generator\\n * @yield {number} Next number in fibonacci sequence\\n * @next {void}\\n *\\n * @param {number} max - Max sequence value\\n * @return {AsyncGenerator<number, void, void>} Fibonacci sequence generator\\n */"
+│   ├─0 implicit-description[1] (9:4-9:68, 130-194)
+│   │   │ value: "[Fibonacci sequence]({@link ./fibonacci-sequence.ts}) generator."
+│   │   └─0 inline-tag "{@link ./fibonacci-sequence.ts}" (9:25-9:56, 151-182)
+│   │         tag: "@link ./fibonacci-sequence.ts"
+│   │         text: "./fibonacci-sequence.ts"
+│   │         value: "{@link ./fibonacci-sequence.ts}"
+│   ├─1 block-tag[1] (11:4-11:38, 201-235)
 │   │   │ tag: "@see"
-│   │   │ value: "@see {@link FibonacciSequence}"
-│   │   └─0 inline-tag "{@link FibonacciSequence}" (11:9-11:34, 171-196)
-│   │         tag: "@link"
-│   │         value: "{@link FibonacciSequence}"
-│   ├─2 block-tag[0] (13:4-13:10, 203-209)
+│   │   │ text: "{@linkcode FibonacciSequence}"
+│   │   │ value: "@see {@linkcode FibonacciSequence}"
+│   │   └─0 inline-tag "{@linkcode FibonacciSequence}" (11:9-11:38, 206-235)
+│   │         tag: "@linkcode FibonacciSequence"
+│   │         text: "FibonacciSequence"
+│   │         value: "{@linkcode FibonacciSequence}"
+│   ├─2 block-tag[0] (13:4-13:10, 242-248)
 │   │     tag: "@async"
+│   │     text: ""
 │   │     value: "@async"
-│   ├─3 block-tag[0] (15:4-15:14, 216-226)
+│   ├─3 block-tag[0] (15:4-15:14, 255-265)
 │   │     tag: "@generator"
+│   │     text: ""
 │   │     value: "@generator"
-│   ├─4 block-tag[0] (16:4-16:53, 230-279)
+│   ├─4 block-tag[0] (16:4-16:53, 269-318)
 │   │     tag: "@yield"
+│   │     text: "{number} Next number in fibonacci sequence"
 │   │     value: "@yield {number} Next number in fibonacci sequence"
-│   ├─5 block-tag[0] (17:4-17:16, 283-295)
+│   ├─5 block-tag[0] (17:4-17:16, 322-334)
 │   │     tag: "@next"
+│   │     text: "{void}"
 │   │     value: "@next {void}"
-│   ├─6 block-tag[0] (19:4-19:44, 302-342)
+│   ├─6 block-tag[0] (19:4-19:44, 341-381)
 │   │     tag: "@param"
+│   │     text: "{number} max - Max sequence value"
 │   │     value: "@param {number} max - Max sequence value"
-│   └─7 block-tag[0] (20:4-20:77, 346-419)
+│   └─7 block-tag[0] (20:4-20:77, 385-458)
 │         tag: "@return"
+│         text: "{AsyncGenerator<number, void, void>} Fibonacci sequence generator"
 │         value: "@return {AsyncGenerator<number, void, void>} Fibonacci sequence generator"
-├─2 comment[1] (23:3-23:66, 503-566)
-│   │ context: {"identifier":"sequence","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":24,"column":65,"offset":631},"start":{"line":24,"column":3,"offset":569}}}
+├─2 comment[1] (23:3-23:66, 542-605)
+│   │ context: {"identifier":"sequence","kind":"const","parent":"fibonacci","position":{"end":{"line":24,"column":65,"offset":670},"start":{"line":24,"column":3,"offset":608}}}
 │   │ value: "/** @const {FibonacciSequence} sequence - Fibonacci sequence */"
-│   └─0 block-tag[0] (23:7-23:63, 507-563)
+│   └─0 block-tag[0] (23:7-23:63, 546-602)
 │         tag: "@const"
+│         text: "{FibonacciSequence} sequence - Fibonacci sequence"
 │         value: "@const {FibonacciSequence} sequence - Fibonacci sequence"
-└─3 comment[1] (26:3-26:77, 635-709)
-    │ context: {"identifier":"curr","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":27,"column":61,"offset":770},"start":{"line":27,"column":3,"offset":712}}}
+└─3 comment[1] (26:3-26:77, 674-748)
+    │ context: {"identifier":"curr","kind":"let","parent":"fibonacci","position":{"end":{"line":27,"column":61,"offset":809},"start":{"line":27,"column":3,"offset":751}}}
     │ value: "/** @var {IteratorResult<number, number>} curr - Current sequence value */"
-    └─0 block-tag[0] (26:7-26:74, 639-706)
+    └─0 block-tag[0] (26:7-26:74, 678-745)
           tag: "@var"
+          text: "{IteratorResult<number, number>} curr - Current sequence value"
           value: "@var {IteratorResult<number, number>} curr - Current sequence value"
 `;
 
@@ -226,98 +277,119 @@ root[9]
 │   │ value: "/**\\n * @file Fixtures - FibonacciSequence\\n * @module fixtures/FibonacciSequence\\n * @see https://codewars.com/kata/55695bc4f75bbaea5100016b\\n */"
 │   ├─0 block-tag[0] (2:4-2:38, 7-41)
 │   │     tag: "@file"
+│   │     text: "Fixtures - FibonacciSequence"
 │   │     value: "@file Fixtures - FibonacciSequence"
 │   ├─1 block-tag[0] (3:4-3:38, 45-79)
 │   │     tag: "@module"
+│   │     text: "fixtures/FibonacciSequence"
 │   │     value: "@module fixtures/FibonacciSequence"
 │   └─2 block-tag[0] (4:4-4:59, 83-138)
 │         tag: "@see"
+│         text: "https://codewars.com/kata/55695bc4f75bbaea5100016b"
 │         value: "@see https://codewars.com/kata/55695bc4f75bbaea5100016b"
 ├─1 comment[2] (7:1-11:4, 144-228)
-│   │ context: {"identifier":"FibonacciSequence","kind":"class","members":["fib1","fib2","#max","constructor","[Symbol.iterator]","next"],"modifiers":[],"parent":null,"position":{"end":{"line":73,"column":2,"offset":1566},"start":{"line":12,"column":1,"offset":229}}}
+│   │ context: {"identifier":"FibonacciSequence","kind":"class","parent":null,"position":{"end":{"line":73,"column":2,"offset":1566},"start":{"line":12,"column":1,"offset":229}}}
 │   │ value: "/**\\n * Fibonacci sequence iterator.\\n *\\n * @implements {Iterator<number, number>}\\n */"
 │   ├─0 implicit-description[0] (8:4-8:32, 151-179)
 │   │     value: "Fibonacci sequence iterator."
 │   └─1 block-tag[0] (10:4-10:42, 186-224)
 │         tag: "@implements"
+│         text: "{Iterator<number, number>}"
 │         value: "@implements {Iterator<number, number>}"
 ├─2 comment[3] (13:3-17:6, 293-388)
-│   │ context: {"identifier":"fib1","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":18,"column":26,"offset":414},"start":{"line":18,"column":3,"offset":391}}}
+│   │ context: {"identifier":"fib1","kind":"property","parent":"FibonacciSequence","position":{"end":{"line":18,"column":26,"offset":414},"start":{"line":18,"column":3,"offset":391}}}
 │   │ value: "/**\\n   * @public\\n   * @instance\\n   * @member {number} fib1 - First current sequence value\\n   */"
 │   ├─0 block-tag[0] (14:6-14:13, 302-309)
 │   │     tag: "@public"
+│   │     text: ""
 │   │     value: "@public"
 │   ├─1 block-tag[0] (15:6-15:15, 315-324)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─2 block-tag[0] (16:6-16:58, 330-382)
 │         tag: "@member"
+│         text: "{number} fib1 - First current sequence value"
 │         value: "@member {number} fib1 - First current sequence value"
 ├─3 comment[3] (20:3-24:6, 418-514)
-│   │ context: {"identifier":"fib2","kind":"property-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":25,"column":26,"offset":540},"start":{"line":25,"column":3,"offset":517}}}
+│   │ context: {"identifier":"fib2","kind":"property","parent":"FibonacciSequence","position":{"end":{"line":25,"column":26,"offset":540},"start":{"line":25,"column":3,"offset":517}}}
 │   │ value: "/**\\n   * @public\\n   * @instance\\n   * @member {number} fib2 - Second current sequence value\\n   */"
 │   ├─0 block-tag[0] (21:6-21:13, 427-434)
 │   │     tag: "@public"
+│   │     text: ""
 │   │     value: "@public"
 │   ├─1 block-tag[0] (22:6-22:15, 440-449)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─2 block-tag[0] (23:6-23:59, 455-508)
 │         tag: "@member"
+│         text: "{number} fib2 - Second current sequence value"
 │         value: "@member {number} fib2 - Second current sequence value"
 ├─4 comment[3] (27:3-31:6, 544-629)
-│   │ context: {"identifier":"#max","kind":"property-declaration","members":[],"modifiers":[],"parent":"FibonacciSequence","position":{"end":{"line":32,"column":15,"offset":644},"start":{"line":32,"column":3,"offset":632}}}
+│   │ context: {"identifier":"#max","kind":"property","parent":"FibonacciSequence","position":{"end":{"line":32,"column":15,"offset":644},"start":{"line":32,"column":3,"offset":632}}}
 │   │ value: "/**\\n   * @private\\n   * @instance\\n   * @member {number} max - Max sequence value\\n   */"
 │   ├─0 block-tag[0] (28:6-28:14, 553-561)
 │   │     tag: "@private"
+│   │     text: ""
 │   │     value: "@private"
 │   ├─1 block-tag[0] (29:6-29:15, 567-576)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─2 block-tag[0] (30:6-30:47, 582-623)
 │         tag: "@member"
+│         text: "{number} max - Max sequence value"
 │         value: "@member {number} max - Max sequence value"
 ├─5 comment[2] (34:3-38:6, 648-782)
-│   │ context: {"identifier":"constructor","kind":"constructor","members":[],"modifiers":[],"parent":"FibonacciSequence","position":{"end":{"line":41,"column":4,"offset":875},"start":{"line":39,"column":3,"offset":785}}}
+│   │ context: {"identifier":"constructor","kind":"constructor","parent":"FibonacciSequence","position":{"end":{"line":41,"column":4,"offset":875},"start":{"line":39,"column":3,"offset":785}}}
 │   │ value: "/**\\n   * Creates a new fibonacci sequence iterator.\\n   *\\n   * @param {number} [max=Number.MAX_SAFE_INTEGER] - Max sequence value\\n   */"
 │   ├─0 implicit-description[0] (35:6-35:48, 657-699)
 │   │     value: "Creates a new fibonacci sequence iterator."
 │   └─1 block-tag[0] (37:6-37:72, 710-776)
 │         tag: "@param"
+│         text: "{number} [max=Number.MAX_SAFE_INTEGER] - Max sequence value"
 │         value: "@param {number} [max=Number.MAX_SAFE_INTEGER] - Max sequence value"
 ├─6 comment[4] (43:3-50:6, 879-1016)
-│   │ context: {"identifier":"[Symbol.iterator]","kind":"method-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":53,"column":4,"offset":1093},"start":{"line":51,"column":3,"offset":1019}}}
+│   │ context: {"identifier":"[Symbol.iterator]","kind":"method","parent":"FibonacciSequence","position":{"end":{"line":53,"column":4,"offset":1093},"start":{"line":51,"column":3,"offset":1019}}}
 │   │ value: "/**\\n   * Iterable protocol.\\n   *\\n   * @public\\n   * @instance\\n   *\\n   * @return {IterableIterator<number>} Current sequence iterator\\n   */"
 │   ├─0 implicit-description[0] (44:6-44:24, 888-906)
 │   │     value: "Iterable protocol."
 │   ├─1 block-tag[0] (46:6-46:13, 917-924)
 │   │     tag: "@public"
+│   │     text: ""
 │   │     value: "@public"
 │   ├─2 block-tag[0] (47:6-47:15, 930-939)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─3 block-tag[0] (49:6-49:66, 950-1010)
 │         tag: "@return"
+│         text: "{IterableIterator<number>} Current sequence iterator"
 │         value: "@return {IterableIterator<number>} Current sequence iterator"
 ├─7 comment[4] (55:3-62:6, 1097-1268)
-│   │ context: {"identifier":"next","kind":"method-declaration","members":[],"modifiers":["public"],"parent":"FibonacciSequence","position":{"end":{"line":72,"column":4,"offset":1564},"start":{"line":63,"column":3,"offset":1271}}}
+│   │ context: {"identifier":"next","kind":"method","parent":"FibonacciSequence","position":{"end":{"line":72,"column":4,"offset":1564},"start":{"line":63,"column":3,"offset":1271}}}
 │   │ value: "/**\\n   * Returns the next value in the fibonacci sequence.\\n   *\\n   * @public\\n   * @instance\\n   *\\n   * @return {IteratorResult<number, number>} Next value in sequence\\n   */"
 │   ├─0 implicit-description[0] (56:6-56:55, 1106-1155)
 │   │     value: "Returns the next value in the fibonacci sequence."
 │   ├─1 block-tag[0] (58:6-58:13, 1166-1173)
 │   │     tag: "@public"
+│   │     text: ""
 │   │     value: "@public"
 │   ├─2 block-tag[0] (59:6-59:15, 1179-1188)
 │   │     tag: "@instance"
+│   │     text: ""
 │   │     value: "@instance"
 │   └─3 block-tag[0] (61:6-61:69, 1199-1262)
 │         tag: "@return"
+│         text: "{IteratorResult<number, number>} Next value in sequence"
 │         value: "@return {IteratorResult<number, number>} Next value in sequence"
 └─8 comment[1] (64:5-64:60, 1323-1378)
-    │ context: {"identifier":"value","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":65,"column":36,"offset":1414},"start":{"line":65,"column":5,"offset":1383}}}
+    │ context: {"identifier":"value","kind":"const","parent":"next","position":{"end":{"line":65,"column":36,"offset":1414},"start":{"line":65,"column":5,"offset":1383}}}
     │ value: "/** @const {number} value - Temporary sequence value */"
     └─0 block-tag[0] (64:9-64:57, 1327-1375)
           tag: "@const"
+          text: "{number} value - Temporary sequence value"
           value: "@const {number} value - Temporary sequence value"
 `;
 
@@ -328,17 +400,20 @@ root[2]
 │   │ value: "/**\\n * @file Fixtures - LogLevel\\n * @module fixtures/LogLevel\\n */"
 │   ├─0 block-tag[0] (2:4-2:29, 7-32)
 │   │     tag: "@file"
+│   │     text: "Fixtures - LogLevel"
 │   │     value: "@file Fixtures - LogLevel"
 │   └─1 block-tag[0] (3:4-3:29, 36-61)
 │         tag: "@module"
+│         text: "fixtures/LogLevel"
 │         value: "@module fixtures/LogLevel"
 └─1 comment[2] (6:1-10:4, 67-110)
-    │ context: {"identifier":"LogLevel","kind":"const enum","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":18,"column":2,"offset":188},"start":{"line":11,"column":1,"offset":111}}}
+    │ context: {"identifier":"LogLevel","kind":"const enum","parent":null,"position":{"end":{"line":18,"column":2,"offset":188},"start":{"line":11,"column":1,"offset":111}}}
     │ value: "/**\\n * Log levels.\\n *\\n * @enum {number}\\n */"
     ├─0 implicit-description[0] (7:4-7:15, 74-85)
     │     value: "Log levels."
     └─1 block-tag[0] (9:4-9:18, 92-106)
           tag: "@enum"
+          text: "{number}"
           value: "@enum {number}"
 `;
 
@@ -349,47 +424,58 @@ root[4]
 │   │ value: "/**\\n * @file Fixtures - sumOfIntervals\\n * @module fixtures/sumOfIntervals\\n * @see https://codewars.com/kata/52b7ed099cdc285c300001cd\\n */"
 │   ├─0 block-tag[0] (2:4-2:35, 7-38)
 │   │     tag: "@file"
+│   │     text: "Fixtures - sumOfIntervals"
 │   │     value: "@file Fixtures - sumOfIntervals"
 │   ├─1 block-tag[0] (3:4-3:35, 42-73)
 │   │     tag: "@module"
+│   │     text: "fixtures/sumOfIntervals"
 │   │     value: "@module fixtures/sumOfIntervals"
 │   └─2 block-tag[0] (4:4-4:59, 77-132)
 │         tag: "@see"
+│         text: "https://codewars.com/kata/52b7ed099cdc285c300001cd"
 │         value: "@see https://codewars.com/kata/52b7ed099cdc285c300001cd"
 ├─1 comment[6] (7:1-20:4, 138-588)
-│   │ context: {"identifier":"default","kind":"default","members":[],"modifiers":["export","default"],"parent":null,"position":{"end":{"line":57,"column":2,"offset":1837},"start":{"line":21,"column":1,"offset":589}}}
+│   │ context: {"identifier":"default","kind":"function","parent":null,"position":{"end":{"line":57,"column":2,"offset":1841},"start":{"line":21,"column":1,"offset":589}}}
 │   │ value: "/**\\n * Given an array of intervals, all of varying lengths, the function returns the\\n * sum of all interval lengths. **Overlapping intervals will be counted once**.\\n *\\n * @example\\n *  sumOfIntervals([[1, 5]]) // 4\\n * @example\\n *  sumOfIntervals([[1, 4], [7, 10], [3, 5]]) // 7\\n * @example\\n *  sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // 11\\n *\\n * @param {[number, number][]} intervals - Intervals\\n * @return {number} Sum of all interval lengths\\n */"
 │   ├─0 implicit-description[0] (8:4-9:80, 145-302)
 │   │     value: "Given an array of intervals, all of varying lengths, the function returns the\\nsum of all interval lengths. **Overlapping intervals will be counted once**."
 │   ├─1 block-tag[0] (11:4-12:34, 309-351)
 │   │     tag: "@example"
+│   │     text: "sumOfIntervals([[1, 5]]) // 4"
 │   │     value: "@example\\n sumOfIntervals([[1, 5]]) // 4"
 │   ├─2 block-tag[0] (13:4-14:51, 355-414)
 │   │     tag: "@example"
+│   │     text: "sumOfIntervals([[1, 4], [7, 10], [3, 5]]) // 7"
 │   │     value: "@example\\n sumOfIntervals([[1, 4], [7, 10], [3, 5]]) // 7"
 │   ├─3 block-tag[0] (15:4-16:54, 418-480)
 │   │     tag: "@example"
+│   │     text: "sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // 11"
 │   │     value: "@example\\n sumOfIntervals([[1, 5], [10, 15], [-1, 3]]) // 11"
 │   ├─4 block-tag[0] (18:4-18:53, 487-536)
 │   │     tag: "@param"
+│   │     text: "{[number, number][]} intervals - Intervals"
 │   │     value: "@param {[number, number][]} intervals - Intervals"
 │   └─5 block-tag[0] (19:4-19:48, 540-584)
 │         tag: "@return"
+│         text: "{number} Sum of all interval lengths"
 │         value: "@return {number} Sum of all interval lengths"
-├─2 comment[1] (31:3-31:67, 971-1035)
-│   │ context: {"identifier":"sum","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":32,"column":22,"offset":1057},"start":{"line":32,"column":3,"offset":1038}}}
-│   │ value: "/** @var {number} sum - Sum of intervals in {@link intervals} */"
-│   └─0 block-tag[1] (31:7-31:64, 975-1032)
+├─2 comment[1] (31:3-31:71, 971-1039)
+│   │ context: {"identifier":"sum","kind":"let","parent":"default","position":{"end":{"line":32,"column":22,"offset":1061},"start":{"line":32,"column":3,"offset":1042}}}
+│   │ value: "/** @var {number} sum - Sum of intervals in {@linkcode intervals} */"
+│   └─0 block-tag[1] (31:7-31:68, 975-1036)
 │       │ tag: "@var"
-│       │ value: "@var {number} sum - Sum of intervals in {@link intervals}"
-│       └─0 inline-tag "{@link intervals}" (31:47-31:64, 1015-1032)
-│             tag: "@link"
-│             value: "{@link intervals}"
-└─3 comment[1] (36:5-36:74, 1129-1198)
-    │ context: {"identifier":"prev","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":37,"column":64,"offset":1262},"start":{"line":37,"column":5,"offset":1203}}}
+│       │ text: "{number} sum - Sum of intervals in {@linkcode intervals}"
+│       │ value: "@var {number} sum - Sum of intervals in {@linkcode intervals}"
+│       └─0 inline-tag "{@linkcode intervals}" (31:47-31:68, 1015-1036)
+│             tag: "@linkcode intervals"
+│             text: "intervals"
+│             value: "{@linkcode intervals}"
+└─3 comment[1] (36:5-36:74, 1133-1202)
+    │ context: {"identifier":"prev","kind":"const","parent":"default","position":{"end":{"line":37,"column":64,"offset":1266},"start":{"line":37,"column":5,"offset":1207}}}
     │ value: "/** @const {[number, number] | undefined} prev - Previous interval */"
-    └─0 block-tag[0] (36:9-36:71, 1133-1195)
+    └─0 block-tag[0] (36:9-36:71, 1137-1199)
           tag: "@const"
+          text: "{[number, number] | undefined} prev - Previous interval"
           value: "@const {[number, number] | undefined} prev - Previous interval"
 `;
 
@@ -400,41 +486,49 @@ root[5]
 │   │ value: "/**\\n * @file Fixtures - miniStringFuck\\n * @module fixtures/miniStringFuck\\n * @see https://codewars.com/kata/586dd26a69b6fd46dd0000c0\\n */"
 │   ├─0 block-tag[0] (2:4-2:35, 7-38)
 │   │     tag: "@file"
+│   │     text: "Fixtures - miniStringFuck"
 │   │     value: "@file Fixtures - miniStringFuck"
 │   ├─1 block-tag[0] (3:4-3:35, 42-73)
 │   │     tag: "@module"
+│   │     text: "fixtures/miniStringFuck"
 │   │     value: "@module fixtures/miniStringFuck"
 │   └─2 block-tag[0] (4:4-4:59, 77-132)
 │         tag: "@see"
+│         text: "https://codewars.com/kata/586dd26a69b6fd46dd0000c0"
 │         value: "@see https://codewars.com/kata/586dd26a69b6fd46dd0000c0"
 ├─1 comment[3] (7:1-14:4, 138-331)
-│   │ context: {"identifier":"default","kind":"default","members":[],"modifiers":["export","default"],"parent":null,"position":{"end":{"line":32,"column":2,"offset":830},"start":{"line":15,"column":1,"offset":332}}}
+│   │ context: {"identifier":"default","kind":"default","parent":null,"position":{"end":{"line":32,"column":2,"offset":830},"start":{"line":15,"column":1,"offset":332}}}
 │   │ value: "/**\\n * [MiniStringFuck][1] interpreter.\\n *\\n * [1]: https://esolangs.org/wiki/MiniStringFuck\\n *\\n * @param {string} code - MiniStringFuck program to execute\\n * @return {string} Program output\\n */"
 │   ├─0 implicit-description[0] (8:4-10:49, 145-229)
 │   │     value: "[MiniStringFuck][1] interpreter.\\n\\n[1]: https://esolangs.org/wiki/MiniStringFuck"
 │   ├─1 block-tag[0] (12:4-12:60, 236-292)
 │   │     tag: "@param"
+│   │     text: "{string} code - MiniStringFuck program to execute"
 │   │     value: "@param {string} code - MiniStringFuck program to execute"
 │   └─2 block-tag[0] (13:4-13:35, 296-327)
 │         tag: "@return"
+│         text: "{string} Program output"
 │         value: "@return {string} Program output"
 ├─2 comment[1] (16:3-16:78, 377-452)
-│   │ context: {"identifier":"MAX_MEMORY","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":17,"column":33,"offset":485},"start":{"line":17,"column":3,"offset":455}}}
+│   │ context: {"identifier":"MAX_MEMORY","kind":"const","parent":"default","position":{"end":{"line":17,"column":33,"offset":485},"start":{"line":17,"column":3,"offset":455}}}
 │   │ value: "/** @const {number} MAX_MEMORY - Max amount of memory that can be stored */"
 │   └─0 block-tag[0] (16:7-16:75, 381-449)
 │         tag: "@const"
+│         text: "{number} MAX_MEMORY - Max amount of memory that can be stored"
 │         value: "@const {number} MAX_MEMORY - Max amount of memory that can be stored"
 ├─3 comment[1] (19:3-19:42, 489-528)
-│   │ context: {"identifier":"cell","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":20,"column":23,"offset":551},"start":{"line":20,"column":3,"offset":531}}}
+│   │ context: {"identifier":"cell","kind":"let","parent":"default","position":{"end":{"line":20,"column":23,"offset":551},"start":{"line":20,"column":3,"offset":531}}}
 │   │ value: "/** @var {number} cell - Memory cell */"
 │   └─0 block-tag[0] (19:7-19:39, 493-525)
 │         tag: "@var"
+│         text: "{number} cell - Memory cell"
 │         value: "@var {number} cell - Memory cell"
 └─4 comment[1] (22:3-22:47, 555-599)
-    │ context: {"identifier":"output","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":23,"column":26,"offset":625},"start":{"line":23,"column":3,"offset":602}}}
+    │ context: {"identifier":"output","kind":"let","parent":"default","position":{"end":{"line":23,"column":26,"offset":625},"start":{"line":23,"column":3,"offset":602}}}
     │ value: "/** @var {string} output - Program output */"
     └─0 block-tag[0] (22:7-22:44, 559-596)
           tag: "@var"
+          text: "{string} output - Program output"
           value: "@var {string} output - Program output"
 `;
 
@@ -445,35 +539,38 @@ root[6]
 │   │ value: "/**\\n * @file Fixtures - Op\\n * @module fixtures/Op\\n */"
 │   ├─0 block-tag[0] (2:4-2:23, 7-26)
 │   │     tag: "@file"
+│   │     text: "Fixtures - Op"
 │   │     value: "@file Fixtures - Op"
 │   └─1 block-tag[0] (3:4-3:23, 30-49)
 │         tag: "@module"
+│         text: "fixtures/Op"
 │         value: "@module fixtures/Op"
 ├─1 comment[2] (6:1-10:4, 55-125)
-│   │ context: {"identifier":"Op","kind":"enum","members":["ADD","DIVIDE","MULTIPLY","SUBTRACT"],"modifiers":[],"parent":null,"position":{"end":{"line":23,"column":2,"offset":325},"start":{"line":11,"column":1,"offset":126}}}
+│   │ context: {"identifier":"Op","kind":"enum","parent":null,"position":{"end":{"line":23,"column":2,"offset":325},"start":{"line":11,"column":1,"offset":126}}}
 │   │ value: "/**\\n * Mathematical operators.\\n *\\n * @enum {'+' | '$' | '*' | '-'}\\n */"
 │   ├─0 implicit-description[0] (7:4-7:27, 62-85)
 │   │     value: "Mathematical operators."
 │   └─1 block-tag[0] (9:4-9:33, 92-121)
 │         tag: "@enum"
+│         text: "{'+' | '$' | '*' | '-'}"
 │         value: "@enum {'+' | '$' | '*' | '-'}"
 ├─2 comment[1] (12:3-12:28, 138-163)
-│   │ context: {"identifier":"ADD","kind":"enum-member","members":[],"modifiers":[],"parent":"Op","position":{"end":{"line":13,"column":13,"offset":176},"start":{"line":13,"column":3,"offset":166}}}
+│   │ context: {"identifier":"ADD","kind":"member","parent":"Op","position":{"end":{"line":13,"column":13,"offset":176},"start":{"line":13,"column":3,"offset":166}}}
 │   │ value: "/** Addition operator. */"
 │   └─0 implicit-description[0] (12:7-12:25, 142-160)
 │         value: "Addition operator."
 ├─3 comment[1] (15:3-15:28, 180-205)
-│   │ context: {"identifier":"DIVIDE","kind":"enum-member","members":[],"modifiers":[],"parent":"Op","position":{"end":{"line":16,"column":16,"offset":221},"start":{"line":16,"column":3,"offset":208}}}
+│   │ context: {"identifier":"DIVIDE","kind":"member","parent":"Op","position":{"end":{"line":16,"column":16,"offset":221},"start":{"line":16,"column":3,"offset":208}}}
 │   │ value: "/** Division operator. */"
 │   └─0 implicit-description[0] (15:7-15:25, 184-202)
 │         value: "Division operator."
 ├─4 comment[1] (18:3-18:34, 225-256)
-│   │ context: {"identifier":"MULTIPLY","kind":"enum-member","members":[],"modifiers":[],"parent":"Op","position":{"end":{"line":19,"column":18,"offset":274},"start":{"line":19,"column":3,"offset":259}}}
+│   │ context: {"identifier":"MULTIPLY","kind":"member","parent":"Op","position":{"end":{"line":19,"column":18,"offset":274},"start":{"line":19,"column":3,"offset":259}}}
 │   │ value: "/** Multiplication operator. */"
 │   └─0 implicit-description[0] (18:7-18:31, 229-253)
 │         value: "Multiplication operator."
 └─5 comment[1] (21:3-21:31, 278-306)
-    │ context: {"identifier":"SUBTRACT","kind":"enum-member","members":[],"modifiers":[],"parent":"Op","position":{"end":{"line":22,"column":17,"offset":323},"start":{"line":22,"column":3,"offset":309}}}
+    │ context: {"identifier":"SUBTRACT","kind":"member","parent":"Op","position":{"end":{"line":22,"column":17,"offset":323},"start":{"line":22,"column":3,"offset":309}}}
     │ value: "/** Subtraction operator. */"
     └─0 implicit-description[0] (21:7-21:28, 282-303)
           value: "Subtraction operator."
@@ -486,85 +583,104 @@ root[8]
 │   │ value: "/**\\n * @file Fixtures - calculate\\n * @module fixtures/calculate\\n * @see https://codewars.com/kata/581bc0629ad9ff9873000316\\n */"
 │   ├─0 block-tag[0] (2:4-2:30, 7-33)
 │   │     tag: "@file"
+│   │     text: "Fixtures - calculate"
 │   │     value: "@file Fixtures - calculate"
 │   ├─1 block-tag[0] (3:4-3:30, 37-63)
 │   │     tag: "@module"
+│   │     text: "fixtures/calculate"
 │   │     value: "@module fixtures/calculate"
 │   └─2 block-tag[0] (4:4-4:59, 67-122)
 │         tag: "@see"
+│         text: "https://codewars.com/kata/581bc0629ad9ff9873000316"
 │         value: "@see https://codewars.com/kata/581bc0629ad9ff9873000316"
 ├─1 comment[9] (9:1-38:4, 151-1005)
-│   │ context: {"identifier":"calculate","kind":"function","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":103,"column":2,"offset":3209},"start":{"line":39,"column":1,"offset":1006}}}
+│   │ context: {"identifier":"calculate","kind":"function","parent":null,"position":{"end":{"line":103,"column":2,"offset":3209},"start":{"line":39,"column":1,"offset":1006}}}
 │   │ value: "/**\\n * Given a stringified mathematical expression, \`expression\`, the function\\n * calculates the result and returns it as a number.\\n *\\n * Unless specified by \`order\`, calculations are performed according to the\\n * following order of operations:\\n *\\n * 1. division (\`$\`)\\n * 2. multiplication (\`*\`)\\n * 3. subtraction (\`-\`)\\n * 4. addition (\`+\`)\\n *\\n * If the expression is invalid, an error message will be returned instead.\\n *\\n * @example\\n *  calculate('1+1') // 2\\n * @example\\n *  calculate('10$2') // 5\\n * @example\\n *  calculate('1.5*3') // 4.5\\n * @example\\n *  calculate('1000$2.5$5+5-5+6$6') // 81\\n * @example\\n *  calculate('3.156696237618729e-8') // 3.156696237618729e-8\\n * @example\\n *  calculate('10-9p') // '400: Bad request'\\n *\\n * @param {string} expression - Mathematical expression\\n * @return {number | '400: Bad request'} Result or error message\\n */"
 │   ├─0 implicit-description[0] (10:4-21:76, 158-570)
 │   │     value: "Given a stringified mathematical expression, \`expression\`, the function\\ncalculates the result and returns it as a number.\\n\\nUnless specified by \`order\`, calculations are performed according to the\\nfollowing order of operations:\\n\\n1. division (\`$\`)\\n2. multiplication (\`*\`)\\n3. subtraction (\`-\`)\\n4. addition (\`+\`)\\n\\nIf the expression is invalid, an error message will be returned instead."
 │   ├─1 block-tag[0] (23:4-24:26, 577-611)
 │   │     tag: "@example"
+│   │     text: "calculate('1+1') // 2"
 │   │     value: "@example\\n calculate('1+1') // 2"
 │   ├─2 block-tag[0] (25:4-26:27, 615-650)
 │   │     tag: "@example"
+│   │     text: "calculate('10$2') // 5"
 │   │     value: "@example\\n calculate('10$2') // 5"
 │   ├─3 block-tag[0] (27:4-28:30, 654-692)
 │   │     tag: "@example"
+│   │     text: "calculate('1.5*3') // 4.5"
 │   │     value: "@example\\n calculate('1.5*3') // 4.5"
 │   ├─4 block-tag[0] (29:4-30:42, 696-746)
 │   │     tag: "@example"
+│   │     text: "calculate('1000$2.5$5+5-5+6$6') // 81"
 │   │     value: "@example\\n calculate('1000$2.5$5+5-5+6$6') // 81"
 │   ├─5 block-tag[0] (31:4-32:62, 750-820)
 │   │     tag: "@example"
+│   │     text: "calculate('3.156696237618729e-8') // 3.156696237618729e-8"
 │   │     value: "@example\\n calculate('3.156696237618729e-8') // 3.156696237618729e-8"
 │   ├─6 block-tag[0] (33:4-34:45, 824-877)
 │   │     tag: "@example"
+│   │     text: "calculate('10-9p') // '400: Bad request'"
 │   │     value: "@example\\n calculate('10-9p') // '400: Bad request'"
 │   ├─7 block-tag[0] (36:4-36:56, 884-936)
 │   │     tag: "@param"
+│   │     text: "{string} expression - Mathematical expression"
 │   │     value: "@param {string} expression - Mathematical expression"
 │   └─8 block-tag[0] (37:4-37:65, 940-1001)
 │         tag: "@return"
+│         text: "{number | '400: Bad request'} Result or error message"
 │         value: "@return {number | '400: Bad request'} Result or error message"
 ├─2 comment[4] (43:3-49:6, 1195-1435)
-│   │ context: {"identifier":"tt_expression","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":58,"column":4,"offset":1820},"start":{"line":50,"column":3,"offset":1438}}}
+│   │ context: {"identifier":"tt_expression","kind":"const","parent":"calculate","position":{"end":{"line":58,"column":4,"offset":1820},"start":{"line":50,"column":3,"offset":1438}}}
 │   │ value: "/**\\n   * Returns a regex object representing a two-term mathematical expression.\\n   *\\n   * @param {Op} [op] - Operator to create expression for\\n   * @param {string} [flags] - Regex flags\\n   * @return {RegExp} Two-term expression regex\\n   */"
 │   ├─0 implicit-description[0] (44:6-44:77, 1204-1275)
 │   │     value: "Returns a regex object representing a two-term mathematical expression."
 │   ├─1 block-tag[0] (46:6-46:58, 1286-1338)
 │   │     tag: "@param"
+│   │     text: "{Op} [op] - Operator to create expression for"
 │   │     value: "@param {Op} [op] - Operator to create expression for"
 │   ├─2 block-tag[0] (47:6-47:43, 1344-1381)
 │   │     tag: "@param"
+│   │     text: "{string} [flags] - Regex flags"
 │   │     value: "@param {string} [flags] - Regex flags"
 │   └─3 block-tag[0] (48:6-48:48, 1387-1429)
 │         tag: "@return"
+│         text: "{RegExp} Two-term expression regex"
 │         value: "@return {RegExp} Two-term expression regex"
 ├─3 comment[1] (51:5-51:72, 1503-1570)
-│   │ context: {"identifier":"one_term","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":52,"column":62,"offset":1632},"start":{"line":52,"column":5,"offset":1575}}}
+│   │ context: {"identifier":"one_term","kind":"const","parent":"tt_expression","position":{"end":{"line":52,"column":62,"offset":1632},"start":{"line":52,"column":5,"offset":1575}}}
 │   │ value: "/** @const {string} one_term - One-term expression regex pattern */"
 │   └─0 block-tag[0] (51:9-51:69, 1507-1567)
 │         tag: "@const"
+│         text: "{string} one_term - One-term expression regex pattern"
 │         value: "@const {string} one_term - One-term expression regex pattern"
 ├─4 comment[1] (54:5-54:61, 1638-1694)
-│   │ context: {"identifier":"operator","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":55,"column":55,"offset":1749},"start":{"line":55,"column":5,"offset":1699}}}
+│   │ context: {"identifier":"operator","kind":"const","parent":"tt_expression","position":{"end":{"line":55,"column":55,"offset":1749},"start":{"line":55,"column":5,"offset":1699}}}
 │   │ value: "/** @const {string} operator - Operator regex pattern */"
 │   └─0 block-tag[0] (54:9-54:58, 1642-1691)
 │         tag: "@const"
+│         text: "{string} operator - Operator regex pattern"
 │         value: "@const {string} operator - Operator regex pattern"
 ├─5 comment[1] (60:3-60:63, 1824-1884)
-│   │ context: {"identifier":"order","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":61,"column":80,"offset":1964},"start":{"line":61,"column":3,"offset":1887}}}
+│   │ context: {"identifier":"order","kind":"const","parent":"calculate","position":{"end":{"line":61,"column":80,"offset":1964},"start":{"line":61,"column":3,"offset":1887}}}
 │   │ value: "/** @const {[Op, Op, Op, Op]} order - Order of operations */"
 │   └─0 block-tag[0] (60:7-60:60, 1828-1881)
 │         tag: "@const"
+│         text: "{[Op, Op, Op, Op]} order - Order of operations"
 │         value: "@const {[Op, Op, Op, Op]} order - Order of operations"
 ├─6 comment[1] (67:7-67:61, 2132-2186)
-│   │ context: {"identifier":"tte","kind":"const","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":68,"column":44,"offset":2230},"start":{"line":68,"column":7,"offset":2193}}}
+│   │ context: {"identifier":"tte","kind":"const","parent":"calculate","position":{"end":{"line":68,"column":44,"offset":2230},"start":{"line":68,"column":7,"offset":2193}}}
 │   │ value: "/** @const {RegExp} tte - Two-term expression regex */"
 │   └─0 block-tag[0] (67:11-67:58, 2136-2183)
 │         tag: "@const"
+│         text: "{RegExp} tte - Two-term expression regex"
 │         value: "@const {RegExp} tte - Two-term expression regex"
 └─7 comment[1] (74:9-74:80, 2428-2499)
-    │ context: {"identifier":"result","kind":"let","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":75,"column":31,"offset":2530},"start":{"line":75,"column":9,"offset":2508}}}
+    │ context: {"identifier":"result","kind":"let","parent":"calculate","position":{"end":{"line":75,"column":31,"offset":2530},"start":{"line":75,"column":9,"offset":2508}}}
     │ value: "/** @var {number} result - Result of calculating two-term expression */"
     └─0 block-tag[0] (74:13-74:77, 2432-2496)
           tag: "@var"
+          text: "{number} result - Result of calculating two-term expression"
           value: "@var {number} result - Result of calculating two-term expression"
 `;
 
@@ -575,26 +691,32 @@ root[2]
 │   │ value: "/**\\n * @file Fixtures - alphabet\\n * @module fixtures/alphabet\\n */"
 │   ├─0 block-tag[0] (2:4-2:29, 7-32)
 │   │     tag: "@file"
+│   │     text: "Fixtures - alphabet"
 │   │     value: "@file Fixtures - alphabet"
 │   └─1 block-tag[0] (3:4-3:29, 36-61)
 │         tag: "@module"
+│         text: "fixtures/alphabet"
 │         value: "@module fixtures/alphabet"
 └─1 comment[5] (6:1-14:4, 67-238)
-    │ context: {"identifier":"alphabet","kind":"function*","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":42,"column":2,"offset":606},"start":{"line":15,"column":1,"offset":239}}}
+    │ context: {"identifier":"alphabet","kind":"function*","parent":null,"position":{"end":{"line":42,"column":2,"offset":606},"start":{"line":15,"column":1,"offset":239}}}
     │ value: "/**\\n * Alphabet generator.\\n *\\n * @generator\\n * @yield {string} Next letter in alphabet\\n * @next {void}\\n *\\n * @return {Generator<string, void, void>} Alphabet generator\\n */"
     ├─0 implicit-description[0] (7:4-7:23, 74-93)
     │     value: "Alphabet generator."
     ├─1 block-tag[0] (9:4-9:14, 100-110)
     │     tag: "@generator"
+    │     text: ""
     │     value: "@generator"
     ├─2 block-tag[0] (10:4-10:43, 114-153)
     │     tag: "@yield"
+    │     text: "{string} Next letter in alphabet"
     │     value: "@yield {string} Next letter in alphabet"
     ├─3 block-tag[0] (11:4-11:16, 157-169)
     │     tag: "@next"
+    │     text: "{void}"
     │     value: "@next {void}"
     └─4 block-tag[0] (13:4-13:62, 176-234)
           tag: "@return"
+          text: "{Generator<string, void, void>} Alphabet generator"
           value: "@return {Generator<string, void, void>} Alphabet generator"
 `;
 
@@ -605,137 +727,157 @@ root[7]
 │   │ value: "/**\\n * @file Fixtures - CoordinatePair\\n * @module fixtures/CoordinatePair\\n */"
 │   ├─0 block-tag[0] (2:4-2:35, 7-38)
 │   │     tag: "@file"
+│   │     text: "Fixtures - CoordinatePair"
 │   │     value: "@file Fixtures - CoordinatePair"
 │   └─1 block-tag[0] (3:4-3:35, 42-73)
 │         tag: "@module"
+│         text: "fixtures/CoordinatePair"
 │         value: "@module fixtures/CoordinatePair"
 ├─1 comment[1] (8:1-10:4, 123-204)
-│   │ context: {"identifier":"CoordinatePair","kind":"interface","members":["catch","x","y","type","toString"],"modifiers":[],"parent":null,"position":{"end":{"line":35,"column":2,"offset":661},"start":{"line":11,"column":1,"offset":205}}}
+│   │ context: {"identifier":"CoordinatePair","kind":"interface","parent":null,"position":{"end":{"line":35,"column":2,"offset":661},"start":{"line":11,"column":1,"offset":205}}}
 │   │ value: "/**\\n * Pair of numbers representing a single point on a two-dimensional grid.\\n */"
 │   └─0 implicit-description[0] (9:4-9:74, 130-200)
 │         value: "Pair of numbers representing a single point on a two-dimensional grid."
 ├─2 comment[3] (12:3-17:6, 234-354)
-│   │ context: {"identifier":"catch","kind":"method-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":18,"column":29,"offset":383},"start":{"line":18,"column":3,"offset":357}}}
+│   │ context: {"identifier":"catch","kind":"method","parent":"CoordinatePair","position":{"end":{"line":18,"column":29,"offset":383},"start":{"line":18,"column":3,"offset":357}}}
 │   │ value: "/**\\n   * Error handler.\\n   *\\n   * @param {Error} error - Error to handle\\n   * @return {void} Nothing when complete\\n   */"
 │   ├─0 implicit-description[0] (13:6-13:20, 243-257)
 │   │     value: "Error handler."
 │   ├─1 block-tag[0] (15:6-15:44, 268-306)
 │   │     tag: "@param"
+│   │     text: "{Error} error - Error to handle"
 │   │     value: "@param {Error} error - Error to handle"
 │   └─2 block-tag[0] (16:6-16:42, 312-348)
 │         tag: "@return"
+│         text: "{void} Nothing when complete"
 │         value: "@return {void} Nothing when complete"
 ├─3 comment[1] (20:3-20:23, 387-407)
-│   │ context: {"identifier":"x","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":21,"column":16,"offset":423},"start":{"line":21,"column":3,"offset":410}}}
+│   │ context: {"identifier":"x","kind":"property","parent":"CoordinatePair","position":{"end":{"line":21,"column":16,"offset":423},"start":{"line":21,"column":3,"offset":410}}}
 │   │ value: "/** x-coordinate. */"
 │   └─0 implicit-description[0] (20:7-20:20, 391-404)
 │         value: "x-coordinate."
 ├─4 comment[1] (23:3-23:23, 427-447)
-│   │ context: {"identifier":"y","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":24,"column":16,"offset":463},"start":{"line":24,"column":3,"offset":450}}}
+│   │ context: {"identifier":"y","kind":"property","parent":"CoordinatePair","position":{"end":{"line":24,"column":16,"offset":463},"start":{"line":24,"column":3,"offset":450}}}
 │   │ value: "/** y-coordinate. */"
 │   └─0 implicit-description[0] (23:7-23:20, 431-444)
 │         value: "y-coordinate."
 ├─5 comment[1] (26:3-26:26, 467-490)
-│   │ context: {"identifier":"type","kind":"property-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":27,"column":16,"offset":506},"start":{"line":27,"column":3,"offset":493}}}
+│   │ context: {"identifier":"type","kind":"property","parent":"CoordinatePair","position":{"end":{"line":27,"column":16,"offset":506},"start":{"line":27,"column":3,"offset":493}}}
 │   │ value: "/** Coordinate type. */"
 │   └─0 implicit-description[0] (26:7-26:23, 471-487)
 │         value: "Coordinate type."
 └─6 comment[2] (29:3-33:6, 510-638)
-    │ context: {"identifier":"toString","kind":"method-signature","members":[],"modifiers":[],"parent":"CoordinatePair","position":{"end":{"line":34,"column":21,"offset":659},"start":{"line":34,"column":3,"offset":641}}}
+    │ context: {"identifier":"toString","kind":"method","parent":"CoordinatePair","position":{"end":{"line":34,"column":21,"offset":659},"start":{"line":34,"column":3,"offset":641}}}
     │ value: "/**\\n   * Returns a string representation of the coordinate.\\n   *\\n   * @return {string} String representation of coordinate\\n   */"
     ├─0 implicit-description[0] (30:6-30:56, 519-569)
     │     value: "Returns a string representation of the coordinate."
     └─1 block-tag[0] (32:6-32:58, 580-632)
           tag: "@return"
+          text: "{string} String representation of coordinate"
           value: "@return {string} String representation of coordinate"
 `;
 
 exports[`functional:attacher > should create ast for module declaration 1`] = `
 root[8]
 ├─0 comment[1] (1:1-5:4, 0-99)
-│   │ context: {"identifier":"'fast-clean'","kind":"module-declaration","members":["ICleanerOptions","clean"],"modifiers":["declare"],"parent":null,"position":{"end":{"line":68,"column":2,"offset":1602},"start":{"line":6,"column":1,"offset":100}}}
+│   │ context: {"identifier":"'fast-clean'","kind":"module","parent":null,"position":{"end":{"line":68,"column":2,"offset":1602},"start":{"line":6,"column":1,"offset":100}}}
 │   │ value: "/**\\n * [\`fast-clean\`][1] module declaration.\\n *\\n * [1]: https://github.com/Youssef93/fast-clean\\n */"
 │   └─0 implicit-description[0] (2:4-4:48, 7-95)
 │         value: "[\`fast-clean\`][1] module declaration.\\n\\n[1]: https://github.com/Youssef93/fast-clean"
 ├─1 comment[1] (9:3-11:6, 195-234)
-│   │ context: {"identifier":"ICleanerOptions","kind":"interface","members":["emptyArraysCleaner","emptyObjectsCleaner","emptyStringsCleaner","nanCleaner","nullCleaner"],"modifiers":["export"],"parent":"'fast-clean'","position":{"end":{"line":47,"column":4,"offset":788},"start":{"line":12,"column":3,"offset":237}}}
+│   │ context: {"identifier":"ICleanerOptions","kind":"interface","parent":"'fast-clean'","position":{"end":{"line":47,"column":4,"offset":788},"start":{"line":12,"column":3,"offset":237}}}
 │   │ value: "/**\\n   * Object cleaning options.\\n   */"
 │   └─0 implicit-description[0] (10:6-10:30, 204-228)
 │         value: "Object cleaning options."
 ├─2 comment[2] (13:5-17:8, 276-343)
-│   │ context: {"identifier":"emptyArraysCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":18,"column":33,"offset":376},"start":{"line":18,"column":5,"offset":348}}}
+│   │ context: {"identifier":"emptyArraysCleaner","kind":"property","parent":"ICleanerOptions","position":{"end":{"line":18,"column":33,"offset":376},"start":{"line":18,"column":5,"offset":348}}}
 │   │ value: "/**\\n     * Remove empty arrays.\\n     *\\n     * @default true\\n     */"
 │   ├─0 implicit-description[0] (14:8-14:28, 287-307)
 │   │     value: "Remove empty arrays."
 │   └─1 block-tag[0] (16:8-16:21, 322-335)
 │         tag: "@default"
+│         text: "true"
 │         value: "@default true"
 ├─3 comment[2] (20:5-24:8, 382-450)
-│   │ context: {"identifier":"emptyObjectsCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":25,"column":34,"offset":484},"start":{"line":25,"column":5,"offset":455}}}
+│   │ context: {"identifier":"emptyObjectsCleaner","kind":"property","parent":"ICleanerOptions","position":{"end":{"line":25,"column":34,"offset":484},"start":{"line":25,"column":5,"offset":455}}}
 │   │ value: "/**\\n     * Remove empty objects.\\n     *\\n     * @default true\\n     */"
 │   ├─0 implicit-description[0] (21:8-21:29, 393-414)
 │   │     value: "Remove empty objects."
 │   └─1 block-tag[0] (23:8-23:21, 429-442)
 │         tag: "@default"
+│         text: "true"
 │         value: "@default true"
 ├─4 comment[2] (27:5-31:8, 490-558)
-│   │ context: {"identifier":"emptyStringsCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":32,"column":34,"offset":592},"start":{"line":32,"column":5,"offset":563}}}
+│   │ context: {"identifier":"emptyStringsCleaner","kind":"property","parent":"ICleanerOptions","position":{"end":{"line":32,"column":34,"offset":592},"start":{"line":32,"column":5,"offset":563}}}
 │   │ value: "/**\\n     * Remove empty strings.\\n     *\\n     * @default true\\n     */"
 │   ├─0 implicit-description[0] (28:8-28:29, 501-522)
 │   │     value: "Remove empty strings."
 │   └─1 block-tag[0] (30:8-30:21, 537-550)
 │         tag: "@default"
+│         text: "true"
 │         value: "@default true"
 ├─5 comment[2] (34:5-38:8, 598-658)
-│   │ context: {"identifier":"nanCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":39,"column":25,"offset":683},"start":{"line":39,"column":5,"offset":663}}}
+│   │ context: {"identifier":"nanCleaner","kind":"property","parent":"ICleanerOptions","position":{"end":{"line":39,"column":25,"offset":683},"start":{"line":39,"column":5,"offset":663}}}
 │   │ value: "/**\\n     * Remove \`NaN\`.\\n     *\\n     * @default true\\n     */"
 │   ├─0 implicit-description[0] (35:8-35:21, 609-622)
 │   │     value: "Remove \`NaN\`."
 │   └─1 block-tag[0] (37:8-37:21, 637-650)
 │         tag: "@default"
+│         text: "true"
 │         value: "@default true"
 ├─6 comment[2] (41:5-45:8, 689-758)
-│   │ context: {"identifier":"nullCleaner","kind":"property-signature","members":[],"modifiers":[],"parent":"ICleanerOptions","position":{"end":{"line":46,"column":26,"offset":784},"start":{"line":46,"column":5,"offset":763}}}
+│   │ context: {"identifier":"nullCleaner","kind":"property","parent":"ICleanerOptions","position":{"end":{"line":46,"column":26,"offset":784},"start":{"line":46,"column":5,"offset":763}}}
 │   │ value: "/**\\n     * Remove \`null\` values.\\n     *\\n     * @default false\\n     */"
 │   ├─0 implicit-description[0] (42:8-42:29, 700-721)
 │   │     value: "Remove \`null\` values."
 │   └─1 block-tag[0] (44:8-44:22, 736-750)
 │         tag: "@default"
+│         text: "false"
 │         value: "@default false"
 └─7 comment[11] (49:3-63:6, 792-1481)
-    │ context: {"identifier":"clean","kind":"function","members":[],"modifiers":["export"],"parent":"'fast-clean'","position":{"end":{"line":67,"column":7,"offset":1600},"start":{"line":64,"column":3,"offset":1484}}}
+    │ context: {"identifier":"clean","kind":"function","parent":"'fast-clean'","position":{"end":{"line":67,"column":7,"offset":1600},"start":{"line":64,"column":3,"offset":1484}}}
     │ value: "/**\\n   * Removes empty values, \`NaN\`, \`null\`, and \`undefined\` from \`object\`.\\n   *\\n   * @template T - Object type\\n   * @template R - Return type\\n   *\\n   * @param {T} object - Object to remove values from\\n   * @param {import('fast-clean').ICleanerOptions} options - Cleaning options\\n   * @param {boolean} [options.emptyArraysCleaner=true] - Remove empty arrays\\n   * @param {boolean} [options.emptyObjectsCleaner=true] - Remove empty objects\\n   * @param {boolean} [options.emptyStringsCleaner=true] - Remove empty strings\\n   * @param {boolean} [options.nanCleaner=true] - Remove \`NaN\`\\n   * @param {boolean} [options.nullCleaner=false] - Remove \`null\`\\n   * @return {R} Sanitized \`object\`\\n   */"
     ├─0  implicit-description[0] (50:6-50:73, 801-868)
     │      value: "Removes empty values, \`NaN\`, \`null\`, and \`undefined\` from \`object\`."
     ├─1  block-tag[0] (52:6-52:31, 879-904)
     │      tag: "@template"
+    │      text: "T - Object type"
     │      value: "@template T - Object type"
     ├─2  block-tag[0] (53:6-53:31, 910-935)
     │      tag: "@template"
+    │      text: "R - Return type"
     │      value: "@template R - Return type"
     ├─3  block-tag[0] (55:6-55:54, 946-994)
     │      tag: "@param"
+    │      text: "{T} object - Object to remove values from"
     │      value: "@param {T} object - Object to remove values from"
     ├─4  block-tag[0] (56:6-56:78, 1000-1072)
     │      tag: "@param"
+    │      text: "{import('fast-clean').ICleanerOptions} options - Cleaning options"
     │      value: "@param {import('fast-clean').ICleanerOptions} options - Cleaning options"
     ├─5  block-tag[0] (57:6-57:78, 1078-1150)
     │      tag: "@param"
+    │      text: "{boolean} [options.emptyArraysCleaner=true] - Remove empty arrays"
     │      value: "@param {boolean} [options.emptyArraysCleaner=true] - Remove empty arrays"
     ├─6  block-tag[0] (58:6-58:80, 1156-1230)
     │      tag: "@param"
+    │      text: "{boolean} [options.emptyObjectsCleaner=true] - Remove empty objects"
     │      value: "@param {boolean} [options.emptyObjectsCleaner=true] - Remove empty objects"
     ├─7  block-tag[0] (59:6-59:80, 1236-1310)
     │      tag: "@param"
+    │      text: "{boolean} [options.emptyStringsCleaner=true] - Remove empty strings"
     │      value: "@param {boolean} [options.emptyStringsCleaner=true] - Remove empty strings"
     ├─8  block-tag[0] (60:6-60:63, 1316-1373)
     │      tag: "@param"
+    │      text: "{boolean} [options.nanCleaner=true] - Remove \`NaN\`"
     │      value: "@param {boolean} [options.nanCleaner=true] - Remove \`NaN\`"
     ├─9  block-tag[0] (61:6-61:66, 1379-1439)
     │      tag: "@param"
+    │      text: "{boolean} [options.nullCleaner=false] - Remove \`null\`"
     │      value: "@param {boolean} [options.nullCleaner=false] - Remove \`null\`"
     └─10 block-tag[0] (62:6-62:36, 1445-1475)
            tag: "@return"
+           text: "{R} Sanitized \`object\`"
            value: "@return {R} Sanitized \`object\`"
 `;
 
@@ -746,39 +888,46 @@ root[4]
 │   │ value: "/**\\n * @file Fixtures - StringUtils\\n * @module fixtures/StringUtils\\n */"
 │   ├─0 block-tag[0] (2:4-2:32, 7-35)
 │   │     tag: "@file"
+│   │     text: "Fixtures - StringUtils"
 │   │     value: "@file Fixtures - StringUtils"
 │   └─1 block-tag[0] (3:4-3:32, 39-67)
 │         tag: "@module"
+│         text: "fixtures/StringUtils"
 │         value: "@module fixtures/StringUtils"
 ├─1 comment[1] (6:1-8:4, 73-105)
-│   │ context: {"identifier":"StringUtils","kind":"namespace","members":["Concat","Split"],"modifiers":[],"parent":null,"position":{"end":{"line":36,"column":2,"offset":841},"start":{"line":9,"column":1,"offset":106}}}
+│   │ context: {"identifier":"StringUtils","kind":"namespace","parent":null,"position":{"end":{"line":36,"column":2,"offset":841},"start":{"line":9,"column":1,"offset":106}}}
 │   │ value: "/**\\n * String utility types.\\n */"
 │   └─0 implicit-description[0] (7:4-7:25, 80-101)
 │         value: "String utility types."
 ├─2 comment[4] (10:3-16:6, 132-306)
-│   │ context: {"identifier":"Concat","kind":"type","members":[],"modifiers":["export"],"parent":"StringUtils","position":{"end":{"line":21,"column":41,"offset":477},"start":{"line":17,"column":3,"offset":309}}}
+│   │ context: {"identifier":"Concat","kind":"type","parent":"StringUtils","position":{"end":{"line":21,"column":41,"offset":477},"start":{"line":17,"column":3,"offset":309}}}
 │   │ value: "/**\\n   * Concatenates strings \`String1\` and \`String2\`.\\n   *\\n   * @template S1 - String to split\\n   * @template S2 - String delimiter\\n   * @template D - String delimiter\\n   */"
 │   ├─0 implicit-description[0] (11:6-11:51, 141-186)
 │   │     value: "Concatenates strings \`String1\` and \`String2\`."
 │   ├─1 block-tag[0] (13:6-13:36, 197-227)
 │   │     tag: "@template"
+│   │     text: "S1 - String to split"
 │   │     value: "@template S1 - String to split"
 │   ├─2 block-tag[0] (14:6-14:37, 233-264)
 │   │     tag: "@template"
+│   │     text: "S2 - String delimiter"
 │   │     value: "@template S2 - String delimiter"
 │   └─3 block-tag[0] (15:6-15:36, 270-300)
 │         tag: "@template"
+│         text: "D - String delimiter"
 │         value: "@template D - String delimiter"
 └─3 comment[3] (23:3-28:6, 481-642)
-    │ context: {"identifier":"Split","kind":"type","members":[],"modifiers":["export"],"parent":"StringUtils","position":{"end":{"line":35,"column":10,"offset":839},"start":{"line":29,"column":3,"offset":645}}}
+    │ context: {"identifier":"Split","kind":"type","parent":"StringUtils","position":{"end":{"line":35,"column":10,"offset":839},"start":{"line":29,"column":3,"offset":645}}}
     │ value: "/**\\n   * Constructs a string array by splitting string \`S\` using delimiter \`D\`.\\n   *\\n   * @template S - String to split\\n   * @template D - String delimiter\\n   */"
     ├─0 implicit-description[0] (24:6-24:76, 490-560)
     │     value: "Constructs a string array by splitting string \`S\` using delimiter \`D\`."
     ├─1 block-tag[0] (26:6-26:35, 571-600)
     │     tag: "@template"
+    │     text: "S - String to split"
     │     value: "@template S - String to split"
     └─2 block-tag[0] (27:6-27:36, 606-636)
           tag: "@template"
+          text: "D - String delimiter"
           value: "@template D - String delimiter"
 `;
 
@@ -789,12 +938,14 @@ root[2]
 │   │ value: "/**\\n * @file Fixtures - Coordinate\\n * @module fixtures/Coordinate\\n */"
 │   ├─0 block-tag[0] (2:4-2:31, 7-34)
 │   │     tag: "@file"
+│   │     text: "Fixtures - Coordinate"
 │   │     value: "@file Fixtures - Coordinate"
 │   └─1 block-tag[0] (3:4-3:31, 38-65)
 │         tag: "@module"
+│         text: "fixtures/Coordinate"
 │         value: "@module fixtures/Coordinate"
 └─1 comment[1] (6:1-9:4, 71-173)
-    │ context: {"identifier":"Coordinate","kind":"type","members":[],"modifiers":[],"parent":null,"position":{"end":{"line":10,"column":25,"offset":198},"start":{"line":10,"column":1,"offset":174}}}
+    │ context: {"identifier":"Coordinate","kind":"type","parent":null,"position":{"end":{"line":10,"column":25,"offset":198},"start":{"line":10,"column":1,"offset":174}}}
     │ value: "/**\\n * One member in a pair of numbers that represent a single point on a\\n * two-dimensional grid.\\n */"
     └─0 implicit-description[0] (7:4-8:25, 78-169)
           value: "One member in a pair of numbers that represent a single point on a\\ntwo-dimensional grid."

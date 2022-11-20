@@ -24,6 +24,7 @@ fpnv
 gpgsign
 graphqlrc
 hmarr
+identifierish
 iife
 katas
 keyid
@@ -42,7 +43,7 @@ ructor
 safecrlf
 stringifier
 syncer
-tribonacci
+tokenizes
 tsdoc
 unist
 vates

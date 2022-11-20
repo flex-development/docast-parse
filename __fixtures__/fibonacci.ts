@@ -6,9 +6,9 @@
 import FibonacciSequence from './fibonacci-sequence'
 
 /**
- * Fibonacci sequence generator.
+ * [Fibonacci sequence]({@link ./fibonacci-sequence.ts}) generator.
  *
- * @see {@link FibonacciSequence}
+ * @see {@linkcode FibonacciSequence}
  *
  * @async
  *

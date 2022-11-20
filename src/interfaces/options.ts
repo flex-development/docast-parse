@@ -3,25 +3,15 @@
  * @module docast-parse/interfaces/Options
  */
 
+import type LexerOptions from './options-lexer'
+
 /**
  * [`Parser`][1] options.
  *
  * [1]: ../parser.ts
+ *
+ * @extends {LexerOptions}
  */
-interface Options {
-  /**
-   * Indentation size (in single-spaced characters).
-   *
-   * @default 2
-   */
-  indent_size?: number
-
-  /**
-   * Maximum line length of document.
-   *
-   * @default 80
-   */
-  max_line_length?: number
-}
+interface Options extends LexerOptions {}
 
 export type { Options as default }

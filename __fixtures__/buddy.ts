@@ -18,7 +18,7 @@ import psum from './psum'
  * Given two positive integers, `start` and `limit`, the function returns the
  * first pair of `buddy pairs` such that `start <= n <= limit` and `m > n`.
  *
- * @see {@link psum}
+ * @see {@linkcode psum}
  *
  * @example
  *  buddy(2382, 3679) // []

@@ -18,36 +18,20 @@ import type { VFile } from 'vfile'
  */
 abstract class AbstractParser<Tree extends Node = Node> {
   /**
-   * @protected
-   * @member {string} document - Document to parse
-   */
-  protected document: string
-
-  /**
-   * @protected
-   * @readonly
-   * @member {VFile} file - File associated with {@link document}
-   */
-  protected readonly file: VFile
-
-  /**
    * Instantiates a new file parser.
    *
    * @param {string} document - Document to parse
    * @param {VFile} file - File associated with `document`
    */
-  constructor(document: string, file: VFile) {
-    this.document = document
-    this.file = file
-  }
+  constructor(document: string, file: VFile) {}
 
   /**
-   * Parses {@link file}.
+   * Parses text to a syntax tree.
    *
    * @public
    * @abstract
    *
-   * @return {Tree} Syntax tree representing {@link file}
+   * @return {Tree} Syntax tree representing source file
    */
   public abstract parse(): Tree
 }

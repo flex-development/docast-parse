@@ -31,13 +31,15 @@ async function dblLinear(n: number): Promise<number> {
   /** @const {number[]} u - Sequence */
   const u: number[] = [1]
 
-  /** @var {number} j - Index of x in {@link u} used to calculate y */
+  /** @var {number} j - Index of x in {@linkcode u} used to calculate y */
   let j: number = 0
 
-  /** @var {number} k - Index of x in {@link u} used to calculate z */
+  /** @var {number} k - Index of x in {@linkcode u} used to calculate z */
   let k: number = 0
 
-  // build sequence up to index n (inclusive)
+  /*
+   * build sequence up to index n (inclusive)
+   */
   for (let i = 1; i <= n; i++) {
     /** @const {number} y - `y` */
     const y: number = 2 * u[j]! + 1
@@ -45,7 +47,7 @@ async function dblLinear(n: number): Promise<number> {
     /** @const {number} z - `z` */
     const z: number = 3 * u[k]! + 1
 
-    // set sequence value to smallest value in [y, z]
+    /* set sequence value to smallest value in [y, z] */
     u[i] = Math.min(y, z)
 
     // increase of index of x used to calculate y by 1

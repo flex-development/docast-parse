@@ -10,7 +10,7 @@
  * @return {number} Sum of `proper` divisors of `int`
  */
 const psum = (int: number): number => {
-  /** @var {number} sum - Sum of `proper` divisors of {@link int} */
+  /** @var {number} sum - Sum of `proper` divisors of {@linkcode int} */
   let sum: number = 1
 
   // calculate sum of proper divisors
