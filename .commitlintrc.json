@@ -20,6 +20,7 @@
         "exports",
         "github",
         "grammar",
+        "install",
         "interfaces",
         "lexer",
         "parser",
