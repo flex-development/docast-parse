@@ -98,6 +98,7 @@ Follow the steps below to setup your local development environment:
 | name                    |
 | ----------------------- |
 | `CODECOV_TOKEN`         |
+| `GH_TOKEN`              |
 | `GITHUB_TOKEN`          |
 | `NODE_ENV`              |
 | `NODE_NO_WARNINGS`      |
