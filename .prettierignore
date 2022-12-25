@@ -21,4 +21,5 @@ coverage/
 dist/
 node_modules/
 patches/
+tsconfig.temp.json
 yarn.lock

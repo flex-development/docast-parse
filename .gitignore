@@ -45,6 +45,7 @@ yarn-error.log*
 __tests__/report.json
 codecov
 coverage/
+tsconfig.temp.json
 vitest.config.*.timestamp-*.mjs
 
 # ESLint
