@@ -43,6 +43,7 @@ yarn-error.log*
 # ------------------------------------------------------------------------------
 *.lcov
 __tests__/report.json
+codecov
 coverage/
 vitest.config.*.timestamp-*.mjs
 

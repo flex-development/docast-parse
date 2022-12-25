@@ -1,6 +1,7 @@
 # docast-parse
 
 [![npm](https://img.shields.io/npm/v/@flex-development/docast-parse.svg)](https://npmjs.com/package/@flex-development/docast-parse)
+[![codecov](https://codecov.io/gh/flex-development/docast-parse/branch/main/graph/badge.svg?token=R2TPEBGWXB)](https://codecov.io/gh/flex-development/docast-parse)
 [![license](https://img.shields.io/github/license/flex-development/docast-parse.svg)](LICENSE.md)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)

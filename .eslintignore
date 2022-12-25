@@ -12,6 +12,7 @@ node_modules/
 yarn.lock
 
 # NEGATED PATTERNS
+!.codecov.yml
 !.commitlintrc.json
 !.cspell.json
 !.eslintrc.base.cjs

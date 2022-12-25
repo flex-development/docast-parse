@@ -1,6 +1,7 @@
 ardatan
 bdougie
 cefc
+codecov
 commitlintrc
 dawidd
 dedupe
