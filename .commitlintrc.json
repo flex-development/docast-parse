@@ -11,7 +11,9 @@
       [
         "attacher",
         "deps",
+        "deps-bundle",
         "deps-dev",
+        "deps-opt",
         "deps-peer",
         "enums",
         "esm",

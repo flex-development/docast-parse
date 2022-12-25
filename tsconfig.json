@@ -13,7 +13,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
-    "isolatedModules": false,
+    "isolatedModules": true,
     "lib": ["es2020"],
     "module": "esnext",
     "moduleDetection": "force",

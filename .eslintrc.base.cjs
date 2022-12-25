@@ -338,7 +338,7 @@ const config = {
     'jsdoc/check-tag-names': [
       1,
       {
-        definedTags: ['next', 'visibleName'],
+        definedTags: ['experimental', 'next', 'visibleName'],
         jsxTags: jsx
       }
     ],
@@ -418,7 +418,7 @@ const config = {
       {
         exemptAsync: false,
         exemptGenerators: true,
-        reportMissingReturnForUndefinedTypes: false
+        reportMissingReturnForUndefinedTypes: true
       }
     ],
     'jsdoc/require-returns-description': 1,
@@ -1102,12 +1102,6 @@ const config = {
       }
     },
     {
-      files: ['helpers/tsconfig-paths.cjs'],
-      rules: {
-        'node/no-deprecated-api': 0
-      }
-    },
-    {
       files: ['tsconfig*.json'],
       rules: {
         'jsonc/no-comments': 0
@@ -1128,6 +1122,9 @@ const config = {
         enum: {
           name: 'namepath-defining',
           required: ['name', 'type']
+        },
+        experimental: {
+          name: 'none'
         },
         extends: {
           name: 'namepath-defining',

@@ -25,7 +25,9 @@ A list of linked issues and/or pull requests.
 
 ## Additional context
 
-<!-- Include additional details here. Be sure to note if any tolerable vulnerabilities or warnings have been introduced. -->
+<!--
+Include additional details here. Be sure to note if any tolerable vulnerabilities or warnings have been introduced.
+-->
 
 ## Submission checklist
 

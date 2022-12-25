@@ -33,6 +33,8 @@ function attacher(this: Processor<Root, Root>, options: Options = {}): void {
   this.Parser = function parser(document: string, file: VFile): Root {
     return new Parser(document, file, options).parse()
   }
+
+  return void this
 }
 
 export default attacher

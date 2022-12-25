@@ -55,7 +55,7 @@ vitest.config.*.timestamp-*.mjs
 dist/
 !typings/**/dist/
 
-# Scratch work
+# Misc
 # ------------------------------------------------------------------------------
 scratch.ts
 tree.json
