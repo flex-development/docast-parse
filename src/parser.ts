@@ -267,7 +267,7 @@ class Parser extends AbstractParser<Root> {
        *
        * @const {Token} tok
        */
-      const tok: Token = this.lexer.tokens.at(i)!
+      const tok: Token = this.lexer.tokens[i]!
 
       // do nothing if token is not a context start token
       if (tok.kind !== TokenKind.CONTEXT_START) continue
