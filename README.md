@@ -263,7 +263,8 @@ Maximum line length of source file.
 
 ## Syntax
 
-**TODO**: Update documentation.
+JavaScript and TypeScript sources are parsed according to their respective language specifications, thus limiting the
+kind of docblock comments that can be parsed. Efforts are being made to make this plugin language-agnostic, however.
 
 ## Syntax tree
 
