@@ -1,3 +1,11 @@
+## [1.0.0-alpha.2](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.1...1.0.0-alpha.2) (2022-12-25)
+
+
+### :robot: Continuous Integration
+
+* **workflows:** [`publish`] fix `invalid refspec "+refs/tags/:refs/tags/"` ([7b2b19d](https://github.com/flex-development/docast-parse/commit/7b2b19d718f8cd2c8551db84f00e1ae2ee02e2e8))
+* **workflows:** use environment files ([46dabc4](https://github.com/flex-development/docast-parse/commit/46dabc4dae8abaf73164c9dbf75232049f27f218))
+
 ## 1.0.0-alpha.1 (2022-12-25)
 
 
