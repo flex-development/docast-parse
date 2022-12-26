@@ -30,11 +30,15 @@ tree][2].
 
 ## When should I use this?
 
-**TODO**: Update documentation.
+This plugin adds support to [unified][1] for parsing docblock comments.
+
+Unlike [JSDoc][3], [TSDoc][4], or [typedoc][5], this plugin **does not enforce tag semantics** &mdash; the user does.
+Tag specifications can be left to an [ESLint][6] rule or setting akin to [`jsdoc/check-tag-names`][7] or
+[`jsdoc.structuredTags`][8].
 
 ## Install
 
-This package is [ESM only][3].
+This package is [ESM only][9].
 
 ```sh
 yarn add @flex-development/docast-parse
@@ -123,8 +127,7 @@ async function dblLinear(n: number): Promise<number> {
 export default dblLinear
 ```
 
-We just discovered [VitePress][4]. We want to [create a documentation site
-without duplicating documentation][5]:
+We just discovered [VitePress][10]. We want to [create a documentation site without duplicating documentation][11]:
 
 ```typescript
 import type { Root } from '@flex-development/docast'
@@ -272,7 +275,7 @@ The syntax tree format is [docast][2].
 
 ## Types
 
-This package is fully typed with [TypeScript][6].
+This package is fully typed with [TypeScript][12].
 
 ## Contribute
 
@@ -280,7 +283,13 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 [1]: https://github.com/unifiedjs/unified
 [2]: https://github.com/flex-development/docast
-[3]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-[4]: https://vitepress.vuejs.org
-[5]: https://github.com/vuejs/vitepress/issues/1316
-[6]: https://www.typescriptlang.org
+[3]: https://jsdoc.app/
+[4]: https://tsdoc.org/
+[5]: https://github.com/TypeStrong/typedoc
+[6]: https://eslint.org/
+[7]: https://github.com/gajus/eslint-plugin-jsdoc#check-tag-names
+[8]: https://github.com/gajus/eslint-plugin-jsdoc#structuredtags
+[9]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[10]: https://vitepress.vuejs.org
+[11]: https://github.com/vuejs/vitepress/issues/1316
+[12]: https://www.typescriptlang.org
