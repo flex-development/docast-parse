@@ -1,3 +1,10 @@
+## [1.0.0-alpha.4](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2022-12-25)
+
+
+### :robot: Continuous Integration
+
+* **workflows:** remove private package registry config for [@dependabot](https://github.com/dependabot) ([4fc25e9](https://github.com/flex-development/docast-parse/commit/4fc25e93a55e4470c47150a40e79eca9d2764f77))
+
 ## [1.0.0-alpha.3](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.2...1.0.0-alpha.3) (2022-12-25)
 
 
