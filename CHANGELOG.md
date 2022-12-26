@@ -1,3 +1,10 @@
+## [1.0.0-alpha.3](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.2...1.0.0-alpha.3) (2022-12-25)
+
+
+### :robot: Continuous Integration
+
+* **workflows:** [`publish`] fix `User cannot be authenticated with the token provided` ([26ec14d](https://github.com/flex-development/docast-parse/commit/26ec14dd08c0356a49b817010b053f32c75703f2))
+
 ## [1.0.0-alpha.2](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.1...1.0.0-alpha.2) (2022-12-25)
 
 
