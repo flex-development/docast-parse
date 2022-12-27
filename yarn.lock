@@ -1023,7 +1023,7 @@ __metadata:
     eslint-plugin-unicorn: "npm:45.0.2"
     eslint-plugin-yml: "npm:1.4.0"
     graphql: "npm:16.6.0"
-    graphql-config: "npm:4.3.6"
+    graphql-config: "npm:4.4.0"
     growl: "npm:1.10.5"
     husky: "npm:8.0.2"
     is-ci: "npm:3.0.1"
@@ -3256,7 +3256,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^8.0.0":
+"cosmiconfig@npm:8.0.0, cosmiconfig@npm:^8.0.0":
   version: 8.0.0
   resolution: "cosmiconfig@npm:8.0.0"
   dependencies:
@@ -4712,7 +4712,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-config@npm:4.3.6, graphql-config@npm:^4.3.6":
+"graphql-config@npm:4.4.0":
+  version: 4.4.0
+  resolution: "graphql-config@npm:4.4.0"
+  dependencies:
+    "@graphql-tools/graphql-file-loader": "npm:^7.3.7"
+    "@graphql-tools/json-file-loader": "npm:^7.3.7"
+    "@graphql-tools/load": "npm:^7.5.5"
+    "@graphql-tools/merge": "npm:^8.2.6"
+    "@graphql-tools/url-loader": "npm:^7.9.7"
+    "@graphql-tools/utils": "npm:^9.0.0"
+    cosmiconfig: "npm:8.0.0"
+    minimatch: "npm:4.2.1"
+    string-env-interpolation: "npm:1.0.1"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    cosmiconfig-toml-loader: ^1.0.0
+    cosmiconfig-typescript-loader: ^4.0.0
+    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 64f26d71ce3e3cf9913742b2d29046a60023a566ad472868746a38e21968b6cb919239b738088c97ecc378f1e7a9ba3f6ffb58b97df77456c64903fbf4a3bf7e
+  languageName: node
+  linkType: hard
+
+"graphql-config@npm:^4.3.6":
   version: 4.3.6
   resolution: "graphql-config@npm:4.3.6"
   dependencies:
