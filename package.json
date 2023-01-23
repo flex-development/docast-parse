@@ -115,7 +115,7 @@
     "conventional-changelog-cli": "2.2.2",
     "conventional-recommended-bump": "6.1.0",
     "cspell": "6.18.0",
-    "esbuild": "0.16.10",
+    "esbuild": "0.17.4",
     "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-chai-expect": "3.0.0",
@@ -157,7 +157,7 @@
   "resolutions": {
     "@ardatan/sync-fetch": "larsgw/sync-fetch#head=worker_threads",
     "@flex-development/tutils": "6.0.0-alpha.7",
-    "esbuild": "0.16.10",
+    "esbuild": "0.17.4",
     "vite": "4.0.3",
     "vitest@npm:0.26.2": "patch:vitest@npm%3A0.26.2#patches/vitest+0.26.2.dev.patch",
     "unist-util-inspect@npm:7.0.1": "patch:unist-util-inspect@npm%3A7.0.1#patches/unist-util-inspect+7.0.1.dev.patch"
