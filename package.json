@@ -83,7 +83,7 @@
     "detab": "3.0.2",
     "escape-string-regexp": "5.0.0",
     "unist-builder": "3.0.1",
-    "unist-util-source": "4.0.1",
+    "unist-util-source": "4.0.2",
     "vfile": "5.3.7",
     "vfile-location": "4.1.0"
   },
