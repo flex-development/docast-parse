@@ -85,7 +85,7 @@
     "unist-builder": "3.0.0",
     "unist-util-source": "4.0.1",
     "vfile": "5.3.6",
-    "vfile-location": "4.0.1"
+    "vfile-location": "4.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.4.4",
