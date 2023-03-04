@@ -1260,7 +1260,7 @@ __metadata:
     unist-util-inspect: "npm:7.0.1"
     unist-util-source: "npm:4.0.1"
     version-bump-prompt: "npm:6.1.0"
-    vfile: "npm:5.3.6"
+    vfile: "npm:5.3.7"
     vfile-location: "npm:4.1.0"
     vite: "npm:4.1.4"
     vite-tsconfig-paths: "npm:4.0.5"
@@ -9034,19 +9034,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile@npm:5.3.6":
-  version: 5.3.6
-  resolution: "vfile@npm:5.3.6"
-  dependencies:
-    "@types/unist": "npm:^2.0.0"
-    is-buffer: "npm:^2.0.0"
-    unist-util-stringify-position: "npm:^3.0.0"
-    vfile-message: "npm:^3.0.0"
-  checksum: a31b69ea7dd0aa23da7c99b0b96fa6e3f9cfd57f2a1010dad4493762b5e3a38688638ca8ca9fb0f93602f67f47208fedbee189d81fd949ef42b8bb335c1a824f
-  languageName: node
-  linkType: hard
-
-"vfile@npm:^5.0.0":
+"vfile@npm:5.3.7, vfile@npm:^5.0.0":
   version: 5.3.7
   resolution: "vfile@npm:5.3.7"
   dependencies:
