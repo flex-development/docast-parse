@@ -9,15 +9,22 @@ import type unified from 'unified'
 import type testSubject from '../attacher'
 
 describe('unit-d:attacher', () => {
+  it('should be callable with [Options?]', () => {
+    // Act
+    type Params = [options?: Options | undefined]
+
+    expectTypeOf<typeof testSubject>().parameters.toEqualTypeOf<Params>()
+  })
+
   it('should be typeof unified.Plugin', () => {
     // Arrange
-    type Plugin = unified.Plugin<[Options?], string, Root>
+    type Plugin = unified.Plugin<[options?: Options | undefined], string, Root>
 
     // Expect
     expectTypeOf<typeof testSubject>().toEqualTypeOf<Plugin>()
   })
 
-  it('should extract parameters [Options?]', () => {
-    expectTypeOf<typeof testSubject>().parameters.toEqualTypeOf<[Options?]>()
+  it('should return void', () => {
+    expectTypeOf<typeof testSubject>().returns.toBeVoid()
   })
 })

@@ -17,7 +17,7 @@ import Parser from './parser'
  * @type {Plugin<[Options?], string, Root>}
  * @this {Processor<Root, Root>}
  *
- * @param {Options} [options={}] - Parser options
+ * @param {Options?} [options={}] - Parser options
  * @return {void} Nothing when complete
  */
 function attacher(this: Processor<Root, Root>, options: Options = {}): void {

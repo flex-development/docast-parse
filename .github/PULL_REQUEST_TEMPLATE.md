@@ -37,5 +37,4 @@ Include additional details here. Be sure to note if any tolerable vulnerabilitie
 - [ ] new, **tolerable** vulnerabilities and/or warnings documented, if any
 - [ ] [pr naming conventions][1]
 
-[1]:
-    https://github.com/flex-development/docast-parse/blob/main/CONTRIBUTING.md#pull-request-titles
+[1]: https://github.com/flex-development/docast-parse/blob/main/CONTRIBUTING.md#pull-request-titles

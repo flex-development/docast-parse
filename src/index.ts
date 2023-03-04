@@ -4,4 +4,4 @@
  */
 
 export { default } from './attacher'
-export type { Options } from './interfaces'
+export type { default as Options } from './interfaces/options'

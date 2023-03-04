@@ -26,11 +26,7 @@ updates:
       include: scope
     directory: /
     ignore:
-      - dependency-name: '@flex-development/tutils'
-      - dependency-name: '@types/node'
-      - dependency-name: '@vitest/*'
       - dependency-name: unist-util-inspect
-      - dependency-name: vitest
     labels:
       - scope:dependencies
       - type:build

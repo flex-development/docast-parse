@@ -5,7 +5,7 @@
 
 import { LexerState, TokenKind } from '#src/enums'
 import type { Token } from '#src/interfaces'
-import type { Predicate } from '#src/types'
+import type { Predicate } from '@flex-development/tutils'
 import fs from 'node:fs'
 import { VFile } from 'vfile'
 import TestSubject from '../lexer'

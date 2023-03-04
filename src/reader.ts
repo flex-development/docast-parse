@@ -48,7 +48,7 @@ class Reader {
    */
   constructor(document: string) {
     this.document = document
-    this.location = location(this.document)
+    this.location = location(this.document) as LocationUtility
     this.position = document.length === 0 ? 0 : -1
   }
 

@@ -9,13 +9,13 @@
  * @const config - ESLint configuration object
  */
 const config = {
-  root: true,
   extends: ['./.eslintrc.base.cjs'],
   overrides: [
     ...require('./.eslintrc.base.cjs').overrides,
     {
-      files: ['./__fixtures__/calculate.ts'],
+      files: ['__fixtures__/calculate.ts'],
       rules: {
+        '@typescript-eslint/strict-boolean-expressions': 0,
         'unicorn/no-unreadable-array-destructuring': 0
       }
     },
@@ -28,7 +28,6 @@ const config = {
     {
       files: ['src/parser-abstract.ts'],
       rules: {
-        '@typescript-eslint/no-useless-constructor': 0,
         '@typescript-eslint/no-unused-vars': [
           2,
           {
@@ -37,10 +36,12 @@ const config = {
             ignoreRestSiblings: false,
             vars: 'all'
           }
-        ]
+        ],
+        '@typescript-eslint/no-useless-constructor': 0
       }
     }
-  ]
+  ],
+  root: true
 }
 
 module.exports = config

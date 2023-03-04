@@ -2,8 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/@flex-development/docast-parse.svg)](https://npmjs.com/package/@flex-development/docast-parse)
 [![codecov](https://codecov.io/gh/flex-development/docast-parse/branch/main/graph/badge.svg?token=R2TPEBGWXB)](https://codecov.io/gh/flex-development/docast-parse)
-[![license](https://img.shields.io/github/license/flex-development/docast-parse.svg)](LICENSE.md)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
+[![license](https://img.shields.io/github/license/flex-development/docast-parse.svg)](LICENSE.md)
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)
 [![typescript](https://img.shields.io/badge/-typescript-3178c6?logo=typescript&logoColor=ffffff)](https://typescriptlang.org/)
 [![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)](https://vitest.dev/)
@@ -61,7 +61,7 @@ yarn add @flex-development/docast-parse@flex-development/docast-parse
 
 Say we have the following module `dbl-linear.ts`:
 
-```typescript
+```ts
 /**
  * @file Katas - dblLinear
  * @module katas/4kyu/dblLinear
@@ -129,7 +129,7 @@ export default dblLinear
 
 We just discovered [VitePress][10]. We want to [create a documentation site without duplicating documentation][11]:
 
-```typescript
+```ts
 import type { Root } from '@flex-development/docast'
 import docastParse, { type Options } from '@flex-development/docast-parse'
 import fs from 'node:fs/promises'

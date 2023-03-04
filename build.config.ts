@@ -1,5 +1,5 @@
 /**
- * @file Build Config
+ * @file Configuration - Build
  * @module config/build
  * @see https://github.com/flex-development/mkbuild
  */
@@ -13,8 +13,11 @@ import pkg from './package.json' assert { type: 'json' }
  * @const {Config} config
  */
 const config: Config = defineBuildConfig({
-  sourcemap: true,
-  sourcesContent: false,
+  entries: [
+    { dts: 'only' },
+    { dts: false, pattern: ['enums/*'] },
+    { dts: false, pattern: ['*.ts'], sourcemap: true, sourcesContent: false }
+  ],
   target: 'node' + pkg.engines.node.replace(/^\D+/, ''),
   tsconfig: 'tsconfig.build.json'
 })

@@ -4,14 +4,13 @@
  */
 
 import { Kind } from '@flex-development/docast'
-import type { Nullable } from '@flex-development/tutils'
+import type { Nullable, Predicate } from '@flex-development/tutils'
 import { detab } from 'detab'
 import type { VFile } from 'vfile'
 import { LexerState, TokenKind } from './enums'
 import Grammar from './grammar'
 import type { LexerOptions, Token } from './interfaces'
 import Reader from './reader'
-import type { Predicate } from './types'
 
 /**
  * Tokenizer.
