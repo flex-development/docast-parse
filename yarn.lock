@@ -1216,7 +1216,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:5.56.0"
     "@typescript-eslint/parser": "npm:5.56.0"
     "@vates/toggle-scripts": "npm:1.0.0"
-    "@vitest/coverage-c8": "npm:0.29.2"
+    "@vitest/coverage-c8": "npm:0.29.7"
     "@vitest/ui": "npm:0.29.2"
     add-stream: "npm:1.0.0"
     chai: "npm:4.3.7"
@@ -2416,16 +2416,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:0.29.2":
-  version: 0.29.2
-  resolution: "@vitest/coverage-c8@npm:0.29.2"
+"@vitest/coverage-c8@npm:0.29.7":
+  version: 0.29.7
+  resolution: "@vitest/coverage-c8@npm:0.29.7"
   dependencies:
     c8: "npm:^7.13.0"
     picocolors: "npm:^1.0.0"
     std-env: "npm:^3.3.1"
   peerDependencies:
     vitest: ">=0.29.0 <1"
-  checksum: 1d1d623faa4693e899a6f557187b78640f22db258407f7a80ca6cdb240445ab8da6f3243c19593a3e9626588f31934a5c4f1e76d68fca1db3575c25f0cd785de
+  checksum: 998a5dfc3e653790ed4e25ea65435d55269f34bada291b4e2a8c38857081c4f5888f46442c8a0fab0c107dfd711a103f24519c8fdf51d8502364d52620828955
   languageName: node
   linkType: hard
 
