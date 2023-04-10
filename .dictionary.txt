@@ -3,7 +3,6 @@ bdougie
 cefc
 codecov
 commitlintrc
-dawidd
 dedupe
 dessant
 detab
@@ -15,12 +14,13 @@ gpgsign
 hmarr
 iife
 infile
+jsdoc
+katas
 katas
 keyid
 larsgw
 lcov
 lintstagedrc
-micnncim
 mkbuild
 mlly
 nocheck
@@ -28,12 +28,12 @@ npmrc
 nvmrc
 pathe
 pkgs
-pnpm
 preid
 psum
 stringifier
-syncer
 tokenizes
+tscu
+tsdoc
 unist
 unstub
 vates

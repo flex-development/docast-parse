@@ -1,5 +1,6 @@
 # docast-parse
 
+[![github release](https://img.shields.io/github/v/release/flex-development/docast-parse.svg?include_prereleases&sort=semver)](https://github.com/flex-development/docast-parse/releases/latest)
 [![npm](https://img.shields.io/npm/v/@flex-development/docast-parse.svg)](https://npmjs.com/package/@flex-development/docast-parse)
 [![codecov](https://codecov.io/gh/flex-development/docast-parse/branch/main/graph/badge.svg?token=R2TPEBGWXB)](https://codecov.io/gh/flex-development/docast-parse)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)

@@ -26,6 +26,7 @@
     ".husky/_/",
     ".vscode/settings.json",
     ".yarn/",
+    "dist/",
     "patches/",
     "yarn.lock"
   ],
