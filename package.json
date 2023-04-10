@@ -171,7 +171,7 @@
     "unist-util-inspect@npm:7.0.1": "patch:unist-util-inspect@npm%3A7.0.1#patches/unist-util-inspect+7.0.1.dev.patch"
   },
   "engines": {
-    "node": ">=14.16",
+    "node": ">=16.20.0",
     "yarn": "4.0.0-rc.39"
   },
   "packageManager": "yarn@4.0.0-rc.39",
