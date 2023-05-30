@@ -24,6 +24,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ampproject/remapping@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@ampproject/remapping@npm:2.2.1"
+  dependencies:
+    "@jridgewell/gen-mapping": "npm:^0.3.0"
+    "@jridgewell/trace-mapping": "npm:^0.3.9"
+  checksum: a6e71b1b6bcffc909f5527899d9598f30cd7dc8c82845fba07c237232d4404795681dc9a2ff7e24e620415b8b8b60466ebd517f7c00bef53adf3a6a37d5a8f1b
+  languageName: node
+  linkType: hard
+
 "@ardatan/sync-fetch@larsgw/sync-fetch#head=worker_threads":
   version: 0.3.1
   resolution: "@ardatan/sync-fetch@https://github.com/larsgw/sync-fetch.git#commit=3fb71aeed5ff6655421064c4e4b234f524896cd2"
@@ -1065,7 +1075,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:5.58.0"
     "@typescript-eslint/parser": "npm:5.58.0"
     "@vates/toggle-scripts": "npm:1.0.0"
-    "@vitest/coverage-c8": "npm:0.30.0"
+    "@vitest/coverage-c8": "npm:0.31.2"
     "@vitest/ui": "npm:0.30.0"
     add-stream: "npm:1.0.0"
     chai: "npm:4.3.7"
@@ -1697,6 +1707,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jridgewell/gen-mapping@npm:^0.3.0":
+  version: 0.3.3
+  resolution: "@jridgewell/gen-mapping@npm:0.3.3"
+  dependencies:
+    "@jridgewell/set-array": "npm:^1.0.1"
+    "@jridgewell/sourcemap-codec": "npm:^1.4.10"
+    "@jridgewell/trace-mapping": "npm:^0.3.9"
+  checksum: b90bc3ab62856ed90cd1e224ec2a7644b1247821931de118e59da1c3cf0b66438160e43e493ed267709983e738918ae10aa008928814c3e7a4bc26df8383a8a3
+  languageName: node
+  linkType: hard
+
 "@jridgewell/gen-mapping@npm:^0.3.2":
   version: 0.3.2
   resolution: "@jridgewell/gen-mapping@npm:0.3.2"
@@ -2286,16 +2307,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:0.30.0":
-  version: 0.30.0
-  resolution: "@vitest/coverage-c8@npm:0.30.0"
+"@vitest/coverage-c8@npm:0.31.2":
+  version: 0.31.2
+  resolution: "@vitest/coverage-c8@npm:0.31.2"
   dependencies:
+    "@ampproject/remapping": "npm:^2.2.1"
     c8: "npm:^7.13.0"
+    magic-string: "npm:^0.30.0"
     picocolors: "npm:^1.0.0"
     std-env: "npm:^3.3.2"
   peerDependencies:
     vitest: ">=0.30.0 <1"
-  checksum: 2da6aa296d1c3485ab9a171a686bba134fd2488ac26a7fbdd684d0a26f099d08ab5a9e7a2944ea65685845ec2671e541c47e47a2014f68afa2e8fe174d4aae0e
+  checksum: 77d0cda4f6b045a7506b8018202cb716efe9b34881bb389f88b7582a0c79328487578905fc3daa9ad2f3ce3aee297394b4c4498b9b16e368ddad9dcec514f939
   languageName: node
   linkType: hard
 
