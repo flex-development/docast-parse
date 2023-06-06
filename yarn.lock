@@ -1120,7 +1120,7 @@ __metadata:
     version-bump-prompt: "npm:6.1.0"
     vfile: "npm:5.3.7"
     vfile-location: "npm:4.1.0"
-    vite: "npm:4.2.1"
+    vite: "npm:4.2.3"
     vite-tsconfig-paths: "npm:4.0.9"
     vitest: "npm:0.30.0"
     vitest-github-actions-reporter: "npm:0.10.0"
@@ -8940,7 +8940,45 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:4.2.1, vite@npm:^3.0.0 || ^4.0.0":
+"vite@npm:4.2.3":
+  version: 4.2.3
+  resolution: "vite@npm:4.2.3"
+  dependencies:
+    esbuild: "npm:^0.17.5"
+    fsevents: "npm:~2.3.2"
+    postcss: "npm:^8.4.21"
+    resolve: "npm:^1.22.1"
+    rollup: "npm:^3.18.0"
+  peerDependencies:
+    "@types/node": ">= 14"
+    less: "*"
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: a8bac3ccf521bba582528d57cee39808dd758f3fcc7dc52e75989fa17dadb066bbb9248d0b0f93aa4d82e48c2333280ea0afd59b16455d9ef52d9fa1a4144cb9
+  languageName: node
+  linkType: hard
+
+"vite@npm:^3.0.0 || ^4.0.0":
   version: 4.2.1
   resolution: "vite@npm:4.2.1"
   dependencies:
