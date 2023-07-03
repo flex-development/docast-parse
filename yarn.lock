@@ -24,6 +24,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ampproject/remapping@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@ampproject/remapping@npm:2.2.1"
+  dependencies:
+    "@jridgewell/gen-mapping": "npm:^0.3.0"
+    "@jridgewell/trace-mapping": "npm:^0.3.9"
+  checksum: a6e71b1b6bcffc909f5527899d9598f30cd7dc8c82845fba07c237232d4404795681dc9a2ff7e24e620415b8b8b60466ebd517f7c00bef53adf3a6a37d5a8f1b
+  languageName: node
+  linkType: hard
+
 "@ardatan/sync-fetch@larsgw/sync-fetch#head=worker_threads":
   version: 0.3.1
   resolution: "@ardatan/sync-fetch@https://github.com/larsgw/sync-fetch.git#commit=3fb71aeed5ff6655421064c4e4b234f524896cd2"
@@ -1065,7 +1075,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:5.58.0"
     "@typescript-eslint/parser": "npm:5.58.0"
     "@vates/toggle-scripts": "npm:1.0.0"
-    "@vitest/coverage-c8": "npm:0.30.0"
+    "@vitest/coverage-c8": "npm:0.32.4"
     "@vitest/ui": "npm:0.30.0"
     add-stream: "npm:1.0.0"
     chai: "npm:4.3.7"
@@ -1697,6 +1707,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jridgewell/gen-mapping@npm:^0.3.0":
+  version: 0.3.3
+  resolution: "@jridgewell/gen-mapping@npm:0.3.3"
+  dependencies:
+    "@jridgewell/set-array": "npm:^1.0.1"
+    "@jridgewell/sourcemap-codec": "npm:^1.4.10"
+    "@jridgewell/trace-mapping": "npm:^0.3.9"
+  checksum: b90bc3ab62856ed90cd1e224ec2a7644b1247821931de118e59da1c3cf0b66438160e43e493ed267709983e738918ae10aa008928814c3e7a4bc26df8383a8a3
+  languageName: node
+  linkType: hard
+
 "@jridgewell/gen-mapping@npm:^0.3.2":
   version: 0.3.2
   resolution: "@jridgewell/gen-mapping@npm:0.3.2"
@@ -2286,16 +2307,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:0.30.0":
-  version: 0.30.0
-  resolution: "@vitest/coverage-c8@npm:0.30.0"
+"@vitest/coverage-c8@npm:0.32.4":
+  version: 0.32.4
+  resolution: "@vitest/coverage-c8@npm:0.32.4"
   dependencies:
-    c8: "npm:^7.13.0"
+    "@ampproject/remapping": "npm:^2.2.1"
+    c8: "npm:^7.14.0"
+    magic-string: "npm:^0.30.0"
     picocolors: "npm:^1.0.0"
-    std-env: "npm:^3.3.2"
+    std-env: "npm:^3.3.3"
   peerDependencies:
     vitest: ">=0.30.0 <1"
-  checksum: 2da6aa296d1c3485ab9a171a686bba134fd2488ac26a7fbdd684d0a26f099d08ab5a9e7a2944ea65685845ec2671e541c47e47a2014f68afa2e8fe174d4aae0e
+  checksum: 44b4d1af6c1a31532c96a8ff54de32fd10ef2c65ac1c824c3df4630dee72d1049884e0e4bf9d9147fe12367c67101a220bf837e79927ae9c7839e3c39f5ae4ac
   languageName: node
   linkType: hard
 
@@ -2844,9 +2867,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"c8@npm:^7.13.0":
-  version: 7.13.0
-  resolution: "c8@npm:7.13.0"
+"c8@npm:^7.14.0":
+  version: 7.14.0
+  resolution: "c8@npm:7.14.0"
   dependencies:
     "@bcoe/v8-coverage": "npm:^0.2.3"
     "@istanbuljs/schema": "npm:^0.1.3"
@@ -2862,7 +2885,7 @@ __metadata:
     yargs-parser: "npm:^20.2.9"
   bin:
     c8: bin/c8.js
-  checksum: cf4f52cbc188f59a5e32e1b2fcbd448774ec03c932f3007198377eaff2d22e57e3a0bbf0aff83a0a208725816f1d318615e4fa42826815a83285a7a45a88dc36
+  checksum: 7894d9e33cbb767d571430d0083ea0a18f541d3d3bf53bf57906fe289e73d636c8ae32c0d1674c16bffae0125bab2ae1263fb13179a11404d980a37ce0847491
   languageName: node
   linkType: hard
 
@@ -8034,6 +8057,13 @@ __metadata:
   version: 3.3.2
   resolution: "std-env@npm:3.3.2"
   checksum: 383486453a3b34c9db54c3aab112e066f32c6afda55c89362fe56576a82564d60526578040f7fe3ff6173f18c426597cbf1be69be9de83f56b984533aa2c2599
+  languageName: node
+  linkType: hard
+
+"std-env@npm:^3.3.3":
+  version: 3.3.3
+  resolution: "std-env@npm:3.3.3"
+  checksum: 2bbe0c96d26c37adcd7c6699c35f2e7443ebec701575485729596e53d962301e9909d052e859e47b78fc25ae9a230817fecaf93188f9686461c48067dd3e855b
   languageName: node
   linkType: hard
 
