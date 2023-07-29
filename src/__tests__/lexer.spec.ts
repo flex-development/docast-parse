@@ -23,16 +23,20 @@ describe('unit:lexer', () => {
     it('should set state to DONE if source file does not have comments', () => {
       // Arrange
       const document = 'export default "foo"'
+
+      // Act
       const subject = new TestSubject(document, new VFile(document))
 
-      // Act + Expect
-      // @ts-expect-error ts(2445)
-      expect(subject.state).to.equal(LexerState.DONE)
+      // Expect
+      expect(subject).to.have.property('state', LexerState.DONE)
     })
 
     it('should set state to DONE if source file is empty', () => {
-      // @ts-expect-error ts(2445)
-      expect(new TestSubject('', new VFile()).state).to.equal(LexerState.DONE)
+      // Act
+      const subject = new TestSubject('', new VFile())
+
+      // Expect
+      expect(subject).to.have.property('state', LexerState.DONE)
     })
   })
 
@@ -41,7 +45,7 @@ describe('unit:lexer', () => {
     const position: string = 'token sequence position'
 
     it(`should return false if ${position} is less than ${max}`, () => {
-      expect(new TestSubject(document, file).done).to.be.false
+      expect(new TestSubject(document, file)).to.have.property('done', false)
     })
 
     it(`should return true if ${position} is equal to ${max}`, () => {
@@ -50,7 +54,7 @@ describe('unit:lexer', () => {
       set(subject, 'position', subject.tokens.length - 1)
 
       // Act + Expect
-      expect(subject.done).to.be.true
+      expect(subject).to.have.property('done', true)
     })
 
     it(`should return true if ${position} is greater than ${max}`, () => {
@@ -59,13 +63,13 @@ describe('unit:lexer', () => {
       set(subject, 'position', subject.tokens.length)
 
       // Act + Expect
-      expect(subject.done).to.be.true
+      expect(subject).to.have.property('done', true)
     })
   })
 
   describe('#offset', () => {
     it('should return current position in token sequence', () => {
-      expect(new TestSubject(document, file).offset).to.equal(-1)
+      expect(new TestSubject(document, file)).to.have.property('offset', -1)
     })
   })
 
@@ -81,11 +85,11 @@ describe('unit:lexer', () => {
     })
 
     it('should return next token without changing position', () => {
-      expect(subject.peek()).to.deep.equal(subject.peek())
+      expect(subject.peek()).to.eql(subject.peek())
     })
 
     it('should return next k-th token without changing position', () => {
-      expect(subject.peek(3)).to.deep.equal(subject.peek(3))
+      expect(subject.peek(3)).to.eql(subject.peek(3))
     })
   })
 
@@ -103,7 +107,7 @@ describe('unit:lexer', () => {
       }
 
       // Act + Expect
-      expect(subject.peekUntil(condition)).to.deep.equal(subject.tokens)
+      expect(subject.peekUntil(condition)).to.eql(subject.tokens)
     })
 
     it('should return token sequence subset from next k-th token', () => {
@@ -147,7 +151,9 @@ describe('unit:lexer', () => {
 
   describe('#tokens', () => {
     it('should return token sequence', () => {
-      expect(new TestSubject(document, file).tokens).to.be.an('array')
+      expect(new TestSubject(document, file))
+        .to.have.property('tokens')
+        .be.an('array')
     })
   })
 })

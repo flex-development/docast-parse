@@ -44,7 +44,7 @@ describe('unit:reader', () => {
 
   describe('#offset', () => {
     it('should return current position in document', () => {
-      expect(new TestSubject(document).offset).to.equal(-1)
+      expect(new TestSubject(document)).to.have.property('offset', -1)
     })
   })
 
@@ -106,7 +106,7 @@ describe('unit:reader', () => {
 
   describe('#toPoint', () => {
     it('should return line and column based point', () => {
-      expect(new TestSubject(document).toPoint(0)).to.deep.equal({
+      expect(new TestSubject(document).toPoint(0)).to.eql({
         column: 1,
         line: 1,
         offset: 0

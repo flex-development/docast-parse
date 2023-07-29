@@ -5,9 +5,9 @@
 
 import { LexerState, TokenKind } from '#src/enums'
 import type { Point } from '@flex-development/docast'
+import pathe from '@flex-development/pathe'
 import { cast } from '@flex-development/tutils'
 import fs from 'node:fs'
-import path from 'node:path'
 import { VFile } from 'vfile'
 import TestSubject from '../parser'
 
@@ -16,7 +16,7 @@ describe('unit:parser', () => {
   let subject: TestSubject
 
   beforeEach(() => {
-    document = fs.readFileSync(path.resolve('__fixtures__/buddy.ts'), 'utf8')
+    document = fs.readFileSync(pathe.resolve('__fixtures__/buddy.ts'), 'utf8')
     subject = new TestSubject(document, new VFile(document))
   })
 

@@ -3,6 +3,7 @@
  * @module tests/utils/snippet
  */
 
+import { isString, trim } from '@flex-development/tutils'
 import type { VFile } from 'vfile'
 import { location } from 'vfile-location'
 
@@ -17,9 +18,12 @@ import { location } from 'vfile-location'
 const snippet = (document: VFile | string, l1: number, l2: number): string => {
   const { toOffset } = location(document)
 
-  return (typeof document === 'string' ? document : document.toString())
-    .slice(toOffset({ column: 1, line: l1 }), toOffset({ column: 1, line: l2 }))
-    .trim()
+  return trim(
+    (isString(document) ? document : document.toString()).slice(
+      toOffset({ column: 1, line: l1 }),
+      toOffset({ column: 1, line: l2 })
+    )
+  )
 }
 
 export default snippet

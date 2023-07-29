@@ -11,10 +11,10 @@ import type { VFile } from 'vfile'
  *
  * @see https://github.com/unifiedjs/unified#processorparser
  *
+ * @template Tree - Node that the parser yields
+ *
  * @abstract
  * @class
- *
- * @template Tree - Node that the parser yields
  */
 abstract class AbstractParser<Tree extends Node = Node> {
   /**
