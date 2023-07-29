@@ -38,4 +38,5 @@ unist
 unstub
 vates
 vfile
+vitest
 yarnrc
