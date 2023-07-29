@@ -4,7 +4,7 @@
  */
 
 import { Kind, Modifier } from '@flex-development/docast'
-import regexp from 'escape-string-regexp'
+import { join, regexp, select, sort } from '@flex-development/tutils'
 import { LexerState } from './enums'
 import type Reader from './reader'
 
@@ -116,16 +116,16 @@ class Grammar {
    */
   public get KEYWORD(): RegExp {
     /**
-     * Keywords as regex pattern.
+     * Keywords as regex patterns.
      *
-     * @const {string} keywords
+     * @const {string[]} keywords
      */
-    const keywords: string = [...this.keywords]
-      .map(keyword => regexp(keyword))
-      .sort((keyword1, keyword2) => keyword2.length - keyword1.length)
-      .join('|')
+    const keywords: string[] = sort(
+      select([...this.keywords], null, keyword => regexp(keyword)),
+      (k1, k2) => k2.length - k1.length
+    )
 
-    return new RegExp(`^(?<keyword>${keywords})[\\n ]`)
+    return new RegExp(`^(?<keyword>${join(keywords, '|')})[\\n ]`)
   }
 
   /**
@@ -139,16 +139,16 @@ class Grammar {
    */
   public get KIND(): RegExp {
     /**
-     * Syntax kinds as regex pattern.
+     * Syntax kinds as regex patterns.
      *
-     * @const {string} kinds
+     * @const {string[]} kinds
      */
-    const kinds: string = [...this.kinds]
-      .map(kind => regexp(kind).replace(' ', '\\s+'))
-      .sort((kind1, kind2) => kind2.length - kind1.length)
-      .join('|')
+    const kinds: string[] = sort(
+      select([...this.kinds], null, kind => regexp(kind).replace(' ', '\\s+')),
+      (k1, k2) => k2.length - k1.length
+    )
 
-    return new RegExp(`^(?<kind>${kinds})[\\n (]`)
+    return new RegExp(`^(?<kind>${join(kinds, '|')})[\\n (]`)
   }
 
   /**
@@ -162,16 +162,16 @@ class Grammar {
    */
   public get MODIFIER(): RegExp {
     /**
-     * Modifier keywords as regex pattern.
+     * Modifier keywords as regex patterns.
      *
-     * @const {string} kinds
+     * @const {string[]} modifiers
      */
-    const modifiers: string = [...this.modifiers]
-      .map(modifier => regexp(modifier).replace(' ', '\\s+'))
-      .sort((modifier1, modifier2) => modifier2.length - modifier1.length)
-      .join('|')
+    const modifiers: string[] = sort(
+      select([...this.modifiers], null, m => regexp(m).replace(' ', '\\s+')),
+      (m1, m2) => m2.length - m1.length
+    )
 
-    return new RegExp(`^(?<modifier>${modifiers})[\\n ]`)
+    return new RegExp(`^(?<modifier>${join(modifiers, '|')})[\\n ]`)
   }
 
   /**

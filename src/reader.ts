@@ -4,6 +4,7 @@
  */
 
 import type { Point } from '@flex-development/docast'
+import { at, cast, ifelse } from '@flex-development/tutils'
 import type unist from 'unist'
 import { location } from 'vfile-location'
 import type { LocationUtility } from './types'
@@ -48,8 +49,8 @@ class Reader {
    */
   constructor(document: string) {
     this.document = document
-    this.location = location(this.document) as LocationUtility
-    this.position = document.length === 0 ? 0 : -1
+    this.location = cast(location(this.document))
+    this.position = ifelse(document.length, -1, 0)
   }
 
   /**
@@ -87,7 +88,7 @@ class Reader {
    * @return {string} Peeked character
    */
   public peek(k: number = 1): string {
-    return this.document[this.offset + k] ?? ''
+    return at(this.document, this.offset + k, '')
   }
 
   /**
@@ -123,7 +124,7 @@ class Reader {
    * @return {string} Next `k`-th character or empty string
    */
   public read(k: number = 1): string {
-    return this.document[(this.position += k)] ?? ''
+    return at(this.document, (this.position += k), '')
   }
 
   /**

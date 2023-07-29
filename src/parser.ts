@@ -14,8 +14,13 @@ import {
   type Position,
   type Root
 } from '@flex-development/docast'
-import type { Nullable } from '@flex-development/tutils'
-import regexp from 'escape-string-regexp'
+import {
+  at,
+  regexp,
+  trim,
+  type Nullable,
+  type Optional
+} from '@flex-development/tutils'
 import type unist from 'unist'
 import { u } from 'unist-builder'
 import { source } from 'unist-util-source'
@@ -31,7 +36,6 @@ import AbstractParser from './parser-abstract'
  * @see https://github.com/unifiedjs/unified#processorparser
  *
  * @class
- *
  * @extends {AbstractParser<Root>}
  */
 class Parser extends AbstractParser<Root> {
@@ -139,9 +143,9 @@ class Parser extends AbstractParser<Root> {
     /**
      * Possible comment end token.
      *
-     * @const {Token | undefined} token_match
+     * @const {Optional<Token>} token_match
      */
-    const token_match: Token | undefined = tokens.pop()
+    const token_match: Optional<Token> = tokens.pop()
 
     // throw if comment end token was not found
     if (token_match?.kind !== TokenKind.COMMENT_END) {
@@ -236,9 +240,9 @@ class Parser extends AbstractParser<Root> {
     /**
      * Possible context end token.
      *
-     * @const {Token | undefined} token_match
+     * @const {Optional<Token>} token_match
      */
-    const token_match: Token | undefined = tokens.pop()
+    const token_match: Optional<Token> = tokens.pop()
 
     // throw if context end token was not found
     if (token_match?.kind !== TokenKind.CONTEXT_END) {
@@ -267,7 +271,7 @@ class Parser extends AbstractParser<Root> {
        *
        * @const {Token} tok
        */
-      const tok: Token = this.lexer.tokens[i]!
+      const tok: Token = at(this.lexer.tokens, i)!
 
       // do nothing if token is not a context start token
       if (tok.kind !== TokenKind.CONTEXT_START) continue
@@ -375,9 +379,9 @@ class Parser extends AbstractParser<Root> {
     /**
      * Possible implicit description end token.
      *
-     * @const {Token | undefined} token_match
+     * @const {Optional<Token>} token_match
      */
-    const token_match: Token | undefined = tokens.pop()
+    const token_match: Optional<Token> = tokens.pop()
 
     // throw if implicit description end token was not found
     if (token_match?.kind !== TokenKind.IMPLICIT_DESCRIPTION_END) {
@@ -441,9 +445,9 @@ class Parser extends AbstractParser<Root> {
     /**
      * Possible block tag end token.
      *
-     * @const {Token | undefined} token_match
+     * @const {Optional<Token>} token_match
      */
-    const token_match: Token | undefined = tokens.pop()
+    const token_match: Optional<Token> = tokens.pop()
 
     // throw if block tag end token was not found
     if (token_match?.kind !== TokenKind.TAG_BLOCK_END) {
@@ -491,7 +495,7 @@ class Parser extends AbstractParser<Root> {
       children,
       position,
       tag,
-      text: text.trim(),
+      text: trim(text),
       value
     })
   }
@@ -546,7 +550,7 @@ class Parser extends AbstractParser<Root> {
     return u(Type.INLINE_TAG, {
       position,
       tag,
-      text: text.trim(),
+      text: trim(text),
       value: token.value!
     })
   }

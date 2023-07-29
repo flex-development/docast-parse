@@ -5,7 +5,7 @@
 
 import { LexerState, TokenKind } from '#src/enums'
 import type { Token } from '#src/interfaces'
-import type { Predicate } from '@flex-development/tutils'
+import { set, type Predicate } from '@flex-development/tutils'
 import fs from 'node:fs'
 import { VFile } from 'vfile'
 import TestSubject from '../lexer'
@@ -47,7 +47,7 @@ describe('unit:lexer', () => {
     it(`should return true if ${position} is equal to ${max}`, () => {
       // Arrange
       const subject = new TestSubject(document, file)
-      Object.assign(subject, { position: subject.tokens.length - 1 })
+      set(subject, 'position', subject.tokens.length - 1)
 
       // Act + Expect
       expect(subject.done).to.be.true
@@ -56,7 +56,7 @@ describe('unit:lexer', () => {
     it(`should return true if ${position} is greater than ${max}`, () => {
       // Arrange
       const subject = new TestSubject(document, file)
-      Object.assign(subject, { position: subject.tokens.length })
+      set(subject, 'position', subject.tokens.length)
 
       // Act + Expect
       expect(subject.done).to.be.true
@@ -98,7 +98,7 @@ describe('unit:lexer', () => {
 
     it('should return token sequence subset', () => {
       // Arrange
-      const condition: Predicate<Token> = (token: Token) => {
+      const condition: Predicate<Token[]> = (token: Token) => {
         return token.kind === TokenKind.EOF
       }
 
@@ -108,7 +108,7 @@ describe('unit:lexer', () => {
 
     it('should return token sequence subset from next k-th token', () => {
       // Arrange
-      const condition: Predicate<Token> = (token: Token) => {
+      const condition: Predicate<Token[]> = (token: Token) => {
         return token.kind === TokenKind.TAG_BLOCK_END
       }
 

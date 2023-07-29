@@ -3,6 +3,7 @@
  * @module docast-parse/tests/reader/unit
  */
 
+import { set } from '@flex-development/tutils'
 import fs from 'node:fs'
 import TestSubject from '../reader'
 
@@ -25,7 +26,7 @@ describe('unit:reader', () => {
     it('should return true if position is equal to document length', () => {
       // Arrange
       const subject = new TestSubject(document)
-      Object.assign(subject, { position: document.length })
+      set(subject, 'position', document.length)
 
       // Act + Expect
       expect(subject.eof).to.be.true
@@ -34,7 +35,7 @@ describe('unit:reader', () => {
     it('should return true if position is greater than document length', () => {
       // Arrange
       const subject = new TestSubject(document)
-      Object.assign(subject, { position: document.length + 1 })
+      set(subject, 'position', document.length + 1)
 
       // Act + Expect
       expect(subject.eof).to.be.true

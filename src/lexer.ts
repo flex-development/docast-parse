@@ -4,7 +4,16 @@
  */
 
 import { Kind } from '@flex-development/docast'
-import type { Nullable, Predicate } from '@flex-development/tutils'
+import {
+  at,
+  get,
+  isEmptyString,
+  set,
+  trim,
+  type Nullable,
+  type Optional,
+  type Predicate
+} from '@flex-development/tutils'
 import { detab } from 'detab'
 import type { VFile } from 'vfile'
 import { LexerState, TokenKind } from './enums'
@@ -160,9 +169,9 @@ class Lexer {
     /**
      * Most recently added token.
      *
-     * @const {Token | undefined} last
+     * @const {Optional<Token>} last
      */
-    const last: Token | undefined = this.sequence[this.sequence.length - 1]
+    const last: Optional<Token> = at(this.sequence, -1)
 
     /**
      * Token to add to sequence.
@@ -258,7 +267,7 @@ class Lexer {
    * @return {Nullable<Token>} Peeked token or `null`
    */
   public peek(k: number = 1): Nullable<Token> {
-    return this.sequence[this.offset + k] ?? null
+    return at(this.sequence, this.offset + k, null)
   }
 
   /**
@@ -267,12 +276,12 @@ class Lexer {
    *
    * @public
    *
-   * @param {Predicate<Token>} condition - Condition to stop peeking
+   * @param {Predicate<Token[]>} condition - Condition to stop peeking
    * @param {number} [k=1] - Difference between index of next `k`-th token and
    * current position in token sequence
    * @return {Token[]} Peeked tokens
    */
-  public peekUntil(condition: Predicate<Token>, k: number = 1): Token[] {
+  public peekUntil(condition: Predicate<Token[]>, k: number = 1): Token[] {
     /**
      * Peeked tokens.
      *
@@ -310,7 +319,7 @@ class Lexer {
    * @return {Nullable<Token>} Next `k`-th token or `null`
    */
   public read(k: number = 1): Nullable<Token> {
-    return this.sequence[(this.position += k)] ?? null
+    return at(this.sequence, (this.position += k), null)
   }
 
   /**
@@ -344,7 +353,7 @@ class Lexer {
         // two empty lines => no comment context
         if (ctx !== '\n\n') {
           // trim context
-          ctx = ctx.trim()
+          ctx = trim(ctx)
 
           /**
            * Index of comment context in source file.
@@ -355,7 +364,7 @@ class Lexer {
 
           // add context start and end tokens
           this.addToken('CONTEXT_START', offset, ctx)
-          const { column, line } = this.tokens[this.tokens.length - 1]!.point
+          const { column, line } = get(this.tokens, '-1.point')!
           this.addToken('CONTEXT_END', offset + ctx.length, `${line}:${column}`)
         }
       }
@@ -397,14 +406,13 @@ class Lexer {
       /**
        * Most recently added token kind.
        *
-       * @const {TokenKind | undefined} ltk
+       * @const {Optional<TokenKind>} ltk
        */
-      const ltk: TokenKind | undefined =
-        this.tokens[this.tokens.length - 1]?.kind
+      const ltk: Optional<TokenKind> = get(this.tokens, '-1.kind')
 
       // add token to token sequence
       switch (true) {
-        case char === '':
+        case isEmptyString(char):
           this.state = LexerState.DONE
           this.addToken('EOF', k)
           break
@@ -437,7 +445,7 @@ class Lexer {
           const [, tag = ''] = this.grammar.TAG_INLINE.exec(chars)!
 
           this.addToken('TAG_INLINE_START', k, tag)
-          this.addToken('TAG_INLINE_END', k + tag.length, tag[tag.length - 1])
+          this.addToken('TAG_INLINE_END', k + tag.length, at(tag, -1))
 
           k += tag.length - 1
           index += tag.length - 2
@@ -507,12 +515,14 @@ class Lexer {
     }
 
     // sort token sequence
-    Object.assign(this, {
-      sequence: this.sequence
+    set(
+      this,
+      'sequence',
+      this.sequence
         .sort((token1, token2) => token1.point.line - token2.point.line)
         .sort((token1, token2) => token1.point.column - token2.point.column)
         .sort((token1, token2) => token1.point.offset - token2.point.offset)
-    })
+    )
 
     return void this.state
   }

@@ -5,20 +5,22 @@
 
 import type { Options } from '#src/interfaces'
 import type { Root } from '@flex-development/docast'
+import type { Optional } from '@flex-development/tutils'
 import type unified from 'unified'
 import type testSubject from '../attacher'
 
 describe('unit-d:attacher', () => {
   it('should be callable with [Options?]', () => {
-    // Act
-    type Params = [options?: Options | undefined]
+    // Arrange
+    type P = [options?: Optional<Options>]
 
-    expectTypeOf<typeof testSubject>().parameters.toEqualTypeOf<Params>()
+    // Expect
+    expectTypeOf<typeof testSubject>().parameters.toEqualTypeOf<P>()
   })
 
   it('should be typeof unified.Plugin', () => {
     // Arrange
-    type Plugin = unified.Plugin<[options?: Options | undefined], string, Root>
+    type Plugin = unified.Plugin<[options?: Optional<Options>], string, Root>
 
     // Expect
     expectTypeOf<typeof testSubject>().toEqualTypeOf<Plugin>()

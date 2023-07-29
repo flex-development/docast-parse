@@ -4,8 +4,8 @@
  */
 
 import { LexerState, TokenKind } from '#src/enums'
-import type { Token } from '#src/interfaces'
 import type { Point } from '@flex-development/docast'
+import { cast } from '@flex-development/tutils'
 import fs from 'node:fs'
 import path from 'node:path'
 import { VFile } from 'vfile'
@@ -29,41 +29,41 @@ describe('unit:parser', () => {
 
     it('should throw if token is not of kind COMMENT_START', () => {
       // Arrange
-      let error: SyntaxError | undefined
+      const message: string = 'expected token of kind COMMENT_START'
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
-        subject.parseComment({} as Token, 0)
+        subject.parseComment(cast({}), 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind COMMENT_START')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
 
     it('should throw if token match is not of kind COMMENT_END', () => {
       // Arrange
       const kind: TokenKind = TokenKind.COMMENT_START
+      const message: string = 'expected token of kind COMMENT_END'
       const point: Point = { column: 1, line: 1, offset: 0 }
       const state: LexerState = LexerState.COMMENT
-      let error: SyntaxError | undefined
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
         subject.parseComment({ kind, point, state, value: '/**' }, 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind COMMENT_END')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
   })
 
@@ -77,22 +77,22 @@ describe('unit:parser', () => {
     it('should throw if token match is not of kind CONTEXT_END', () => {
       // Arrange
       const kind: TokenKind = TokenKind.CONTEXT_START
+      const message: string = 'expected token of kind CONTEXT_END'
       const point: Point = { column: 1, line: 36, offset: 1005 }
       const state: LexerState = LexerState.READY
-      let error: SyntaxError | undefined
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
         subject.parseContext({ kind, point, state, value: '' }, 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind CONTEXT_END')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
   })
 
@@ -111,42 +111,42 @@ describe('unit:parser', () => {
     it(`should throw if token is not of kind ${kinds[0]}`, () => {
       // Arrange
       const kind: keyof typeof TokenKind = kinds[0]!
-      let error: SyntaxError | undefined
+      const message: string = `expected token of kind ${kind}`
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
-        subject.parseImplicitDescription({} as Token, 0)
+        subject.parseImplicitDescription(cast({}), 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal(`expected token of kind ${kind}`)
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
 
     it(`should throw if token match is not of kind ${kinds[1]}`, () => {
       // Arrange
       const kind_expected: keyof typeof TokenKind = kinds[1]!
       const kind: TokenKind = TokenKind.IMPLICIT_DESCRIPTION_START
+      const message: string = `expected token of kind ${kind_expected}`
       const point: Point = { column: 4, line: 9, offset: 95 }
       const state: LexerState = LexerState.IMPLICIT_DESCRIPTION
-      let error: SyntaxError | undefined
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
         subject.parseImplicitDescription({ kind, point, state, value: 'T' }, 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal(`expected token of kind ${kind_expected}`)
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
   })
 
@@ -159,41 +159,41 @@ describe('unit:parser', () => {
 
     it('should throw if token is not of kind TAG_BLOCK_START', () => {
       // Arrange
-      let error: SyntaxError | undefined
+      const message: string = 'expected token of kind TAG_BLOCK_START'
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
-        subject.parseTagBlock({} as Token, 0)
+        subject.parseTagBlock(cast({}), 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind TAG_BLOCK_START')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
 
     it('should throw if token match is not of kind TAG_BLOCK_END', () => {
       // Arrange
       const kind: TokenKind = TokenKind.TAG_BLOCK_START
+      const message: string = 'expected token of kind TAG_BLOCK_END'
       const point: Point = { column: 4, line: 2, offset: 7 }
       const state: LexerState = LexerState.COMMENT
-      let error: SyntaxError | undefined
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
         subject.parseTagBlock({ kind, point, state, value: '@' }, 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind TAG_BLOCK_END')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
   })
 
@@ -206,42 +206,42 @@ describe('unit:parser', () => {
 
     it('should throw if token is not of kind TAG_INLINE_START', () => {
       // Arrange
-      let error: SyntaxError | undefined
+      const message: string = 'expected token of kind TAG_INLINE_START'
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
-        subject.parseTagInline({} as Token, 0)
+        subject.parseTagInline(cast({}), 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind TAG_INLINE_START')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
 
     it('should throw if token match is not of kind TAG_INLINE_END', () => {
       // Arrange
       const kind: TokenKind = TokenKind.TAG_INLINE_START
+      const message: string = 'expected token of kind TAG_INLINE_END'
       const point: Point = { column: 9, line: 21, offset: 631 }
       const state: LexerState = LexerState.COMMENT
       const value: string = '{@link psum}'
-      let error: SyntaxError | undefined
+      let error!: SyntaxError
 
       // Act
       try {
         // @ts-expect-error ts(2445)
         subject.parseTagInline({ kind, point, state, value }, 0)
       } catch (e: unknown) {
-        error = e as typeof error
+        error = cast(e)
       }
 
       // Expect
-      expect(error).to.not.be.undefined
-      expect(error).toBeInstanceOf(SyntaxError)
-      expect(error?.message).to.equal('expected token of kind TAG_INLINE_END')
+      expect(error).to.be.instanceof(SyntaxError)
+      expect(error).to.have.property('message', message)
     })
   })
 
