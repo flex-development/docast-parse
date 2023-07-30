@@ -566,7 +566,7 @@ class Parser extends AbstractParser<Root> {
    * @return {Nullable<string>} Source code or `null`
    */
   protected source(value: unist.Node | unist.Position): Nullable<string> {
-    return source(value, this.lexer.file)
+    return at([source(this.lexer.file, value)], 0, null)
   }
 
   /**

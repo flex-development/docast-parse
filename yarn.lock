@@ -1176,7 +1176,7 @@ __metadata:
     unified: "npm:10.1.2"
     unist-builder: "npm:4.0.0"
     unist-util-inspect: "npm:7.0.1"
-    unist-util-source: "npm:4.0.2"
+    unist-util-source: "npm:5.0.0"
     version-bump-prompt: "npm:6.1.0"
     vfile: "npm:6.0.1"
     vfile-location: "npm:5.0.1"
@@ -9624,14 +9624,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-source@npm:4.0.2":
-  version: 4.0.2
-  resolution: "unist-util-source@npm:4.0.2"
+"unist-util-source@npm:5.0.0":
+  version: 5.0.0
+  resolution: "unist-util-source@npm:5.0.0"
   dependencies:
-    "@types/unist": "npm:^2.0.0"
-    vfile: "npm:^5.0.0"
-    vfile-location: "npm:^4.0.0"
-  checksum: c93b4f30a46688aa8fa226269169634853da4aed4f05b25c3debafb55abfab0876e1aabe2a5e824d961afad056141a02e087ea610a70bde93d5235198adc6bc9
+    "@types/unist": "npm:^3.0.0"
+    vfile: "npm:^6.0.0"
+    vfile-location: "npm:^5.0.0"
+  checksum: f7ee00c6eedcd8d385ecc7d14f7623fb0f6c29afb5a2bb95bca271d8f30e04ac05315245f14c358c147730414c2b4b23bcd8d1425afa8aced9e3bc1493a9ea1b
   languageName: node
   linkType: hard
 
@@ -9774,23 +9774,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile-location@npm:5.0.1":
+"vfile-location@npm:5.0.1, vfile-location@npm:^5.0.0":
   version: 5.0.1
   resolution: "vfile-location@npm:5.0.1"
   dependencies:
     "@types/unist": "npm:^2.0.0"
     vfile: "npm:^6.0.0"
   checksum: 4672b96ae66c7e605b1f1a3b73f7671beab6caff378eb64ca904358e37344bdf30c1a26a69a34be0fe3cd752ffceb35883d640b6b1aa146f2db832364604bf3b
-  languageName: node
-  linkType: hard
-
-"vfile-location@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "vfile-location@npm:4.1.0"
-  dependencies:
-    "@types/unist": "npm:^2.0.0"
-    vfile: "npm:^5.0.0"
-  checksum: d80162bda086822a8fb0070229ddf71fe8b2c0f47221dde03e08175cbe30d5b28e6eb6cb8a8303e710d109790d5e6e5bd860d2c927ad2f199fa89c080fd8508b
   languageName: node
   linkType: hard
 
