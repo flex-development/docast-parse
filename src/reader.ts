@@ -4,10 +4,16 @@
  */
 
 import type { Point } from '@flex-development/docast'
-import { at, cast, ifelse } from '@flex-development/tutils'
+import {
+  at,
+  cast,
+  ifelse,
+  isNumber,
+  type Nilable,
+  type Optional
+} from '@flex-development/tutils'
 import type unist from 'unist'
-import { location } from 'vfile-location'
-import type { LocationUtility } from './types'
+import { location, type Location } from 'vfile-location'
 
 /**
  * Character reader.
@@ -32,9 +38,9 @@ class Reader {
    *
    * @protected
    * @readonly
-   * @member {LocationUtility} location
+   * @member {Location} location
    */
-  protected readonly location: LocationUtility
+  protected readonly location: Location
 
   /**
    * @protected
@@ -49,7 +55,7 @@ class Reader {
    */
   constructor(document: string) {
     this.document = document
-    this.location = cast(location(this.document))
+    this.location = location(this.document)
     this.position = ifelse(document.length, -1, 0)
   }
 
@@ -136,11 +142,18 @@ class Reader {
    *
    * @public
    *
-   * @param {unist.Point} point - Line and column based point
+   * @param {Nilable<unist.Point>} [point] - Line and column based point
    * @return {number} Document index
    */
-  public toOffset(point: unist.Point): number {
-    return this.location.toOffset(point)
+  public toOffset(point?: Nilable<unist.Point>): number {
+    /**
+     * Offset for {@linkcode point}.
+     *
+     * @const {Optional<number>} offset
+     */
+    const offset: Optional<number> = this.location.toOffset(point)
+
+    return ifelse(isNumber(offset), cast(offset), -1)
   }
 
   /**
@@ -150,11 +163,22 @@ class Reader {
    *
    * @public
    *
-   * @param {number} offset - Document index
+   * @param {Nilable<number>} [offset] - Document index
    * @return {Point} Line and column based point
    */
-  public toPoint(offset: number): Point {
-    return this.location.toPoint(offset)
+  public toPoint(offset?: Nilable<number>): Point {
+    /**
+     * Line and column based {@linkcode unist.Point} for {@linkcode offset}.
+     *
+     * @const {Optional<unist.Point>} point
+     */
+    const point: Optional<unist.Point> = this.location.toPoint(offset)
+
+    return ifelse(point, cast(point), {
+      column: Number.NaN,
+      line: Number.NaN,
+      offset: -1
+    })
   }
 }
 
