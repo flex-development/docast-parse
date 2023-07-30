@@ -1,3 +1,102 @@
+## [1.0.0-alpha.5](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.4...1.0.0-alpha.5) (2023-07-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvm:** require `>=16.20.0`
+
+### :package: Build
+
+* **deps-dev:** Bump @commitlint/cli from 17.4.4 to 17.5.0 ([#103](https://github.com/flex-development/docast-parse/issues/103)) ([c65d24c](https://github.com/flex-development/docast-parse/commit/c65d24c76b0394c04bf7322fc8fd2923e75a5163))
+* **deps-dev:** Bump @commitlint/cli from 17.5.0 to 17.5.1 ([#119](https://github.com/flex-development/docast-parse/issues/119)) ([a0c83e5](https://github.com/flex-development/docast-parse/commit/a0c83e54bb6c895d8e6eef0365344f4ef1ef82fc))
+* **deps-dev:** Bump @flex-development/esm-types from 1.0.0 to 2.0.0 ([#224](https://github.com/flex-development/docast-parse/issues/224)) ([ea68bd7](https://github.com/flex-development/docast-parse/commit/ea68bd7614779ffebf06771ae22895d8eaeab105))
+* **deps-dev:** Bump @flex-development/pathe from 1.0.3 to 2.0.0 ([#223](https://github.com/flex-development/docast-parse/issues/223)) ([233eff6](https://github.com/flex-development/docast-parse/commit/233eff66f168d14d1383cd3f0e753bf483f2f561))
+* **deps-dev:** Bump @graphql-eslint/eslint-plugin from 3.16.1 to 3.16.2 ([#107](https://github.com/flex-development/docast-parse/issues/107)) ([9488589](https://github.com/flex-development/docast-parse/commit/9488589670a2880f572adb3ccda9d428c46fd4a7))
+* **deps-dev:** Bump @graphql-eslint/eslint-plugin from 3.16.2 to 3.18.0 ([#127](https://github.com/flex-development/docast-parse/issues/127)) ([9f8922a](https://github.com/flex-development/docast-parse/commit/9f8922a607d56886ccfdcbf4f9b8cd786d0098c3))
+* **deps-dev:** Bump @typescript-eslint/eslint-plugin from 5.54.0 to 5.56.0 ([#91](https://github.com/flex-development/docast-parse/issues/91)) ([d6815ff](https://github.com/flex-development/docast-parse/commit/d6815ff7051597562b42a3a17c65ea50dcba65e6))
+* **deps-dev:** Bump @typescript-eslint/eslint-plugin from 5.56.0 to 5.57.0 ([#125](https://github.com/flex-development/docast-parse/issues/125)) ([79ac999](https://github.com/flex-development/docast-parse/commit/79ac999d8222eb57ae88dd666b4511498b4a186a))
+* **deps-dev:** Bump @typescript-eslint/parser from 5.54.0 to 5.56.0 ([#89](https://github.com/flex-development/docast-parse/issues/89)) ([f1d50b0](https://github.com/flex-development/docast-parse/commit/f1d50b01fa04339d61938e856ff4676910a92dcd))
+* **deps-dev:** Bump @typescript-eslint/parser from 5.56.0 to 5.57.0 ([#120](https://github.com/flex-development/docast-parse/issues/120)) ([938b70d](https://github.com/flex-development/docast-parse/commit/938b70dcf8d34b91008b32446bb62f8b839cc7fe))
+* **deps-dev:** Bump @vitest/coverage-c8 from 0.29.2 to 0.29.7 ([#93](https://github.com/flex-development/docast-parse/issues/93)) ([554409a](https://github.com/flex-development/docast-parse/commit/554409ab4b66701fbc5c0aeeac54d8dd15f94786))
+* **deps-dev:** Bump @vitest/ui from 0.29.2 to 0.29.7 ([#109](https://github.com/flex-development/docast-parse/issues/109)) ([16fb5c4](https://github.com/flex-development/docast-parse/commit/16fb5c44aa64d978edc742f5982bfe3c7ee30d44))
+* **deps-dev:** Bump @vitest/ui from 0.29.7 to 0.29.8 ([#124](https://github.com/flex-development/docast-parse/issues/124)) ([450fd6a](https://github.com/flex-development/docast-parse/commit/450fd6a5ffb5b5504dc68af91686c4a13fd87684))
+* **deps-dev:** Bump cspell from 6.28.0 to 6.31.1 ([#112](https://github.com/flex-development/docast-parse/issues/112)) ([74dc574](https://github.com/flex-development/docast-parse/commit/74dc5742f4f1f6ebb1e21018656e246f4ddb90ce))
+* **deps-dev:** Bump esbuild from 0.17.11 to 0.17.12 ([#104](https://github.com/flex-development/docast-parse/issues/104)) ([0262385](https://github.com/flex-development/docast-parse/commit/02623854ce19e5172a53a7e11e05b2bd07c5a885))
+* **deps-dev:** Bump esbuild from 0.17.12 to 0.17.14 ([#118](https://github.com/flex-development/docast-parse/issues/118)) ([56b8e7f](https://github.com/flex-development/docast-parse/commit/56b8e7f0592c8616f3d2bcfd5a799ace4de3c5f2))
+* **deps-dev:** Bump eslint from 8.35.0 to 8.36.0 ([#99](https://github.com/flex-development/docast-parse/issues/99)) ([5289101](https://github.com/flex-development/docast-parse/commit/5289101e27830166798293d5cde3175a425b949c))
+* **deps-dev:** Bump eslint from 8.36.0 to 8.37.0 ([#129](https://github.com/flex-development/docast-parse/issues/129)) ([9ee500c](https://github.com/flex-development/docast-parse/commit/9ee500cba7999a00dae9cca15923e4656f6f689d))
+* **deps-dev:** Bump eslint-config-prettier from 8.6.0 to 8.7.0 ([#73](https://github.com/flex-development/docast-parse/issues/73)) ([72b4852](https://github.com/flex-development/docast-parse/commit/72b4852b4ea4093ad38eaca5eac565bfd29c6b6a))
+* **deps-dev:** Bump eslint-plugin-jsdoc from 40.0.1 to 40.1.0 ([#106](https://github.com/flex-development/docast-parse/issues/106)) ([370a7b9](https://github.com/flex-development/docast-parse/commit/370a7b9cc97edcfd1dd03d95f4b3a64c0b6bf876))
+* **deps-dev:** Bump eslint-plugin-jsdoc from 40.1.0 to 40.1.1 ([#131](https://github.com/flex-development/docast-parse/issues/131)) ([0e78c82](https://github.com/flex-development/docast-parse/commit/0e78c82b5850f8d934de5bd51c34729aaef36f3d))
+* **deps-dev:** Bump eslint-plugin-jsonc from 2.6.0 to 2.7.0 ([#116](https://github.com/flex-development/docast-parse/issues/116)) ([a7c1221](https://github.com/flex-development/docast-parse/commit/a7c1221ed462137b54a884c397aedc0b728b6701))
+* **deps-dev:** Bump eslint-plugin-markdownlint from 0.4.0 to 0.4.1 ([#100](https://github.com/flex-development/docast-parse/issues/100)) ([bbda8e9](https://github.com/flex-development/docast-parse/commit/bbda8e9167e00c4709a92daab9e267d0e0ffb74f))
+* **deps-dev:** Bump graphql-config from 4.4.1 to 4.5.0 ([#72](https://github.com/flex-development/docast-parse/issues/72)) ([cdda14c](https://github.com/flex-development/docast-parse/commit/cdda14cd06da32cb5f5d43030049e075de70dac8))
+* **deps-dev:** Bump jsonc-eslint-parser from 2.1.0 to 2.2.0 ([#97](https://github.com/flex-development/docast-parse/issues/97)) ([e3ad292](https://github.com/flex-development/docast-parse/commit/e3ad292403ba2a6a9676b25e96225e3c683ac7de))
+* **deps-dev:** Bump lint-staged from 13.1.2 to 13.2.0 ([#96](https://github.com/flex-development/docast-parse/issues/96)) ([f4d37a5](https://github.com/flex-development/docast-parse/commit/f4d37a56a76d8a4e8d246d47da5544ee5111d532))
+* **deps-dev:** Bump prettier from 2.8.4 to 2.8.6 ([#105](https://github.com/flex-development/docast-parse/issues/105)) ([1fd9bdc](https://github.com/flex-development/docast-parse/commit/1fd9bdcd1405f4ca4078ed0b378c6055bf0ab51c))
+* **deps-dev:** Bump prettier from 2.8.6 to 2.8.7 ([#114](https://github.com/flex-development/docast-parse/issues/114)) ([5f36e99](https://github.com/flex-development/docast-parse/commit/5f36e997349587022b1c9c11772042292ec7287e))
+* **deps-dev:** Bump the conventional-changelog group with 5 updates ([#222](https://github.com/flex-development/docast-parse/issues/222)) ([700a915](https://github.com/flex-development/docast-parse/commit/700a9155a375723ecf04f5e3a67f9303837648f2))
+* **deps-dev:** Bump vite from 4.1.4 to 4.2.1 ([#101](https://github.com/flex-development/docast-parse/issues/101)) ([021976f](https://github.com/flex-development/docast-parse/commit/021976f6ad1878c5ecfbd81c7f13ce84ce209095))
+* **deps-dev:** Bump vite-tsconfig-paths from 4.0.5 to 4.0.7 ([#95](https://github.com/flex-development/docast-parse/issues/95)) ([caf03f9](https://github.com/flex-development/docast-parse/commit/caf03f9297035b06488cde6a17ded57ebddcfa10))
+* **deps-dev:** Bump vitest from 0.29.2 to 0.29.7 ([#94](https://github.com/flex-development/docast-parse/issues/94)) ([37ca331](https://github.com/flex-development/docast-parse/commit/37ca331faa433b61bf0d63538cdd9667831023e4))
+* **deps-dev:** Bump yaml-eslint-parser from 1.1.0 to 1.2.0 ([#110](https://github.com/flex-development/docast-parse/issues/110)) ([bcad6f8](https://github.com/flex-development/docast-parse/commit/bcad6f8d175993141c9bb675b1219eb038651a8f))
+* **deps:** bump @flex-development/docast from 1.0.0-alpha.12 to 1.0.0-alpha.13 ([32a7d4e](https://github.com/flex-development/docast-parse/commit/32a7d4e155b39bd64171f1812056fa410c8cd917))
+* **deps:** bump @flex-development/tutils from 6.0.0-alpha.10 to 6.0.0-alpha.12 ([5b2fa44](https://github.com/flex-development/docast-parse/commit/5b2fa44deecc72b11280d93feb6d24c6d0f612fd))
+* **deps:** bump @types/unist from 2.0.6 to 3.0.0 ([54ba790](https://github.com/flex-development/docast-parse/commit/54ba7906b15f64a47617de533a9a67fa64692d20))
+* **deps:** Bump unist-builder from 3.0.0 to 3.0.1 ([#65](https://github.com/flex-development/docast-parse/issues/65)) ([3010226](https://github.com/flex-development/docast-parse/commit/3010226556e51f051cba22ec776722cc29632fbd))
+* **deps:** bump unist-builder from 3.0.1 to 4.0.0 ([a32f98f](https://github.com/flex-development/docast-parse/commit/a32f98f8fc869057028478e7ebe92a37ab752c40))
+* **deps:** Bump unist-util-source from 4.0.1 to 4.0.2 ([#68](https://github.com/flex-development/docast-parse/issues/68)) ([5d28dd4](https://github.com/flex-development/docast-parse/commit/5d28dd4bea447b81bde7ea5cd831899ade8f6ba6))
+* **deps:** bump unist-util-source from 4.0.2 to 5.0.0 ([5d9a4c3](https://github.com/flex-development/docast-parse/commit/5d9a4c347e8dea5d266f96941a1728b2e023fe25))
+* **deps:** Bump vfile from 5.3.6 to 5.3.7 ([#66](https://github.com/flex-development/docast-parse/issues/66)) ([48f1014](https://github.com/flex-development/docast-parse/commit/48f1014db3c6832ee8163c40017413bba29c7776))
+* **deps:** bump vfile from 5.3.7 to 6.0.1 ([e563bf6](https://github.com/flex-development/docast-parse/commit/e563bf6d7e8a0ddae93ab77a985edf513c83881a))
+* **deps:** Bump vfile-location from 4.0.1 to 4.1.0 ([#64](https://github.com/flex-development/docast-parse/issues/64)) ([bdef66d](https://github.com/flex-development/docast-parse/commit/bdef66d1e8cf8cf6509cf89a747f4f338ac039be))
+* **deps:** bump vfile-location from 4.1.0 to 5.0.1 ([9a6ff58](https://github.com/flex-development/docast-parse/commit/9a6ff588f2ffb6ad890ce6bb0f6eef88a4a27d30))
+* **nvm:** require `>=16.20.0` ([4191b3f](https://github.com/flex-development/docast-parse/commit/4191b3f5ce98207a1c8409d8a4567aae7612edde))
+
+
+### :robot: Continuous Integration
+
+* [[@dependabot](https://github.com/dependabot)] configure grouped version updates ([05fff35](https://github.com/flex-development/docast-parse/commit/05fff35726e28cf387c3029dc6e659f233c8ba5f))
+* [[@dependabot](https://github.com/dependabot)] re-configure private registry ([a04cc9d](https://github.com/flex-development/docast-parse/commit/a04cc9dbc32263062ddb3ebc423e4a42e9499e72))
+* **deps:** Bump actions/add-to-project from 0.4.0 to 0.4.1 ([#69](https://github.com/flex-development/docast-parse/issues/69)) ([4b7ef83](https://github.com/flex-development/docast-parse/commit/4b7ef83b5337c47edae89be57a2dc4cf7a8e488f))
+* **deps:** Bump actions/add-to-project from 0.4.1 to 0.5.0 ([#133](https://github.com/flex-development/docast-parse/issues/133)) ([7df24c1](https://github.com/flex-development/docast-parse/commit/7df24c1b5c9f8ae003465673a9a93c4e69d976b8))
+* **deps:** Bump actions/cache from 3.2.6 to 3.3.0 ([#78](https://github.com/flex-development/docast-parse/issues/78)) ([11027e7](https://github.com/flex-development/docast-parse/commit/11027e7a6142e950b08e0f0b002b6dca69f7f0c1))
+* **deps:** Bump actions/cache from 3.3.0 to 3.3.1 ([#81](https://github.com/flex-development/docast-parse/issues/81)) ([0244a4d](https://github.com/flex-development/docast-parse/commit/0244a4d7da67c8d35e84f1cf6731de428c0ba673))
+* **deps:** Bump actions/checkout from 3.2.0 to 3.3.0 ([#30](https://github.com/flex-development/docast-parse/issues/30)) ([1ea15e5](https://github.com/flex-development/docast-parse/commit/1ea15e577b902683eb2ab3cd839c6415bd1eec19))
+* **deps:** Bump actions/checkout from 3.2.0 to 3.3.0 ([#70](https://github.com/flex-development/docast-parse/issues/70)) ([1dfccea](https://github.com/flex-development/docast-parse/commit/1dfccea9cfd0e74dd6d890db2f75f72f62ec34ac))
+* **deps:** Bump actions/checkout from 3.3.0 to 3.5.0 ([#111](https://github.com/flex-development/docast-parse/issues/111)) ([c5be72e](https://github.com/flex-development/docast-parse/commit/c5be72e48b08cc88b373df39b558bcc7bcd06884))
+* **deps:** Bump actions/checkout from 3.5.0 to 3.5.3 ([#198](https://github.com/flex-development/docast-parse/issues/198)) ([d6b5dec](https://github.com/flex-development/docast-parse/commit/d6b5dec1c238e082f3d923ba604cba42ecc36980))
+* **deps:** Bump actions/github-script from 6.3.3 to 6.4.0 ([#46](https://github.com/flex-development/docast-parse/issues/46)) ([6c36531](https://github.com/flex-development/docast-parse/commit/6c365312cf35d38889ba8d6d4df2432cd5061b05))
+* **deps:** Bump actions/github-script from 6.4.0 to 6.4.1 ([#138](https://github.com/flex-development/docast-parse/issues/138)) ([c4f62bc](https://github.com/flex-development/docast-parse/commit/c4f62bcfb23b8e4aaf089dcb22a4534fe46af792))
+* **deps:** Bump actions/setup-node from 3.5.1 to 3.6.0 ([#29](https://github.com/flex-development/docast-parse/issues/29)) ([38e12ea](https://github.com/flex-development/docast-parse/commit/38e12ead108ef13a83a42064f454136bc4402d7f))
+* **deps:** bump codecov/codecov-action from 3.1.1 to 3.1.4 ([f7120ab](https://github.com/flex-development/docast-parse/commit/f7120abbe3c495cc267fbbf309191a134bc95883))
+* **deps:** Bump crazy-max/ghaction-import-gpg from 5.2.0 to 5.3.0 ([#162](https://github.com/flex-development/docast-parse/issues/162)) ([bcbd461](https://github.com/flex-development/docast-parse/commit/bcbd461ea9935f9556c992b6a60ff905616f1bcd))
+* **deps:** Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 ([#44](https://github.com/flex-development/docast-parse/issues/44)) ([caf4f52](https://github.com/flex-development/docast-parse/commit/caf4f523c6498d1a9c2e67a84630db25518fd244))
+* **deps:** Bump dependabot/fetch-metadata from 1.3.6 to 1.6.0 ([#205](https://github.com/flex-development/docast-parse/issues/205)) ([a81509b](https://github.com/flex-development/docast-parse/commit/a81509bc69666b58d7bec7f55db1b35495b444d1))
+* **deps:** Bump octokit/graphql-action from 2.2.23 to 2.2.25 ([#217](https://github.com/flex-development/docast-parse/issues/217)) ([2b809da](https://github.com/flex-development/docast-parse/commit/2b809da0571889d383cc2e1a5ed00fe6022fba4a))
+* **workflows:** [`add-to-project`] add items from repo admin account ([3673d30](https://github.com/flex-development/docast-parse/commit/3673d30efed2672fe3ffe716259b842952de37df))
+* **workflows:** [`add-to-project`] run workflow when pr is synchronized ([39a01e7](https://github.com/flex-development/docast-parse/commit/39a01e7a4f88e10ae62505ae332ff8238b79d901))
+* **workflows:** [`approve-pr`] refactor approval step conditional ([5d8e8f4](https://github.com/flex-development/docast-parse/commit/5d8e8f409c5629ba547c57e40d43b7cb0e4ad8bb))
+* **workflows:** [`approve-pr`] remove `dependabot-metadata` condition ([40555da](https://github.com/flex-development/docast-parse/commit/40555da1e71efb57af2265e7273c1f708345af4d))
+* **workflows:** [`ci`] split `ci` job into multiple jobs ([ef9374b](https://github.com/flex-development/docast-parse/commit/ef9374be26db6a547676f93663ec2b28d09f54f1))
+* **workflows:** [`dependabot-auto`] sign lockfile fix commit ([45dfdd5](https://github.com/flex-development/docast-parse/commit/45dfdd576528105abbc9b1c2a5e346f0a78ce335))
+* **workflows:** [`integrity`] update `pull_request` event activity types ([9dd7d9b](https://github.com/flex-development/docast-parse/commit/9dd7d9be8500db6c3f4703fed0dcc4de56d1e89d))
+* **workflows:** add `auto-merge` ([4552f3f](https://github.com/flex-development/docast-parse/commit/4552f3fdca6e9193a0ef40a3949bf470efd7d027))
+* **workflows:** add `cache-cleanup` ([d5983ea](https://github.com/flex-development/docast-parse/commit/d5983ea3ec5791f09d5606024b0239f8e23311b3))
+* **workflows:** add `infrastructure` ([4810f23](https://github.com/flex-development/docast-parse/commit/4810f23d10b114b0a480067f60c1b11ae0fb59ec))
+* **workflows:** add `typescript-canary` ([844c4ea](https://github.com/flex-development/docast-parse/commit/844c4ea7c71349cb0aee3cc852c5b905a6bde1af))
+
+
+### :house_with_garden: Housekeeping
+
+* analyze types distribution ([fcdc93c](https://github.com/flex-development/docast-parse/commit/fcdc93cf2510a00dc2a859e89205f156adb08799))
+* sync config files ([c5d905e](https://github.com/flex-development/docast-parse/commit/c5d905eab5da12c4f5f8e39c30b9e2ae122198db))
+* update config files ([0685b67](https://github.com/flex-development/docast-parse/commit/0685b677b85976cb3ff445d2468716097965a556))
+* update dev and test environments ([64f3b73](https://github.com/flex-development/docast-parse/commit/64f3b731f5f9776a245d2b412ae7302053c2a603))
+* **github:** configure sponsor button ([8805edc](https://github.com/flex-development/docast-parse/commit/8805edcdffe69909dedad7de7d2e61cd8ee285d0))
+* **github:** remove "tests" section from pull request template ([3e495d5](https://github.com/flex-development/docast-parse/commit/3e495d5a7be9d75275554f08355141ef096365d4))
+* **tests:** [codecov] add `flags.node20` ([05a6d44](https://github.com/flex-development/docast-parse/commit/05a6d44c1cbc249e9990350a73dca995c0385eed))
+
 ## [1.0.0-alpha.4](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2022-12-25)
 
 
