@@ -1178,7 +1178,7 @@ __metadata:
     unist-util-inspect: "npm:7.0.1"
     unist-util-source: "npm:4.0.2"
     version-bump-prompt: "npm:6.1.0"
-    vfile: "npm:5.3.7"
+    vfile: "npm:6.0.1"
     vfile-location: "npm:4.1.0"
     vite: "npm:4.4.7"
     vite-tsconfig-paths: "npm:4.2.0"
@@ -9644,12 +9644,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-stringify-position@npm:^3.0.0":
-  version: 3.0.3
-  resolution: "unist-util-stringify-position@npm:3.0.3"
+"unist-util-stringify-position@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "unist-util-stringify-position@npm:4.0.0"
   dependencies:
-    "@types/unist": "npm:^2.0.0"
-  checksum: ff752dd64726bc798dc220a6a599a77f63df08cf7ab7b6a7efb5d33f7fce5403b12e31d15c1be8be01d6de187894c76d9aa87c0b683abdcb3640eb2c5756d34f
+    "@types/unist": "npm:^3.0.0"
+  checksum: c2c3e537e7de3cb0a479ec9901137115174473221afbe635952521f1ad581a94e775859b7fcb7f72fca01f2b00cdf3b4da9cb019930937b978d9b59f424e3a61
   languageName: node
   linkType: hard
 
@@ -9784,25 +9784,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vfile-message@npm:^3.0.0":
-  version: 3.1.4
-  resolution: "vfile-message@npm:3.1.4"
+"vfile-message@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "vfile-message@npm:4.0.2"
   dependencies:
-    "@types/unist": "npm:^2.0.0"
-    unist-util-stringify-position: "npm:^3.0.0"
-  checksum: f8e674562f27eb864d4396e204a0f07c4e75716c7ade0e788284dd01375a0b4c40228e4a970db97562a7cfa24970228ccb6039290b83adcf232fbba1d3b7aba1
+    "@types/unist": "npm:^3.0.0"
+    unist-util-stringify-position: "npm:^4.0.0"
+  checksum: f053c09c70ce07eaf2f6f97abfdca59e621a9a0e48827b23b54ed02d444c04ca13fd7ce1c0d5425f011a8a7a24a1b7d3fa95df7aae3c913d12cce3f3ed9541a8
   languageName: node
   linkType: hard
 
-"vfile@npm:5.3.7, vfile@npm:^5.0.0":
-  version: 5.3.7
-  resolution: "vfile@npm:5.3.7"
+"vfile@npm:6.0.1":
+  version: 6.0.1
+  resolution: "vfile@npm:6.0.1"
   dependencies:
-    "@types/unist": "npm:^2.0.0"
-    is-buffer: "npm:^2.0.0"
-    unist-util-stringify-position: "npm:^3.0.0"
-    vfile-message: "npm:^3.0.0"
-  checksum: 54ad13e2ace60db147f0b0d288ccf79b883d80b5e3f7c1e76698ed81d1ad1cdbe02d37bb7a0dc8d1eef560160b2c1fa4780c49f0b5df29e257a1b70a31b5ffde
+    "@types/unist": "npm:^3.0.0"
+    unist-util-stringify-position: "npm:^4.0.0"
+    vfile-message: "npm:^4.0.0"
+  checksum: 9c444a5c60c1c06eba62b9c853513dc89acc448f3eea72f5e174c79da4040d1e05b7317f7fd3bc202efbff373ed6aaa2bc77f769396e23a10e9724b569e13d14
   languageName: node
   linkType: hard
 
