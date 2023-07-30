@@ -87,7 +87,7 @@
     "@flex-development/tutils": "6.0.0-alpha.12",
     "@types/unist": "2.0.6",
     "detab": "3.0.2",
-    "unist-builder": "3.0.1",
+    "unist-builder": "4.0.0",
     "unist-util-source": "4.0.2",
     "vfile": "5.3.7",
     "vfile-location": "4.1.0"
