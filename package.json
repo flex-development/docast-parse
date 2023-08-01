@@ -84,7 +84,7 @@
   },
   "dependencies": {
     "@flex-development/docast": "1.0.0-alpha.13",
-    "@flex-development/tutils": "6.0.0-alpha.13",
+    "@flex-development/tutils": "6.0.0-alpha.14",
     "@types/unist": "3.0.0",
     "detab": "3.0.2",
     "unist-builder": "4.0.0",
@@ -176,7 +176,7 @@
   },
   "resolutions": {
     "@ardatan/sync-fetch": "larsgw/sync-fetch#head=worker_threads",
-    "@flex-development/tutils": "6.0.0-alpha.13",
+    "@flex-development/tutils": "6.0.0-alpha.14",
     "@types/unist": "3.0.0",
     "unist-util-inspect@npm:7.0.1": "patch:unist-util-inspect@npm%3A7.0.1#patches/unist-util-inspect+7.0.1.dev.patch",
     "vfile": "6.0.1"
