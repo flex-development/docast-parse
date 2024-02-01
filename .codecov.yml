@@ -4,14 +4,14 @@
 ---
 codecov:
   notify:
-    after_n_builds: 4
+    after_n_builds: 3
     wait_for_ci: true
   require_ci_to_pass: true
 
 comment:
-  after_n_builds: 4
+  after_n_builds: 3
   behavior: default
-  layout: header,diff,flags,tree,footer
+  layout: header,diff,flags,components,tree,footer
   require_base: false
   require_changes: false
   require_head: true
@@ -76,10 +76,6 @@ flags:
     carryforward: false
     paths:
       - src/
-  node16:
-    carryforward: false
-    paths:
-      - src/
 
 github_checks:
   annotations: true
@@ -92,9 +88,4 @@ ignore:
   - src/types/
 
 profiling:
-  critical_files_paths:
-    - src/attacher.ts
-    - src/grammar.ts
-    - src/lexer.ts
-    - src/parser.ts
-    - src/reader.ts
+  critical_files_paths: []

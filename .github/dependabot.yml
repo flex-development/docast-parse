@@ -8,7 +8,7 @@
 version: 2
 registries:
   github:
-    token: ${{ secrets.PAT_BOT }}
+    token: ${{ secrets.GH_REGISTRY_TOKEN }}
     type: npm-registry
     url: https://npm.pkg.github.com
 updates:
@@ -20,9 +20,6 @@ updates:
     labels:
       - scope:dependencies
       - type:ci
-    reviewers:
-      - flex-development/dependabot-review
-      - flexdevelopment
     schedule:
       interval: daily
   - package-ecosystem: npm
@@ -31,25 +28,23 @@ updates:
       include: scope
     directory: /
     groups:
-      conventional-changelog:
+      commitlint:
         patterns:
-          - '@types/conventional-changelog'
-          - '@types/conventional-changelog-core'
-          - '@types/conventional-changelog-writer'
-          - '@types/conventional-recommended-bump'
-          - '@types/git-raw-commits'
-          - conventional-changelog
-          - conventional-changelog-conventionalcommits
-          - conventional-changelog-core
-          - conventional-changelog-writer
-          - conventional-recommended-bump
+          - '@commitlint/*'
+      eslint:
+        patterns:
+          - '@types/eslint'
+          - eslint
+      flex-development:
+        patterns:
+          - '@flex-development/*'
       typescript-eslint:
         patterns:
           - '@typescript-eslint/*'
       vitest:
         patterns:
           - '@vitest/*'
-          - vitest
+          - vitest*
     ignore:
       - dependency-name: unist-util-inspect
     labels:
@@ -57,8 +52,5 @@ updates:
       - type:build
     registries:
       - github
-    reviewers:
-      - flex-development/dependabot-review
-      - flexdevelopment
     schedule:
       interval: daily
