@@ -31,7 +31,8 @@
   },
   "publishConfig": {
     "access": "public",
-    "directory": "./"
+    "directory": "./",
+    "provenance": true
   },
   "type": "module",
   "files": [
