@@ -44,6 +44,7 @@ const cwd = pathToFileURL(tsconfig.compilerOptions.baseUrl)
  */
 export const load = async (url, context) => {
   // get module format
+  context.conditions = context.conditions ?? []
   context.format = context.format ?? (await mlly.getFormat(url))
 
   // validate import assertions
@@ -65,6 +66,14 @@ export const load = async (url, context) => {
    */
   let source = await mlly.getSource(url, { format: context.format })
 
+  // add custom conditions
+  if (tutils.isArray(tsconfig.compilerOptions.customConditions)) {
+    context.conditions = [
+      ...context.conditions,
+      ...tsconfig.compilerOptions.customConditions
+    ]
+  }
+
   // emit decorator metadata
   DECORATOR_REGEX.lastIndex = 0
   if (DECORATOR_REGEX.test(source)) {
@@ -80,7 +89,6 @@ export const load = async (url, context) => {
   if (/^\.(?:cts|mts|tsx?)$/.test(ext) && !/\.d\.(?:cts|mts|ts)$/.test(url)) {
     // push require condition for .cts files and update format
     if (ext === '.cts') {
-      context.conditions = context.conditions ?? []
       context.conditions.unshift('require', 'node')
       context.format = mlly.Format.MODULE
     }
@@ -88,7 +96,7 @@ export const load = async (url, context) => {
     // resolve path aliases
     source = await mlly.resolveAliases(source, {
       aliases: tsconfig.compilerOptions.paths,
-      conditions: context.conditions,
+      conditions: new Set(context.conditions),
       cwd,
       ext: '',
       parent: url
@@ -96,7 +104,7 @@ export const load = async (url, context) => {
 
     // resolve modules
     source = await mlly.resolveModules(source, {
-      conditions: context.conditions,
+      conditions: new Set(context.conditions),
       parent: url
     })
 

@@ -5,22 +5,24 @@
  */
 
 import pathe from '@flex-development/pathe'
-import { ifelse, sift } from '@flex-development/tutils'
+import { ifelse, includes, sift } from '@flex-development/tutils'
 import ci from 'is-ci'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import {
   defineConfig,
+  type ConfigEnv,
   type UserConfig,
   type UserConfigExport
 } from 'vitest/config'
 import { BaseSequencer, type WorkspaceSpec } from 'vitest/node'
+import Notifier from './__tests__/reporters/notifier'
 
 /**
  * Vitest configuration export.
  *
  * @const {UserConfigExport} config
  */
-const config: UserConfigExport = defineConfig((): UserConfig => {
+const config: UserConfigExport = defineConfig((env: ConfigEnv): UserConfig => {
   /**
    * [`lint-staged`][1] check.
    *
@@ -32,10 +34,18 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
 
   return {
     define: {},
-    plugins: [tsconfigPaths({ projects: [pathe.resolve('tsconfig.json')] })],
+    plugins: [
+      tsconfigPaths({
+        parseNative: true,
+        projects: [pathe.resolve('tsconfig.json')]
+      })
+    ],
     test: {
       allowOnly: !ci,
-      benchmark: {},
+      benchmark: {
+        include: ['**/__tests__/*.bench.spec.ts?(x)'],
+        reporters: [new Notifier(), 'json', 'verbose']
+      },
       chaiConfig: {
         includeStack: true,
         showDiff: true,
@@ -62,6 +72,14 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
       },
       environment: 'node',
       environmentOptions: {},
+      exclude: [
+        '**/__tests__/*.bench.spec.ts?(x)',
+        '.cache',
+        '.git',
+        '.idea',
+        'dist',
+        'node_modules'
+      ],
       globalSetup: [],
       globals: true,
       hookTimeout: 10 * 1000,
@@ -69,13 +87,13 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
         `**/__tests__/*.${ifelse(LINT_STAGED, '{spec,spec-d}', 'spec')}.ts?(x)`
       ],
       mockReset: true,
-      outputFile: { json: './__tests__/report.json' },
+      outputFile: {
+        json: includes(['benchmark', 'typecheck'], env.mode)
+          ? pathe.join('__tests__', pathe.addExt(env.mode, 'json'))
+          : '__tests__/report.json'
+      },
       passWithNoTests: true,
-      reporters: sift([
-        'json',
-        'verbose',
-        ifelse(ci, '', './__tests__/reporters/notifier.ts')
-      ]),
+      reporters: sift([ifelse(ci, null, new Notifier()), 'json', 'verbose']),
       /**
        * Stores snapshots next to `file`'s directory.
        *
@@ -128,7 +146,7 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
         ignoreSourceErrors: false,
         include: ['**/__tests__/*.spec-d.ts'],
         only: true,
-        tsconfig: pathe.resolve('tsconfig.typecheck.json')
+        tsconfig: 'tsconfig.typecheck.json'
       },
       unstubEnvs: true,
       unstubGlobals: true

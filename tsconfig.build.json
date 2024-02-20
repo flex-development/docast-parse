@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "customConditions": ["import", "node"],
     "declaration": true,
     "noEmitOnError": true,
     "skipLibCheck": false,

@@ -10,7 +10,7 @@
 [![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)](https://vitest.dev/)
 [![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat&logo=yarn&logoColor=ffffff)](https://yarnpkg.com/)
 
-[**unified**][unified] compliant file parser for [**docast**][docast].
+[**unified**][unified] compliant parser for [**docast**][docast].
 
 ## Contents
 
@@ -37,22 +37,33 @@ syntax tree][docast].
 
 This package is [ESM only][esm].
 
-```sh
-yarn add @flex-development/docast-parse @flex-development/docast @types/mdast @types/unist
-```
-
-From Git:
+In Node.js (version 18+) with [yarn][yarn]:
 
 ```sh
-yarn add @flex-development/docast-parse@flex-development/docast-parse
+yarn add @flex-development/docast-parse
+yarn add -D @flex-development/docast @types/mdast @types/unist micromark-util-types
 ```
 
 <blockquote>
   <small>
-    See <a href='https://yarnpkg.com/features/protocols#git'>Git - Protocols | Yarn</a>
-    &nbsp;for details on requesting a specific branch, commit, or tag.
+    See <a href='https://yarnpkg.com/protocol/git'>Git - Protocols | Yarn</a>
+    &nbsp;for details regarding installing from Git.
   </small>
 </blockquote>
+
+In Deno with [`esm.sh`][esmsh]:
+
+```ts
+import docastParse from 'https://esm.sh/@flex-development/docast-parse'
+```
+
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import docastParse from 'https://esm.sh/@flex-development/docast-parse'
+</script>
+```
 
 ## Use
 
@@ -80,5 +91,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 [docast]: https://github.com/flex-development/docast
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[esmsh]: https://esm.sh/
 [typescript]: https://www.typescriptlang.org
 [unified]: https://github.com/unifiedjs/unified
+[yarn]: https://yarnpkg.com

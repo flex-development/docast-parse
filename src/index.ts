@@ -3,4 +3,4 @@
  * @module docast-parse
  */
 
-export {}
+export { default } from './plugin'

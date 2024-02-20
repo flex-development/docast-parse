@@ -88,4 +88,5 @@ ignore:
   - src/types/
 
 profiling:
-  critical_files_paths: []
+  critical_files_paths:
+    - src/plugin.ts

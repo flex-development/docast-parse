@@ -45,8 +45,6 @@ updates:
         patterns:
           - '@vitest/*'
           - vitest*
-    ignore:
-      - dependency-name: unist-util-inspect
     labels:
       - scope:dependencies
       - type:build

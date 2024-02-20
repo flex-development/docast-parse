@@ -4,6 +4,7 @@ cefc
 codecov
 commitlintrc
 dedupe
+deno
 dessant
 docast
 dohm
@@ -16,6 +17,7 @@ iife
 jchen
 jsdoc
 kaisugi
+lcov
 lintstagedrc
 mdast
 mkbuild
