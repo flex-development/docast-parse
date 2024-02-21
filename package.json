@@ -1,7 +1,7 @@
 {
   "name": "@flex-development/docast-parse",
   "description": "unified plugin to add support for parsing docblock comments",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "keywords": [
     "ast",
     "comment-parser",
