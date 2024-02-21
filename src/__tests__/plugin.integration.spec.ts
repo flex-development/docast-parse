@@ -3,8 +3,7 @@
  * @module docast-parse/tests/integration/plugin
  */
 
-import type { Options } from '@flex-development/docast-util-from-docs'
-import { constant, type Nilable } from '@flex-development/tutils'
+import { constant } from '@flex-development/tutils'
 import remarkDirective from 'remark-directive'
 import { read } from 'to-vfile'
 import { unified } from 'unified'
@@ -21,10 +20,10 @@ describe('integration:plugin', () => {
     })
   })
 
-  describe.each<['empty' | 'non-empty', Nilable<Options>?]>([
-    ['empty'],
-    ['non-empty', { transforms: [vi.fn()] }]
-  ])('%s document', (type, options) => {
+  describe.each<'empty' | 'non-empty'>([
+    'empty',
+    'non-empty'
+  ])('%s document', type => {
     let file: VFile
     let value: string
 
@@ -36,7 +35,7 @@ describe('integration:plugin', () => {
     it('should configure parser', () => {
       // Act
       const result = unified()
-        .use(testSubject, options)
+        .use(testSubject)
         .use(remarkDirective)
         .parse(file)
 

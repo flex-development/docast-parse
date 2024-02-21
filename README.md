@@ -19,6 +19,7 @@
 - [Install](#install)
 - [Use](#use)
 - [API](#api)
+  - [`unified().use(docastParse)`](#unifiedusedocastparse)
 - [Syntax](#syntax)
   - [Docblock](#docblock)
   - [Markdown](#markdown)
@@ -78,7 +79,19 @@ In browsers with [`esm.sh`][esmsh]:
 
 ## API
 
-**TODO**: api
+This package exports no identifiers. The default export is [`docastParse`](#unifiedusedocastparse).
+
+### `unified().use(docastParse)`
+
+Add support for docblock parsing.
+
+#### Parameters
+
+There are no parameters.
+
+#### Returns
+
+Nothing (`undefined`).
 
 ## Syntax
 
@@ -94,7 +107,7 @@ in extending markdown, more information is available in the [`mdast-util-from-ma
 
 ## Syntax tree
 
-The syntax tree format is [docast][docast].
+The syntax tree is [docast][docast].
 
 ## Types
 

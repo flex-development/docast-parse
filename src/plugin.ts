@@ -5,10 +5,10 @@
 
 import type { Root } from '@flex-development/docast'
 import { fromDocs, type Options } from '@flex-development/docast-util-from-docs'
-import type { Nilable, Optional } from '@flex-development/tutils'
+import type { EmptyArray, Optional } from '@flex-development/tutils'
 import type { Extension as MdastExtension } from 'mdast-util-from-markdown'
 import type { Extension as MicromarkExtension } from 'micromark-util-types'
-import type { Data, Plugin, Processor } from 'unified'
+import type { Plugin, Processor } from 'unified'
 import type { VFile } from 'vfile'
 
 declare module 'unified' {
@@ -31,7 +31,8 @@ declare module 'unified' {
     micromarkExtensions?: Optional<MicromarkExtension[]>
   }
 
-  interface Settings extends Options {}
+  interface Settings
+    extends Omit<Options, 'mdastExtensions' | 'micromarkExtensions'> {}
 }
 
 /**
@@ -42,30 +43,9 @@ declare module 'unified' {
  *
  * @this {Processor}
  *
- * @param {Nilable<Options>?} [options] - Configuration options
  * @return {void} Nothing
  */
-function plugin(this: Processor, options?: Nilable<Options>): void {
-  /**
-   * Processor data.
-   *
-   * @const {Data} data
-   */
-  const data: Data = this.data()
-
-  // initialize extensions
-  data.fromMarkdownExtensions ??= []
-  data.micromarkExtensions ??= []
-
-  // initialize options
-  options ??= {}
-  options.mdastExtensions ??= []
-  options.micromarkExtensions ??= []
-
-  // configure extensions
-  data.fromMarkdownExtensions.push(...options.mdastExtensions)
-  data.micromarkExtensions.push(...options.micromarkExtensions)
-
+function plugin(this: Processor): void {
   /**
    * Docblock parser.
    *
@@ -75,10 +55,11 @@ function plugin(this: Processor, options?: Nilable<Options>): void {
    */
   const parser = (document: string, file: VFile): Root => {
     return fromDocs(String(file), {
+      // options are not documented in the readme.
+      // options should be set by plugins on `data` instead of passed by users.
       ...this.data('settings'),
-      ...options,
-      mdastExtensions: data.fromMarkdownExtensions,
-      micromarkExtensions: data.micromarkExtensions
+      mdastExtensions: this.data('fromMarkdownExtensions'),
+      micromarkExtensions: this.data('micromarkExtensions')
     })
   }
 
@@ -88,15 +69,13 @@ function plugin(this: Processor, options?: Nilable<Options>): void {
 /**
  * Add support for docblock parsing.
  *
- * @see {@linkcode Options}
  * @see {@linkcode Plugin}
  * @see {@linkcode Root}
  *
  * @this {Processor}
  *
- * @param {Nilable<Options>?} [options] - Configuration options
  * @return {void} Nothing
  */
-const docastParse: Plugin<[Nilable<Options>?], string, Root> = plugin
+const docastParse: Plugin<EmptyArray, string, Root> = plugin
 
 export default docastParse
