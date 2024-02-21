@@ -1,3 +1,84 @@
+## [1.0.0-alpha.6](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.5...1.0.0-alpha.6) (2024-02-20)
+
+### ⚠ BREAKING CHANGES
+
+- init project rewrite
+
+### :package: Build
+
+- [[`1ce23a5`](https://github.com/flex-development/docast-parse/commit/1ce23a5015e1e383630978429017f82fa214373e)] **deps-dev:** Bump @arethetypeswrong/cli from 0.7.0 to 0.7.1 ([#234](https://github.com/flex-development/docast-parse/issues/234))
+- [[`d9864c3`](https://github.com/flex-development/docast-parse/commit/d9864c39cff154c52cda20c7fdcee2d76f1fe1c8)] **deps-dev:** Bump @commitlint/cli from 17.6.7 to 17.7.0 ([#247](https://github.com/flex-development/docast-parse/issues/247))
+- [[`0e77370`](https://github.com/flex-development/docast-parse/commit/0e77370ccb7bf5da922388a67b78cdc823d2c490)] **deps-dev:** Bump @commitlint/cli from 17.7.0 to 17.7.1 ([#253](https://github.com/flex-development/docast-parse/issues/253))
+- [[`226b71b`](https://github.com/flex-development/docast-parse/commit/226b71b8fec34b575565774f2c958af08f70e676)] **deps-dev:** Bump @flex-development/decorator-regex from 1.0.0 to 2.0.0 ([#233](https://github.com/flex-development/docast-parse/issues/233))
+- [[`720cf68`](https://github.com/flex-development/docast-parse/commit/720cf685cc091858c239c0d7cfbd940bb25d4a1c)] **deps-dev:** Bump @flex-development/mkbuild from 1.0.0-alpha.20 to 1.0.0-alpha.21 ([#249](https://github.com/flex-development/docast-parse/issues/249))
+- [[`97d4cf2`](https://github.com/flex-development/docast-parse/commit/97d4cf2486120fbafa61bfa5b7df4f677678307b)] **deps-dev:** Bump @flex-development/mlly from 1.0.0-alpha.15 to 1.0.0-alpha.16 ([#240](https://github.com/flex-development/docast-parse/issues/240))
+- [[`96dc78d`](https://github.com/flex-development/docast-parse/commit/96dc78d36fa16dc0df8b8b13c193dbc6bd93e22c)] **deps-dev:** Bump @flex-development/mlly from 1.0.0-alpha.16 to 1.0.0-alpha.17 ([#250](https://github.com/flex-development/docast-parse/issues/250))
+- [[`9173c9b`](https://github.com/flex-development/docast-parse/commit/9173c9bf5f1dd63953cb83791958def4e8c99988)] **deps-dev:** Bump @flex-development/tsconfig-utils from 1.1.2 to 2.0.1 ([#251](https://github.com/flex-development/docast-parse/issues/251))
+- [[`2386ed5`](https://github.com/flex-development/docast-parse/commit/2386ed51ab1b06e54da286bc7435e15717872114)] **deps-dev:** Bump cspell from 6.31.2 to 6.31.3 ([#243](https://github.com/flex-development/docast-parse/issues/243))
+- [[`0a17373`](https://github.com/flex-development/docast-parse/commit/0a1737357c009c5b16f100179f47ab6905377fa3)] **deps-dev:** Bump cspell from 8.3.2 to 8.4.1 ([#313](https://github.com/flex-development/docast-parse/issues/313))
+- [[`b548d62`](https://github.com/flex-development/docast-parse/commit/b548d62970a65b12b666de2669f11b912e7f4d76)] **deps-dev:** Bump esbuild from 0.18.17 to 0.18.19 ([#239](https://github.com/flex-development/docast-parse/issues/239))
+- [[`b71996a`](https://github.com/flex-development/docast-parse/commit/b71996a6f1e489d4607801b15def5633501a18aa)] **deps-dev:** Bump esbuild from 0.18.19 to 0.19.0 ([#245](https://github.com/flex-development/docast-parse/issues/245))
+- [[`d12dcea`](https://github.com/flex-development/docast-parse/commit/d12dceacc327943ab38c14cd5b84f4a168f3c4a5)] **deps-dev:** Bump esbuild from 0.19.0 to 0.19.1 ([#255](https://github.com/flex-development/docast-parse/issues/255))
+- [[`0825b5a`](https://github.com/flex-development/docast-parse/commit/0825b5a77690f9e8248c0e127d156527f0993a4e)] **deps-dev:** Bump eslint from 8.46.0 to 8.47.0 ([#256](https://github.com/flex-development/docast-parse/issues/256))
+- [[`6beb775`](https://github.com/flex-development/docast-parse/commit/6beb775062fcc5b83b8e17d66abc59cbf3774b9e)] **deps-dev:** Bump eslint-config-prettier from 8.10.0 to 9.0.0 ([#244](https://github.com/flex-development/docast-parse/issues/244))
+- [[`5d5ce99`](https://github.com/flex-development/docast-parse/commit/5d5ce99dc6017668730b2218801d93fa901ba949)] **deps-dev:** Bump eslint-config-prettier from 8.9.0 to 8.10.0 ([#236](https://github.com/flex-development/docast-parse/issues/236))
+- [[`060cece`](https://github.com/flex-development/docast-parse/commit/060cece954cfc689b02323096a600a3d802074e3)] **deps-dev:** Bump eslint-import-resolver-typescript from 3.5.5 to 3.6.0 ([#246](https://github.com/flex-development/docast-parse/issues/246))
+- [[`bdaee92`](https://github.com/flex-development/docast-parse/commit/bdaee92b75b1f63200377e9ff3fe951dfcff3292)] **deps-dev:** Bump eslint-plugin-jsdoc from 48.0.4 to 48.1.0 ([#310](https://github.com/flex-development/docast-parse/issues/310))
+- [[`f848339`](https://github.com/flex-development/docast-parse/commit/f848339bb995e62c0676018e3280e36e180ba031)] **deps-dev:** Bump eslint-plugin-markdownlint from 0.4.1 to 0.5.0 ([#260](https://github.com/flex-development/docast-parse/issues/260))
+- [[`2cf60f9`](https://github.com/flex-development/docast-parse/commit/2cf60f911cbc99fce18883a8eeea8dbe21b90488)] **deps-dev:** Bump graphql from 16.7.1 to 16.8.1 ([#288](https://github.com/flex-development/docast-parse/issues/288))
+- [[`4f8a3b9`](https://github.com/flex-development/docast-parse/commit/4f8a3b9c40542602d66ef3238d1a43fd2ab4f74c)] **deps-dev:** Bump lint-staged from 15.2.1 to 15.2.2 ([#306](https://github.com/flex-development/docast-parse/issues/306))
+- [[`d8cc3a4`](https://github.com/flex-development/docast-parse/commit/d8cc3a4c2ceda47fc53597261f7915e324067178)] **deps-dev:** Bump prettier from 3.0.0 to 3.0.1 ([#235](https://github.com/flex-development/docast-parse/issues/235))
+- [[`89c52ef`](https://github.com/flex-development/docast-parse/commit/89c52ef799d6d52d94afec4e90b9d6371c0c7f4c)] **deps-dev:** Bump the typescript-eslint group with 2 updates ([#228](https://github.com/flex-development/docast-parse/issues/228))
+- [[`512df02`](https://github.com/flex-development/docast-parse/commit/512df02c28148763447ce6fe7c62b7fae7f47d7a)] **deps-dev:** Bump the typescript-eslint group with 2 updates ([#238](https://github.com/flex-development/docast-parse/issues/238))
+- [[`6ced028`](https://github.com/flex-development/docast-parse/commit/6ced02889e8bece31cf4dedca5039708afbaeeae)] **deps-dev:** Bump the typescript-eslint group with 2 updates ([#258](https://github.com/flex-development/docast-parse/issues/258))
+- [[`4cff6ac`](https://github.com/flex-development/docast-parse/commit/4cff6acb71f500ab6f3c89e9d7b493259ce3f089)] **deps-dev:** Bump the vitest group with 2 updates ([#230](https://github.com/flex-development/docast-parse/issues/230))
+- [[`98fc2ab`](https://github.com/flex-development/docast-parse/commit/98fc2ab7a6d583e5090061acac94b4193d14de50)] **deps-dev:** Bump vite from 4.4.7 to 4.4.8 ([#231](https://github.com/flex-development/docast-parse/issues/231))
+- [[`f572406`](https://github.com/flex-development/docast-parse/commit/f572406b80044b2ba45e926c48262fe79427d38b)] **deps-dev:** Bump vite from 4.4.8 to 4.4.9 ([#241](https://github.com/flex-development/docast-parse/issues/241))
+- [[`d1da0d3`](https://github.com/flex-development/docast-parse/commit/d1da0d3156fe184a64225e9410cc57f370ca2dd1)] **deps:** Bump @flex-development/tutils from 6.0.0-alpha.12 to 6.0.0-alpha.13 ([#229](https://github.com/flex-development/docast-parse/issues/229))
+- [[`07450e2`](https://github.com/flex-development/docast-parse/commit/07450e2c89dcd86bda41c1af661bcda1645f8d2a)] **deps:** Bump @flex-development/tutils from 6.0.0-alpha.13 to 6.0.0-alpha.14 ([#232](https://github.com/flex-development/docast-parse/issues/232))
+- [[`7dd4e49`](https://github.com/flex-development/docast-parse/commit/7dd4e49026602b2d7ccae4a41d9399f4cdaef784)] **deps:** Bump @flex-development/tutils from 6.0.0-alpha.14 to 6.0.0-alpha.16 ([#242](https://github.com/flex-development/docast-parse/issues/242))
+- [[`609ff38`](https://github.com/flex-development/docast-parse/commit/609ff38a9dce0fb3721a1ac605ed14ac2b462c64)] **deps:** Bump @flex-development/tutils from 6.0.0-alpha.16 to 6.0.0-alpha.18 ([#248](https://github.com/flex-development/docast-parse/issues/248))
+- [[`fbf61da`](https://github.com/flex-development/docast-parse/commit/fbf61da1f2f11a3f741cbc27939034ac7f681d71)] **deps:** Bump @flex-development/tutils from 6.0.0-alpha.18 to 6.0.0-alpha.19 ([#252](https://github.com/flex-development/docast-parse/issues/252))
+- [[`3295e5a`](https://github.com/flex-development/docast-parse/commit/3295e5a1ce75ab93d3c6b734e19c03a0ee6033f4)] **deps:** Bump ip from 2.0.0 to 2.0.1 ([#312](https://github.com/flex-development/docast-parse/issues/312))
+- [[`1c7c3ae`](https://github.com/flex-development/docast-parse/commit/1c7c3aee03b2741880accd45a1d9c27c2e9d9abf)] **pkg:** generate provenance statements
+
+### :robot: Continuous Integration
+
+- [[`ed05e28`](https://github.com/flex-development/docast-parse/commit/ed05e28541c912fe8a3a8596944b2706c42b7dcc)] **deps:** Bump actions/cache from 3.3.1 to 3.3.2 ([#279](https://github.com/flex-development/docast-parse/issues/279))
+- [[`04d5ee6`](https://github.com/flex-development/docast-parse/commit/04d5ee6951c0b5a18294017c99f2277a88ce68f4)] **deps:** Bump actions/checkout from 3.5.3 to 3.6.0 ([#269](https://github.com/flex-development/docast-parse/issues/269))
+- [[`4ea50d4`](https://github.com/flex-development/docast-parse/commit/4ea50d4a6e29795f6bf7d3ca129fb27e95e198ed)] **deps:** Bump actions/checkout from 3.6.0 to 4.0.0 ([#275](https://github.com/flex-development/docast-parse/issues/275))
+- [[`4ea8e9b`](https://github.com/flex-development/docast-parse/commit/4ea8e9be9cb88fa74eb59b700348f2cf959160ae)] **deps:** Bump actions/checkout from 4.0.0 to 4.1.0 ([#290](https://github.com/flex-development/docast-parse/issues/290))
+- [[`777f134`](https://github.com/flex-development/docast-parse/commit/777f134204b882ef295b5247368fff9cec185243)] **deps:** Bump actions/checkout from 4.1.0 to 4.1.1 ([#294](https://github.com/flex-development/docast-parse/issues/294))
+- [[`0c55640`](https://github.com/flex-development/docast-parse/commit/0c55640cb2a69331fe1497040cc9f4f7460d09eb)] **deps:** Bump actions/setup-node from 3.6.0 to 3.8.0 ([#257](https://github.com/flex-development/docast-parse/issues/257))
+- [[`5d2157b`](https://github.com/flex-development/docast-parse/commit/5d2157b27f813a47dcd3356ba81bdf265497ba92)] **deps:** Bump actions/setup-node from 3.8.0 to 3.8.1 ([#264](https://github.com/flex-development/docast-parse/issues/264))
+- [[`afb425e`](https://github.com/flex-development/docast-parse/commit/afb425e55b890eab6eff26033e3661f26503e9f9)] **deps:** Bump actions/setup-node from 3.8.1 to 4.0.2 ([#309](https://github.com/flex-development/docast-parse/issues/309))
+- [[`a635b59`](https://github.com/flex-development/docast-parse/commit/a635b5933a05a47d6e0ac434cba33d234f37cd4b)] **deps:** Bump actions/upload-artifact from 3.1.2 to 3.1.3 ([#277](https://github.com/flex-development/docast-parse/issues/277))
+- [[`7dd9b93`](https://github.com/flex-development/docast-parse/commit/7dd9b93a24ab4a8f59b91b3de18e803ccd505c5c)] **deps:** Bump actions/upload-artifact from 3.1.3 to 4.3.1 ([#307](https://github.com/flex-development/docast-parse/issues/307))
+- [[`12ce1fc`](https://github.com/flex-development/docast-parse/commit/12ce1fc486f52ac7da106aa6148de93fcc43b91e)] **deps:** Bump crazy-max/ghaction-import-gpg from 5.3.0 to 5.4.0 ([#274](https://github.com/flex-development/docast-parse/issues/274))
+- [[`97e126c`](https://github.com/flex-development/docast-parse/commit/97e126c4b413a41c35f986fe662e4f61993ee3e0)] **deps:** Bump crazy-max/ghaction-import-gpg from 5.4.0 to 6.0.0 ([#282](https://github.com/flex-development/docast-parse/issues/282))
+- [[`4a74996`](https://github.com/flex-development/docast-parse/commit/4a74996dafbd9be898fcd5470111fa67e5f8a15b)] **deps:** Bump crazy-max/ghaction-import-gpg from 6.0.0 to 6.1.0 ([#303](https://github.com/flex-development/docast-parse/issues/303))
+- [[`048de9a`](https://github.com/flex-development/docast-parse/commit/048de9a41dcc83d8e2d4a5bffb278a5b2a46cffa)] **deps:** Bump dessant/lock-threads from 4.0.0 to 4.0.1 ([#227](https://github.com/flex-development/docast-parse/issues/227))
+
+### :pencil: Documentation
+
+- [[`dcd9c4d`](https://github.com/flex-development/docast-parse/commit/dcd9c4d560d93c7999d27f4719d4608329bb4ed5)] api
+- [[`04a8636`](https://github.com/flex-development/docast-parse/commit/04a8636f44d235841f0cf4f1ddf15072dadf54e6)] markdown syntax
+- [[`8a9c0fa`](https://github.com/flex-development/docast-parse/commit/8a9c0fa20218327db516babb26d649ddc650a6ed)] use
+- [[`3a1a2fc`](https://github.com/flex-development/docast-parse/commit/3a1a2fc36d636a4bce712de81b17ef642b81215b)] when should i use this?
+
+### :sparkles: Features
+
+- [[`80307ec`](https://github.com/flex-development/docast-parse/commit/80307ec7d016be7ab3daa42161174573992d0ff9)] **plugin:** `fromDocs` integration
+
+### :house_with_garden: Housekeeping
+
+- [[`1eff5a1`](https://github.com/flex-development/docast-parse/commit/1eff5a14ea0bedd1b8db10067d6a3200b806965f)] **github:** add commit scope `chore`
+- [[`dc9f2a0`](https://github.com/flex-development/docast-parse/commit/dc9f2a0e1b13d23318447bed58810f6903731549)] **patches:** remove `unist-util-inspect@7.0.1`
+
+### :mechanical_arm: Refactors
+
+- [[`d6a8d5f`](https://github.com/flex-development/docast-parse/commit/d6a8d5faa7d557df96769cffa8c02bab17138cb1)] init project rewrite
+
 ## [1.0.0-alpha.5](https://github.com/flex-development/docast-parse/compare/1.0.0-alpha.4...1.0.0-alpha.5) (2023-07-30)
 
 ### ⚠ BREAKING CHANGES
@@ -205,4 +286,5 @@
 ### :white_check_mark: Testing
 
 - [[`f66e111`](https://github.com/flex-development/docast-parse/commit/f66e1110ecea38216582013a98c205d3e8b9df81)] **ts:** typescript definitions
+
 
