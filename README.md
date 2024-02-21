@@ -20,6 +20,8 @@
 - [Use](#use)
 - [API](#api)
 - [Syntax](#syntax)
+  - [Docblock](#docblock)
+  - [Markdown](#markdown)
 - [Syntax tree](#syntax-tree)
 - [Types](#types)
 - [Contribute](#contribute)
@@ -80,7 +82,15 @@ In browsers with [`esm.sh`][esmsh]:
 
 ## Syntax
 
-**TODO**: syntax
+### Docblock
+
+**TODO**: docblock syntax
+
+### Markdown
+
+Markdown is parsed according to CommonMark. Extensions can add support for other syntax and nodes. If you’re interested
+in extending markdown, more information is available in the [`mdast-util-from-markdown`][mdast-util-from-markdown] and
+[`micromark`][micromark] readmes.
 
 ## Syntax tree
 
@@ -99,6 +109,8 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 [esmsh]: https://esm.sh/
+[mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
+[micromark]: https://github.com/micromark/micromark
 [remark-directive]: https://github.com/remarkjs/remark-directive
 [remark-gfm]: https://github.com/remarkjs/remark-gfm
 [remark-math]: https://github.com/remarkjs/remark-math
