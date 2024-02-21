@@ -10,7 +10,7 @@
 [![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)](https://vitest.dev/)
 [![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat&logo=yarn&logoColor=ffffff)](https://yarnpkg.com/)
 
-[**unified**][unified] compliant parser for [**docast**][docast].
+[**docast**][docast] x [**unified**][unified] plugin to add support for parsing docblock comments.
 
 ## Contents
 
@@ -26,12 +26,17 @@
 
 ## What is this?
 
-This package is a [unified][unified] plugin that defines how to take source code as input and turn it into a [docblock
-syntax tree][docast].
+This package is a [unified][unified] plugin that defines how to take [docblock][docblock] input and turn it into a
+syntax tree.
 
 ## When should I use this?
 
-**TODO**: when should i use this?
+This plugin adds support to unified for parsing [docblock comments][docblock]. If you don’t use plugins and want to
+access the syntax tree directly, you can use [`docast-util-from-docs`][docast-util-from-docs] instead.
+
+You can also combine this plugin with other unified plugins to add extensions for parsing markdown in docblock comments.
+Notable packages include [`remark-directive`][remark-directive], [`remark-gfm`][remark-gfm], and
+[`remark-math`][remark-math].
 
 ## Install
 
@@ -89,9 +94,14 @@ This package is fully typed with [TypeScript][typescript].
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
+[docast-util-from-docs]: https://github.com/flex-development/docast-util-from-docs
 [docast]: https://github.com/flex-development/docast
+[docblock]: https://github.com/flex-development/docast#docblock-comment
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 [esmsh]: https://esm.sh/
+[remark-directive]: https://github.com/remarkjs/remark-directive
+[remark-gfm]: https://github.com/remarkjs/remark-gfm
+[remark-math]: https://github.com/remarkjs/remark-math
 [typescript]: https://www.typescriptlang.org
 [unified]: https://github.com/unifiedjs/unified
 [yarn]: https://yarnpkg.com

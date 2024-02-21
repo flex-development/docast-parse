@@ -5,8 +5,7 @@
 
 import type { Options } from '@flex-development/docast-util-from-docs'
 import { constant, type Nilable } from '@flex-development/tutils'
-import { directiveFromMarkdown } from 'mdast-util-directive'
-import { directive } from 'micromark-extension-directive'
+import remarkDirective from 'remark-directive'
 import { read } from 'to-vfile'
 import { unified } from 'unified'
 import { inspectNoColor } from 'unist-util-inspect'
@@ -24,10 +23,7 @@ describe('integration:plugin', () => {
 
   describe.each<['empty' | 'non-empty', Nilable<Options>?]>([
     ['empty'],
-    ['non-empty', {
-      mdastExtensions: [directiveFromMarkdown()],
-      micromarkExtensions: [directive()]
-    }]
+    ['non-empty', { transforms: [vi.fn()] }]
   ])('%s document', (type, options) => {
     let file: VFile
     let value: string
@@ -37,9 +33,12 @@ describe('integration:plugin', () => {
       file = type === 'empty' ? new VFile(value) : await read(value)
     })
 
-    it('should configure parser', async () => {
+    it('should configure parser', () => {
       // Act
-      const result = unified().use(testSubject, options).parse(file)
+      const result = unified()
+        .use(testSubject, options)
+        .use(remarkDirective)
+        .parse(file)
 
       // Expect
       expect(result).toMatchSnapshot()

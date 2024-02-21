@@ -171,7 +171,7 @@ repository:
   automated_security_fixes: true
   default_branch: main
   delete_branch_on_merge: true
-  description: unified compliant parser for docast
+  description: unified plugin to add support for parsing docblock comments
   has_issues: true
   has_projects: true
   has_wiki: false
@@ -186,23 +186,19 @@ repository:
   squash_merge_commit_message: BLANK
   squash_merge_commit_title: PR_TITLE
   topics:
-    - abstract-syntax-tree
     - ast
     - comment-parser
-    - doc
     - docast
     - docblock
+    - docs
     - documentation
     - jsdoc
     - markdown
     - mdast
     - syntax-tree
     - tsdoc
-    - typedoc
     - typescript
     - unified
-    - unist
-    - unist-spec
   visibility: public
   vulnerability_alerts: true
   web_commit_signoff_required: true
