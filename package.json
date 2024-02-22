@@ -83,7 +83,7 @@
     "@flex-development/docast-util-from-docs": "1.0.0-alpha.1"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.13.6",
+    "@arethetypeswrong/cli": "0.14.1",
     "@commitlint/cli": "18.6.1",
     "@commitlint/types": "18.6.1",
     "@flex-development/commitlint-config": "1.0.1",
