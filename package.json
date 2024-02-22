@@ -138,7 +138,7 @@
     "mdast-util-from-markdown": "2.0.0",
     "micromark-util-types": "2.0.0",
     "node-notifier": "10.0.1",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "remark": "15.0.1",
     "remark-directive": "3.0.0",
     "remark-frontmatter": "5.0.0",
