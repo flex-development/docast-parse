@@ -96,7 +96,7 @@
     "@flex-development/pathe": "2.0.0",
     "@flex-development/tutils": "6.0.0-alpha.25",
     "@html-eslint/eslint-plugin": "0.23.1",
-    "@html-eslint/parser": "0.23.0",
+    "@html-eslint/parser": "0.24.0",
     "@types/chai": "4.3.11",
     "@types/eslint": "8.56.2",
     "@types/is-ci": "3.0.4",
