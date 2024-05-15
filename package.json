@@ -108,7 +108,7 @@
     "@typescript-eslint/parser": "7.9.0",
     "@vates/toggle-scripts": "1.0.0",
     "@vitest/coverage-v8": "1.5.3",
-    "chai": "5.1.0",
+    "chai": "5.1.1",
     "cross-env": "7.0.3",
     "cspell": "8.8.1",
     "dprint": "0.45.1",
@@ -178,7 +178,7 @@
     }
   },
   "resolutions": {
-    "chai": "5.1.0"
+    "chai": "5.1.1"
   },
   "engines": {
     "node": ">=18.18.2"
