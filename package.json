@@ -154,7 +154,7 @@
     "vite": "5.2.11",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.5.3",
-    "yaml-eslint-parser": "1.2.2"
+    "yaml-eslint-parser": "1.2.3"
   },
   "peerDependencies": {
     "@flex-development/docast": ">=1.0.0-alpha.14",
