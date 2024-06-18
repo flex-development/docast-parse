@@ -10828,7 +10828,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:2.4.2, yaml@npm:^2.0.0":
+"yaml@npm:2.4.2":
   version: 2.4.2
   resolution: "yaml@npm:2.4.2"
   bin:
@@ -10837,7 +10837,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.4.5":
+"yaml@npm:^2.0.0, yaml@npm:^2.4.5":
   version: 2.4.5
   resolution: "yaml@npm:2.4.5"
   bin:
